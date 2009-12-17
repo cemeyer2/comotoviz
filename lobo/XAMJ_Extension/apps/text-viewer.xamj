@@ -1,0 +1,27 @@
+<xamj>
+	<head>
+		<title>Text Viewer</title>
+		<document-disposition>window</document-disposition>
+		<document-icon>res:/images/warrior32.gif</document-icon>
+		<document-width>600</document-width>
+		<document-height>400</document-height>
+	</head>
+	<box style.orientation="vertical">
+		<menu-bar>
+			<menu text="File">
+				<menu-item text="Exit">
+					<on-click><![CDATA[
+						context.closeWindow();
+						//]]>	
+					</on-click>
+				</menu-item>
+			</menu>
+		</menu-bar>
+		<code><![CDATA[
+			String viewerText = (String) context.getItem("warrior.text");
+			//]]>
+		</code>
+		<text-box editable="false" text="(%= viewerText %)"/>
+	</box>
+</xamj>
+	

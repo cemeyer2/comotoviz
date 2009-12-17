@@ -1,0 +1,34 @@
+<!-- LEGACY. NO LONGER USED. -->
+<xamj>
+	<head>
+		<title>Message</title>
+		<document-disposition>window</document-disposition>
+		<document-width>300</document-width>
+		<document-height>200</document-height>
+	</head>
+	<box style.orientation="vertical">
+		<code><![CDATA[
+			String message = (String) context.getItem("message");
+			if(message == null) {
+				throw new IllegalArgumentException("Missing item: message");
+			}
+			//]]>
+		</code>
+		<box style.orientation="horizontal">
+			<box style.fill="both"/>			
+			<label text="(%= message %)"/>
+			<box style.fill="both"/>
+		</box>
+		<box style.orientation="horizontal" style.height="30">
+			<box style.fill="horizontal"/>
+			<button text="OK">
+				<on-click><![CDATA[
+					context.closeWindow();
+					//]]>
+				</on-click>
+			</button>
+			<box style.fill="horizontal"/>
+		</box>
+	</box>
+</xamj>
+			

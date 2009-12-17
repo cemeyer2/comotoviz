@@ -1,0 +1,19 @@
+for these scripts to run properly, must have the following dirs in this dir:
+
+fa08 - containing one dir per netid with 1 dir per assignment with each assign dir having that assign's files
+sp09 - """"
+fa09 - """"
+soln - containing one dir per assign containing all the soln files for that assign
+
+import.py and moss.py are not tolerant of failure, so run them under screen to ensure they complete
+
+report.py and r2.py are tolerant of failure and can be run multiple times for the same assign
+
+to run a report:
+
+you will have to manually modify (as of now) each of the scripts to run over the assignment you want, syntax should be self explanitory
+
+run import.py to make sure the assign you want to run is in the db
+run moss.py once to run moss analysis on the submissions
+run report.py
+run r2.py

@@ -1,0 +1,24 @@
+<xamj>
+	<head>
+		<title>Error Page</title>
+		<import>java.io.*</import>
+		<document-disposition>auto</document-disposition>
+		<document-width>600</document-width>
+		<document-height>400</document-height>
+	</head>
+	<box>
+		<text-box id="textArea" style.fill="both"/>
+		<code><![CDATA[
+			Exception error = (Exception) context.getItem("org.xamjwg.exception");
+			if(error == null) {
+				throw new IllegalStateException("Fatal: Exception attribute not set");
+			}
+			StringWriter sw = new StringWriter();
+			PrintWriter out = new PrintWriter(sw);
+			error.printStackTrace(out);
+			out.flush();
+			textArea.setText(sw.toString());
+			//]]>
+		</code>
+	</box>
+</xamj>

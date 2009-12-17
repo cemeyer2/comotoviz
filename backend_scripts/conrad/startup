@@ -1,0 +1,8 @@
+
+import os, elixir
+#elixir.metadata.bind = "sqlite:///db"
+elixir.metadata.bind = "mysql://conrad:conrad@localhost/conrad"
+elixir.metadata.bind.echo = True
+from conrad.model import *
+from sqlalchemy.orm.exc import NoResultFound
+elixir.setup_all(True)

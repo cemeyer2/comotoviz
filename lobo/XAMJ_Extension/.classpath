@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform_Core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform_Public_API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/XAMJ_Public_API"/>
+	<classpathentry kind="lib" path="/XAMJ_Build/ext/xpp3-1.1.3.4.M.jar"/>
+	<classpathentry kind="lib" path="jdtcore.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

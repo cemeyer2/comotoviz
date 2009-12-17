@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Nov 5, 2009 22:59:51 PM                                                        
+
+     VisualMoss    
+     VisualMoss Build File
+                   
+     cemeyer2                                                                
+     ====================================================================== -->
+<project name="VisualMoss" default="war" xmlns:jw="org.unintelligible.antjnlpwar">
+    <description>
+            VisualMoss BuildFile
+    </description>
+	
+	<typedef resource="org/unintelligible/antjnlpwar/antjnlpwar.xml" format="xml" uri="org.unintelligible.antjnlpwar">
+		<classpath>
+	    	<pathelement location="${basedir}/../lib/ant-jnlp-war_deps-0.9.jar"/>
+			<pathelement location="${basedir}/../lib/velocity-1.4.jar"/>
+			<pathelement location="${basedir}/../lib/commons-collections.jar"/>
+			<pathelement location="${basedir}/../lib/logkit-1.0.1.jar"/>
+			<pathelement location="${basedir}/../lib/Pack200Task.jar"/>
+	    </classpath>
+	</typedef>
+	
+	<target name="init">
+		<delete dir="build"/>
+		<delete dir="jar"/>
+		<delete dir="dist"/>
+		<delete dir="temp"/>
+		<mkdir dir="build"/>
+		<mkdir dir="jar"/>
+		<mkdir dir="jar/lib"/>
+		<mkdir dir="dist"/>
+		<mkdir dir="temp"/>
+	</target>
+	
+	<path id="compile.classpath">
+		<fileset dir="${basedir}/../lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${basedir}/../src" destdir="build/" classpathref="compile.classpath"
+		 target="1.5" />
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="jar/VisualMoss.jar">
+			<fileset dir="build/"/>
+			
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Implementation-Vendor" value="UIUC"/>
+				<attribute name="Implementation-Title" value="VisualMoss"/>
+				<attribute name="Main-Class" value="edu.uiuc.cs.visualmoss.VisualMossMain"/>
+			</manifest>
+		</jar>
+		<copy todir="jar/lib">
+			<fileset dir="${basedir}/../lib/"/>
+		</copy>
+		
+		<signjar
+		    alias="alias" keystore="keystore"
+		    storepass="abc123"
+		    preservelastmodified="true">
+		  <path>
+		    <fileset dir="jar" includes="**/*.jar" />
+		  </path>
+		</signjar>
+
+	</target>
+	
+	
+	
+	<target name="war" depends="jar">
+		<jw:jnlpwar
+		            tofile="dist/VisualMoss.war"
+		            codebase="http://maggie.cs.illinois.edu:8080/VisualMoss"
+		            title="VisualMoss"
+		            vendor="UIUC"
+		            pack200="false"
+		            signStorepass="abc123"
+		            signAlias="alias">
+		                <jw:description>VisualMoss</jw:description>
+		                <jw:description kind="short">VisualMoss</jw:description>
+		                <jw:j2se minVersion="1.5">
+		                </jw:j2se>
+		                <lib dir="jar">
+		                    <include name="lib/*.jar"/>
+		                	<include name="lib/ext/*.jar"/>
+		                </lib>
+		                <jw:application mainclass="edu.uiuc.cs.visualmoss.VisualMossMain" jar="jar/VisualMoss.jar"/>
+		        </jw:jnlpwar>
+	</target>
+   
+</project>
