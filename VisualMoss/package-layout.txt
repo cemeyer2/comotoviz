@@ -1,3 +1,4 @@
+packages:
 edu.uiuc.cs.visualmoss - root package, should contain code that ties together all components and launches application
 edu.uiuc.cs.visualmoss.dataexport - contains code that exports the graph to graphml
 edu.uiuc.cs.visualmoss.dataimport - imports viz data from file and database into app
