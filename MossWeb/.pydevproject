@@ -6,6 +6,5 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
 <path>/MossWeb/MossWeb</path>
-<path>/MossWeb/MossWeb/mossweb</path>
 </pydev_pathproperty>
 </pydev_project>
