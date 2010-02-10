@@ -8,4 +8,10 @@ setup(
       # package structure
       packages=find_packages('src'),
       package_dir={'':'src'},
+      
+      install_requires = [
+            'sqlalchemy',
+            'elixir',
+            'BeautifulSoup',
+            ],
 )
