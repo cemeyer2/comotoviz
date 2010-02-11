@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 
-import os, tempfile, elixir, random, shutil, subprocess
+from pymoss.model.model import *
+from sqlalchemy.orm.exc import NoResultFound
+import os
+import tempfile
+import elixir
+import random
+import shutil
+import subprocess
 #elixir.metadata.bind = "sqlite:///db"
 elixir.metadata.bind = "mysql://conrad:conrad@localhost/conrad"
 #elixir.metadata.bind.echo = True
-from Moss.model.model import *
-from sqlalchemy.orm.exc import NoResultFound
 
 def main():
 	elixir.setup_all(True)

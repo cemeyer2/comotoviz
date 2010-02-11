@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
-from Moss.model.model import *
+from pymoss.model.model import *
 from sqlalchemy.orm.exc import NoResultFound
-import os
-import tempfile
-import elixir
-import random
-import shutil
-import subprocess
 import BeautifulSoup
-import re
 import StringIO
 import cgi
+import elixir
+import os
 import random
+import random
+import re
+import shutil
+import subprocess
+import tempfile
 #elixir.metadata.bind = "sqlite:///db"
 elixir.metadata.bind = "mysql://conrad:conrad@localhost/conrad"
 #elixir.metadata.bind.echo = True
