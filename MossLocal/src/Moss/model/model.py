@@ -1,6 +1,7 @@
 import sqlalchemy, elixir
 #from sqlalchemy.types import CLOB
 from sqlalchemy.databases.mysql import MSMediumText
+from elixir import *
 
 # http://www.sqlalchemy.org/trac/wiki/UsageRecipes/Enum
 class Enum(sqlalchemy.types.TypeDecorator):
