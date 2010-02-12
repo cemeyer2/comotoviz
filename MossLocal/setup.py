@@ -24,5 +24,6 @@ setup(
             'BeautifulSoup',
             'pysvn', 
             'pygraphviz',
+            'nose'
             ],
 )
