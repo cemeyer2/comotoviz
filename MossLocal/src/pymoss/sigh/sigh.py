@@ -4,7 +4,7 @@
 # $Id: sigh.py 2422 2009-05-20 02:46:06Z alambert $
 
 import pysvn
-from pysvn import *
+from pysvn import ClientError
 import BeautifulSoup
 import pygraphviz
 import optparse

@@ -23,7 +23,6 @@ setup(
             'elixir',
             'BeautifulSoup',
             'pysvn', 
-            'optparse',
             'pygraphviz',
             ],
 )

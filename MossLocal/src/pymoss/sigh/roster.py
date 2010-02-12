@@ -3,8 +3,16 @@
 # copyright 2009 Alex Lambert <alex@alexlambert.com>
 # $Id: roster.py 2426 2009-05-20 02:50:30Z alambert $
 
-import sys, random, copy, os, subprocess, re, cgi, pickle
-import pysvn, optparse
+import pysvn
+import optparse
+import sys
+import random
+import copy
+import os
+import subprocess
+import re
+import cgi
+import pickle
 
 def main():
         parser = optparse.OptionParser()
