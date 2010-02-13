@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pymoss.model.model import *
+from pymoss.model import *
 from sqlalchemy.orm.exc import NoResultFound
 import os
 import elixir
