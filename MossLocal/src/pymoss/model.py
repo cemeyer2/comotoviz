@@ -111,7 +111,7 @@ class StudentSubmission(Submission):
 
     # each student can have multiple submissions per (offering, assignment) --
     # e.g. early, regular, late handin
-    offering = elixir.ManyToOne('Offering', colname=["seas","yr","name"])
+    offering = elixir.ManyToOne('Offering', colname=["seas", "yr", "name"])
     student = elixir.ManyToOne('Student')
     partners = elixir.ManyToMany('Student')
 
