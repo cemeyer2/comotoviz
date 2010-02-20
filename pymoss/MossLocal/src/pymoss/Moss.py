@@ -8,7 +8,7 @@ Created on Feb 11, 2010
 '''
 
 def initialize_db(config=Config("/etc/pymoss.cfg"), echo=False):
-    elixir.metadata.bind=config.getDatabaseUrl()
+    elixir.metadata.bind=str(config.getDatabaseUrl())
     __set_db_echo(echo)
     elixir.setup_all(True)
     
@@ -21,4 +21,4 @@ def __set_db_echo(echo=False):
     elixir.metadata.bind.echo=echo
 
 if __name__ == '__main__':
-    pass
+    initialize_db(echo=True)
