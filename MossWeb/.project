@@ -3,6 +3,7 @@
 	<name>MossWeb</name>
 	<comment></comment>
 	<projects>
+		<project>pymoss</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
