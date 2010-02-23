@@ -1,3 +1,0 @@
-include filesystem/config/deployment.ini_tmpl
-recursive-include filesystem/public *
-recursive-include filesystem/templates *

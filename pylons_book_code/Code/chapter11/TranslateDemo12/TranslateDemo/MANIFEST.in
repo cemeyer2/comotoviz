@@ -1,3 +1,0 @@
-include translatedemo/config/deployment.ini_tmpl
-recursive-include translatedemo/public *
-recursive-include translatedemo/templates *

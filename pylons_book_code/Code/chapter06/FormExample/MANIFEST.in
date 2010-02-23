@@ -1,3 +1,0 @@
-include formexample/config/deployment.ini_tmpl
-recursive-include formexample/public *
-recursive-include formexample/templates *

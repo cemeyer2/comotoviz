@@ -1,3 +1,0 @@
-include authtest/config/deployment.ini_tmpl
-recursive-include authtest/public *
-recursive-include authtest/templates *

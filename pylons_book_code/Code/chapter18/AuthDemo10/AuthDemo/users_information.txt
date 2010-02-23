@@ -1,5 +1,0 @@
-ben:password1 writer editor reviewer admin
-james:pasword2 writer
-graham:password3 writer reviewer
-philip:password4 editor reviewer
-

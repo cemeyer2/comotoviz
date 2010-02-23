@@ -1,3 +1,0 @@
-include templatedemo/config/deployment.ini_tmpl
-recursive-include templatedemo/public *
-recursive-include templatedemo/templates *

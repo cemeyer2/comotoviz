@@ -1,3 +1,0 @@
-include genshitemplatedemo/config/deployment.ini_tmpl
-recursive-include genshitemplatedemo/public *
-recursive-include genshitemplatedemo/templates *
