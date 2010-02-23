@@ -22,8 +22,9 @@ setup(
             'sqlalchemy',
             'elixir',
             'BeautifulSoup',
-            'pysvn', 
+            #'pysvn', <-- not in the cheeseshop, but still needs to be installed 
             'pygraphviz',
-            'nose'
+            'nose',
+            'MySQL-python', #only really need this if going to use MossWeb with this, but its good for my environment
             ],
 )

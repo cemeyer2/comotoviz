@@ -350,8 +350,8 @@ def createResultsGraph(mpName, matches, students, threshold, includeSolution, an
 				
 		if not match.is_solution and not includeSolution:
 			if anonymize:
-                    student1 = student1.pseudonym
-                    student2 = student2.pseudonym
+                student1 = student1.pseudonym
+                student2 = student2.pseudonym
                     if score >= threshold:
 				                graph.add_edge(student1, student2, label=str(score), penwidth=str(min(score / 10, 1)), length=str(min(100 - score,1)))
 
