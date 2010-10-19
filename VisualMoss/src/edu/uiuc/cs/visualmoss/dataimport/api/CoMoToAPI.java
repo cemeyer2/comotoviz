@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CoMoToAPI {
 
-    public static List<Assignment> getAssignments(CoMoToAPIConnection connection, int id) {
+    public static List<Assignment> getAssignments(CoMoToAPIConnection connection, Course course) {
         return null;
     }
 

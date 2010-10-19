@@ -10,6 +10,4 @@ import java.util.Map;
  */
 public class MossAnalysis {
 
-    public MossAnalysis(Map struct) {
-    }
 }

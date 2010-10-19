@@ -3,6 +3,8 @@ package edu.uiuc.cs.visualmoss.dataimport.api;
 import java.awt.*;
 import java.util.Map;
 
+import org.apache.xmlrpc.XmlRpcException;
+
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 18, 2010
@@ -12,11 +14,19 @@ import java.util.Map;
 public class CoMoToAPIAccessTemplate {
 
     public static Map getMap(CoMoToAPIConnection connection, String method, Object... parameters) {
-        return (Map) connection.getClient().execute(method, parameters);
+        try {
+			return (Map) connection.getClient().execute(method, parameters);
+		} catch (XmlRpcException e) {
+			throw new RuntimeException("Error getting the map from the requested method:\n" + e.getMessage());
+		}
     }
 
-    public static List getArray(CoMoToAPIConnection connection, String method, Object... parameters) {
-        return (List) connection.getClient().execute(method, parameters);
+    public static List getArray(CoMoToAPIConnection connection, String method, Object... parameters){
+        try {
+			return (List) connection.getClient().execute(method, parameters);
+		} catch (XmlRpcException e) {
+			throw new RuntimeException("Error getting the list from the requested method:\n" + e.getMessage());
+		}
     }
 
 }
