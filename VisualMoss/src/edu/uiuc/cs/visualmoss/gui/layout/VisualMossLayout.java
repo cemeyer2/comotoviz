@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,9 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import prefuse.data.Node;
 import prefuse.data.io.DataIOException;
-import prefuse.data.tuple.TableTuple;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 import edu.uiuc.cs.visualmoss.VisualMossConstants;

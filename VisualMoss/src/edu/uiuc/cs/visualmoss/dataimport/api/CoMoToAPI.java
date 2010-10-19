@@ -2,6 +2,7 @@ package edu.uiuc.cs.visualmoss.dataimport.api;
 
 import edu.uiuc.cs.visualmoss.dataimport.Assignment;
 import edu.uiuc.cs.visualmoss.dataimport.Course;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.*;
 
 import java.util.List;
 
@@ -14,32 +15,43 @@ import java.util.List;
 
 public class CoMoToAPI {
 
-    private final String username, password, host;
-    public static final String DEFAULT_HOST = "https://maggie.cs.illinois.edu/comoto/api/api";
-
-    public CoMoToAPI(String username, String password) {
-        this(username, password, DEFAULT_HOST);
-    }
-
-    public CoMoToAPI(String username, String password, String host) {
-        this.username = username;
-        this.password = password;
-        this.host = host;
-    }
-
-    public List<Course> getCourses() {
+    public static List<Assignment> getAssignments(CoMoToAPIConnection connection, int id) {
         return null;
     }
 
-    public List<Assignment> getAssignments(Course course) {
+    public static List<Course> getCourses() {
         return null;
     }
 
-    public FileSet getFileSet(int id) {
+    public static FileSet getFileSet(CoMoToAPIConnection connection, int id) {
         return null;
     }
 
-    public MossAnalysis getMossAnalysis(int id){
+    public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int id) {
+        return null;
+    }
+
+    public static MossMatch getMossMatch(CoMoToAPIConnection connection, int id){
+        return null;
+    }
+
+    public static Report getReport(CoMoToAPIConnection connection, int id){
+        return null;
+    }
+
+    public static Student getStudent(CoMoToAPIConnection connection, int id){
+        return null;
+    }
+
+    public static Submission getSubmission(CoMoToAPIConnection connection, int id){
+        return null;
+    }
+
+    public static SubmissionFile getSubmissionFile(CoMoToAPIConnection connection, int id){
+        return null;
+    }
+
+    public static SubmissionFile getSyntaxHighlightedSubmissionFile(CoMoToAPIConnection connection, int id){
         return null;
     }
 }

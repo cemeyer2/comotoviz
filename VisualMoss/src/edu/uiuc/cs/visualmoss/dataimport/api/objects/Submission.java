@@ -1,4 +1,4 @@
-package edu.uiuc.cs.visualmoss.dataimport.api;
+package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import java.util.Map;
 

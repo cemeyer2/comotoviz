@@ -1,4 +1,4 @@
-package edu.uiuc.cs.visualmoss.dataimport.api;
+package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import java.util.Map;
 
@@ -8,9 +8,8 @@ import java.util.Map;
  *
  * <p> <p> Holds the data of a MOSS analysis
  */
-public class Analysis {
+public class MossAnalysis {
 
-    protected Analysis(Map struct){
-
+    public MossAnalysis(Map struct) {
     }
 }
