@@ -1,9 +1,8 @@
 package edu.uiuc.cs.visualmoss.dataimport.api;
 
-import java.awt.*;
-import java.util.Map;
-
 import org.apache.xmlrpc.XmlRpcException;
+
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -13,17 +12,35 @@ import org.apache.xmlrpc.XmlRpcException;
  */
 public class CoMoToAPIAccessTemplate {
 
+    /**
+     * Grabs a Map of data from the API, an object of some arbitrary type
+     *
+     * @param connection The connection from which to grab the object
+     * @param method The name of the method to call
+     * @param parameters The parameters to pass to the API call
+     *
+     * @return A map, essentially an object represented as key-value pairs
+     */
     public static Map getMap(CoMoToAPIConnection connection, String method, Object... parameters) {
         try {
-			return (Map) connection.getClient().execute(method, parameters);
+			return (Map) connection.execute(method, parameters);
 		} catch (XmlRpcException e) {
 			throw new RuntimeException("Error getting the map from the requested method:\n" + e.getMessage());
 		}
     }
 
-    public static List getArray(CoMoToAPIConnection connection, String method, Object... parameters){
+    /**
+     * Grabs an array of data from the API, an object of some arbitrary type
+     *
+     * @param connection The connection from which to grab the object
+     * @param method The name of the method to call
+     * @param parameters The parameters to pass to the API call
+     *
+     * @return An array of objects of some arbitrary type
+     */
+    public static Object[] getArray(CoMoToAPIConnection connection, String method, Object... parameters){
         try {
-			return (List) connection.getClient().execute(method, parameters);
+			return (Object[]) connection.execute(method, parameters);
 		} catch (XmlRpcException e) {
 			throw new RuntimeException("Error getting the list from the requested method:\n" + e.getMessage());
 		}

@@ -1,5 +1,6 @@
 package edu.uiuc.cs.visualmoss.dataimport.api;
 
+import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
@@ -23,10 +24,23 @@ public class CoMoToAPIConnection {
     private XmlRpcClient client;
     private XmlRpcClientConfigImpl configuration;
 
+    /**
+     * Builds a connections using the given user name and password to the default host
+     *
+     * @param userName The user name for the connection
+     * @param password The password for the connection
+     */
     public CoMoToAPIConnection(String userName, String password) {
         this(userName, password, DEFAULT_HOST);
     }
 
+    /**
+     * Builds the connection using the given host, user name, and password
+     *
+     * @param userName The user name for the connection
+     * @param password The password
+     * @param host The host to connect to
+     */
     public CoMoToAPIConnection(String userName, String password, String host) {
         this.userName = userName;
         this.password = password;
@@ -39,8 +53,21 @@ public class CoMoToAPIConnection {
         }
     }
 
+    /**
+     * Initializes the 'connection' to the CoMoTo API. Essentially, just creates a client configured for this
+     *  host, user, and password
+     *
+     * @throws MalformedURLException if the host is invalid
+     */
     private void initializeConnection() throws MalformedURLException {
+
+        //Create and initialize the configuration for the connection
+        configuration = new XmlRpcClientConfigImpl();
         configuration.setServerURL(new URL(host));
+        configuration.setBasicUserName(userName);
+        configuration.setBasicPassword(password);
+
+        //Create the client with this configuration
         client = new XmlRpcClient();
         client.setConfig(configuration);
     }
@@ -63,5 +90,9 @@ public class CoMoToAPIConnection {
 
     public XmlRpcClientConfigImpl getConfiguration() {
         return configuration;
+    }
+
+    public Object execute(String method, Object... parameters) throws XmlRpcException {
+        return client.execute(method, parameters);
     }
 }

@@ -6,7 +6,7 @@ The Lobo Project
 Author: J. H. S.
 ====================================================================== -->
 <project name="project" default="default" basedir="../">
-    <taskdef name="izpack" classpath="/opt/IzPack/lib/compiler.jar" 
+    <taskdef name="izpack" classpath="C:\Program Files\IzPack\lib\compiler.jar"
 	     classname="com.izforge.izpack.ant.IzPackTask"/>
 
 	<property name="lobo.version" value="0.98.4"/>
