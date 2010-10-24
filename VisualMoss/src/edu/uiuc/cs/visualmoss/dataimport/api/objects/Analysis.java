@@ -1,7 +1,9 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -19,41 +21,69 @@ public class Analysis {
     private int jplagAnalysisId;
     private List<AnalysisPseudonym> analysisPseudonyms;
 
-    public Analysis(int id, Timestamp timestamp, boolean complete, int mossAnalysisId, int assignmentId, int jplagAnalysisId, List<AnalysisPseudonym> analysisPseudonyms) {
-        this.id = id;
-        this.timestamp = timestamp;
-        this.complete = complete;
-        this.mossAnalysisId = mossAnalysisId;
-        this.assignmentId = assignmentId;
-        this.jplagAnalysisId = jplagAnalysisId;
-        this.analysisPseudonyms = analysisPseudonyms;
+    public Analysis() {
+    }
+
+    public Analysis(Map abstractAnalysis) {
+    }
+
+    public Map getMap(){
+        return new HashMap();
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Timestamp getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public boolean isComplete() {
         return complete;
     }
 
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
     public int getMossAnalysisId() {
         return mossAnalysisId;
+    }
+
+    public void setMossAnalysisId(int mossAnalysisId) {
+        this.mossAnalysisId = mossAnalysisId;
     }
 
     public int getAssignmentId() {
         return assignmentId;
     }
 
+    public void setAssignmentId(int assignmentId) {
+        this.assignmentId = assignmentId;
+    }
+
     public int getJplagAnalysisId() {
         return jplagAnalysisId;
     }
 
+    public void setJplagAnalysisId(int jplagAnalysisId) {
+        this.jplagAnalysisId = jplagAnalysisId;
+    }
+
     public List<AnalysisPseudonym> getAnalysisPseudonyms() {
         return analysisPseudonyms;
+    }
+
+    public void setAnalysisPseudonyms(List<AnalysisPseudonym> analysisPseudonyms) {
+        this.analysisPseudonyms = analysisPseudonyms;
     }
 }

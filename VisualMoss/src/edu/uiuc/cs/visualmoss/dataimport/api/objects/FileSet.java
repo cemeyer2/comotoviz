@@ -3,7 +3,9 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Type;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -22,56 +24,77 @@ public class FileSet {
     private List<Integer> submissionIds;
     private Type type = Type.fileset;
 
-    public FileSet(int id, int courseId, boolean complete, Offering offering, Timestamp timestamp, List<Integer> assignmentIds, List<Integer> submissionIds) {
-        this.id = id;
-        this.courseId = courseId;
-        this.complete = complete;
-        this.offering = offering;
-        this.timestamp = timestamp;
-        this.assignmentIds = assignmentIds;
-        this.submissionIds = submissionIds;
+    public FileSet() {
     }
 
-    public FileSet(int id, int courseId, boolean complete, Offering offering, Timestamp timestamp, List<Integer> assignmentIds, List<Integer> submissionIds, Type type) {
-        this.id = id;
-        this.courseId = courseId;
-        this.complete = complete;
-        this.offering = offering;
-        this.timestamp = timestamp;
-        this.assignmentIds = assignmentIds;
-        this.submissionIds = submissionIds;
-        this.type = type;
+    public FileSet(Map abstractFileSet) {
+    }
+
+    public Map getMap(){
+        return new HashMap();
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getCourseId() {
         return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public boolean isComplete() {
         return complete;
     }
 
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
     public Offering getOffering() {
         return offering;
+    }
+
+    public void setOffering(Offering offering) {
+        this.offering = offering;
     }
 
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public List<Integer> getAssignmentIds() {
         return assignmentIds;
+    }
+
+    public void setAssignmentIds(List<Integer> assignmentIds) {
+        this.assignmentIds = assignmentIds;
     }
 
     public List<Integer> getSubmissionIds() {
         return submissionIds;
     }
 
+    public void setSubmissionIds(List<Integer> submissionIds) {
+        this.submissionIds = submissionIds;
+    }
+
     public Type getType() {
         return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }

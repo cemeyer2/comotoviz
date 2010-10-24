@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import java.util.Map;
+
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
@@ -14,31 +16,49 @@ public class SubmissionFile {
     private String content;
     private String name;
 
-    public SubmissionFile(int id, int submissionId, boolean meta, String content, String name) {
-        this.id = id;
-        this.submissionId = submissionId;
-        this.meta = meta;
-        this.content = content;
-        this.name = name;
+    public SubmissionFile() {
+    }
+
+    public SubmissionFile(Map abstractSubmissionFile) {
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getSubmissionId() {
         return submissionId;
+    }
+
+    public void setSubmissionId(int submissionId) {
+        this.submissionId = submissionId;
     }
 
     public boolean isMeta() {
         return meta;
     }
 
+    public void setMeta(boolean meta) {
+        this.meta = meta;
+    }
+
     public String getContent() {
         return content;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,6 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -14,21 +15,33 @@ public class MossAnalysis {
     private int analysisId;
     private List<MossMatch> matches;
 
-    public MossAnalysis(int id, int analysisId, List<MossMatch> matches) {
-        this.id = id;
-        this.analysisId = analysisId;
-        this.matches = matches;
+    public MossAnalysis() {
+    }
+
+    public MossAnalysis(Map abstractMossAnalysis) {
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getAnalysisId() {
         return analysisId;
     }
 
+    public void setAnalysisId(int analysisId) {
+        this.analysisId = analysisId;
+    }
+
     public List<MossMatch> getMatches() {
         return matches;
+    }
+
+    public void setMatches(List<MossMatch> matches) {
+        this.matches = matches;
     }
 }

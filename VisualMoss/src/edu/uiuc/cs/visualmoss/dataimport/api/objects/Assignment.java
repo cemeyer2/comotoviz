@@ -2,7 +2,9 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Language;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -19,36 +21,61 @@ public class Assignment {
     private String name;
     private List<Integer> fileSetIds;
 
-    public Assignment(int id, int analysisId, int courseId, Language language, String name, List<Integer> fileSetIds) {
-        this.id = id;
-        this.analysisId = analysisId;
-        this.courseId = courseId;
-        this.language = language;
-        this.name = name;
-        this.fileSetIds = fileSetIds;
+    public Assignment() {
+    }
+
+    public Assignment(Map abstractAssignment) {
+    }
+
+    public Map getMap(){
+        return new HashMap();
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getAnalysisId() {
         return analysisId;
+    }
+
+    public void setAnalysisId(int analysisId) {
+        this.analysisId = analysisId;
     }
 
     public int getCourseId() {
         return courseId;
     }
 
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
     public Language getLanguage() {
         return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<Integer> getFileSetIds() {
         return fileSetIds;
+    }
+
+    public void setFileSetIds(List<Integer> fileSetIds) {
+        this.fileSetIds = fileSetIds;
     }
 }

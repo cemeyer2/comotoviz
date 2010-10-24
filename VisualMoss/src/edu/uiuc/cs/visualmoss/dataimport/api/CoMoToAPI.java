@@ -32,7 +32,7 @@ public class CoMoToAPI {
         Map abstractAnalysis = getMap(connection, GET_ANALYSIS, id);
 
         //Build the resulting data structure
-        return (Analysis) DataPopulator.valueOf(ANALYSIS).getData(abstractAnalysis);
+        return new Analysis(abstractAnalysis);
     }
 
     /**
@@ -51,7 +51,7 @@ public class CoMoToAPI {
         List<Assignment> assignments = new ArrayList<Assignment>();
         for(Object abstractAssignment : abstractAssignments){
 
-            Assignment assignment = (Assignment) DataPopulator.valueOf(ASSIGNMENT).getData((Map) abstractAssignment);
+            Assignment assignment = new Assignment((Map) abstractAssignment);
             assignments.add(assignment);
         }
 
@@ -73,7 +73,7 @@ public class CoMoToAPI {
         List<Course> courses = new ArrayList<Course>();
         for(Object abstractCourse : abstractCourses){
 
-            Course course = (Course) DataPopulator.valueOf(COURSE).getData((Map) abstractCourse);
+            Course course = new Course((Map) abstractCourse);
             courses.add(course);
         }
 
@@ -93,7 +93,7 @@ public class CoMoToAPI {
         Map abstractFileSet = getMap(connection, GET_FILE_SET, id);
 
         //Build the file set
-        return (FileSet) DataPopulator.valueOf(FILE_SET).getData(abstractFileSet);
+        return new FileSet(abstractFileSet);
     }
 
     /**
@@ -109,7 +109,7 @@ public class CoMoToAPI {
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, id);
 
         //Build the file set
-        return (MossAnalysis) DataPopulator.valueOf(MOSS_ANALYSIS).getData(abstractMossAnalysis);
+        return new MossAnalysis(abstractMossAnalysis);
     }
 
     /**
@@ -125,7 +125,7 @@ public class CoMoToAPI {
         Map abstractReport = getMap(connection, GET_REPORT, id);
 
         //Build the file set
-        return (Report) DataPopulator.valueOf(REPORT).getData(abstractReport);
+        return new Report(abstractReport);
     }
 
     /**
@@ -141,7 +141,7 @@ public class CoMoToAPI {
         Map abstractStudent = getMap(connection, GET_STUDENT, id);
 
         //Build the file set
-        return (Student) DataPopulator.valueOf(STUDENT).getData(abstractStudent);
+        return new Student(abstractStudent);
     }
 
     /**
@@ -157,7 +157,7 @@ public class CoMoToAPI {
         Map abstractSubmission = getMap(connection, GET_SUBMISSION, id);
 
         //Build the file set
-        return (Submission) DataPopulator.valueOf(SUBMISSION).getData(abstractSubmission);
+        return new Submission(abstractSubmission);
     }
 
     /**
@@ -173,6 +173,6 @@ public class CoMoToAPI {
         Map abstractSubmissionFile = getMap(connection, GET_SUBMISSION_FILE, id);
 
         //Build the file set
-        return (SubmissionFile) DataPopulator.valueOf(SUBMISSION_FILE).getData(abstractSubmissionFile);
+        return new SubmissionFile(abstractSubmissionFile);
     }
 }

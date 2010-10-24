@@ -1,6 +1,8 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -18,41 +20,69 @@ public class MossMatch {
     private int submission1Id;
     private int submission2Id;
 
-    public MossMatch(int id, URL link, int mossAnalysisId, int score1, int score2, int submission1Id, int submission2Id) {
-        this.id = id;
-        this.link = link;
-        this.mossAnalysisId = mossAnalysisId;
-        this.score1 = score1;
-        this.score2 = score2;
-        this.submission1Id = submission1Id;
-        this.submission2Id = submission2Id;
+    public MossMatch() {
+    }
+
+    public MossMatch(Map abstractMossMatch) {
+    }
+
+    public Map getMap(){
+        return new HashMap();
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public URL getLink() {
         return link;
+    }
+
+    public void setLink(URL link) {
+        this.link = link;
     }
 
     public int getMossAnalysisId() {
         return mossAnalysisId;
     }
 
+    public void setMossAnalysisId(int mossAnalysisId) {
+        this.mossAnalysisId = mossAnalysisId;
+    }
+
     public int getScore1() {
         return score1;
+    }
+
+    public void setScore1(int score1) {
+        this.score1 = score1;
     }
 
     public int getScore2() {
         return score2;
     }
 
+    public void setScore2(int score2) {
+        this.score2 = score2;
+    }
+
     public int getSubmission1Id() {
         return submission1Id;
     }
 
+    public void setSubmission1Id(int submission1Id) {
+        this.submission1Id = submission1Id;
+    }
+
     public int getSubmission2Id() {
         return submission2Id;
+    }
+
+    public void setSubmission2Id(int submission2Id) {
+        this.submission2Id = submission2Id;
     }
 }
