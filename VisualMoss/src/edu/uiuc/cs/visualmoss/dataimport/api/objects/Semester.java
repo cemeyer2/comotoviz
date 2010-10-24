@@ -1,5 +1,6 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Season;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Type;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 public class Semester {
 
     private int id;
-    private Type type = Type.semester;
+    private Type type;
     private Season season;
     private int year;
 
@@ -23,6 +24,8 @@ public class Semester {
     }
 
     public Semester(Map abstractSemester) {
+        CoMoToAPIReflector<Semester> reflector = new CoMoToAPIReflector<Semester>();
+        reflector.populate(this, abstractSemester);
     }
 
     public Map getMap(){
@@ -41,16 +44,16 @@ public class Semester {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = Type.valueOf(type);
     }
 
     public Season getSeason() {
         return season;
     }
 
-    public void setSeason(Season season) {
-        this.season = season;
+    public void setSeason(String season) {
+        this.season = Season.valueOf(season);
     }
 
     public int getYear() {

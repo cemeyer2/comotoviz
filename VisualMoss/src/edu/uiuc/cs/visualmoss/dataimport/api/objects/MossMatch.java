@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +25,9 @@ public class MossMatch {
     public MossMatch() {
     }
 
-    public MossMatch(Map abstractMossMatch) {
+    public MossMatch(Map<String, Object> abstractMossMatch) {
+        CoMoToAPIReflector<MossMatch> reflector = new CoMoToAPIReflector<MossMatch>();
+        reflector.populate(this, abstractMossMatch);
     }
 
     public Map getMap(){

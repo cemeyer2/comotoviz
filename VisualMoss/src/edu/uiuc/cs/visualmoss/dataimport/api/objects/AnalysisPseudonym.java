@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +21,9 @@ public class AnalysisPseudonym {
     public AnalysisPseudonym() {
     }
 
-    public AnalysisPseudonym(Map abstractAnalysisPseudonym) {
+    public AnalysisPseudonym(Map<String, Object> abstractAnalysisPseudonym) {
+        CoMoToAPIReflector<AnalysisPseudonym> reflector = new CoMoToAPIReflector<AnalysisPseudonym>();
+        reflector.populate(this, abstractAnalysisPseudonym);
     }
 
     public Map getMap(){

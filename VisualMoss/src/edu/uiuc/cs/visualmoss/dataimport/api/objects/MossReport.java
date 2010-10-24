@@ -1,8 +1,13 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MOSS_REPORT_FILE_IDS;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -19,7 +24,18 @@ public class MossReport {
     public MossReport() {
     }
 
-    public MossReport(Map abstractMossReport) {
+    public MossReport(Map<String, Object> abstractMossReport) {
+
+
+        //Explicitly add the non-primitive types
+        Integer[] abstractMatches = (Integer[]) abstractMossReport.get(MOSS_REPORT_FILE_IDS);
+        mossReportFileIds = Arrays.asList(abstractMatches);
+
+        //Remove it from the map
+        abstractMossReport.remove(MOSS_REPORT_FILE_IDS);
+
+        CoMoToAPIReflector<MossReport> reflector = new CoMoToAPIReflector<MossReport>();
+        reflector.populate(this, abstractMossReport);
     }
 
     public Map getMap(){

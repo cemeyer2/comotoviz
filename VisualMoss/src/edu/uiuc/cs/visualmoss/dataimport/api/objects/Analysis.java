@@ -1,6 +1,8 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
-import java.sql.Timestamp;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
+import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Map;
 public class Analysis {
 
     private int id;
-    private Timestamp timestamp;
+    private DateFormat timestamp;
     private boolean complete;
     private int mossAnalysisId;
     private int assignmentId;
@@ -24,7 +26,9 @@ public class Analysis {
     public Analysis() {
     }
 
-    public Analysis(Map abstractAnalysis) {
+    public Analysis(Map<String, Object> abstractAnalysis) {
+        CoMoToAPIReflector<Analysis> reflector = new CoMoToAPIReflector<Analysis>();
+        reflector.populate(this, abstractAnalysis);
     }
 
     public Map getMap(){
@@ -39,11 +43,11 @@ public class Analysis {
         this.id = id;
     }
 
-    public Timestamp getTimestamp() {
+    public DateFormat getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(DateFormat timestamp) {
         this.timestamp = timestamp;
     }
 

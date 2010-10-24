@@ -19,13 +19,14 @@ public class CoMoToAPIConstants {
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";
 
-    public static final String ANALYSIS = "analysis";
-    public static final String ASSIGNMENT = "assignment";
-    public static final String COURSE = "course";
-    public static final String FILE_SET = "fileSet";
-    public static final String MOSS_ANALYSIS = "mossAnalysis";
-    public static final String REPORT = "report";
-    public static final String STUDENT = "student";
-    public static final String SUBMISSION = "submission";
-    public static final String SUBMISSION_FILE = "submissionFile";
+    public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
+    public static final String FILE_SET_IDS = "file_set_ids";
+    public static final String JPLAG_REPORT = "jplag_report";
+    public static final String MATCHES = "matches";
+    public static final String MOSS_REPORT = "moss_report";
+    public static final String MOSS_REPORT_FILE_IDS = "moss_report_file_ids";
+    public static final String PARTNER_IDS = "partner_ids";
+    public static final String SEMESTER = "semester";
+    public static final String SUBMISSION_FILE_IDS = "submission_file_ids";
+    public static final String SUBMISSION_IDS = "submission_ids";
 }

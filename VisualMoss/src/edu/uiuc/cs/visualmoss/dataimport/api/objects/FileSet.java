@@ -1,8 +1,11 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Type;
 
-import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +22,7 @@ public class FileSet {
     private int courseId;
     private boolean complete;
     private Offering offering;
-    private Timestamp timestamp;
+    private DateFormat timestamp;
     private List<Integer> assignmentIds;
     private List<Integer> submissionIds;
     private Type type = Type.fileset;
@@ -27,7 +30,26 @@ public class FileSet {
     public FileSet() {
     }
 
-    public FileSet(Map abstractFileSet) {
+    public FileSet(Map<String, Object> abstractFileSet) {
+
+        //Explicitly add non primitive types
+        Map offeringMap = (Map) abstractFileSet.get("offering");
+        String timestampString = (String) abstractFileSet.get("timestamp");
+        Integer[] assignmentIdsArray = (Integer[]) abstractFileSet.get("assignment_ids");
+        Integer[] submissionIdsArray = (Integer[]) abstractFileSet.get("submission_ids");
+        offering = new Offering(offeringMap);
+        timestamp = new SimpleDateFormat(timestampString);
+        assignmentIds = Arrays.asList(assignmentIdsArray);
+        submissionIds = Arrays.asList(submissionIdsArray);
+
+        //Remove these entries from the map
+        abstractFileSet.remove("offering");
+        abstractFileSet.remove("timestamp");
+        abstractFileSet.remove("assignment_ids");
+        abstractFileSet.remove("submission_ids");
+
+        CoMoToAPIReflector<FileSet> reflector = new CoMoToAPIReflector<FileSet>();
+        reflector.populate(this, abstractFileSet);
     }
 
     public Map getMap(){
@@ -66,11 +88,11 @@ public class FileSet {
         this.offering = offering;
     }
 
-    public Timestamp getTimestamp() {
+    public DateFormat getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(DateFormat timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -94,7 +116,7 @@ public class FileSet {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = Type.valueOf(type);
     }
 }

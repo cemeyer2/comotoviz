@@ -1,7 +1,9 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Language;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,17 @@ public class Assignment {
     public Assignment() {
     }
 
-    public Assignment(Map abstractAssignment) {
+    public Assignment(Map<String, Object> abstractAssignment) {
+
+        //Explicitly add non-primitive types
+        Integer[] fileSetIdsArray = (Integer[]) abstractAssignment.get("file_set_ids");
+        fileSetIds = Arrays.asList(fileSetIdsArray);
+
+        //Remove them from the map
+        abstractAssignment.remove("file_set_ids");
+
+        CoMoToAPIReflector<Assignment> reflector = new CoMoToAPIReflector<Assignment>();
+        reflector.populate(this, abstractAssignment);
     }
 
     public Map getMap(){
@@ -59,8 +71,8 @@ public class Assignment {
         return language;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setLanguage(String language) {
+        this.language = Language.valueOf(language);
     }
 
     public String getName() {

@@ -1,7 +1,12 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.JPLAG_REPORT;
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MOSS_REPORT;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -20,7 +25,20 @@ public class Report {
     public Report() {
     }
 
-    public Report(Map abstractReport) {
+    public Report(Map<String, Object> abstractReport) {
+
+        //Explicitly add non-primitive types
+        Map jplagReportMap = (Map) abstractReport.get(JPLAG_REPORT);
+        Map mossReportMap = (Map) abstractReport.get(MOSS_REPORT);
+        jplagReport = new JplagReport(jplagReportMap);
+        mossReport = new MossReport(mossReportMap);
+
+        //Remove them from the map
+        abstractReport.remove(JPLAG_REPORT);
+        abstractReport.remove(MOSS_REPORT);
+
+        CoMoToAPIReflector<Report> reflector = new CoMoToAPIReflector<Report>();
+        reflector.populate(this, abstractReport);
     }
 
     public Map getMap(){

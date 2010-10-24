@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+
 import java.util.Map;
 
 /**
@@ -20,6 +22,8 @@ public class SubmissionFile {
     }
 
     public SubmissionFile(Map abstractSubmissionFile) {
+        CoMoToAPIReflector<SubmissionFile> reflector = new CoMoToAPIReflector<SubmissionFile>();
+        reflector.populate(this, abstractSubmissionFile);
     }
 
     public int getId() {
