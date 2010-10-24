@@ -3,9 +3,12 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYMS;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -27,6 +30,15 @@ public class Analysis {
     }
 
     public Analysis(Map<String, Object> abstractAnalysis) {
+
+        //Add non-primitive types explicitly
+        Map[] analysisPseudonymsArray = (Map[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
+        analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
+        for(Map analysisPseudonymMap : analysisPseudonymsArray){
+            analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap));
+        }
+        abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
+        
         CoMoToAPIReflector<Analysis> reflector = new CoMoToAPIReflector<Analysis>();
         reflector.populate(this, abstractAnalysis);
     }
