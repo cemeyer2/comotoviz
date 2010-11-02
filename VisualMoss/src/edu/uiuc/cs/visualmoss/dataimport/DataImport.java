@@ -1,31 +1,25 @@
 package edu.uiuc.cs.visualmoss.dataimport;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.sql.Blob;
-import java.sql.Clob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-import javax.swing.JFrame;
-
-import prefuse.data.Edge;
-import prefuse.data.Graph;
-import prefuse.data.Node;
-import prefuse.data.io.DataIOException;
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillCurrentSemesterPredicate;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
 import edu.uiuc.cs.visualmoss.utility.CampusIPCheck;
+import prefuse.data.Edge;
+import prefuse.data.Graph;
+import prefuse.data.Node;
+import prefuse.data.io.DataIOException;
+
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import static edu.uiuc.cs.visualmoss.dataimport.DataConstants.*;
 
 public class DataImport 
 {
@@ -37,7 +31,7 @@ public class DataImport
 
 	public DataImport(File f) throws DataIOException
 	{
-		graph = new VisualMossGraph(f, "CS225", "MP3");
+		graph = new VisualMossGraph(f, CS225, MP3);
 	}
 
 	public DataImport() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
@@ -104,17 +98,17 @@ public class DataImport
 
 		int i = 0;
 		Graph graph = new Graph();
-		graph.getNodeTable().addColumn("netid", String.class);
-		graph.getNodeTable().addColumn("pseudonym", String.class);
-		graph.getNodeTable().addColumn("isSolution", String.class);
-		graph.getNodeTable().addColumn("season", String.class);
-		graph.getNodeTable().addColumn("year", String.class);
-		graph.getNodeTable().addColumn("submission_id", String.class);
-		graph.getEdgeTable().addColumn("weight", double.class);
-		graph.getEdgeTable().addColumn("score1", double.class);
-		graph.getEdgeTable().addColumn("score2", double.class);
-		graph.getEdgeTable().addColumn("link", String.class);
-		graph.getEdgeTable().addColumn("isPartner", boolean.class);
+		graph.getNodeTable().addColumn(NETID, String.class);
+		graph.getNodeTable().addColumn(PSEUDONYM, String.class);
+		graph.getNodeTable().addColumn(IS_SOLUTION, String.class);
+		graph.getNodeTable().addColumn(SEASON, String.class);
+		graph.getNodeTable().addColumn(YEAR, String.class);
+		graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+		graph.getEdgeTable().addColumn(WEIGHT, double.class);
+		graph.getEdgeTable().addColumn(SCORE1, double.class);
+		graph.getEdgeTable().addColumn(SCORE2, double.class);
+		graph.getEdgeTable().addColumn(LINK, String.class);
+		graph.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
 
 		//count up the number of nodes and edges to add
 		if(showProgress == true)
@@ -135,17 +129,17 @@ public class DataImport
 		}
 
 		//add student submission nodes
-		String q0 = "SELECT id, c AS course_name, n AS assignment_name, ana AS analysis_id, pseu AS pseudonym, seas AS season, yr AS year, student_netid AS netid FROM conrad_model_submission, conrad_model_studentsubmission WHERE id=submission_id AND row_type='studentsubmission' AND n='"+assignment.getName()+"'";
+		String q0 = "SELECT id, c AS course_name, n AS assignment_name, ana AS analysis_id, pseu AS " + PSEUDONYM + ", seas AS " + SEASON + ", yr AS " + YEAR + ", student_" + NETID + " AS netid FROM conrad_model_submission, conrad_model_studentsubmission WHERE id=" + SUBMISSION_ID + " AND row_type='studentsubmission' AND n='" +assignment.getName()+"'";
 		ResultSet rs0 = st.executeQuery(q0);
 		while(rs0.next())
 		{
 			Node node = graph.addNode();
-			node.setString("netid", rs0.getString("netid"));
-			node.setString("pseudonym", rs0.getString("pseudonym"));
-			node.setString("isSolution", "false");
-			node.setString("season", rs0.getString("season"));
-			node.setString("year", rs0.getString("year"));
-			node.setString("submission_id", rs0.getString("id"));
+			node.setString(NETID, rs0.getString(NETID));
+			node.setString(PSEUDONYM, rs0.getString(PSEUDONYM));
+			node.setString(IS_SOLUTION, "false");
+			node.setString(SEASON, rs0.getString(SEASON));
+			node.setString(YEAR, rs0.getString(YEAR));
+			node.setString(SUBMISSION_ID, rs0.getString("id"));
 			i++;
 			dialog.setValue(i);
 		}
@@ -157,12 +151,12 @@ public class DataImport
 		while(rs1.next())
 		{
 			Node node = graph.addNode();
-			node.setString("netid", VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString("pseudonym", VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString("isSolution", "true");
-			node.setString("season", VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString("year", VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString("submission_id", rs1.getString("id"));
+			node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
+			node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
+			node.setString(IS_SOLUTION, "true");
+			node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
+			node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
+			node.setString(SUBMISSION_ID, rs1.getString("id"));
 			i++;
 			dialog.setValue(i);
 		}
@@ -173,8 +167,8 @@ public class DataImport
 		while(iter.hasNext())
 		{
 			Node source = iter.next();
-			String source_submission_id = source.getString("submission_id");
-			String q3 = "SELECT submission1_id, submission2_id, score1, score2, link FROM conrad_model_mossmatch WHERE submission1_id="+source_submission_id;
+			String source_submission_id = source.getString(SUBMISSION_ID);
+			String q3 = "SELECT submission1_id, submission2_id, " + SCORE1 + ", " + SCORE2 + ", " + LINK + " FROM conrad_model_mossmatch WHERE submission1_id=" +source_submission_id;
 			ResultSet rs3 = st.executeQuery(q3);
 			while(rs3.next())
 			{
@@ -185,21 +179,21 @@ public class DataImport
 				while(iter2.hasNext())
 				{
 					Node temp = iter2.next();
-					if(temp.getString("submission_id").equals(target_submission_id))
+					if(temp.getString(SUBMISSION_ID).equals(target_submission_id))
 					{
 						target = temp;
 						break;
 					}
 				}
 				Edge edge = graph.addEdge(source, target);
-				double weight = Math.max(rs3.getDouble("score1"), rs3.getDouble("score2"));
-				String link = rs3.getString("link");
+				double weight = Math.max(rs3.getDouble(SCORE1), rs3.getDouble(SCORE2));
+				String link = rs3.getString(LINK);
 				String[] split = assignment.getWebDirectory().split("/");
 				String url = VisualMossConstants.URL_BASE+split[split.length-1]+"/"+link;
-				edge.setDouble("score1", rs3.getDouble("score1"));
-				edge.setDouble("score2", rs3.getDouble("score2"));
-				edge.setDouble("weight", new Double(weight));
-				edge.setString("link", url);
+				edge.setDouble(SCORE1, rs3.getDouble(SCORE1));
+				edge.setDouble(SCORE2, rs3.getDouble(SCORE2));
+				edge.setDouble(WEIGHT, new Double(weight));
+				edge.setString(LINK, url);
 
 				if(partnersDotTexts.get(source_submission_id) == null)
 				{
@@ -210,10 +204,10 @@ public class DataImport
 					partnersDotTexts.put(target_submission_id, getPartnersDotText(target_submission_id, st2));
 				}
 				
-				boolean isPartner = isPartnerTo(partnersDotTexts.get(source_submission_id), target.getString("netid"));
-				isPartner = isPartner || isPartnerTo(partnersDotTexts.get(target_submission_id), source.getString("netid"));
+				boolean isPartner = isPartnerTo(partnersDotTexts.get(source_submission_id), target.getString(NETID));
+				isPartner = isPartner || isPartnerTo(partnersDotTexts.get(target_submission_id), source.getString(NETID));
 				
-				edge.setBoolean("isPartner", isPartner);
+				edge.setBoolean(IS_PARTNER, isPartner);
 				
 //				System.out.println(source.getString("netid")+"--"+target.getString("netid")+": isPartner: "+isPartner);
 				
@@ -229,7 +223,7 @@ public class DataImport
 		while(iterr.hasNext())
 		{
 			Node node = (Node)iterr.next();
-			if(node.getString("netid").equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+			if(node.getString(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
 				continue;
 			Iterator iter2 = node.edges();
 			boolean toSolution = false;
@@ -238,7 +232,7 @@ public class DataImport
 				Edge edge = (Edge)iter2.next();
 				Node src = edge.getSourceNode();
 				Node tgt = edge.getTargetNode();
-				if(src.get("netid").equals(VisualMossConstants.SOLUTION_NODE_LABEL) || tgt.get("netid").equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+				if(src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) || tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
 				{
 					toSolution = true;
 				}
@@ -252,7 +246,7 @@ public class DataImport
 					Edge edge = (Edge)edgeIter.next();
 					Node src = edge.getSourceNode();
 					Node tgt = edge.getTargetNode();
-					if(!src.get("netid").equals(VisualMossConstants.SOLUTION_NODE_LABEL) && !tgt.get("netid").equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+					if(!src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) && !tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
 					{
 						if(!toRemove.contains(edge))
 							toRemove.add(edge);
@@ -295,7 +289,7 @@ public class DataImport
 			}
 			else
 			{
-				System.out.println("keeping "+curNode.getString("netid"));
+				System.out.println("keeping "+curNode.getString(NETID));
 			}
 		}
 		System.out.println("selected nodes for deletion: "+graph.getNodeCount());
@@ -318,7 +312,7 @@ public class DataImport
 
 	private String getPartnersDotText(String submission_id, Statement st) throws SQLException
 	{
-		String q4 = "SELECT content FROM conrad_model_submissionfile WHERE submission_id="+submission_id+" AND name='partners.txt'";
+		String q4 = "SELECT content FROM conrad_model_submissionfile WHERE " + SUBMISSION_ID + "=" +submission_id+" AND name='partners.txt'";
 		ResultSet rs4 = st.executeQuery(q4);
 
 		Clob fileClob = null;
@@ -347,40 +341,40 @@ public class DataImport
 	private Graph copyGraph(Graph graph)
 	{
 		Graph graph2 = new Graph();
-		graph2.getNodeTable().addColumn("netid", String.class);
-		graph2.getNodeTable().addColumn("pseudonym", String.class);
-		graph2.getNodeTable().addColumn("isSolution", String.class);
-		graph2.getNodeTable().addColumn("season", String.class);
-		graph2.getNodeTable().addColumn("year", String.class);
-		graph2.getNodeTable().addColumn("submission_id", String.class);
-		graph2.getEdgeTable().addColumn("weight", double.class);
-		graph2.getEdgeTable().addColumn("score1", double.class);
-		graph2.getEdgeTable().addColumn("score2", double.class);
-		graph2.getEdgeTable().addColumn("link", String.class);
-		graph2.getEdgeTable().addColumn("isPartner", boolean.class);
+		graph2.getNodeTable().addColumn(NETID, String.class);
+		graph2.getNodeTable().addColumn(PSEUDONYM, String.class);
+		graph2.getNodeTable().addColumn(IS_SOLUTION, String.class);
+		graph2.getNodeTable().addColumn(SEASON, String.class);
+		graph2.getNodeTable().addColumn(YEAR, String.class);
+		graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+		graph2.getEdgeTable().addColumn(WEIGHT, double.class);
+		graph2.getEdgeTable().addColumn(SCORE1, double.class);
+		graph2.getEdgeTable().addColumn(SCORE2, double.class);
+		graph2.getEdgeTable().addColumn(LINK, String.class);
+		graph2.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
 
 		Iterator<Node> nodeIter = graph.nodes();
 		while(nodeIter.hasNext())
 		{
 			Node oldNode = nodeIter.next();
 			Node newNode = graph2.addNode();
-			newNode.setString("netid", oldNode.getString("netid"));
-			newNode.setString("pseudonym", oldNode.getString("pseudonym"));
-			newNode.setString("isSolution", oldNode.getString("isSolution"));
-			newNode.setString("season", oldNode.getString("season"));
-			newNode.setString("year", oldNode.getString("year"));
-			newNode.setString("submission_id", oldNode.getString("submission_id"));
+			newNode.setString(NETID, oldNode.getString(NETID));
+			newNode.setString(PSEUDONYM, oldNode.getString(PSEUDONYM));
+			newNode.setString(IS_SOLUTION, oldNode.getString(IS_SOLUTION));
+			newNode.setString(SEASON, oldNode.getString(SEASON));
+			newNode.setString(YEAR, oldNode.getString(YEAR));
+			newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
 		}
 		Iterator<Edge> edgeIter = graph.edges();
 		while(edgeIter.hasNext())
 		{
 			Edge oldEdge = edgeIter.next();
-			Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString("netid"),graph2), getNode(oldEdge.getTargetNode().getString("netid"),graph2));
-			newEdge.setDouble("score1", oldEdge.getDouble("score1"));
-			newEdge.setDouble("score2", oldEdge.getDouble("score2"));
-			newEdge.setDouble("weight", oldEdge.getDouble("weight"));
-			newEdge.setString("link", oldEdge.getString("link"));
-			newEdge.setBoolean("isPartner", oldEdge.getBoolean("isPartner"));
+			Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID),graph2), getNode(oldEdge.getTargetNode().getString(NETID),graph2));
+			newEdge.setDouble(SCORE1, oldEdge.getDouble(SCORE1));
+			newEdge.setDouble(SCORE2, oldEdge.getDouble(SCORE2));
+			newEdge.setDouble(WEIGHT, oldEdge.getDouble(WEIGHT));
+			newEdge.setString(LINK, oldEdge.getString(LINK));
+			newEdge.setBoolean(IS_PARTNER, oldEdge.getBoolean(IS_PARTNER));
 		}
 		return graph2;
 	}
@@ -391,7 +385,7 @@ public class DataImport
 		while(iter.hasNext())
 		{
 			Node node = iter.next();
-			if(node.getString("netid").equals(netid))
+			if(node.getString(NETID).equals(netid))
 			{
 				return node;
 			}
