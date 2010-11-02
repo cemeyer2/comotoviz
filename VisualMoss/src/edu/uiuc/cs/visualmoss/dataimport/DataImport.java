@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import static edu.uiuc.cs.visualmoss.dataimport.DataConstants.*;
+import static edu.uiuc.cs.visualmoss.graph.MossGraphConstants.*;
 
 public class DataImport 
 {
