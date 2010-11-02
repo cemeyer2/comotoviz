@@ -29,12 +29,33 @@ public class DataImport
 	private ArrayList<Course> courses;
 	private Assignment assignment;
 
-	public DataImport(File f) throws DataIOException
-	{
-		graph = new VisualMossGraph(f, CS225, MP3);
+    /**
+     * Imports the data from a given file, intended to be a file written in GraphML format
+     *
+     * @param inputFile  The file from which to import the data
+     * @throws DataIOException  On an error accessing the file data
+     */
+	public DataImport(File inputFile) throws DataIOException {
+
+        //Builds a graph with the default class and assignment from the given input file data
+		graph = new VisualMossGraph(inputFile, CS225, MP3);
 	}
 
-	public DataImport() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
+    /**
+     * Imports the data from a given file, inteded to be a file written in GraphML format to be imported into the graph
+     *  structure, using the given course and assignment titles
+     *
+     * @param inputFile         The input file in GraphML format
+     * @param courseName        The name of the course's data to import
+     * @param assignmentName    The name of the particular assignment we are importing
+     */
+    public DataImport(File inputFile, String courseName, String assignmentName) throws DataIOException {
+
+        //Builds a graph with the given class and assignment from the given input file
+		graph = new VisualMossGraph(inputFile, courseName, assignmentName);
+    }
+
+    public DataImport() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
 	{
 		CampusIPCheck.checkCampusIP();
 		Class.forName(VisualMossConstants.DB_DRIVER).newInstance();
