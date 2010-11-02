@@ -92,6 +92,14 @@ public class CoMoToAPIConnection {
         return configuration;
     }
 
+    /**
+     * Simple wrapper to execute a given method on the API given a function name and parameter list
+     *
+     * @param   method      The method to call on the API
+     * @param   parameters  The parameters to pass to the API function
+     * @return  An object of some kind, a standard object type from the XML-RPC client
+     * @throws  XmlRpcException On errors accessing the API
+     */
     public Object execute(String method, Object... parameters) throws XmlRpcException {
         return client.execute(method, parameters);
     }

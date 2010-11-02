@@ -1,8 +1,6 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Season;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Type;
 
 import java.util.HashMap;
 import java.util.Map;

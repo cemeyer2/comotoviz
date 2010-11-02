@@ -1,4 +1,4 @@
-package edu.uiuc.cs.visualmoss.dataimport.api.objects.enums;
+package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 /**
  * <p> Created By: Jon Tedesco

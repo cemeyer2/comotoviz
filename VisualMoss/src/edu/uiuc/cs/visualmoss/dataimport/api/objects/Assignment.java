@@ -1,7 +1,6 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Language;
 
 import java.util.Arrays;
 import java.util.HashMap;

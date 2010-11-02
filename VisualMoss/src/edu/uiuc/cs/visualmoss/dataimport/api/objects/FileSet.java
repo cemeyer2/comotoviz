@@ -1,7 +1,6 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.enums.Type;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
