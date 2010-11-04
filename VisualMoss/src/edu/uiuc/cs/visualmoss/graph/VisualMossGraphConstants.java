@@ -6,7 +6,7 @@ package edu.uiuc.cs.visualmoss.graph;
  *
  * <p> <p> Holds constants for the data graph structure
  */
-public class MossGraphConstants {
+public class VisualMossGraphConstants {
 
 
     public static final String IS_PARTNER = "isPartner";

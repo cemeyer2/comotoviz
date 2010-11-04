@@ -38,20 +38,9 @@ public class VisualMossConstants {
 		}
 	}
 
-	//database constants
-	//think its safe to include user/pass here since these credentials
-	//can only select data, not modify anything
-	//NOTE: in case i commit this accidently, comment out the following 2 lines and uncomment the 2 below them
-	//the ssl vpn died so im tunneling mysql over ssh for dev work for now
-//	public static final String DB_HOSTNAME = "127.0.0.1";
-//	public static final String DB_PORT = "3307";
-	public static final String DB_HOSTNAME = "maggie.cs.illinois.edu";
-	public static final String DB_PORT = "3306";
-	public static final String DB_USERNAME = "VisualMoss";
-	public static final String DB_PASSWORD = "VisualMoss";
-	public static final String DB_NAME = "conrad";
-	public static final String DB_URL = "jdbc:mysql://"+DB_HOSTNAME+":"+DB_PORT+"/"+DB_NAME;
-	public static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+    //api constants
+    public static final String API_USER_NAME = "userName";
+    public static final String API_PASSWORD = "password";
 
 	//naming constants
 	public static final String SOLUTION_NODE_LABEL = "[solution]";
