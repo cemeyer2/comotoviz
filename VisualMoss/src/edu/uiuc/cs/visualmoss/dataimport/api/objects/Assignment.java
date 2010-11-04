@@ -1,11 +1,10 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -13,19 +12,68 @@ import java.util.Map;
  *
  * <p> <p> Holds the data of an assignment
  */
-public class Assignment {
+public class Assignment implements Refreshable{
 
+    /**
+     * Integer uniquely identifying this assignment
+     */
     private int id;
+
+    /**
+     * Unique id for the analysis associated with this assignment
+     */
     private int analysisId;
+
+    /**
+     * The analysis object associated with this assignment
+     */
+    private Analysis analysis = null;
+
+    /**
+     * Unique id for the course associated with this assignment
+     */
     private int courseId;
+
+    /**
+     * The course associated with this assignment
+     */
+    private Course course = null;
+
+    /**
+     * The language of this assignment
+     */
     private Language language;
+
+    /**
+     * The name of this assignment
+     */
     private String name;
+
+    /**
+     * The list of unique ids for the file sets associated with this assignment
+     */
     private List<Integer> fileSetIds;
 
-    public Assignment() {
-    }
+    /**
+     * The list of file sets associated with this assignment
+     */
+    private List<FileSet> fileSets = null;
 
-    public Assignment(Map<String, Object> abstractAssignment) {
+    /**
+     * A connection to the API for loading data lazily and refreshing this object
+     */
+    private CoMoToAPIConnection connection;
+
+    /**
+     * Constructor for an assignment object
+     *
+     * @param abstractAssignment A map holding the data of an assignment
+     * @param connection A connection to the API for refreshing this object and loading data lazily
+     */
+    public Assignment(Map<String, Object> abstractAssignment, CoMoToAPIConnection connection) {
+
+        //Store the connection
+        this.connection = connection;
 
         //Explicitly add non-primitive types
         Integer[] fileSetIdsArray = (Integer[]) abstractAssignment.get("file_set_ids");
@@ -36,6 +84,72 @@ public class Assignment {
 
         CoMoToAPIReflector<Assignment> reflector = new CoMoToAPIReflector<Assignment>();
         reflector.populate(this, abstractAssignment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //Grab the new assignment object
+        Assignment newAssignment = CoMoToAPI.getAssignment(connection, id);
+
+        //Refresh this data
+        analysisId = newAssignment.getAnalysisId();
+        courseId = newAssignment.getCourseId();
+        language = newAssignment.getLanguage();
+        name = newAssignment.getName();
+        fileSetIds = newAssignment.getFileSetIds();
+        
+        //Invalidate the cached data
+        analysis = null;
+        course = null;
+        fileSets = null;
+    }
+
+    /**
+     * Gets the associated analysis lazily
+     *
+     * @return The analysis object
+     */
+    public Analysis getAnalysis() {
+
+        //If it's not cached, grab it from the API
+        if(analysis == null){
+            analysis = CoMoToAPI.getAnalysis(connection, analysisId);
+        }
+        return analysis;
+    }
+
+    /**
+     * Grabs the associated course lazily
+     *
+     * @return The course
+     */
+    public Course getCourse() {
+
+        //Grab the course from the API if not cached
+        if(course == null){
+            course = CoMoToAPI.getCourse(connection, courseId);
+        }
+        return course;
+    }
+
+    /**
+     * Grabs the list of file sets lazily
+     *
+     * @return The list of file sets
+     */
+    public List<FileSet> getFileSets() {
+
+        //Grab the list from the API if not cached
+        if(fileSetIds == null) {
+            fileSets = new ArrayList<FileSet>();
+            for(int fileSetId : fileSetIds){
+                fileSets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+            }
+        }
+        return fileSets;
     }
 
     public Map getMap(){

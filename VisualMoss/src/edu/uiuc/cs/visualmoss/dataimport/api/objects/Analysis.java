@@ -92,7 +92,7 @@ public class Analysis implements Refreshable {
         Map[] analysisPseudonymsArray = (Map[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
         analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
         for(Map analysisPseudonymMap : analysisPseudonymsArray){
-            analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap));
+            analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap, connection));
         }
         abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
 
@@ -115,6 +115,11 @@ public class Analysis implements Refreshable {
         timestamp = newAnalysis.getTimestamp();
         complete = newAnalysis.isComplete();
         assignmentId = newAnalysis.getAssignmentId();
+
+        //Void the cached objects
+        assignment = null;
+        jplagAnalysis = null;
+        mossAnalysis = null;
     }
 
     /**

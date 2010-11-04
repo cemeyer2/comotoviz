@@ -8,11 +8,14 @@ import java.util.Map;
  *
  * <p> <p> Holds the data of a jplag report
  */
-public class JplagReport {
+public class JplagAnalysis implements Refreshable{
 
-    public JplagReport() {
+    public JplagAnalysis() {
     }
 
-    public JplagReport(Map abstractJplagReport) {
+    public JplagAnalysis(Map abstractJplagReport) {
+    }
+
+    public void refresh() {
     }
 }
