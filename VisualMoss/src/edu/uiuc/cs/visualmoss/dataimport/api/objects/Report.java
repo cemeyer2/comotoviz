@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.util.HashMap;
@@ -14,24 +16,59 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MOSS_REPO
  *
  * <p> <p> Holds the data of a report
  */
-public class Report {
+public class Report implements Refreshable{
 
+    /**
+     * The unique id for this report
+     */
     private int id;
-    private JplagReport jplagReport; 
+
+    /**
+     * Whether or not this report is complete
+     */
     private boolean complete;
+
+    /**
+     * The id of the associated assignment object
+     */
     private int assignmentId;
+
+    /**
+     * The associated assignment
+     */
+    private Assignment assignment = null;
+
+    /**
+     * The associated jplag report object
+     */
+    private JplagReport jplagReport;
+
+    /**
+     * The associated moss report object
+     */
     private MossReport mossReport;
 
-    public Report() {
-    }
+    /**
+     * The connection to the API
+     */
+    private CoMoToAPIConnection connection;
 
-    public Report(Map<String, Object> abstractReport) {
+    /**
+     * Creates a report object
+     *
+     * @param abstractReport A map containing the data of the report
+     * @param connection A connection to the API for lazily loading attributes and refreshing
+     */
+    public Report(Map<String, Object> abstractReport, CoMoToAPIConnection connection) {
+
+        //Save the connection
+        this.connection = connection;
 
         //Explicitly add non-primitive types
         Map jplagReportMap = (Map) abstractReport.get(JPLAG_REPORT);
         Map mossReportMap = (Map) abstractReport.get(MOSS_REPORT);
-        jplagReport = new JplagReport(jplagReportMap);
-        mossReport = new MossReport(mossReportMap);
+        jplagReport = new JplagReport(jplagReportMap, connection);
+        mossReport = new MossReport(mossReportMap, connection);
 
         //Remove them from the map
         abstractReport.remove(JPLAG_REPORT);
@@ -39,6 +76,38 @@ public class Report {
 
         CoMoToAPIReflector<Report> reflector = new CoMoToAPIReflector<Report>();
         reflector.populate(this, abstractReport);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //First, grab the new report object
+        Report newReport = CoMoToAPI.getReport(connection, id);
+
+        //Copy the primitive values first
+        complete = newReport.isComplete();
+        assignmentId = newReport.getAssignmentId();
+        jplagReport = newReport.getJplagReport();
+        mossReport = newReport.getMossReport();
+
+        //Clear cached data
+        assignment = null;
+    }
+
+    /**
+     * Gets the associated assignment from the API if not cached in this object
+     *
+     * @return The assignment
+     */
+    public Assignment getAssignment() {
+
+        //Only call API if not cached
+        if(assignment == null) {
+            assignment = CoMoToAPI.getAssignment(connection, assignmentId);
+        }
+        return assignment;
     }
 
     public Map getMap(){

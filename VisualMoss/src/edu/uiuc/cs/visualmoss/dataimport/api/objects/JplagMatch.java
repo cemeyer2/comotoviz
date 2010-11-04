@@ -8,14 +8,14 @@ import java.util.Map;
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 22, 2010
  *
- * <p> <p> Holds the data of a jplag analysis
+ * <p> <p> Holds the data of a jplag match
  */
-public class JplagAnalysis implements Refreshable{
+public class JplagMatch implements Refreshable{
 
-    public JplagAnalysis() {
+    public JplagMatch() {
     }
 
-    public JplagAnalysis(Map abstractJplagAnalysis, CoMoToAPIConnection connection) {
+    public JplagMatch(Map abstractJplagMatch, CoMoToAPIConnection connection) {
     }
 
     public void refresh() {

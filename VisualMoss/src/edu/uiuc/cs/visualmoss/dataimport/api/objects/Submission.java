@@ -1,11 +1,10 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.*;
 
@@ -16,27 +15,94 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.*;
  *
  * <p> <p> Holds the data for a submission
  */
-public class Submission {
+public class Submission implements Refreshable{
 
+    /**
+     * The unique id for this submission
+     */
     private int id;
+
+    /**
+     * The unique id of the associated file set
+     */
     private int fileSetId;
+
+    /**
+     * The associated file set object
+     */
+    private FileSet fileSet = null;
+
+    /**
+     * The id of the associated offering
+     */
     private int offeringId;
+
+    /**
+     * The associated offering object
+     */
+    private Offering offering = null;
+
+    /**
+     * The associated student id
+     */
     private int studentId;
+
+    /**
+     * The associated student object
+     */
+    private Student student = null;
+
+    /**
+     * The type of this submission
+     */
     private Type type = Type.studentsubmission;
+
+    /**
+     * The pseudonym for this submission
+     */
     private AnalysisPseudonym analysisPseudonym;
+
+    /**
+     * A list of student ids representing the partners on this submission
+     */
     private List<Integer> partnerIds;
+
+    /**
+     * A list of associated students objects, representing the partners on this submission
+     */
+    private List<Student> partners = null;
+
+    /**
+     * A list of the associated submission file ids
+     */
     private List<Integer> submissionFileIds;
 
-    public Submission() {
-    }
+    /**
+     * A list of the associated submission files
+     */
+    private List<SubmissionFile> submissionFiles = null;
 
-    public Submission(Map abstractSubmission) {
+    /**
+     * A connection to the API
+     */
+    private CoMoToAPIConnection connection;
+
+    /**
+     * Creates a new submission object
+     *
+     * @param abstractSubmission A map holding the submission data
+     * @param connection A connection to the API
+     */
+    public Submission(Map abstractSubmission, CoMoToAPIConnection connection) {
+
+        //Save the connection
+        this.connection = connection;
 
         //Explicitly add non-primitive types
         Map analysisPseudonymMap = (Map) abstractSubmission.get(ANALYSIS_PSEUDONYM);
         Integer[] partnerIdsArray = (Integer[]) abstractSubmission.get(PARTNER_IDS);
         Integer[] submissionFileIdsArray = (Integer[]) abstractSubmission.get(SUBMISSION_FILE_IDS);
-        analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap);
+        analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
         partnerIds = Arrays.asList(partnerIdsArray);
         submissionFileIds = Arrays.asList(submissionFileIdsArray);
 
@@ -47,6 +113,108 @@ public class Submission {
 
         CoMoToAPIReflector<Submission> reflector = new CoMoToAPIReflector<Submission>();
         reflector.populate(this, abstractSubmission);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //First, grab the new submission from the api
+        Submission newSubmission = CoMoToAPI.getSubmission(connection, id);
+
+        //Copy over the primitive values
+        fileSetId = newSubmission.getFileSetId();
+        analysisPseudonym = newSubmission.getAnalysisPseudonym();
+        offeringId = newSubmission.getOfferingId();
+        studentId = newSubmission.getStudentId();
+        type = newSubmission.getType();
+        partnerIds = newSubmission.getPartnerIds();
+        submissionFileIds = newSubmission.getSubmissionFileIds();
+
+        //Clear cached data
+        fileSet = null;
+        offering = null;
+        student = null;
+        partners = null;
+        submissionFiles = null;
+    }
+
+    /**
+     * Get the file set from the API lazily using caching
+     *
+     * @return The associated file set
+     */
+    public FileSet getFileSet() {
+
+        //Only call the API if it's not cached
+        if(fileSet == null) {
+            fileSet = CoMoToAPI.getFileSet(connection, fileSetId);
+        }
+        return fileSet;
+    }
+
+    /**
+     * Get the offering from the API lazily
+     *
+     * @return The associated offering
+     */
+    public Offering getOffering() {
+
+        //Only call the API if it's not cached
+        if(offering == null) {
+            offering = CoMoToAPI.getOffering(connection, offeringId);
+        }
+        return offering;
+    }
+
+    /**
+     * Get the student from the API lazily
+     *
+     * @return The associated student
+     */
+    public Student getStudent() {
+
+        //Only call the API if it's not cached
+        if(student == null) {
+            student = CoMoToAPI.getStudent(connection, studentId);
+        }
+        return student;
+    }
+
+    /**
+     * Get the parters, or list of students, lazily from the API
+     *
+     * @return The list of students representing the parnters for this submission
+     */
+    public List<Student> getPartners() {
+
+        //Only call the API if it's not cached
+        if(partners == null) {
+            partners = new ArrayList<Student>();
+            for(int partnerId : partnerIds){
+                partners.add(CoMoToAPI.getStudent(connection, partnerId));
+            }
+        }
+        return partners;
+    }
+
+    /**
+     * Get the list of submission file lazily from the API
+     *
+     * @return The list of submission files
+     */
+    public List<SubmissionFile> getSubmissionFiles() {
+
+        //Only call the API if it's not cached
+        if(submissionFiles == null) {
+            submissionFiles = new ArrayList<SubmissionFile>();
+            for(int submissionFileId : submissionFileIds){
+                submissionFiles.add(CoMoToAPI.getSubmissionFile(connection, submissionFileId));
+            }
+        }
+
+        return submissionFiles;
     }
 
     public Map getMap(){

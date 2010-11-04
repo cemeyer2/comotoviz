@@ -40,7 +40,7 @@ public class Course implements Refreshable{
     /**
      * The list of associated assignments
      */
-    private List<Assignment> assignments;
+    private List<Assignment> assignments = null;
 
     /**
      * The list of associated file sets

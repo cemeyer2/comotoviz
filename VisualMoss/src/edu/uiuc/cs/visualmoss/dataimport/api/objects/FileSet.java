@@ -64,7 +64,7 @@ public class FileSet implements Refreshable{
     /**
      * The list of associated submission
      */
-    private List<Submission> submissions;
+    private List<Submission> submissions = null;
 
     /**
      * Enumerates the type for this class
@@ -92,7 +92,7 @@ public class FileSet implements Refreshable{
         String timestampString = (String) abstractFileSet.get("timestamp");
         Integer[] assignmentIdsArray = (Integer[]) abstractFileSet.get("assignment_ids");
         Integer[] submissionIdsArray = (Integer[]) abstractFileSet.get("submission_ids");
-        offering = new Offering(offeringMap);
+        offering = new Offering(offeringMap, connection);
         timestamp = new SimpleDateFormat(timestampString);
         assignmentIds = Arrays.asList(assignmentIdsArray);
         submissionIds = Arrays.asList(submissionIdsArray);

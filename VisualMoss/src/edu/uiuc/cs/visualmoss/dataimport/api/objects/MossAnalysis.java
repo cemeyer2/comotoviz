@@ -52,7 +52,7 @@ public class MossAnalysis implements Refreshable{
         Map[] abstractMatches = (Map[]) abstractMossAnalysis.get(MATCHES);
         matches = new ArrayList<MossMatch>();
         for(Map abstractMatch : abstractMatches){
-            matches.add(new MossMatch(abstractMatch));
+            matches.add(new MossMatch(abstractMatch, connection));
         }
 
         //Remove it from the map

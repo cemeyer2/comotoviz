@@ -1,5 +1,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.net.URL;
@@ -12,22 +14,138 @@ import java.util.Map;
  *
  * <p> <p> Holds the data of a MOSS match
  */
-public class MossMatch {
+public class MossMatch implements Refreshable{
 
+    /**
+     * The unique id for this match
+     */
     private int id;
+
+    /**
+     * The link for this object
+     */
     private URL link;
+
+    /**
+     * The id for the associated analysis
+     */
     private int mossAnalysisId;
+
+    /**
+     * The associated analysis object
+     */
+    private MossAnalysis mossAnalysis = null;
+
+    /**
+     * The score of the first student
+     */
     private int score1;
+
+    /**
+     * The score of the second student
+     */
     private int score2;
+
+    /**
+     * The id of the first submission
+     */
     private int submission1Id;
+
+    /**
+     * The first submission object
+     */
+    private Submission submission1 = null;
+
+    /**
+     * The id of the second submission
+     */
     private int submission2Id;
+
+    /**
+     * The second associated submission object
+     */
+    private Submission submission2 = null;
+
+    /**
+     * A connection to the API
+     */
+    private CoMoToAPIConnection connection;
 
     public MossMatch() {
     }
 
-    public MossMatch(Map<String, Object> abstractMossMatch) {
+    public MossMatch(Map<String, Object> abstractMossMatch, CoMoToAPIConnection connection) {
+        
+        //Save the connection
+        this.connection = connection;
+
+        //Fill the rest of the object with reflection
         CoMoToAPIReflector<MossMatch> reflector = new CoMoToAPIReflector<MossMatch>();
         reflector.populate(this, abstractMossMatch);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //First, grab the new match object
+        MossMatch newMossMatch = CoMoToAPI.getMossMatch(connection, id);
+
+        //Refresh primitive data
+        link = newMossMatch.getLink();
+        mossAnalysisId = newMossMatch.getMossAnalysisId();
+        score1 = newMossMatch.getScore1();
+        score2 = newMossMatch.getScore2();
+        submission1Id = newMossMatch.getSubmission1Id();
+        submission2Id = newMossMatch.getSubmission2Id();
+
+        //Clear cached data
+        mossAnalysis = null;
+        submission1 = null;
+        submission2 = null;
+    }
+
+    /**
+     * Get the moss analysis object associated with this object lazily
+     *
+     * @return The associated moss analysis
+     */
+    public MossAnalysis getMossAnalysis() {
+
+        //Only query the API if it's not cached
+        if(mossAnalysis == null) {
+            mossAnalysis = CoMoToAPI.getMossAnalysis(connection, mossAnalysisId);
+        }
+        return mossAnalysis;
+    }
+
+    /**
+     * Get the first submission object from the API lazily
+     *
+     * @return The first submission object
+     */
+    public Submission getSubmission1() {
+
+        //Only call the API if it's not cached
+        if(submission1 == null) {
+            submission1 = CoMoToAPI.getSubmission(connection, submission1Id);
+        }
+        return submission1;
+    }
+
+    /**
+     * Get the second submission object from the API lazily
+     *
+     * @return The second submission object
+     */
+    public Submission getSubmission2() {
+
+        //Only call the API if it's not cached
+        if(submission2 == null) {
+            submission2 = CoMoToAPI.getSubmission(connection, submission2Id);
+        }
+        return submission2;
     }
 
     public Map getMap(){

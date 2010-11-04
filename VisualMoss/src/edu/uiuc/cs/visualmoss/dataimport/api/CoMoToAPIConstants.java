@@ -9,12 +9,20 @@ package edu.uiuc.cs.visualmoss.dataimport.api;
 public class CoMoToAPIConstants {
     public static final String DEFAULT_HOST = "https://maggie.cs.illinois.edu/comoto/api/api";
 
-    public static final String GET_ASSIGNMENTS = "getAssignments";
     public static final String GET_ANALYSIS = "getAnalysis";
+    public static final String GET_ANALYSIS_PSEUDONYM = "getAnalysisPseudonym";
+    public static final String GET_ASSIGNMENTS = "getAssignments";
+    public static final String GET_ASSIGNMENT = "getAssignment";
+    public static final String GET_COURSE = "getCourse";
     public static final String GET_COURSES = "getCourses";
     public static final String GET_FILE_SET = "getFileSet";
+    public static final String GET_JPLAG_ANALYSIS = "getJplagAnalysis";
     public static final String GET_MOSS_ANALYSIS = "getMossAnalysis";
+    public static final String GET_MOSS_MATCH = "getMossMatch";
+    public static final String GET_MOSS_REPORT = "getMossReport";
+    public static final String GET_OFFERING = "getOffering";
     public static final String GET_REPORT = "getReport";
+    public static final String GET_SEMESTER = "getSemester";
     public static final String GET_STUDENT = "getStudent";
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";

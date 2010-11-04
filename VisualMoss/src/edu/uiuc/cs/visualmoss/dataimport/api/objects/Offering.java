@@ -67,7 +67,7 @@ public class Offering implements Refreshable{
         Integer[] fileSetIdsArray = (Integer[]) abstractOffering.get(FILE_SET_IDS);
         Map semesterMap = (Map) abstractOffering.get(SEMESTER);
         fileSetIds = Arrays.asList(fileSetIdsArray);
-        semester = new Semester(semesterMap);
+        semester = new Semester(semesterMap, connection);
 
         //Remove these from the map
         abstractOffering.remove(FILE_SET_IDS);

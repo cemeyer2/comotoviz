@@ -63,7 +63,7 @@ public class Analysis implements Refreshable {
     /**
      * The actual jplag analysis object associated with this analysis, loaded lazily
      */
-    private JplagAnalysis jplagAnalysis;
+    private JplagAnalysis jplagAnalysis = null;
 
     /**
      * The pseudonyms for the this analysis
