@@ -1,13 +1,12 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -15,21 +14,78 @@ import java.util.Map;
  *
  * <p> <p> Holds the data of a file set
  */
-public class FileSet {
+public class FileSet implements Refreshable{
 
+    /**
+     * Unique id for this file set
+     */
     private int id;
+
+    /**
+     * The id of the associated course
+     */
     private int courseId;
+
+    /**
+     * The associated course object
+     */
+    private Course course = null;
+
+    /**
+     * Whether this set is complete or not
+     */
     private boolean complete;
+
+    /**
+     * The associated offering for this file set, loaded eagerly
+     */
     private Offering offering;
+
+    /**
+     * The timestamp for this file set
+     */
     private DateFormat timestamp;
+
+    /**
+     * The list of ids for the associated assignments
+     */
     private List<Integer> assignmentIds;
+
+    /**
+     * The list of associated assignments
+     */
+    private List<Assignment> assignments = null;
+
+    /**
+     * The list of ids for the associated submissions
+     */
     private List<Integer> submissionIds;
+
+    /**
+     * The list of associated submission
+     */
+    private List<Submission> submissions;
+
+    /**
+     * Enumerates the type for this class
+     */
     private Type type = Type.fileset;
 
-    public FileSet() {
-    }
+    /**
+     * Connection to the API
+     */
+    private CoMoToAPIConnection connection;
 
-    public FileSet(Map<String, Object> abstractFileSet) {
+    /**
+     * Constructs this file set
+     *
+     * @param abstractFileSet A map holding the data of this file set
+     * @param connection A connection to the API to use for lazily loading and refreshing this object
+     */
+    public FileSet(Map<String, Object> abstractFileSet, CoMoToAPIConnection connection) {
+
+        //Save the connection
+        this.connection = connection;
 
         //Explicitly add non primitive types
         Map offeringMap = (Map) abstractFileSet.get("offering");
@@ -49,6 +105,77 @@ public class FileSet {
 
         CoMoToAPIReflector<FileSet> reflector = new CoMoToAPIReflector<FileSet>();
         reflector.populate(this, abstractFileSet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //Grab the new file set from the API
+        FileSet newFileSet = CoMoToAPI.getFileSet(connection, id);
+
+        //Copy the primitive data over
+        courseId = newFileSet.getCourseId();
+        complete = newFileSet.isComplete();
+        offering = newFileSet.getOffering();
+        timestamp = newFileSet.getTimestamp();
+        assignmentIds = newFileSet.getAssignmentIds();
+        submissionIds = newFileSet.getSubmissionIds();
+        type = newFileSet.getType();
+
+        //Clear the cached data
+        course = null;
+        assignments = null;
+        submissions = null;
+    }
+
+    /**
+      * Grabs the associated course lazily
+      *
+      * @return The course
+      */
+     public Course getCourse() {
+
+         //Grab the course from the API if not cached
+         if(course == null){
+             course = CoMoToAPI.getCourse(connection, courseId);
+         }
+         return course;
+     }
+ 
+    /**
+     * Grabs the list of assignments from the api if not cached in this object
+     *
+     * @return A list of the assignments associated with this course
+     */
+    public List<Assignment> getAssignments(){
+
+        //Load the assignments from the API if not cached
+        if (assignments == null) {
+            assignments = new ArrayList<Assignment>();
+            for(int assignmentId : assignmentIds){
+                assignments.add(CoMoToAPI.getAssignment(connection, assignmentId));
+            }
+        }
+        return assignments;
+    }
+
+    /**
+     * Grabs the list of submissions from the api if not cached in this object
+     * 
+     * @return A list of the submissions associated with this file set
+     */
+    public List<Submission> getSubmissions() {
+
+        //Load the assignments from the API if not cached
+        if (submissions == null) {
+            submissions = new ArrayList<Submission>();
+            for(int submissionId : submissionIds){
+                submissions.add(CoMoToAPI.getSubmission(connection, submissionId));
+            }
+        }
+        return submissions;
     }
 
     public Map getMap(){
