@@ -1,11 +1,10 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.FILE_SET_IDS;
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SEMESTER;
@@ -16,17 +15,53 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SEMESTER;
  *
  * <p> <p> Holds the data of an offering
  */
-public class Offering {
+public class Offering implements Refreshable{
 
+    /**
+     * The unique id for this offering
+     */
     private int id;
+
+    /**
+     * The unique id of the associated course
+     */
     private int courseId;
+
+    /**
+     * The associated course object
+     */
+    private Course course;
+
+    /**
+     * The list of ids for the associated file sets
+     */
     private List<Integer> fileSetIds;
+
+    /**
+     * The list of the associated file sets
+     */
+    private List<FileSet> fileSets;
+
+    /**
+     * The semester of this offering
+     */
     private Semester semester;
 
-    public Offering() {
-    }
+    /**
+     * A connection to the API
+     */
+    private CoMoToAPIConnection connection;
 
-    public Offering(Map abstractOffering) {
+    /**
+     * Creates an offering object
+     *
+     * @param abstractOffering A map holding the data for this object
+     * @param connection A connection to the API for lazily loading and refreshing data
+     */
+    public Offering(Map abstractOffering, CoMoToAPIConnection connection) {
+
+        //Save the connections
+        this.connection = connection;
 
         //Explicitly add non-primitive types
         Integer[] fileSetIdsArray = (Integer[]) abstractOffering.get(FILE_SET_IDS);
@@ -40,6 +75,55 @@ public class Offering {
 
         CoMoToAPIReflector<Offering> reflector = new CoMoToAPIReflector<Offering>();
         reflector.populate(this, abstractOffering);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+
+        //First, grab the new offering object from the api
+        Offering newOffering = CoMoToAPI.getOffering(connection, id);
+
+        //Copy the primitive types from the API
+        courseId = newOffering.getCourseId();
+        fileSetIds = newOffering.getFileSetIds();
+        semester = newOffering.getSemester();
+
+        //Clear cached data
+        fileSets = null;
+        course = null;
+    }
+
+    /**
+      * Grabs the associated course lazily
+      *
+      * @return The course
+      */
+     public Course getCourse() {
+
+         //Grab the course from the API if not cached
+         if(course == null){
+             course = CoMoToAPI.getCourse(connection, courseId);
+         }
+         return course;
+     }
+ 
+    /**
+     * Grabs the list of file sets lazily
+     *
+     * @return The list of file sets
+     */
+    public List<FileSet> getFileSets() {
+
+        //Grab the list from the API if not cached
+        if(fileSetIds == null) {
+            fileSets = new ArrayList<FileSet>();
+            for(int fileSetId : fileSetIds){
+                fileSets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+            }
+        }
+        return fileSets;
     }
 
     public Map getMap(){

@@ -31,7 +31,7 @@ public class MossAnalysis implements Refreshable{
     /**
      * The associated analysis
      */
-    private Analysis analysis;
+    private Analysis analysis = null;
 
     /**
      * A list of the matches for this moss analysis
