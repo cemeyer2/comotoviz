@@ -53,7 +53,7 @@ public class Submission implements Refreshable{
     private Student student = null;
 
     /**
-     * The type of this submission
+     * The type of this submission (Defaults to a student's submission)
      */
     private Type type = Type.studentsubmission;
 

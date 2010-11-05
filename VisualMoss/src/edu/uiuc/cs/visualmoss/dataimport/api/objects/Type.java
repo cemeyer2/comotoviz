@@ -9,5 +9,6 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 public enum Type {
     semester,
     fileset,
-    studentsubmission
+    studentsubmission,
+    solutionsubmission
 }

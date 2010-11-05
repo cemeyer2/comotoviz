@@ -1,6 +1,8 @@
 package edu.uiuc.cs.visualmoss.dataimport;
 
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Course;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillCurrentSemesterPredicate;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
@@ -19,9 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import static edu.uiuc.cs.visualmoss.graph.MossGraphConstants.*;
+import static edu.uiuc.cs.visualmoss.graph.VisualMossGraphConstants.*;
 
-public class DataImport 
+public class DataImport
 {
 	private VisualMossGraph graph;
 	private Connection conn;
@@ -125,6 +127,7 @@ public class DataImport
 		graph.getNodeTable().addColumn(SEASON, String.class);
 		graph.getNodeTable().addColumn(YEAR, String.class);
 		graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+        
 		graph.getEdgeTable().addColumn(WEIGHT, double.class);
 		graph.getEdgeTable().addColumn(SCORE1, double.class);
 		graph.getEdgeTable().addColumn(SCORE2, double.class);
@@ -206,6 +209,7 @@ public class DataImport
 						break;
 					}
 				}
+                
 				Edge edge = graph.addEdge(source, target);
 				double weight = Math.max(rs3.getDouble(SCORE1), rs3.getDouble(SCORE2));
 				String link = rs3.getString(LINK);
