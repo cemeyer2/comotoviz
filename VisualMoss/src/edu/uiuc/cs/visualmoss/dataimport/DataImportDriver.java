@@ -10,8 +10,7 @@ import java.sql.SQLException;
  * @author jon
  */
 public class DataImportDriver {
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
-	{
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException {
 		new DataImport();
 	}
 }

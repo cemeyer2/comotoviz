@@ -1,41 +1,74 @@
 package edu.uiuc.cs.visualmoss.dataimport;
 
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Course;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.*;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillCurrentSemesterPredicate;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
-import edu.uiuc.cs.visualmoss.utility.CampusIPCheck;
 import prefuse.data.Edge;
 import prefuse.data.Graph;
 import prefuse.data.Node;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.sql.*;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 
-import static edu.uiuc.cs.visualmoss.graph.VisualMossGraphConstants.*;
+import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
 
-public class DataImport
-{
-	private VisualMossGraph graph;
-	private Connection conn;
-	private Statement st;
-	private ArrayList<Course> courses;
-	private Assignment assignment;
+/**
+ * <p> Created By: Jon Tedesco
+ * <p> Date: Nov 3, 2010
+ *
+ * <p> <p> This class drives the import of data into the visual moss graph structure using the CoMoTo API
+ */
+public class DataImport {
+
+    private VisualMossGraph graph;
+    private CoMoToAPIConnection connection;
+    private ArrayList<Submission> submissions;
+    private Assignment assignment;
+    private Course course;
+
+    /**
+     * The default constructor for the data import, which queries the CoMoTo API to populate the courses and assignments
+     *  for each course
+     */
+    public DataImport(String courseName, String assignmentName) {
+
+        //Create a connection to the CoMoTo API
+        connection = new CoMoToAPIConnection(VisualMossConstants.API_USER_NAME, VisualMossConstants.API_PASSWORD);
+
+        //Populate the courses from the API
+        List<Course> courses = CoMoToAPI.getCourses(connection);
+
+        //Find the course corresponding to this course name
+        for(Course course : courses){
+            if(course.getName().equals(courseName)){
+                this.course = course;
+            }
+        }
+
+        //Find the assignment corresponding to the given name
+        List<Assignment> assignments = course.getAssignments();
+        for(Assignment assignment : assignments){
+            if(assignment.getName().equals(assignmentName)){
+                this.assignment = assignment;
+            }
+        }
+    }
 
     /**
      * Imports the data from a given file, intended to be a file written in GraphML format
      *
      * @param inputFile  The file from which to import the data
-     * @throws DataIOException  On an error accessing the file data
+     * @throws prefuse.data.io.DataIOException  On an error accessing the file data
      */
 	public DataImport(File inputFile) throws DataIOException {
 
@@ -44,7 +77,7 @@ public class DataImport
 	}
 
     /**
-     * Imports the data from a given file, inteded to be a file written in GraphML format to be imported into the graph
+     * Imports the data from a given file, intended to be a file written in GraphML format to be imported into the graph
      *  structure, using the given course and assignment titles
      *
      * @param inputFile         The input file in GraphML format
@@ -57,380 +90,415 @@ public class DataImport
 		graph = new VisualMossGraph(inputFile, courseName, assignmentName);
     }
 
-    public DataImport() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
-	{
-		CampusIPCheck.checkCampusIP();
-		Class.forName(VisualMossConstants.DB_DRIVER).newInstance();
-		conn = DriverManager.getConnection(VisualMossConstants.DB_URL, VisualMossConstants.DB_USERNAME, VisualMossConstants.DB_PASSWORD);
-		st = conn.createStatement();
-		courses = new ArrayList<Course>();
+    public VisualMossGraph buildGraph(Assignment assignment, boolean showProgress, JFrame parent) throws DataIOException {
 
-		//populate courses
-		String q0 = "SELECT name FROM conrad_model_course";
-		ResultSet rs0 = st.executeQuery(q0);
-		while(rs0.next())
-		{
-			courses.add(new Course(rs0.getString("name")));
-		}
-		rs0.close();
+        //Create the progress bar
+        LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading", "Loading Graph...");
+        this.assignment = assignment;
 
-		//populate assignments that have analysis for each course
-		for(Course course : courses)
-		{
-			String q1 = "SELECT name, language, workDirectory, webDirectory, complete FROM conrad_model_assignment, conrad_model_analysis WHERE course_name = assignment_course_name AND name = assignment_name AND complete = 1 AND course_name = '"+course.getName()+"'";
-			ResultSet rs1 = st.executeQuery(q1);
-			while(rs1.next())
-			{
-				Assignment assignment = new Assignment(course, rs1.getString("name"), rs1.getString("language"), rs1.getString("workDirectory"), rs1.getString("webDirectory"), true);
-				course.addAssignment(assignment);
-			}
-		}
+        //Initialize and display the progress bar if we're supposed to
+        initializeProgressBar(showProgress, dialog);
 
-		st.close();
-		conn.close();
+        //Create an empty graph structure
+        Graph graph = new Graph();
 
-		//Make the default assignment the first one
-		//assignment = courses.get(0).getAssignments().get(0);
-		//CM: we should leave the first assignment null since what would happen if there were no assignments in the system?
-		//index out of  bounds exceptions would happen and make the entire app crash
+        //Declare the fields we want in the nodes and edges
+        declareGraphFields(graph);
 
-		//buildGraph(assignment, true);
-	}
+        //Get the file sets associated with this assignment from the API
+        List<FileSet> fileSets = assignment.getFileSets();
 
-	public VisualMossGraph getVisualMossGraph()
-	{
-		return graph;
-	}
-
-	public VisualMossGraph buildGraph(Assignment assignment, final boolean showProgress, final JFrame owner) throws SQLException, DataIOException, InstantiationException, IllegalAccessException, ClassNotFoundException
-	{
-		this.assignment = assignment;
-		HashMap<String, String> partnersDotTexts = new HashMap<String, String>();
-		Class.forName(VisualMossConstants.DB_DRIVER).newInstance();
-		conn = DriverManager.getConnection(VisualMossConstants.DB_URL, VisualMossConstants.DB_USERNAME, VisualMossConstants.DB_PASSWORD);
-		st = conn.createStatement();
-		
-		Connection conn2 = DriverManager.getConnection(VisualMossConstants.DB_URL, VisualMossConstants.DB_USERNAME, VisualMossConstants.DB_PASSWORD);
-		Statement st2 = conn2.createStatement();
-		
-		final LoadingProgressDialog dialog = new LoadingProgressDialog(owner, "Loading", "Loading Graph...");
-
-		dialog.init();
-		if(showProgress)
-			dialog.setVisible(true);
-
-		int i = 0;
-		Graph graph = new Graph();
-		graph.getNodeTable().addColumn(NETID, String.class);
-		graph.getNodeTable().addColumn(PSEUDONYM, String.class);
-		graph.getNodeTable().addColumn(IS_SOLUTION, String.class);
-		graph.getNodeTable().addColumn(SEASON, String.class);
-		graph.getNodeTable().addColumn(YEAR, String.class);
-		graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+        //Get the set of moss matches for this assignment
+        List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis().getMatches();
         
-		graph.getEdgeTable().addColumn(WEIGHT, double.class);
-		graph.getEdgeTable().addColumn(SCORE1, double.class);
-		graph.getEdgeTable().addColumn(SCORE2, double.class);
-		graph.getEdgeTable().addColumn(LINK, String.class);
-		graph.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+        //Get ready to pull out all of the submissions from the file sets
+        submissions = new ArrayList<Submission>();
 
-		//count up the number of nodes and edges to add
-		if(showProgress == true)
-		{
-			int count = 0;
-			String c0 = "SELECT COUNT(*) AS count FROM conrad_model_submission WHERE n='"+assignment.getName()+"'";
-			ResultSet rsc0 = st.executeQuery(c0);
-			rsc0.next();
-			count += rsc0.getInt("count");
-			rsc0.close();
-			String c1 = "SELECT COUNT(*) AS count FROM conrad_model_submission, conrad_model_mossmatch WHERE conrad_model_submission.id=submission1_id AND n='"+assignment.getName()+"'";
-			ResultSet rsc1 = st.executeQuery(c1);
-			rsc1.next();
-			count += rsc1.getInt("count");
-			rsc1.close();
-			dialog.setTaskLength(count);
-			dialog.setIndeterminate(false);
-		}
+        //Estimate the proportion of data to be done by counting the number of file sets and matches
+        estimateTotalWorkForProgressBar(showProgress, dialog, fileSets, matches);
 
-		//add student submission nodes
-		String q0 = "SELECT id, c AS course_name, n AS assignment_name, ana AS analysis_id, pseu AS " + PSEUDONYM + ", seas AS " + SEASON + ", yr AS " + YEAR + ", student_" + NETID + " AS netid FROM conrad_model_submission, conrad_model_studentsubmission WHERE id=" + SUBMISSION_ID + " AND row_type='studentsubmission' AND n='" +assignment.getName()+"'";
-		ResultSet rs0 = st.executeQuery(q0);
-		while(rs0.next())
-		{
-			Node node = graph.addNode();
-			node.setString(NETID, rs0.getString(NETID));
-			node.setString(PSEUDONYM, rs0.getString(PSEUDONYM));
-			node.setString(IS_SOLUTION, "false");
-			node.setString(SEASON, rs0.getString(SEASON));
-			node.setString(YEAR, rs0.getString(YEAR));
-			node.setString(SUBMISSION_ID, rs0.getString("id"));
-			i++;
-			dialog.setValue(i);
-		}
-		rs0.close();
+        //Get a representation of the submissions as id, object pairs
+        Hashtable<Integer, Submission> submissionsTable = new Hashtable<Integer, Submission>();
+        Hashtable<Integer, Node> nodeTable = new Hashtable<Integer, Node>();
 
-		//add solution nodes
-		String q1 = "SELECT id, c AS course_name, n AS assignment_name, ana AS analysis_id, pseu AS pseudonum FROM conrad_model_submission WHERE row_type='solutionsubmission' AND n='"+assignment.getName()+"'";
-		ResultSet rs1 = st.executeQuery(q1);
-		while(rs1.next())
-		{
-			Node node = graph.addNode();
-			node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString(IS_SOLUTION, "true");
-			node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
-			node.setString(SUBMISSION_ID, rs1.getString("id"));
-			i++;
-			dialog.setValue(i);
-		}
-		rs1.close();
+        //Add submission data to the graph
+        int progress = addSubmissionNodes(showProgress, dialog, graph, fileSets, submissionsTable, nodeTable);
 
-		//add edges
-		Iterator<Node> iter = graph.nodes();
-		while(iter.hasNext())
-		{
-			Node source = iter.next();
-			String source_submission_id = source.getString(SUBMISSION_ID);
-			String q3 = "SELECT submission1_id, submission2_id, " + SCORE1 + ", " + SCORE2 + ", " + LINK + " FROM conrad_model_mossmatch WHERE submission1_id=" +source_submission_id;
-			ResultSet rs3 = st.executeQuery(q3);
-			while(rs3.next())
-			{
-				String target_submission_id = rs3.getString("submission2_id");
-				//loop to find node to link to
-				Node target = null;
-				Iterator<Node> iter2 = graph.nodes();
-				while(iter2.hasNext())
-				{
-					Node temp = iter2.next();
-					if(temp.getString(SUBMISSION_ID).equals(target_submission_id))
-					{
-						target = temp;
-						break;
-					}
-				}
-                
-				Edge edge = graph.addEdge(source, target);
-				double weight = Math.max(rs3.getDouble(SCORE1), rs3.getDouble(SCORE2));
-				String link = rs3.getString(LINK);
-				String[] split = assignment.getWebDirectory().split("/");
-				String url = VisualMossConstants.URL_BASE+split[split.length-1]+"/"+link;
-				edge.setDouble(SCORE1, rs3.getDouble(SCORE1));
-				edge.setDouble(SCORE2, rs3.getDouble(SCORE2));
-				edge.setDouble(WEIGHT, new Double(weight));
-				edge.setString(LINK, url);
+        //Add analysis data to the graph
+        progress = addMatchNodes(showProgress, dialog, graph, matches, submissionsTable, nodeTable, progress);
 
-				if(partnersDotTexts.get(source_submission_id) == null)
-				{
-					partnersDotTexts.put(source_submission_id, getPartnersDotText(source_submission_id, st2));
-				}
-				if(partnersDotTexts.get(target_submission_id) == null)
-				{
-					partnersDotTexts.put(target_submission_id, getPartnersDotText(target_submission_id, st2));
-				}
-				
-				boolean isPartner = isPartnerTo(partnersDotTexts.get(source_submission_id), target.getString(NETID));
-				isPartner = isPartner || isPartnerTo(partnersDotTexts.get(target_submission_id), source.getString(NETID));
-				
-				edge.setBoolean(IS_PARTNER, isPartner);
-				
-//				System.out.println(source.getString("netid")+"--"+target.getString("netid")+": isPartner: "+isPartner);
-				
-				i++;
-				dialog.setValue(i);
-			}
-			rs3.close();
-		}
-		dialog.setIndeterminate(true);
+        //Clean up the solution
+        Iterator<Node> nodeIterator = graph.nodes();
+        while(nodeIterator.hasNext())
+        {
+            Node node = nodeIterator.next();
+            if(node.getString(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+                continue;
+            Iterator iter2 = node.edges();
+            boolean toSolution = false;
+            while(iter2.hasNext())
+            {
+                Edge edge = (Edge)iter2.next();
+                Node src = edge.getSourceNode();
+                Node tgt = edge.getTargetNode();
+                if(src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) || tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+                {
+                    toSolution = true;
+                }
+            }
+            if(toSolution)
+            {
+                Iterator edgeIter = node.edges();
+                ArrayList<Edge> toRemove = new ArrayList<Edge>();
+                while(edgeIter.hasNext())
+                {
+                    Edge edge = (Edge)edgeIter.next();
+                    Node src = edge.getSourceNode();
+                    Node tgt = edge.getTargetNode();
+                    if(!src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) && !tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
+                    {
+                        if(!toRemove.contains(edge))
+                            toRemove.add(edge);
+                    }
+                }
+                for(Edge e : toRemove)
+                {
+                    graph.removeEdge(e);
+                }
+            }
+        }
 
-		//clean up the solution
-		Iterator iterr = graph.nodes();
-		while(iterr.hasNext())
-		{
-			Node node = (Node)iterr.next();
-			if(node.getString(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-				continue;
-			Iterator iter2 = node.edges();
-			boolean toSolution = false;
-			while(iter2.hasNext())
-			{
-				Edge edge = (Edge)iter2.next();
-				Node src = edge.getSourceNode();
-				Node tgt = edge.getTargetNode();
-				if(src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) || tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-				{
-					toSolution = true;
-				}
-			}
-			if(toSolution)
-			{
-				Iterator edgeIter = node.edges();
-				ArrayList<Edge> toRemove = new ArrayList<Edge>();
-				while(edgeIter.hasNext())
-				{
-					Edge edge = (Edge)edgeIter.next();
-					Node src = edge.getSourceNode();
-					Node tgt = edge.getTargetNode();
-					if(!src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) && !tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-					{
-						if(!toRemove.contains(edge))
-							toRemove.add(edge);
-					}
-				}
-				for(Edge e : toRemove)
-				{
-					graph.removeEdge(e);
-				}
-			}
-		}
-		
-		//get rid of past semester nodes that dont link to current semester nodes
-		ArrayList<Node> toRemove = new ArrayList<Node>();
-		VisualMossNodeFillCurrentSemesterPredicate pred = new VisualMossNodeFillCurrentSemesterPredicate();
-		iter = graph.nodes();
-		while(iter.hasNext())
-		{
-			Node curNode = iter.next();
-			boolean shouldKeep = false;
-			if(pred.getBoolean(curNode))
-			{
-				//node in question is already this semester
-				shouldKeep = true;
-			}
-			
-			Iterator<Node> adjIter = curNode.neighbors();
-			while(adjIter.hasNext())
-			{
-				Node adj = adjIter.next();
-				if(pred.getBoolean(adj))
-				{
-					//node in question has a link to a current semester node
-					shouldKeep = true;
-				}
-			}
-			if(shouldKeep == false)
-			{
-				toRemove.add(curNode);
-			}
-			else
-			{
-				System.out.println("keeping "+curNode.getString(NETID));
-			}
-		}
-		System.out.println("selected nodes for deletion: "+graph.getNodeCount());
-		for(Node node : toRemove)
-		{
-			graph.removeNode(node);
-		}
-		System.out.println("deleted nodes: "+graph.getNodeCount());
-		
-		
-		
-		dialog.setVisible(false);
-		this.graph = new VisualMossGraph(copyGraph(graph), assignment.getCourse().getName(), assignment.getName());
-		st.close();
-		conn.close();
-		st2.close();
-		conn2.close();
-		return this.graph;
-	}
+        //Clean up the solution more
+        ArrayList<Node> toRemove = new ArrayList<Node>();
+        VisualMossNodeFillCurrentSemesterPredicate pred = new VisualMossNodeFillCurrentSemesterPredicate();
+        nodeIterator = graph.nodes();
+        while(nodeIterator.hasNext())
+        {
+            Node curNode = nodeIterator.next();
+            boolean shouldKeep = false;
+            if(pred.getBoolean(curNode))
+            {
+                //node in question is already this semester
+                shouldKeep = true;
+            }
 
-	private String getPartnersDotText(String submission_id, Statement st) throws SQLException
-	{
-		String q4 = "SELECT content FROM conrad_model_submissionfile WHERE " + SUBMISSION_ID + "=" +submission_id+" AND name='partners.txt'";
-		ResultSet rs4 = st.executeQuery(q4);
+            Iterator<Node> adjIter = curNode.neighbors();
+            while(adjIter.hasNext())
+            {
+                Node adj = adjIter.next();
+                if(pred.getBoolean(adj))
+                {
+                    //node in question has a link to a current semester node
+                    shouldKeep = true;
+                }
+            }
+            if(shouldKeep == false)
+            {
+                toRemove.add(curNode);
+            }
+            else
+            {
+                System.out.println("keeping "+curNode.getString(NETID));
+            }
+        }
+        System.out.println("selected nodes for deletion: "+graph.getNodeCount());
+        for(Node node : toRemove)
+        {
+            graph.removeNode(node);
+        }
+        System.out.println("deleted nodes: "+graph.getNodeCount());
 
-		Clob fileClob = null;
-		if(rs4.next())
-		{
-			fileClob = rs4.getClob("content");
-			String str = "";
-			String retval = "";
 
-			BufferedReader in = new BufferedReader(fileClob.getCharacterStream());
-			try {
-				while((str = in.readLine()) != null)
-				{
-					retval += str;
-				}
-				return retval;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		rs4.close();
-		return "";
-	}
-	
-	private Graph copyGraph(Graph graph)
-	{
-		Graph graph2 = new Graph();
-		graph2.getNodeTable().addColumn(NETID, String.class);
-		graph2.getNodeTable().addColumn(PSEUDONYM, String.class);
-		graph2.getNodeTable().addColumn(IS_SOLUTION, String.class);
-		graph2.getNodeTable().addColumn(SEASON, String.class);
-		graph2.getNodeTable().addColumn(YEAR, String.class);
-		graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
-		graph2.getEdgeTable().addColumn(WEIGHT, double.class);
-		graph2.getEdgeTable().addColumn(SCORE1, double.class);
-		graph2.getEdgeTable().addColumn(SCORE2, double.class);
-		graph2.getEdgeTable().addColumn(LINK, String.class);
-		graph2.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+        //Hide the dialog -- we're done now
+        dialog.setVisible(false);
 
-		Iterator<Node> nodeIter = graph.nodes();
-		while(nodeIter.hasNext())
-		{
-			Node oldNode = nodeIter.next();
-			Node newNode = graph2.addNode();
-			newNode.setString(NETID, oldNode.getString(NETID));
-			newNode.setString(PSEUDONYM, oldNode.getString(PSEUDONYM));
-			newNode.setString(IS_SOLUTION, oldNode.getString(IS_SOLUTION));
-			newNode.setString(SEASON, oldNode.getString(SEASON));
-			newNode.setString(YEAR, oldNode.getString(YEAR));
-			newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
-		}
-		Iterator<Edge> edgeIter = graph.edges();
-		while(edgeIter.hasNext())
-		{
-			Edge oldEdge = edgeIter.next();
-			Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID),graph2), getNode(oldEdge.getTargetNode().getString(NETID),graph2));
-			newEdge.setDouble(SCORE1, oldEdge.getDouble(SCORE1));
-			newEdge.setDouble(SCORE2, oldEdge.getDouble(SCORE2));
-			newEdge.setDouble(WEIGHT, oldEdge.getDouble(WEIGHT));
-			newEdge.setString(LINK, oldEdge.getString(LINK));
-			newEdge.setBoolean(IS_PARTNER, oldEdge.getBoolean(IS_PARTNER));
-		}
-		return graph2;
-	}
-	
-	private Node getNode(String netid, Graph graph)
-	{
-		Iterator<Node> iter = graph.nodes();
-		while(iter.hasNext())
-		{
-			Node node = iter.next();
-			if(node.getString(NETID).equals(netid))
-			{
-				return node;
-			}
-		}
-		return null;
-	}
-	
-	public boolean isPartnerTo(String partnersDotText, String netid) throws SQLException
-	{
-		return partnersDotText.contains(netid);
-	}
+        //Keep a copy of this graph we built, and return it
+        this.graph = new VisualMossGraph(copyGraph(graph), assignment.getCourse().getName(), assignment.getName());
+        return this.graph;
 
-	public Assignment getAssignment()
-	{
-		return assignment;
-	}
+    }
 
-	public ArrayList<Course> getCourses()
-	{
-		return courses;
-	}
+    private int addMatchNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<MossMatch> matches, Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable, int progress) {
+        for(MossMatch match : matches){
 
+            //Find the two submissions associated with this match
+            Submission submissionOne = submissionsTable.get(match.getSubmission1Id());
+            Submission submissionTwo = submissionsTable.get(match.getSubmission2Id());
+
+            //Find the nodes for these submissions
+            Node submissionOneNode = nodeTable.get(submissionOne.getId());
+            Node submissionTwoNode = nodeTable.get(submissionTwo.getId());
+
+            //Create a new edge for this match
+            Edge edge = graph.addEdge(submissionOneNode, submissionTwoNode);
+
+            //Build the data for this edge
+            double score1 = match.getScore1();
+            double score2 = match.getScore2();
+            double maxScore = Math.max(score1, score2);
+            URL matchLink = match.getLink();
+
+            //Figure out if these two were partners or not
+            boolean arePartners = arePartnered(submissionOne, submissionTwo);
+
+            //Set this data on the edge
+            edge.setDouble(SCORE1, score1);
+            edge.setDouble(SCORE2, score2);
+            edge.setDouble(WEIGHT, maxScore);
+            edge.setString(LINK, matchLink.toString());
+            edge.setBoolean(IS_PARTNER, arePartners);
+
+            //Update the progress bar
+            progress = updateProgressBar(showProgress, dialog, progress);
+        }
+        dialog.setIndeterminate(true);
+        return progress;
+    }
+
+    /**
+     * Checks to see if two submissions share partners
+     *
+     * @param submissionOne The first submisison
+     * @param submissionTwo The second submisison
+     * @return Whether or not these submissions are partnered
+     */
+    private boolean arePartnered(Submission submissionOne, Submission submissionTwo) {
+
+        //Grab the partners from the two submissions
+        List<Student> submissionOnePartners = submissionOne.getPartners();
+        List<Student> submissionTwoPartners = submissionTwo.getPartners();
+        boolean arePartners = false;
+
+        //Check each student from the second submission's partners with the first submission's author
+        for(Student student: submissionTwoPartners){
+            if(student.getId() == submissionOne.getStudentId()){
+                arePartners = true;
+            }
+        }
+
+        //Check each student from the first submission's partners with the second submission's author
+        for(Student student : submissionOnePartners){
+            if(student.getId() == submissionTwo.getStudentId()){
+                arePartners = true;
+            }
+        }
+        return arePartners;
+    }
+
+    /**
+     * Adds the nodes to the graph, each representing a submission for the given assignment
+     *
+     * @param showProgress Whether or not to show the progress bar
+     * @param dialog A handle on the dialog to show progress
+     * @param graph The graph object that we're creating
+     * @param fileSets The list of file sets to load and add to the graph
+     * @param submissionsTable A table for referencing submissions quickly
+     * @param nodeTable A table for referencing the nodes quickly
+     *
+     * @return The progress after we've added all of the submission nodes
+     */
+    private int addSubmissionNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<FileSet> fileSets,
+                                   Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable) {
+        int progress = 0;
+        for(FileSet fileSet : fileSets){
+
+            //Grab all submissions associated with this file set
+            List<Submission> setOfSubmissions = fileSet.getSubmissions();
+            submissions.addAll(setOfSubmissions);
+
+            //Get the semester data from the file set
+            Semester semester = fileSet.getOffering().getSemester();
+
+            //Add the submissions to the graph
+            for (Submission submission : setOfSubmissions) {
+
+                //Add this submission to the hash table
+                int submissionId = submission.getId();
+                submissionsTable.put(submissionId, submission);
+
+                //Get the student and pseudonym associated with this submission
+                Student student = submission.getStudent();
+                int pseudonym = submission.getAnalysisPseudonym().getPseudonym();
+
+                //Figure out if this submission is a solution
+                Type submissionType = submission.getType();
+                boolean isSolution = (submissionType == Type.solutionsubmission);
+
+                //Add this submission's data to the graph
+                Node node = graph.addNode();
+                if(!isSolution){
+                    node.setString(NETID, student.getNetid());
+                    node.setString(PSEUDONYM, Integer.toString(pseudonym));
+                    node.setString(SEASON, semester.getSeason().name());
+                    node.setString(YEAR, Integer.toString(semester.getYear()));
+                    node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                } else {
+                    node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
+                    node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
+                    node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
+                    node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
+                    node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                }
+                node.setString(IS_SOLUTION, Boolean.toString(isSolution));
+
+                //Add this new node to the hash table
+                nodeTable.put(submissionId, node);
+            }
+
+            //Update the progress bar
+            progress = updateProgressBar(showProgress, dialog, progress);
+        }
+        return progress;
+    }
+
+    /**
+     * Makes a copy of an input graph, and returns the copy
+     *
+     * @param graph The graph object to copy
+     * @return A new graph, identical to the input graph
+     */
+    private Graph copyGraph(Graph graph)
+    {
+
+        //Create the new graph and declare the fields of each node
+        Graph graph2 = new Graph();
+        graph2.getNodeTable().addColumn(NETID, String.class);
+        graph2.getNodeTable().addColumn(PSEUDONYM, String.class);
+        graph2.getNodeTable().addColumn(IS_SOLUTION, String.class);
+        graph2.getNodeTable().addColumn(SEASON, String.class);
+        graph2.getNodeTable().addColumn(YEAR, String.class);
+        graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+        graph2.getEdgeTable().addColumn(WEIGHT, double.class);
+        graph2.getEdgeTable().addColumn(SCORE1, double.class);
+        graph2.getEdgeTable().addColumn(SCORE2, double.class);
+        graph2.getEdgeTable().addColumn(LINK, String.class);
+        graph2.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+
+        //Copy all of the graph nodes
+        Iterator<Node> nodeIterator = graph.nodes();
+        while(nodeIterator.hasNext())
+        {
+            Node oldNode = nodeIterator.next();
+            Node newNode = graph2.addNode();
+            newNode.setString(NETID, oldNode.getString(NETID));
+            newNode.setString(PSEUDONYM, oldNode.getString(PSEUDONYM));
+            newNode.setString(IS_SOLUTION, oldNode.getString(IS_SOLUTION));
+            newNode.setString(SEASON, oldNode.getString(SEASON));
+            newNode.setString(YEAR, oldNode.getString(YEAR));
+            newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
+        }
+
+        //Copy all of the graph edges
+        Iterator<Edge> edgeIterator = graph.edges();
+        while(edgeIterator.hasNext())
+        {
+            Edge oldEdge = edgeIterator.next();
+            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID),graph2), getNode(oldEdge.getTargetNode().getString(NETID),graph2));
+            newEdge.setDouble(SCORE1, oldEdge.getDouble(SCORE1));
+            newEdge.setDouble(SCORE2, oldEdge.getDouble(SCORE2));
+            newEdge.setDouble(WEIGHT, oldEdge.getDouble(WEIGHT));
+            newEdge.setString(LINK, oldEdge.getString(LINK));
+            newEdge.setBoolean(IS_PARTNER, oldEdge.getBoolean(IS_PARTNER));
+        }
+        return graph2;
+    }
+
+    /**
+     * Finds a node by the netId associated with it
+     *
+     * @param netId The netId identifying the node to get
+     * @param graph The graph in which to find the node
+     * @return The node corresponding to the given netId
+     */
+    private Node getNode(String netId, Graph graph) {
+
+        Iterator<Node> nodeIterator = graph.nodes();
+        while(nodeIterator.hasNext()) {
+            Node node = nodeIterator.next();
+            if(node.getString(NETID).equals(netId)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    private void estimateTotalWorkForProgressBar(boolean showProgress, LoadingProgressDialog dialog, List<FileSet> fileSets, List<MossMatch> matches) {
+        if(showProgress) {
+            dialog.setTaskLength(fileSets.size() + matches.size());
+            dialog.setIndeterminate(false);
+        }
+    }
+
+    private void declareGraphFields(Graph graph) {
+
+        //Declare all the properties of a submission (e.g. a node in the graph)
+        graph.getNodeTable().addColumn(NETID, String.class);
+        graph.getNodeTable().addColumn(PSEUDONYM, String.class);
+        graph.getNodeTable().addColumn(IS_SOLUTION, boolean.class);
+        graph.getNodeTable().addColumn(SEASON, String.class);
+        graph.getNodeTable().addColumn(YEAR, String.class);
+        graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+
+        //Declare all the properties of an analysis
+        graph.getEdgeTable().addColumn(WEIGHT, double.class);   //Weight = max(score1,score2)
+        graph.getEdgeTable().addColumn(SCORE1, double.class);
+        graph.getEdgeTable().addColumn(SCORE2, double.class);
+        graph.getEdgeTable().addColumn(LINK, String.class);
+        graph.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+    }
+
+    /**
+     * Updates the progress bar if necessary
+     *
+     * @param showProgress Whether or not we're supposed to show the progress bar
+     * @param dialog A handle on the progress bar dialog
+     * @param progress The progress of the job, ranging from 0 to the number of items loaded from the API (edges + nodes)
+     * @return The updated progress value
+     */
+    private int updateProgressBar(boolean showProgress, LoadingProgressDialog dialog, int progress) {
+        if(showProgress){
+            progress++;
+            dialog.setValue(progress);
+        }
+        return progress;
+    }
+
+    /**
+     * Intializes the progress bar
+     *
+     * @param showProgress Whether or not to show the progress bar
+     * @param dialog A handle on the progress bar dialog
+     */
+    private void initializeProgressBar(boolean showProgress, LoadingProgressDialog dialog) {
+        dialog.init();
+        if(showProgress)
+            dialog.setVisible(true);
+    }
+
+    /**
+     * Gets the graph
+     *
+     * @return the graph
+     */
+    public VisualMossGraph getGraph() {
+        return graph;
+    }
+
+    /**
+     * Gets the connection to the API
+     *
+     * @return The connection to the API
+     */
+    public CoMoToAPIConnection getConnection() {
+        return connection;
+    }
+
+    /**
+     * Get the assignment associated with this import
+     *
+     * @return The assignment that this graph represents
+     */
+    public Assignment getAssignment() {
+        return assignment;
+    }
 }

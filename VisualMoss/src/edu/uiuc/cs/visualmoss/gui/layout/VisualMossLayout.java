@@ -1,38 +1,9 @@
 package edu.uiuc.cs.visualmoss.gui.layout;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Iterator;
-
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import prefuse.data.io.DataIOException;
-import prefuse.util.ColorLib;
-import prefuse.visual.NodeItem;
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
 import edu.uiuc.cs.visualmoss.dataexport.DataExport;
-import edu.uiuc.cs.visualmoss.dataimport.Assignment;
 import edu.uiuc.cs.visualmoss.dataimport.DataImport;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.controls.VisualMossControls;
 import edu.uiuc.cs.visualmoss.gui.dataimport.AssignmentChooser;
@@ -41,7 +12,20 @@ import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.help.AboutDialog;
 import edu.uiuc.cs.visualmoss.gui.help.HelpDialog;
 import edu.uiuc.cs.visualmoss.utility.ExtensionFileFilter;
+import prefuse.data.io.DataIOException;
+import prefuse.util.ColorLib;
+import prefuse.visual.NodeItem;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Iterator;
+
+import static edu.uiuc.cs.visualmoss.VisualMossConstants.CS225;
+import static edu.uiuc.cs.visualmoss.VisualMossConstants.MP3;
 
 public class VisualMossLayout extends JFrame implements ActionListener, WindowListener {
 	private static final long serialVersionUID = 1L;
@@ -279,28 +263,11 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 		}
 		else if(item.equals(add))
 		{
-			try {
-				DataImport importer = new DataImport();
-				Assignment assignment = importer.getAssignment();
-				VisualMossGraph graph = importer.getVisualMossGraph();
-				graphDisplay.setGraph(graph);
-				updateTitle(assignment);
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DataIOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            DataImport importer = new DataImport(CS225, MP3);
+            Assignment assignment = importer.getAssignment();
+            VisualMossGraph graph = importer.getGraph();
+            graphDisplay.setGraph(graph);
+            updateTitle(assignment);
 		}
 		else if(item.equals(help))
 		{

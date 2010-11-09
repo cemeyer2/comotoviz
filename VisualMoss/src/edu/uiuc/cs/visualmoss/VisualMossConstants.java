@@ -7,49 +7,28 @@ import java.util.Calendar;
 
 public class VisualMossConstants {
 
-	//application constants
+	//Application constants
 	public static final String VERSION = "0.1";
 
-	//font constants
+	//Font constants
 	public static final String FONT_NAME = "Verdana";
 	public static final Font COMPONENT_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
 	public static final Font NODE_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
 	public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
 	public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
-	//graph constants
-	public static final String CURRENT_SEASON = getCurrentSeason();
-	public static final String CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR)+"";
-
-	private static final String getCurrentSeason()
-	{
-		int month = Calendar.getInstance().get(Calendar.MONTH);
-		if(month < 6)
-		{
-			return "Spring";
-		}
-		else if(month < 9)
-		{
-			return "Summer";
-		}
-		else
-		{
-			return "Fall";
-		}
-	}
-
-    //api constants
+    //API constants
     public static final String API_USER_NAME = "userName";
     public static final String API_PASSWORD = "password";
 
-	//naming constants
+	//Naming constants
 	public static final String SOLUTION_NODE_LABEL = "[solution]";
 
 	//URL Constants
 	public static final String URL_BASE = "https://maggie.cs.illinois.edu/moss/";
 	public static final String TEXT_REPORT_URL = "report.html";
 
-	//help Constants
+	//Help Constants
 	public static final String ABOUT_TITLE = "<html>vPlag "+VERSION+"</html>";
 	public static final String ABOUT_AUTHORS = "<html>Charlie Meyer<br/>Kevin Phillips<br/>Michael Hines</html>";
 	public static final String ABOUT_COPYRIGHT = "<html>© 2009 The Board of Trustees at the University of Illinois<br/>"+
@@ -66,4 +45,33 @@ public class VisualMossConstants {
                                             "to zoom. Moving the mouse over a node or an edge will cause a status message to<br/>"+
                                             "appear about that graph component. Clicking on an edge in the graph will launch<br/>"+
                                             "the side by side code comparison for the match that that edge represents</html>";
+
+    //Class defaults
+    public static final String CS225 = "CS225";
+    public static final String MP3 = "MP3";
+
+    //Graph constants
+    public static final String IS_PARTNER = "isPartner";
+    public static final String IS_SOLUTION = "isSolution";
+    public static final String NETID = "netid";
+    public static final String LINK = "link";
+    public static final String PSEUDONYM = "pseudonym";
+    public static final String SCORE1 = "score1";
+    public static final String SCORE2 = "score2";
+    public static final String SEASON = "season";
+    public static final String SUBMISSION_ID = "submission_id";
+    public static final String WEIGHT = "weight";
+    public static final String YEAR = "year";
+    public static final String CURRENT_SEASON = getCurrentSeason();
+    public static final String CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR)+"";
+    private static final String getCurrentSeason(){
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+        if(month < 6){
+            return "Spring";
+        } else if(month < 9) {
+            return "Summer";
+        } else {
+            return "Fall";
+        }
+    }
 }
