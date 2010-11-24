@@ -18,14 +18,14 @@ public class VisualMossConstants {
 	public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
     //API constants
-    public static final String API_USER_NAME = "userName";
-    public static final String API_PASSWORD = "password";
+    public static final String API_USER_NAME = "tedesco1";
+    public static final String API_PASSWORD = "Arch1m0nd3";
 
 	//Naming constants
 	public static final String SOLUTION_NODE_LABEL = "[solution]";
 
 	//URL Constants
-	public static final String URL_BASE = "https://maggie.cs.illinois.edu/moss/";
+	public static final String URL_BASE = "https://comoto.cs.illinois.edu/api/";
 	public static final String TEXT_REPORT_URL = "report.html";
 
 	//Help Constants

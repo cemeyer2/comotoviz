@@ -45,7 +45,7 @@ public class VisualMossGraph {
      * @param courseName The name of the course
      * @param assignmentName The name of this assignment
      */
-	private VisualMossGraph(String courseName, String assignmentName)
+    public VisualMossGraph(String courseName, String assignmentName)
 	{
 		students = new Hashtable<String, VisualMossGraphStudent>();
 		matches = new ArrayList<VisualMossGraphMatch>();

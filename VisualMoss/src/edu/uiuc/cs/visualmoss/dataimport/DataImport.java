@@ -5,7 +5,6 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.*;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
-import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillCurrentSemesterPredicate;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
 import prefuse.data.Edge;
 import prefuse.data.Graph;
@@ -35,6 +34,7 @@ public class DataImport {
     private ArrayList<Submission> submissions;
     private Assignment assignment;
     private Course course;
+    private List<Course> courses;
 
     /**
      * The default constructor for the data import, which queries the CoMoTo API to populate the courses and assignments
@@ -62,6 +62,17 @@ public class DataImport {
                 this.assignment = assignment;
             }
         }
+    }
+
+    public DataImport() {
+
+        //Create a connection to the CoMoTo API
+        connection = new CoMoToAPIConnection(VisualMossConstants.API_USER_NAME, VisualMossConstants.API_PASSWORD);
+
+        //Populate the courses from the API
+        courses = CoMoToAPI.getCourses(connection);
+
+
     }
 
     /**
@@ -127,89 +138,7 @@ public class DataImport {
         //Add analysis data to the graph
         progress = addMatchNodes(showProgress, dialog, graph, matches, submissionsTable, nodeTable, progress);
 
-        //Clean up the solution
-        Iterator<Node> nodeIterator = graph.nodes();
-        while(nodeIterator.hasNext())
-        {
-            Node node = nodeIterator.next();
-            if(node.getString(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-                continue;
-            Iterator iter2 = node.edges();
-            boolean toSolution = false;
-            while(iter2.hasNext())
-            {
-                Edge edge = (Edge)iter2.next();
-                Node src = edge.getSourceNode();
-                Node tgt = edge.getTargetNode();
-                if(src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) || tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-                {
-                    toSolution = true;
-                }
-            }
-            if(toSolution)
-            {
-                Iterator edgeIter = node.edges();
-                ArrayList<Edge> toRemove = new ArrayList<Edge>();
-                while(edgeIter.hasNext())
-                {
-                    Edge edge = (Edge)edgeIter.next();
-                    Node src = edge.getSourceNode();
-                    Node tgt = edge.getTargetNode();
-                    if(!src.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL) && !tgt.get(NETID).equals(VisualMossConstants.SOLUTION_NODE_LABEL))
-                    {
-                        if(!toRemove.contains(edge))
-                            toRemove.add(edge);
-                    }
-                }
-                for(Edge e : toRemove)
-                {
-                    graph.removeEdge(e);
-                }
-            }
-        }
-
-        //Clean up the solution more
-        ArrayList<Node> toRemove = new ArrayList<Node>();
-        VisualMossNodeFillCurrentSemesterPredicate pred = new VisualMossNodeFillCurrentSemesterPredicate();
-        nodeIterator = graph.nodes();
-        while(nodeIterator.hasNext())
-        {
-            Node curNode = nodeIterator.next();
-            boolean shouldKeep = false;
-            if(pred.getBoolean(curNode))
-            {
-                //node in question is already this semester
-                shouldKeep = true;
-            }
-
-            Iterator<Node> adjIter = curNode.neighbors();
-            while(adjIter.hasNext())
-            {
-                Node adj = adjIter.next();
-                if(pred.getBoolean(adj))
-                {
-                    //node in question has a link to a current semester node
-                    shouldKeep = true;
-                }
-            }
-            if(shouldKeep == false)
-            {
-                toRemove.add(curNode);
-            }
-            else
-            {
-                System.out.println("keeping "+curNode.getString(NETID));
-            }
-        }
-        System.out.println("selected nodes for deletion: "+graph.getNodeCount());
-        for(Node node : toRemove)
-        {
-            graph.removeNode(node);
-        }
-        System.out.println("deleted nodes: "+graph.getNodeCount());
-
-
-        //Hide the dialog -- we're done now
+         //Hide the dialog -- we're done now
         dialog.setVisible(false);
 
         //Keep a copy of this graph we built, and return it
@@ -500,5 +429,23 @@ public class DataImport {
      */
     public Assignment getAssignment() {
         return assignment;
+    }
+
+    /**
+     * Gets all courses available from the API
+     *
+     * @return The list of courses
+     */
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    /**
+     * Gets the visual moss graph associated with this project
+     *
+     * @return
+     */
+    public VisualMossGraph getVisualMossGraph(){
+        return graph;
     }
 }

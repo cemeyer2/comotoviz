@@ -1,45 +1,29 @@
 package edu.uiuc.cs.visualmoss.gui.dataimport;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.uiuc.cs.visualmoss.dataimport.DataImport;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Course;
+import edu.uiuc.cs.visualmoss.dataimport.api.objects.Student;
+import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
+import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
+import edu.uiuc.cs.visualmoss.gui.worker.AssignmentLoadingWorker;
+import prefuse.data.io.DataIOException;
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.SpringLayout;
-import javax.swing.event.TreeExpansionEvent;
-import javax.swing.event.TreeExpansionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-
-import prefuse.data.io.DataIOException;
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
-import edu.uiuc.cs.visualmoss.dataimport.Assignment;
-import edu.uiuc.cs.visualmoss.dataimport.Course;
-import edu.uiuc.cs.visualmoss.dataimport.DataImport;
-import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
-import edu.uiuc.cs.visualmoss.graph.VisualMossGraph.Student;
-import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
-import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
-import edu.uiuc.cs.visualmoss.gui.worker.AssignmentLoadingWorker;
+import java.util.List;
 
 public class AssignmentChooser extends JPanel implements ActionListener, MouseListener
 {
-	private final ArrayList<Course> courses;
+	private final List<Course> courses;
 	private Assignment selectedAssignment;
 	
 	private JButton select;
