@@ -29,7 +29,9 @@ public class DateFormatConverter implements Converter {
             DateFormat timestamp = new SimpleDateFormat(timestampString);
             return timestamp;
 
-        } catch(ClassCastException e){}
-        return null;
+        } catch(ClassCastException e){
+
+            return null;
+        }
     }
 }
