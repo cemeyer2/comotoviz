@@ -4,7 +4,10 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -75,13 +78,7 @@ public class Assignment implements Refreshable{
         //Store the connection
         this.connection = connection;
 
-        //Explicitly add non-primitive types
-        Integer[] fileSetIdsArray = (Integer[]) abstractAssignment.get("file_set_ids");
-        fileSetIds = Arrays.asList(fileSetIdsArray);
-
-        //Remove them from the map
-        abstractAssignment.remove("file_set_ids");
-
+        //Populate this object using reflection
         CoMoToAPIReflector<Assignment> reflector = new CoMoToAPIReflector<Assignment>();
         reflector.populate(this, abstractAssignment);
     }

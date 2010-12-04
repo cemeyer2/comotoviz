@@ -1,38 +1,30 @@
 package edu.uiuc.cs.visualmoss.gui.login;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.uiuc.cs.visualmoss.net.VisualMossAuthenticator;
+import edu.uiuc.cs.visualmoss.utility.ldap.LDAPAuth;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.net.Authenticator;
-import java.net.PasswordAuthentication;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
-
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
-import edu.uiuc.cs.visualmoss.net.VisualMossAuthenticator;
-import edu.uiuc.cs.visualmoss.utility.ldap.LDAPAuth;
 
 public class LoginDialog extends JDialog implements ActionListener, WindowListener
 {
 	private final int DIALOG_WIDTH = 400;
 	private final int DIALOG_HEIGHT = 200;
 	
-	
 	private JTextField netidField;
 	private JPasswordField passwordField;
 	private JButton loginButton;
-	
+
+    private String netId;
+    private String password;
+
 	public LoginDialog(JFrame owner)
 	{
 		super(owner, true); //make this modal
@@ -81,19 +73,19 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
 	
 	public void actionPerformed(ActionEvent arg0) 
 	{
-		final String netid = netidField.getText();
-		final String password = new String(passwordField.getPassword());
-		
+		netId = netidField.getText();
+		password = new String(passwordField.getPassword());
+
 		//changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
 		//against the http server, it keeps trying until the max redirects limit is reached, which unfortunately
 		//caused the UIUC AD to lock the account, this way we only hit the AD once and won't lock out the account
 		//unless many unsuccessful tries are made
-		boolean auth = LDAPAuth.authenticate(netid, password);
+		boolean auth = LDAPAuth.authenticate(netId, password);
 		
-		if(auth == true)
+		if(auth)
 		{
 			VisualMossAuthenticator authenticator = new VisualMossAuthenticator();
-			authenticator.setDefaultAuthentication(netid, password);
+			authenticator.setDefaultAuthentication(netId, password);
 			Authenticator.setDefault(authenticator);
 			
 			this.setVisible(false);
@@ -137,4 +129,12 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
 		// TODO Auto-generated method stub
 		
 	}
+
+    public String getNetId() {
+        return netId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

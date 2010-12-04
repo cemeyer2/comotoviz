@@ -4,9 +4,12 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.*;
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYM;
 
 
 /**
@@ -100,16 +103,10 @@ public class Submission implements Refreshable{
 
         //Explicitly add non-primitive types
         Map analysisPseudonymMap = (Map) abstractSubmission.get(ANALYSIS_PSEUDONYM);
-        Integer[] partnerIdsArray = (Integer[]) abstractSubmission.get(PARTNER_IDS);
-        Integer[] submissionFileIdsArray = (Integer[]) abstractSubmission.get(SUBMISSION_FILE_IDS);
         analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
-        partnerIds = Arrays.asList(partnerIdsArray);
-        submissionFileIds = Arrays.asList(submissionFileIdsArray);
 
         //Remove them from the map
         abstractSubmission.remove(ANALYSIS_PSEUDONYM);
-        abstractSubmission.remove(PARTNER_IDS);
-        abstractSubmission.remove(SUBMISSION_FILE_IDS);
 
         CoMoToAPIReflector<Submission> reflector = new CoMoToAPIReflector<Submission>();
         reflector.populate(this, abstractSubmission);

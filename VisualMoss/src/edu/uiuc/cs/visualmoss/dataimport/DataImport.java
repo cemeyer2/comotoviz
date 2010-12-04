@@ -6,6 +6,7 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.*;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
+import edu.uiuc.cs.visualmoss.utility.Pair;
 import prefuse.data.Edge;
 import prefuse.data.Graph;
 import prefuse.data.Node;
@@ -40,10 +41,10 @@ public class DataImport {
      * The default constructor for the data import, which queries the CoMoTo API to populate the courses and assignments
      *  for each course
      */
-    public DataImport(String courseName, String assignmentName) {
+    public DataImport(String courseName, String assignmentName, Pair<String, String> activeDirectoryCredentials) {
 
         //Create a connection to the CoMoTo API
-        connection = new CoMoToAPIConnection(VisualMossConstants.API_USER_NAME, VisualMossConstants.API_PASSWORD);
+        connection = new CoMoToAPIConnection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
         //Populate the courses from the API
         List<Course> courses = CoMoToAPI.getCourses(connection);
@@ -64,10 +65,10 @@ public class DataImport {
         }
     }
 
-    public DataImport() {
+    public DataImport(Pair<String, String> activeDirectoryCredentials) {
 
         //Create a connection to the CoMoTo API
-        connection = new CoMoToAPIConnection(VisualMossConstants.API_USER_NAME, VisualMossConstants.API_PASSWORD);
+        connection = new CoMoToAPIConnection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
         //Populate the courses from the API
         courses = CoMoToAPI.getCourses(connection);

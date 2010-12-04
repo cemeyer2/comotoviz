@@ -1,9 +1,14 @@
 package edu.uiuc.cs.visualmoss.dataimport.api;
 
-import org.apache.commons.beanutils.BeanUtils;
+import edu.uiuc.cs.visualmoss.dataimport.api.converters.DateFormatConverter;
+import edu.uiuc.cs.visualmoss.dataimport.api.converters.ListConverter;
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtilsBean;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.DateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,9 +32,19 @@ public class CoMoToAPIReflector<T> {
             camelCaseMap.put(newKey, map.get(key));
         }
 
+        //Register the type converters for populating non-primitive types on objects
+        ConvertUtilsBean convertUtilsBean = new ConvertUtilsBean();
+        convertUtilsBean.deregister(List.class);
+        convertUtilsBean.deregister(DateFormat.class);
+        convertUtilsBean.register(new ListConverter(), List.class);
+        convertUtilsBean.register(new DateFormatConverter(), DateFormat.class);
+
+        //Build the bean utils object with the specified converters
+        BeanUtilsBean beanUtilsBean = new BeanUtilsBean(convertUtilsBean);
+
         //Populate the object from this new map using reflection
         try {
-            BeanUtils.populate(apiObject, camelCaseMap);
+            beanUtilsBean.populate(apiObject, camelCaseMap);
         } catch (IllegalAccessException e) {
             System.out.println("Error populating " + apiObject.getClass() + " object:\n" + e.getMessage());
         } catch (InvocationTargetException e) {

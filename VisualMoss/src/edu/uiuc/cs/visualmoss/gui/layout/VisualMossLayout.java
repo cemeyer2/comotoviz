@@ -12,6 +12,7 @@ import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.help.AboutDialog;
 import edu.uiuc.cs.visualmoss.gui.help.HelpDialog;
 import edu.uiuc.cs.visualmoss.utility.ExtensionFileFilter;
+import edu.uiuc.cs.visualmoss.utility.Pair;
 import prefuse.data.io.DataIOException;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
@@ -45,12 +46,14 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 	private NodeItem lastNode;
 	private boolean lastNodeWasVisible;
 	private int lastFillColor;
-	
 
-	public VisualMossLayout() throws DataIOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+
+    private Pair<String, String> activeDirectoryCredentials;
+
+	public VisualMossLayout(Pair<String, String> activeDirectoryCredentials) throws DataIOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Container visualMoss = getContentPane();
 	    visualMoss.setLayout(new BorderLayout()); 
-	    
+	    activeDirectoryCredentials = activeDirectoryCredentials;
 	    Toolkit toolkit = Toolkit.getDefaultToolkit();
 
 		// Get the current screen size
@@ -71,7 +74,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 		rightControls = new VisualMossControls();
 		rightControls.addVisualMossControls(graphDisplay);
 		
-		leftControls = new AssignmentChooser(this, container);
+		leftControls = new AssignmentChooser(this, container, activeDirectoryCredentials);
 		leftControls.setPreferredSize(new Dimension(200, windowHeight));
 		
 		visualMoss.add(container);
@@ -263,7 +266,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 		}
 		else if(item.equals(add))
 		{
-            DataImport importer = new DataImport(CS225, MP3);
+            DataImport importer = new DataImport(CS225, MP3, activeDirectoryCredentials);
             Assignment assignment = importer.getAssignment();
             VisualMossGraph graph = importer.getGraph();
             graphDisplay.setGraph(graph);

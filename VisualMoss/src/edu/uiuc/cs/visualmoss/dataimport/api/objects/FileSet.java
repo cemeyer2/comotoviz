@@ -2,11 +2,16 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERING;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -88,21 +93,13 @@ public class FileSet implements Refreshable{
         this.connection = connection;
 
         //Explicitly add non primitive types
-        Map offeringMap = (Map) abstractFileSet.get("offering");
-        String timestampString = (String) abstractFileSet.get("timestamp");
-        Integer[] assignmentIdsArray = (Integer[]) abstractFileSet.get("assignment_ids");
-        Integer[] submissionIdsArray = (Integer[]) abstractFileSet.get("submission_ids");
+        Map offeringMap = (Map) abstractFileSet.get(CoMoToAPIConstants.OFFERING);
         offering = new Offering(offeringMap, connection);
-        timestamp = new SimpleDateFormat(timestampString);
-        assignmentIds = Arrays.asList(assignmentIdsArray);
-        submissionIds = Arrays.asList(submissionIdsArray);
 
         //Remove these entries from the map
-        abstractFileSet.remove("offering");
-        abstractFileSet.remove("timestamp");
-        abstractFileSet.remove("assignment_ids");
-        abstractFileSet.remove("submission_ids");
+        abstractFileSet.remove(OFFERING);
 
+        //Populate the rest of this object using reflection
         CoMoToAPIReflector<FileSet> reflector = new CoMoToAPIReflector<FileSet>();
         reflector.populate(this, abstractFileSet);
     }

@@ -5,7 +5,6 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -28,24 +27,24 @@ public class Course implements Refreshable{
     private String name;
 
     /**
-     * The list of ids for the associated users
-     */
-    private List<Integer> userIds;
-
-    /**
      * The list of associated assignment ids
      */
     private List<Integer> assignmentIds;
 
     /**
-     * The list of associated assignments
-     */
-    private List<Assignment> assignments = null;
-
-    /**
      * The list of associated file sets
      */
     private List<Integer> fileSetIds;
+
+    /**
+     * The list of ids for the associated users
+     */
+    private List<Integer> userIds;
+
+    /**
+     * The list of associated assignments
+     */
+    private List<Assignment> assignments = null;
 
     /**
      * The list of file sets
@@ -68,19 +67,7 @@ public class Course implements Refreshable{
         //Store the connection
         this.connection = connection;
 
-        //Explicitly add the non-primitive types
-        Integer[] userIdsArray = (Integer[]) abstractCourse.get("user_ids");
-        Integer[] assignmentIdsArray = (Integer[]) abstractCourse.get("assignment_ids");
-        Integer[] fileSetIdsArray = (Integer[]) abstractCourse.get("file_set_ids");
-        userIds = Arrays.asList(userIdsArray);
-        assignmentIds = Arrays.asList(assignmentIdsArray);
-        fileSetIds = Arrays.asList(fileSetIdsArray);
-        
-        //Remove it from the map
-        abstractCourse.remove("user_ids");
-        abstractCourse.remove("assignment_ids");
-        abstractCourse.remove("file_set_ids");
-
+        //Populate this object using reflection
         CoMoToAPIReflector<Course> reflector = new CoMoToAPIReflector<Course>();
         reflector.populate(this, abstractCourse);
     }

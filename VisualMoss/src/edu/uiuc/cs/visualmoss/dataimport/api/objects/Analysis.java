@@ -89,9 +89,10 @@ public class Analysis implements Refreshable {
         this.connection = connection;
 
         //Add non-primitive types explicitly
-        Map[] analysisPseudonymsArray = (Map[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
+        Object[] abstractAnalysisPseudonymsArray = (Object[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
         analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
-        for(Map analysisPseudonymMap : analysisPseudonymsArray){
+        for(Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray){
+            Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
             analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap, connection));
         }
         abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);

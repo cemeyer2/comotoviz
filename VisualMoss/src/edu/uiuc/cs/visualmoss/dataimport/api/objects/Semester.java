@@ -45,7 +45,7 @@ public class Semester implements Refreshable{
         //Save the connection
         this.connection = connection;
 
-        //Use reflection to populate the rest of the object
+        //Use reflection to populate this object
         CoMoToAPIReflector<Semester> reflector = new CoMoToAPIReflector<Semester>();
         reflector.populate(this, abstractSemester);
     }

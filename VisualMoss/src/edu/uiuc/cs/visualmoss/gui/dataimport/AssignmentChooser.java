@@ -8,6 +8,7 @@ import edu.uiuc.cs.visualmoss.dataimport.api.objects.Student;
 import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
 import edu.uiuc.cs.visualmoss.gui.worker.AssignmentLoadingWorker;
+import edu.uiuc.cs.visualmoss.utility.Pair;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
@@ -34,10 +35,10 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
 	private VisualMossLayout frame;
 	private ArrayList<DefaultMutableTreeNode> assignmentNodes;
 	
-	public AssignmentChooser(VisualMossLayout frame, VisualMossGraphDisplayContainer display) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
+	public AssignmentChooser(VisualMossLayout frame, VisualMossGraphDisplayContainer display, Pair<String, String> activeDirectoryCredentials) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException
 	{
 		super();
-		this.importer = new DataImport();
+		this.importer = new DataImport(activeDirectoryCredentials);
 		this.courses = importer.getCourses();
 		this.display = display;
 		this.frame = frame;
