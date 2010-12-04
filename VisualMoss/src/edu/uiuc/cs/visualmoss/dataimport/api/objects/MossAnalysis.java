@@ -49,10 +49,10 @@ public class MossAnalysis implements Refreshable{
         this.connection = connection;
 
         //Explicitly add the non-primitive types
-        Map[] abstractMatches = (Map[]) abstractMossAnalysis.get(MATCHES);
+        Object[] abstractMatches = (Object[]) abstractMossAnalysis.get(MATCHES);
         matches = new ArrayList<MossMatch>();
-        for(Map abstractMatch : abstractMatches){
-            matches.add(new MossMatch(abstractMatch, connection));
+        for(Object abstractMatch : abstractMatches){
+            matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
         }
 
         //Remove it from the map

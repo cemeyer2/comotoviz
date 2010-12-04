@@ -262,6 +262,7 @@
         <root url="jar://$PROJECT_DIR$/VisualMoss/lib/logkit-1.0.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-logging-1.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/VisualMoss/lib/lobo.jar!/" />
+        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-lang-2.5.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

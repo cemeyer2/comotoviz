@@ -14,7 +14,19 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="" />
+    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="Got viz o">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.ipr" afterPath="$PROJECT_DIR$/plagiarism.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/lib/commons-lang-2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
+    </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin">
       <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\utility\CampusIPCheck.java" afterPath="" />
     </list>
@@ -35,6 +47,34 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" line="126" class="edu.uiuc.cs.visualmoss.dataimport.DataImport" package="edu.uiuc.cs.visualmoss.dataimport">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossMatch.java" line="79" class="edu.uiuc.cs.visualmoss.dataimport.api.objects.MossMatch" package="edu.uiuc.cs.visualmoss.dataimport.api.objects">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -75,7 +115,64 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="DataImport.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="120" column="20" selection-start="4523" selection-end="4523" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VisualMossMain.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="63" selection-start="937" selection-end="937" vertical-scroll-proportion="0.22557297">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Assignment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="116" column="0" selection-start="3033" selection-end="3033" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Analysis.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="0" selection-start="3349" selection-end="3349" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MossAnalysis.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="27" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MossMatch.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossMatch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="48" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -89,22 +186,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImportDriver.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/ListConverter.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/DataConverter.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/DateConverter.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/FileSet.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossReport.java" />
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" />
       </list>
     </option>
   </component>
@@ -145,6 +242,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -179,76 +277,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="visualmoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plagiarism" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="visualmoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plagiarism" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="visualmoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plagiarism" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="visualmoss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -362,13 +390,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -381,47 +408,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="edu.uiuc.cs.visualmoss.dataimport.api.converters" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.VisualMossMain">
-    <configuration default="false" name="VisualMossMain" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="edu.uiuc.cs.visualmoss.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <option name="MAIN_CLASS_NAME" value="edu.uiuc.cs.visualmoss.VisualMossMain" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="VisualMoss" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="49371" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP">
       <method>
         <option name="AntTarget" enabled="false" />
@@ -567,6 +566,37 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="false" name="VisualMossMain" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.uiuc.cs.visualmoss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <option name="MAIN_CLASS_NAME" value="edu.uiuc.cs.visualmoss.VisualMossMain" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-Xms=64m -Xmx=2048m" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="VisualMoss" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49371" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" enabled="false" />
+      </method>
+    </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.VisualMossMain" />
     </list>
@@ -616,25 +646,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39977092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55097365" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21432945" sideWeight="0.33562428" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21494183" sideWeight="0.51431847" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47766322" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21432945" sideWeight="0.6689576" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32302406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Time Tracker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -721,119 +751,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/FileSet.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_22/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="43" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.18085106">
+        <state line="349" column="19" selection-start="13014" selection-end="13014" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/JplagReport.java">
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="60" column="79" selection-start="2205" selection-end="2205" vertical-scroll-proportion="-0.22074789">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Language.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_22/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="363" column="87" selection-start="17864" selection-end="17864" vertical-scroll-proportion="0.6985816">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java">
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="36" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.8640662">
+        <state line="36" column="44" selection-start="1914" selection-end="1914" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="34" selection-start="1020" selection-end="1028" vertical-scroll-proportion="0.4863884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="0" selection-start="2709" selection-end="2709" vertical-scroll-proportion="0.12293144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="27" selection-start="6043" selection-end="6043" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_22/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="6" selection-start="8646" selection-end="8646" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="3033" selection-end="3033" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="0" selection-start="3349" selection-end="3349" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossMatch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.0449172">
+        <state line="75" column="48" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossReport.java">
+    <entry file="jar://$PROJECT_DIR$/VisualMoss/lib/swing-worker-1.2.jar!/org/jdesktop/swingworker/SwingWorker.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="48" selection-start="1422" selection-end="1422" vertical-scroll-proportion="0.40189126">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="28" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.22104019">
+        <state line="56" column="17" selection-start="2812" selection-end="2812" vertical-scroll-proportion="0.35628742">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Refreshable.java">
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="60" column="27" selection-start="1698" selection-end="1698" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Report.java">
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.56264776">
+        <state line="120" column="20" selection-start="4523" selection-end="4523" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Season.java">
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="22" column="63" selection-start="937" selection-end="937" vertical-scroll-proportion="0.22557297">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="42" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.6028369">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="49" selection-start="1778" selection-end="1778" vertical-scroll-proportion="0.58274233">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="48" selection-start="2467" selection-end="2467" vertical-scroll-proportion="0.643026">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/SubmissionFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.8037825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="8" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.33687943">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

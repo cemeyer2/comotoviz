@@ -34,7 +34,7 @@ public class Course implements Refreshable{
     /**
      * The list of associated file sets
      */
-    private List<Integer> fileSetIds;
+    private List<Integer> filesetIds;
 
     /**
      * The list of ids for the associated users
@@ -49,7 +49,7 @@ public class Course implements Refreshable{
     /**
      * The list of file sets
      */
-    private List<FileSet> fileSets = null;
+    private List<FileSet> filesets = null;
 
     /**
      * A connection to the CoMoTo API for lazily loading refreshing
@@ -84,11 +84,11 @@ public class Course implements Refreshable{
         name = newCourse.getName();
         userIds = newCourse.getUserIds();
         assignmentIds = newCourse.getAssignmentIds();
-        fileSetIds = newCourse.getFileSetIds();
+        filesetIds = newCourse.getFilesetIds();
 
         //Clear any cached data
         assignments = null;
-        fileSets = null;
+        filesets = null;
     }
 
     /**
@@ -113,16 +113,16 @@ public class Course implements Refreshable{
      *
      * @return A list of the file sets associated with this course
      */
-    public List<FileSet> getFileSets() {
+    public List<FileSet> getFilesets() {
 
         //Load the assignments from the API if not cached
-        if (fileSets == null) {
-            fileSets = new ArrayList<FileSet>();
-            for(int fileSetId : fileSetIds){
-                fileSets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+        if (filesets == null) {
+            filesets = new ArrayList<FileSet>();
+            for(int fileSetId : filesetIds){
+                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
             }
         }
-        return fileSets;
+        return filesets;
     }
 
     public int getId() {
@@ -157,11 +157,11 @@ public class Course implements Refreshable{
         this.assignmentIds = assignmentIds;
     }
 
-    public List<Integer> getFileSetIds() {
-        return fileSetIds;
+    public List<Integer> getFilesetIds() {
+        return filesetIds;
     }
 
-    public void setFileSetIds(List<Integer> fileSetIds) {
-        this.fileSetIds = fileSetIds;
+    public void setFilesetIds(List<Integer> filesetIds) {
+        this.filesetIds = filesetIds;
     }
 }

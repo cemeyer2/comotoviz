@@ -3,6 +3,7 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+import org.apache.commons.lang.WordUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,12 +56,12 @@ public class Assignment implements Refreshable{
     /**
      * The list of unique ids for the file sets associated with this assignment
      */
-    private List<Integer> fileSetIds;
+    private List<Integer> filesetIds;
 
     /**
      * The list of file sets associated with this assignment
      */
-    private List<FileSet> fileSets = null;
+    private List<FileSet> filesets = null;
 
     /**
      * A connection to the API for loading data lazily and refreshing this object
@@ -96,12 +97,12 @@ public class Assignment implements Refreshable{
         courseId = newAssignment.getCourseId();
         language = newAssignment.getLanguage();
         name = newAssignment.getName();
-        fileSetIds = newAssignment.getFileSetIds();
+        filesetIds = newAssignment.getFilesetIds();
         
         //Invalidate the cached data
         analysis = null;
         course = null;
-        fileSets = null;
+        filesets = null;
     }
 
     /**
@@ -137,16 +138,34 @@ public class Assignment implements Refreshable{
      *
      * @return The list of file sets
      */
-    public List<FileSet> getFileSets() {
+    public List<FileSet> getFilesets() {
 
         //Grab the list from the API if not cached
-        if(fileSetIds == null) {
-            fileSets = new ArrayList<FileSet>();
-            for(int fileSetId : fileSetIds){
-                fileSets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+        if(filesetIds == null) {
+            filesets = new ArrayList<FileSet>();
+            for(int fileSetId : filesetIds){
+                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
             }
         }
-        return fileSets;
+        return filesets;
+    }
+
+    /**
+     * Shows the display name of the assignment and to represent this assignment as a string
+     *
+     * @return The string representing this assignment
+     */
+    @Override
+    public String toString(){
+
+        //Make the names uniform and call them 'MP# ...'
+        String unformattedName = getName().toLowerCase().trim();
+        if(unformattedName.indexOf("mp")==0){
+            unformattedName = "MP" + unformattedName.substring(2);
+        }
+
+        //Return the display name of this assignment
+        return WordUtils.capitalize(unformattedName);
     }
 
     public Map getMap(){
@@ -193,11 +212,11 @@ public class Assignment implements Refreshable{
         this.name = name;
     }
 
-    public List<Integer> getFileSetIds() {
-        return fileSetIds;
+    public List<Integer> getFilesetIds() {
+        return filesetIds;
     }
 
-    public void setFileSetIds(List<Integer> fileSetIds) {
-        this.fileSetIds = fileSetIds;
+    public void setFilesetIds(List<Integer> filesetIds) {
+        this.filesetIds = filesetIds;
     }
 }

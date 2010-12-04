@@ -29,7 +29,7 @@ public class CoMoToAPIConstants {
 
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
-    public static final String FILE_SET_IDS = "file_set_ids";
+    public static final String FILESET_IDS = "file_set_ids";
     public static final String JPLAG_REPORT = "jplag_report";
     public static final String MATCHES = "matches";
     public static final String MOSS_REPORT = "moss_report";

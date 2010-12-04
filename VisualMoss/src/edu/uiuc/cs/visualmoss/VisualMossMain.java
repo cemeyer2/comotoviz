@@ -16,6 +16,12 @@ import java.sql.SQLException;
 public class VisualMossMain {
 
 	public static void main(String[] args) throws VisualMossException, MalformedURLException, DataIOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, SQLException {
+
+        //Set look and feel
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {/*Ignore, just defaults to 'metal' look*/}
+
 		try {
 			PlatformInit init = PlatformInit.getInstance();
 			//init.initLogging(false);

@@ -37,12 +37,12 @@ public class Offering implements Refreshable{
     /**
      * The list of ids for the associated file sets
      */
-    private List<Integer> fileSetIds;
+    private List<Integer> filesetIds;
 
     /**
      * The list of the associated file sets
      */
-    private List<FileSet> fileSets;
+    private List<FileSet> filesets;
 
     /**
      * The semester of this offering
@@ -86,11 +86,11 @@ public class Offering implements Refreshable{
 
         //Copy the primitive types from the API
         courseId = newOffering.getCourseId();
-        fileSetIds = newOffering.getFileSetIds();
+        filesetIds = newOffering.getFilesetIds();
         semester = newOffering.getSemester();
 
         //Clear cached data
-        fileSets = null;
+        filesets = null;
         course = null;
     }
 
@@ -113,16 +113,16 @@ public class Offering implements Refreshable{
      *
      * @return The list of file sets
      */
-    public List<FileSet> getFileSets() {
+    public List<FileSet> getFilesets() {
 
         //Grab the list from the API if not cached
-        if(fileSetIds == null) {
-            fileSets = new ArrayList<FileSet>();
-            for(int fileSetId : fileSetIds){
-                fileSets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+        if(filesetIds == null) {
+            filesets = new ArrayList<FileSet>();
+            for(int fileSetId : filesetIds){
+                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
             }
         }
-        return fileSets;
+        return filesets;
     }
 
     public Map getMap(){
@@ -145,12 +145,12 @@ public class Offering implements Refreshable{
         this.courseId = courseId;
     }
 
-    public List<Integer> getFileSetIds() {
-        return fileSetIds;
+    public List<Integer> getFilesetIds() {
+        return filesetIds;
     }
 
-    public void setFileSetIds(List<Integer> fileSetIds) {
-        this.fileSetIds = fileSetIds;
+    public void setFilesetIds(List<Integer> filesetIds) {
+        this.filesetIds = filesetIds;
     }
 
     public Semester getSemester() {

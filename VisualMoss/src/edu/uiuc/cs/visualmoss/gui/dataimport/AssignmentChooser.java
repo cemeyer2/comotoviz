@@ -55,6 +55,8 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
 		{
 			DefaultMutableTreeNode courseNode = new DefaultMutableTreeNode(course.getName());
 			coursesNode.add(courseNode);
+
+
 			for(Assignment assignment : course.getAssignments())
 			{
 				DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);

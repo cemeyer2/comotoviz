@@ -118,7 +118,7 @@ public class DataImport {
         declareGraphFields(graph);
 
         //Get the file sets associated with this assignment from the API
-        List<FileSet> fileSets = assignment.getFileSets();
+        List<FileSet> fileSets = assignment.getFilesets();
 
         //Get the set of moss matches for this assignment
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis().getMatches();
