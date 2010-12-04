@@ -14,30 +14,9 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="All object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIConstants.java" />
+    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
       <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\utility\CampusIPCheck.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossReport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/MossReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImportDriver.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImportDriver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Course.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/layout/VisualMossLayout.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/layout/VisualMossLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/login/LoginDialog.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/login/LoginDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Analysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Offering.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossConstants.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/DateFormatConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/FileSet.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/FileSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/ListConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/utility/Pair.java" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
     <ignored path="$USER_HOME_GRIFFON$/" />
@@ -392,7 +371,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
@@ -655,7 +634,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2155542" sideWeight="0.51431847" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21494183" sideWeight="0.51431847" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47766322" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Time Tracker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -678,7 +657,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="All object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use login credentials for API &amp; all object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -699,6 +678,7 @@
     <MESSAGE value="Updated URL in constants" />
     <MESSAGE value="Created 'Pair' utility and now using login window to authenticate against AD" />
     <MESSAGE value="All object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
+    <MESSAGE value="Use login credentials for API &amp; all object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
