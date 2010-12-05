@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Detect_Ext"/>
+	<classpathentry kind="src" path="Common"/>
+	<classpathentry kind="src" path="Testing"/>
+	<classpathentry kind="src" path="JWebContentExtension"/>
+	<classpathentry kind="src" path="HTML_Renderer"/>
+	<classpathentry kind="src" path="IzPack_RegistryPanel"/>
+	<classpathentry kind="src" path="XAMJ_Extension"/>
+	<classpathentry kind="src" path="Platform_Core"/>
+	<classpathentry kind="src" path="XAMJ_Public_API"/>
+	<classpathentry kind="src" path="Primary_Extension"/>
+	<classpathentry kind="src" path="Platform_Public_API"/>
+	<classpathentry kind="lib" path="XAMJ_Build/jRegistryKey.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ext"/>
+	<classpathentry kind="lib" path="XAMJ_Extension/jdtcore.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ext1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Cssparser"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

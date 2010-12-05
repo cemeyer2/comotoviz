@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true">
+	<output-test url="file://$MODULE_DIR$/../out/test/Lobo"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\lobo\XAMJ_Build\jRegistryKey.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lobo/XAMJ_Build/jRegistryKey.jar!/"/>
+	</lib>
+	<lib name="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\lobo\XAMJ_Extension\jdtcore.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lobo/XAMJ_Extension/jdtcore.jar!/"/>
+	</lib>
+</component>

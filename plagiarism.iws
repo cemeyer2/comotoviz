@@ -15,7 +15,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTTPS-demo/.classpath" afterPath="$PROJECT_DIR$/HTTPS-demo/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" afterPath="$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobo/Lobo.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lobo/cssparser/.classpath" afterPath="$PROJECT_DIR$/lobo/cssparser/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lobo/Lobo.iml" afterPath="$PROJECT_DIR$/lobo/Lobo.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LDAPAuth/LDAPAuth.eml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobo/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" afterPath="$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.eml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/VisualMoss.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lobo/cssparser/Cssparser.iml" afterPath="$PROJECT_DIR$/lobo/cssparser/Cssparser.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" afterPath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/.classpath" afterPath="$PROJECT_DIR$/VisualMoss/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDAPAuth/.classpath" afterPath="$PROJECT_DIR$/LDAPAuth/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/VisualMoss.iml" afterPath="$PROJECT_DIR$/VisualMoss/VisualMoss.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobo/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobo/cssparser/Cssparser.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prefuse-demo/.classpath" afterPath="$PROJECT_DIR$/prefuse-demo/.classpath" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin">
       <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\utility\CampusIPCheck.java" afterPath="" />
@@ -127,7 +146,7 @@
       <file leaf-file-name="DateFormatConverter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/DateFormatConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="48" selection-start="555" selection-end="555" vertical-scroll-proportion="0.30141845">
+            <state line="22" column="25" selection-start="760" selection-end="760" vertical-scroll-proportion="0.3817967">
               <folding />
             </state>
           </provider>
@@ -382,6 +401,26 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="converters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prefuse-demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HTTPS-demo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -683,7 +722,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got viz loading" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -706,6 +745,7 @@
     <MESSAGE value="All object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
     <MESSAGE value="Use login credentials for API &amp; all object attributes not eagerly loaded now populated via reflection (fixed startup errors for viz)" />
     <MESSAGE value="Got viz o" />
+    <MESSAGE value="Got viz loading" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -826,7 +866,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/DateFormatConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="48" selection-start="555" selection-end="555" vertical-scroll-proportion="0.30141845">
+        <state line="22" column="25" selection-start="760" selection-end="760" vertical-scroll-proportion="0.3817967">
           <folding />
         </state>
       </provider>
