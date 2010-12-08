@@ -14,17 +14,9 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="Temporarily bypassing SwingWorker, nearly adding all submissions sucessfully, but no reflection for enums yet.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/converters/EnumConverter.java" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\TypeConverter.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Semester.java" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\LanguageConverter.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" />
+    <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
       <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-client-3.1.2.jar" afterPath="" />
       <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-common-3.1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\SeasonConverter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin">
@@ -128,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataImport.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataImport.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="230" column="19" selection-start="9463" selection-end="9463" vertical-scroll-proportion="0.04101327">
+            <state line="241" column="57" selection-start="9988" selection-end="9988" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -149,7 +141,7 @@
       <file leaf-file-name="CoMoToAPIReflector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="19" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+            <state line="50" column="89" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,7 +152,27 @@
       <file leaf-file-name="Submission.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="0" selection-start="4594" selection-end="4594" vertical-scroll-proportion="0.0">
+            <state line="279" column="39" selection-start="6979" selection-end="6979" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssignmentChooser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="41" selection-start="3167" selection-end="3167" vertical-scroll-proportion="0.56103575">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssignmentLoadingWorker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/worker/AssignmentLoadingWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="11" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -169,7 +181,7 @@
       <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.033864543">
+            <state line="80" column="0" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -189,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/VisualMoss/build/build.xml" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPI.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java" />
@@ -205,6 +216,7 @@
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
       </list>
     </option>
   </component>
@@ -282,6 +294,284 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utility" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="help" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="diff" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataimport" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controls" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visualmoss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exceptions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -756,7 +1046,7 @@
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Temporarily bypassing SwingWorker, nearly adding all submissions sucessfully, but no reflection for enums yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Loading submissions from API sucessfully (no SwingWorker yet)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -781,6 +1071,7 @@
     <MESSAGE value="Got viz o" />
     <MESSAGE value="Got viz loading" />
     <MESSAGE value="Temporarily bypassing SwingWorker, nearly adding all submissions sucessfully, but no reflection for enums yet." />
+    <MESSAGE value="Loading submissions from API sucessfully (no SwingWorker yet)" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -837,11 +1128,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="0" selection-start="3649" selection-end="3649" vertical-scroll-proportion="1.14539" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Season.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" />
@@ -850,18 +1136,6 @@
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="12" selection-start="212" selection-end="220" vertical-scroll-proportion="0.18478261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="0" selection-start="4594" selection-end="4594" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.033864543">
           <folding />
         </state>
       </provider>
@@ -883,22 +1157,6 @@
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="38" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.5331725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="19" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="91" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -926,10 +1184,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIAccessTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="91" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/controls/VisualMossControls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="57" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.2612293">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="19" selection-start="9463" selection-end="9463" vertical-scroll-proportion="0.04101327">
+        <state line="241" column="57" selection-start="9988" selection-end="9988" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/CoMoToAPIReflector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="89" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/api/objects/Submission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="279" column="39" selection-start="6979" selection-end="6979" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/worker/AssignmentLoadingWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="11" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="41" selection-start="3167" selection-end="3167" vertical-scroll-proportion="0.56103575">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
