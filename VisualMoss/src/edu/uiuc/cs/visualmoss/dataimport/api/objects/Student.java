@@ -67,10 +67,10 @@ public class Student implements Refreshable{
         this.connection = connection;
 
         //Explicitly add non-primitive types
-        Map[] matchesArray = (Map[]) abstractStudent.get(MATCHES);
+        Object[] matchesArray = (Object[]) abstractStudent.get(MATCHES);
         matches = new ArrayList<MossMatch>();
-        for(Map matchMap : matchesArray){
-            matches.add(new MossMatch(matchMap, connection));
+        for(Object matchMap : matchesArray){
+            matches.add(new MossMatch((Map<String, Object>) matchMap, connection));
         }
 
         //Remove them from the map
@@ -86,7 +86,7 @@ public class Student implements Refreshable{
     public void refresh() {
 
         //First, grab the new student object from the API
-        Student newStudent = CoMoToAPI.getStudent(connection, id);
+        Student newStudent = CoMoToAPI.getStudent(connection, id, true);
 
         //Copy the basic data
         historyLink = newStudent.getHistoryLink();

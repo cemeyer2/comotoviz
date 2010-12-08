@@ -10,5 +10,6 @@ public enum Type {
     semester,
     fileset,
     studentsubmission,
-    solutionsubmission
+    solutionsubmission,
+    solutionsemester
 }

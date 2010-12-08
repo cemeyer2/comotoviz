@@ -141,7 +141,7 @@ public class Assignment implements Refreshable{
     public List<FileSet> getFilesets() {
 
         //Grab the list from the API if not cached
-        if(filesetIds == null) {
+        if(filesets == null) {
             filesets = new ArrayList<FileSet>();
             for(int fileSetId : filesetIds){
                 filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));

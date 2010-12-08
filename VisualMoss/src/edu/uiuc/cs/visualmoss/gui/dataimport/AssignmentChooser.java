@@ -5,14 +5,16 @@ import edu.uiuc.cs.visualmoss.dataimport.DataImport;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.Course;
 import edu.uiuc.cs.visualmoss.dataimport.api.objects.Student;
+import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
+import edu.uiuc.cs.visualmoss.graph.VisualMossGraphStudent;
 import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
-import edu.uiuc.cs.visualmoss.gui.worker.AssignmentLoadingWorker;
 import edu.uiuc.cs.visualmoss.utility.Pair;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,8 +90,27 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
 				assignmentNode.removeAllChildren();
 			}
 			selectedAssignment = (Assignment)obj;
-			AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
-			worker.execute();
+//			AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
+//			worker.run();
+
+            VisualMossGraph graph = null;
+            try {
+                graph = importer.buildGraph(selectedAssignment, true, frame);
+            } catch (DataIOException e) {
+                e.printStackTrace();
+            }
+
+            //add students as children
+            for(VisualMossGraphStudent student: graph.getStudents()) {
+                node.add(new DefaultMutableTreeNode(student));
+            }
+            ((DefaultTreeModel)tree.getModel()).reload();
+
+            display.changeGraph(graph);
+            frame.updateTitle(selectedAssignment);
+            frame.searchStudents();
+
+
 		}
 		else if(obj instanceof Student)
 		{

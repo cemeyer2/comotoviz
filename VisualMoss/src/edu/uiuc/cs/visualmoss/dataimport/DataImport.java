@@ -354,8 +354,10 @@ public class DataImport {
 
     private void estimateTotalWorkForProgressBar(boolean showProgress, LoadingProgressDialog dialog, List<FileSet> fileSets, List<MossMatch> matches) {
         if(showProgress) {
-            dialog.setTaskLength(fileSets.size() + matches.size());
-            dialog.setIndeterminate(false);
+            if(fileSets != null){
+                dialog.setTaskLength(fileSets.size() + matches.size());
+                dialog.setIndeterminate(false);
+            }
         }
     }
 

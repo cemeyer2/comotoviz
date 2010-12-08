@@ -174,7 +174,7 @@ public class Submission implements Refreshable{
 
         //Only call the API if it's not cached
         if(student == null) {
-            student = CoMoToAPI.getStudent(connection, studentId);
+            student = CoMoToAPI.getStudent(connection, studentId, true);
         }
         return student;
     }
@@ -190,7 +190,7 @@ public class Submission implements Refreshable{
         if(partners == null) {
             partners = new ArrayList<Student>();
             for(int partnerId : partnerIds){
-                partners.add(CoMoToAPI.getStudent(connection, partnerId));
+                partners.add(CoMoToAPI.getStudent(connection, partnerId, true));
             }
         }
         return partners;

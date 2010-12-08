@@ -76,7 +76,7 @@
 	<target name="war" depends="jar">
 		<jw:jnlpwar
 		            tofile="dist/VisualMoss.war"
-		            codebase="http://maggie.cs.illinois.edu:8080/VisualMoss"
+		            codebase="http://comoto.cs.illinois.edu/hg/plagiarism"
 		            title="VisualMoss"
 		            vendor="UIUC"
 		            pack200="false"

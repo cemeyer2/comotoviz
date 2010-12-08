@@ -240,10 +240,10 @@ public class CoMoToAPI {
      * @param studentId The id of the student to grab
      * @return The student from the API
      */
-    public static Student getStudent(CoMoToAPIConnection connection, int studentId){
+    public static Student getStudent(CoMoToAPIConnection connection, int studentId, boolean showHistory){
 
         //Get the file set from the api
-        Map abstractStudent = getMap(connection, GET_STUDENT, studentId);
+        Map abstractStudent = getMap(connection, GET_STUDENT, studentId, showHistory);
 
         //Build the file set
         return new Student(abstractStudent, connection);

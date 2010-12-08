@@ -30,7 +30,7 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 		this.tree = tree;
 		this.node = node;
 	}
-	
+
 	@Override
 	protected Void doInBackground() throws Exception {
 
