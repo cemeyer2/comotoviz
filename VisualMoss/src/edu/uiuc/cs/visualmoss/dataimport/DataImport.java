@@ -232,6 +232,8 @@ public class DataImport {
         int progress = 0;
         for(FileSet fileSet : fileSets){
 
+            System.out.println("Starting fileset");
+
             //Grab all submissions associated with this file set
             List<Submission> setOfSubmissions = fileSet.getSubmissions();
             submissions.addAll(setOfSubmissions);
@@ -246,37 +248,51 @@ public class DataImport {
                 int submissionId = submission.getId();
                 submissionsTable.put(submissionId, submission);
 
+                System.out.println("Starting submission");
+
+
                 //Get the student and pseudonym associated with this submission
-                Student student = submission.getStudent();
-                int pseudonym = submission.getAnalysisPseudonym().getPseudonym();
+                try {
 
-                //Figure out if this submission is a solution
-                Type submissionType = submission.getType();
-                boolean isSolution = (submissionType == Type.solutionsubmission);
+                    Student student = submission.getStudent();
+                    int pseudonym = submission.getAnalysisPseudonym().getPseudonym();
 
-                //Add this submission's data to the graph
-                Node node = graph.addNode();
-                if(!isSolution){
-                    node.setString(NETID, student.getNetid());
-                    node.setString(PSEUDONYM, Integer.toString(pseudonym));
-                    node.setString(SEASON, semester.getSeason().name());
-                    node.setString(YEAR, Integer.toString(semester.getYear()));
-                    node.setString(SUBMISSION_ID, Integer.toString(submissionId));
-                } else {
-                    node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
-                    node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
-                    node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
-                    node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
-                    node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                    //Figure out if this submission is a solution
+                    Type submissionType = submission.getType();
+                    boolean isSolution = (submissionType == Type.solutionsubmission);
+
+                    //Add this submission's data to the graph
+                    Node node = graph.addNode();
+                    if(!isSolution){
+                        node.setString(NETID, student.getNetid());
+                        node.setString(PSEUDONYM, Integer.toString(pseudonym));
+                        node.setString(SEASON, semester.getSeason().name());
+                        node.setString(YEAR, Integer.toString(semester.getYear()));
+                        node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                    } else {
+                        node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
+                        node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
+                        node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
+                        node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
+                        node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                    }
+                    node.setString(IS_SOLUTION, Boolean.toString(isSolution));
+
+                    //Add this new node to the hash table
+                    nodeTable.put(submissionId, node);
+
+                } catch (RuntimeException e) {
+                    // Something here didn't exist in the API, skip this one
                 }
-                node.setString(IS_SOLUTION, Boolean.toString(isSolution));
+                System.out.println("ending submission");
 
-                //Add this new node to the hash table
-                nodeTable.put(submissionId, node);
             }
+
 
             //Update the progress bar
             progress = updateProgressBar(showProgress, dialog, progress);
+            System.out.println("Ending fileset");
+
         }
         return progress;
     }

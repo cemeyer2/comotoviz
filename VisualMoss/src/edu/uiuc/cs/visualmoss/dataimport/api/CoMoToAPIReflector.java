@@ -1,9 +1,8 @@
 package edu.uiuc.cs.visualmoss.dataimport.api;
 
-import edu.uiuc.cs.visualmoss.dataimport.api.converters.*;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Language;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Season;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Type;
+import edu.uiuc.cs.visualmoss.dataimport.api.converters.DateFormatConverter;
+import edu.uiuc.cs.visualmoss.dataimport.api.converters.EnumConverter;
+import edu.uiuc.cs.visualmoss.dataimport.api.converters.ListConverter;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 
@@ -37,15 +36,11 @@ public class CoMoToAPIReflector<T> {
         //Register the type converters for populating non-primitive types on objects
         ConvertUtilsBean convertUtilsBean = new ConvertUtilsBean();
         convertUtilsBean.deregister(List.class);
-        convertUtilsBean.deregister(Type.class);
-        convertUtilsBean.deregister(Season.class);
-        convertUtilsBean.deregister(Language.class);
+        convertUtilsBean.deregister(String.class);
         convertUtilsBean.deregister(DateFormat.class);
         convertUtilsBean.register(new ListConverter(), List.class);
         convertUtilsBean.register(new DateFormatConverter(), DateFormat.class);
-        convertUtilsBean.register(new TypeConverter(), Type.class);
-        convertUtilsBean.register(new SeasonConverter(), Season.class);
-        convertUtilsBean.register(new LanguageConverter(), Language.class);
+        convertUtilsBean.register(new EnumConverter(), String.class);
 
         //Build the bean utils object with the specified converters
         BeanUtilsBean beanUtilsBean = new BeanUtilsBean(convertUtilsBean);

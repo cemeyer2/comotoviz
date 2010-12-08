@@ -40,6 +40,10 @@ public class Semester implements Refreshable{
      */
     private CoMoToAPIConnection connection;
 
+
+    public Semester() {
+    }
+
     public Semester(Map abstractSemester, CoMoToAPIConnection connection) {
 
         //Save the connection
@@ -80,16 +84,16 @@ public class Semester implements Refreshable{
         return type;
     }
 
-    public void setType(String type) {
-        this.type = Type.valueOf(type);
+   public void setType(Type type) {
+        this.type = type;
     }
 
     public Season getSeason() {
         return season;
     }
 
-    public void setSeason(String season) {
-        this.season = Season.valueOf(season);
+    public void setSeason(Season season) {
+        this.season = season;
     }
 
     public int getYear() {

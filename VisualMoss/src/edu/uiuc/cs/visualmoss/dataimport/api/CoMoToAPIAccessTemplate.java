@@ -25,7 +25,7 @@ public class CoMoToAPIAccessTemplate {
         try {
 			return (Map) connection.execute(method, parameters);
 		} catch (XmlRpcException e) {
-			throw new RuntimeException("Error getting the map from the requested method:\n" + e.getMessage());
+			throw new RuntimeException("Error getting the map from the requested method:\t" + e.getMessage());
 		}
     }
 
@@ -42,7 +42,7 @@ public class CoMoToAPIAccessTemplate {
         try {
 			return (Object[]) connection.execute(method, parameters);
 		} catch (XmlRpcException e) {
-			throw new RuntimeException("Error getting the list from the requested method:\n" + e.getMessage());
+			throw new RuntimeException("Error getting the list from the requested method:\t" + e.getMessage());
 		}
     }
 
