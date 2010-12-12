@@ -29,6 +29,7 @@ public class CoMoToAPIConstants {
 
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
+    public static final String CROSS_SEMESTER_MATCHES = "cross_semester_matches";
     public static final String FILESET_IDS = "file_set_ids";
     public static final String JPLAG_REPORT = "jplag_report";
     public static final String MATCHES = "matches";
@@ -38,7 +39,9 @@ public class CoMoToAPIConstants {
     public static final String OFFERINGS = "offerings";
     public static final String OFFERING_INFO = "offering_info";
     public static final String PARTNER_IDS = "partner_ids";
+    public static final String SAME_SEMESTER_MATCHES = "same_semester_matches";
     public static final String SEMESTER = "semester";
+    public static final String SOLUTION_MATCHES = "solution_matches";
     public static final String STUDENT = "student";
     public static final String SUBMISSIONS = "submissions";
     public static final String SUBMISSION_FILE_IDS = "submission_file_ids";

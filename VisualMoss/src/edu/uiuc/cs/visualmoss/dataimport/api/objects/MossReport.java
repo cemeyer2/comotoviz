@@ -17,24 +17,24 @@ import java.util.Map;
 public class MossReport implements Refreshable{
 
     /**
-     * A unique id for this MossReport
-     */
-    private int id;
-
-    /**
      * A unique id for the associated report
      */
     private int reportId;
 
     /**
-     * The associated report object
+     * A unique id for this MossReport
      */
-    private Report report = null;
+    private int id;
 
     /**
      * The list of the ids of the associated moss report files
      */
     private List<Integer> mossReportFileIds;
+
+    /**
+     * The associated report object
+     */
+    private Report report = null;
 
     /**
      * A connection to the API for lazily loading and refreshing data

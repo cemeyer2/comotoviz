@@ -19,9 +19,9 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MOSS_REPO
 public class Report implements Refreshable{
 
     /**
-     * The unique id for this report
+     * The id of the associated assignment object
      */
-    private int id;
+    private int assignmentId;
 
     /**
      * Whether or not this report is complete
@@ -29,14 +29,9 @@ public class Report implements Refreshable{
     private boolean complete;
 
     /**
-     * The id of the associated assignment object
+     * The unique id for this report
      */
-    private int assignmentId;
-
-    /**
-     * The associated assignment
-     */
-    private Assignment assignment = null;
+    private int id;
 
     /**
      * The associated jplag report object
@@ -47,6 +42,11 @@ public class Report implements Refreshable{
      * The associated moss report object
      */
     private MossReport mossReport;
+
+    /**
+     * The associated assignment
+     */
+    private Assignment assignment = null;
 
     /**
      * The connection to the API

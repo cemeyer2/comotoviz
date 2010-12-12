@@ -76,14 +76,14 @@ public class Student implements Refreshable{
     private String surName;
 
     /**
-     * The list of associated submission objects
-     */
-    private List<Submission> submissions = null;
-
-    /**
      * The list of the student's matches
      */
     private List<MossMatch> matches;
+
+    /**
+     * The list of associated submission objects
+     */
+    private List<Submission> submissions = null;
 
     /**
      * The API connection
@@ -103,13 +103,13 @@ public class Student implements Refreshable{
 
         //Explicitly add non-primitive types
         Object[] matchesArray = (Object[]) abstractStudent.get(MATCHES);
-        matches = new ArrayList<MossMatch>();
-        for(Object matchMap : matchesArray){
-            matches.add(new MossMatch((Map<String, Object>) matchMap, connection));
+        if(matches != null){
+            matches = new ArrayList<MossMatch>();
+            for(Object matchMap : matchesArray){
+                matches.add(new MossMatch((Map<String, Object>) matchMap, connection));
+            }
+            abstractStudent.remove(MATCHES);
         }
-
-        //Remove them from the map
-        abstractStudent.remove(MATCHES);
 
         CoMoToAPIReflector<Student> reflector = new CoMoToAPIReflector<Student>();
         reflector.populate(this, abstractStudent);

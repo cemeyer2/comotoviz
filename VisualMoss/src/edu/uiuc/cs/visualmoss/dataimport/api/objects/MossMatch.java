@@ -32,11 +32,6 @@ public class MossMatch implements Refreshable{
     private int mossAnalysisId;
 
     /**
-     * The associated analysis object
-     */
-    private MossAnalysis mossAnalysis = null;
-
-    /**
      * The score of the first student
      */
     private int score1;
@@ -52,14 +47,19 @@ public class MossMatch implements Refreshable{
     private int submission1Id;
 
     /**
-     * The first submission object
-     */
-    private Submission submission1 = null;
-
-    /**
      * The id of the second submission
      */
     private int submission2Id;
+
+    /**
+     * The associated analysis object
+     */
+    private MossAnalysis mossAnalysis = null;
+
+    /**
+     * The first submission object
+     */
+    private Submission submission1 = null;
 
     /**
      * The second associated submission object

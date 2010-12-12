@@ -15,9 +15,24 @@ import java.util.Map;
 public class SubmissionFile implements Refreshable{
 
     /**
+     * The content of this file
+     */
+    private String content;
+
+    /**
      * The unique id for this submission file
      */
     private int id;
+
+    /**
+     * Whether this submission file is 'meta'
+     */
+    private boolean meta;
+
+    /**
+     * The name of this file
+     */
+    private String name;
 
     /**
      * The id for the associated submission
@@ -30,24 +45,10 @@ public class SubmissionFile implements Refreshable{
     private Submission submission = null;
 
     /**
-     * Whether this submission file is 'meta'
-     */
-    private boolean meta;
-
-    /**
-     * The content of this file
-     */
-    private String content;
-
-    /**
-     * The name of this file
-     */
-    private String name;
-
-    /**
      * The API connections
      */
     private CoMoToAPIConnection connection;
+
 
     public SubmissionFile(Map abstractSubmissionFile, CoMoToAPIConnection connection) {
 

@@ -16,9 +16,9 @@ import java.util.Map;
 public class Semester implements Refreshable{
 
     /**
-     * The unique id for this semester
+     * The season
      */
-    private int id;
+    private Season season;
 
     /**
      * The 'type' for this semester
@@ -26,9 +26,9 @@ public class Semester implements Refreshable{
     private Type type;
 
     /**
-     * The season
+     * The unique id for this semester
      */
-    private Season season;
+    private int id;
 
     /**
      * The year
