@@ -30,9 +30,6 @@ public class ListConverter implements Converter {
         //Let's put a check into this to ensure that the <code>abstractObject</code> is an array
         if(sourceClass.isArray()){
 
-            //Get the type of this array (either Object or some primitive type)
-            Class arrayType = sourceClass.getComponentType();
-
             //Try to build a list of integers from this array, and just try something else if this fails
             try{
                 List<Integer> integerList = new ArrayList<Integer>();
@@ -46,8 +43,18 @@ public class ListConverter implements Converter {
 
             } catch(ClassCastException e){}
 
+            //Try to build a list of strings from this array, and just try something else if this fails
+            try{
+                List<String> stringList = new ArrayList<String>();
+                Object[] stringArray = (Object[]) abstractObject;
 
-            //Try to build a list of maps
+                for(Object string: stringArray){
+                    stringList.add((String) string);
+                }
+
+                return stringList;
+
+            } catch(ClassCastException e){}
 
         } else {
             throw new ConversionException("Cannot convert non-array to list!");

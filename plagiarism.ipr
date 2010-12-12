@@ -38,6 +38,9 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="69F47A86C2E2D04ACFD73FF83E352108" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
@@ -186,6 +189,9 @@
       <module fileurl="file://$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" filepath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/VisualMoss/VisualMoss.iml" filepath="$PROJECT_DIR$/VisualMoss/VisualMoss.iml" />
     </modules>
+  </component>
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6u22 (x64)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

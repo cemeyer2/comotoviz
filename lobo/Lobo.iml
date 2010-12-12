@@ -3,6 +3,7 @@
   <component name="EclipseModuleManager">
     <libelement value="jar://$MODULE_DIR$/XAMJ_Build/jRegistryKey.jar!/" />
     <libelement value="jar://$MODULE_DIR$/XAMJ_Extension/jdtcore.jar!/" />
+    <src_description expected_position="0" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
