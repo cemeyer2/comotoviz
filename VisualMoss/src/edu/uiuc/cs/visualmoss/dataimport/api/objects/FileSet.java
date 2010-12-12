@@ -190,12 +190,22 @@ public class FileSet implements Refreshable{
      * @return A list of the submissions associated with this file set
      */
     public List<Submission> getSubmissions() {
+        return getSubmissions(false);
+    }
+
+    /**
+     * Grabs the list of submissions from the api if not cached in this object
+     *
+     * @param fullStudentData Whether to eagerly load the student data from the API
+     * @return A list of the submissions associated with this file set
+     */
+    public List<Submission> getSubmissions(boolean fullStudentData) {
 
         //Load the assignments from the API if not cached
         if (submissions == null) {
             submissions = new ArrayList<Submission>();
             for(int submissionId : submissionIds){
-                submissions.add(CoMoToAPI.getSubmission(connection, submissionId));
+                submissions.add(CoMoToAPI.getSubmission(connection, submissionId, fullStudentData));
             }
         }
         return submissions;

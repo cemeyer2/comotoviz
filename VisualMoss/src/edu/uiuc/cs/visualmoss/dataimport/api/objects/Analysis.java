@@ -132,10 +132,20 @@ public class Analysis implements Refreshable {
      * @return The moss analysis object associated with this analysis
      */
     public MossAnalysis getMossAnalysis(){
+        return getMossAnalysis(false);
+    }
+
+    /**
+     * Gets the moss analysis object associated with this analysis
+     *
+     * @param categorizeMatches Whether to categorize the matches from the API
+     * @return The moss analysis object associated with this analysis
+     */
+    public MossAnalysis getMossAnalysis(boolean categorizeMatches){
 
         //Grab the moss analysis associated with this analysis in the API
         if(mossAnalysis==null){
-            mossAnalysis = CoMoToAPI.getMossAnalysis(connection, mossAnalysisId);
+            mossAnalysis = CoMoToAPI.getMossAnalysis(connection, mossAnalysisId, categorizeMatches);
         }
         return mossAnalysis;
     }

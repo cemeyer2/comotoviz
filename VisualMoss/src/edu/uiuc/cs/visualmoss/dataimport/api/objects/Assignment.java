@@ -139,12 +139,22 @@ public class Assignment implements Refreshable{
      * @return The list of file sets
      */
     public List<FileSet> getFilesets() {
+        return getFilesets(false);
+    }
+
+    /**
+     * Grabs the list of file sets lazily
+     *
+     * @param getSubmissionInfo Whether to load the submissions eagerly from the API
+     * @return The list of file sets
+     */
+    public List<FileSet> getFilesets(boolean getSubmissionInfo) {
 
         //Grab the list from the API if not cached
         if(filesets == null) {
             filesets = new ArrayList<FileSet>();
             for(int fileSetId : filesetIds){
-                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
+                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId, getSubmissionInfo));
             }
         }
         return filesets;

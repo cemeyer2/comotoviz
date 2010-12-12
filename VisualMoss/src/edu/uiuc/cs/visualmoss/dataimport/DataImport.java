@@ -118,10 +118,10 @@ public class DataImport {
         declareGraphFields(graph);
 
         //Get the file sets associated with this assignment from the API
-        List<FileSet> fileSets = assignment.getFilesets();
+        List<FileSet> fileSets = assignment.getFilesets(true);
 
         //Get the set of moss matches for this assignment
-        List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis().getMatches();
+        List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
         
         //Get ready to pull out all of the submissions from the file sets
         submissions = new ArrayList<Submission>();
@@ -235,7 +235,7 @@ public class DataImport {
             System.out.println("Starting fileset");
 
             //Grab all submissions associated with this file set
-            List<Submission> setOfSubmissions = fileSet.getSubmissions();
+            List<Submission> setOfSubmissions = fileSet.getSubmissions(true);
             submissions.addAll(setOfSubmissions);
 
             //Get the semester data from the file set
