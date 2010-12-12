@@ -105,7 +105,7 @@ public class DataImport {
     public VisualMossGraph buildGraph(Assignment assignment, boolean showProgress, JFrame parent) throws DataIOException {
 
         //Create the progress bar
-        LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading", "Loading Graph...");
+        LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading Graph of \"" + assignment.getName() + "\"", "Loading Graph...");
         this.assignment = assignment;
 
         //Initialize and display the progress bar if we're supposed to
@@ -145,38 +145,42 @@ public class DataImport {
         //Keep a copy of this graph we built, and return it
         this.graph = new VisualMossGraph(copyGraph(graph), assignment.getCourse().getName(), assignment.getName());
         return this.graph;
-
     }
 
-    private int addMatchNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<MossMatch> matches, Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable, int progress) {
+    private int addMatchNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<MossMatch> matches,
+                              Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable, int progress) {
         for(MossMatch match : matches){
 
             //Find the two submissions associated with this match
             Submission submissionOne = submissionsTable.get(match.getSubmission1Id());
             Submission submissionTwo = submissionsTable.get(match.getSubmission2Id());
 
-            //Find the nodes for these submissions
-            Node submissionOneNode = nodeTable.get(submissionOne.getId());
-            Node submissionTwoNode = nodeTable.get(submissionTwo.getId());
+            //Catch situations where we can't find the submission nodes for the edge
+            if(submissionOne != null && submissionTwo != null){
 
-            //Create a new edge for this match
-            Edge edge = graph.addEdge(submissionOneNode, submissionTwoNode);
+                //Find the nodes for these submissions
+                Node submissionOneNode = nodeTable.get(submissionOne.getId());
+                Node submissionTwoNode = nodeTable.get(submissionTwo.getId());
 
-            //Build the data for this edge
-            double score1 = match.getScore1();
-            double score2 = match.getScore2();
-            double maxScore = Math.max(score1, score2);
-            URL matchLink = match.getLink();
+                //Create a new edge for this match
+                Edge edge = graph.addEdge(submissionOneNode, submissionTwoNode);
 
-            //Figure out if these two were partners or not
-            boolean arePartners = arePartnered(submissionOne, submissionTwo);
+                //Build the data for this edge
+                double score1 = match.getScore1();
+                double score2 = match.getScore2();
+                double maxScore = Math.max(score1, score2);
+                URL matchLink = match.getLink();
 
-            //Set this data on the edge
-            edge.setDouble(SCORE1, score1);
-            edge.setDouble(SCORE2, score2);
-            edge.setDouble(WEIGHT, maxScore);
-            edge.setString(LINK, matchLink.toString());
-            edge.setBoolean(IS_PARTNER, arePartners);
+                //Figure out if these two were partners or not
+                boolean arePartners = arePartnered(submissionOne, submissionTwo);
+
+                //Set this data on the edge
+                edge.setDouble(SCORE1, score1);
+                edge.setDouble(SCORE2, score2);
+                edge.setDouble(WEIGHT, maxScore);
+                edge.setString(LINK, matchLink.toString());
+                edge.setBoolean(IS_PARTNER, arePartners);
+            }
 
             //Update the progress bar
             progress = updateProgressBar(showProgress, dialog, progress);
