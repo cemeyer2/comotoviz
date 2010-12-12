@@ -29,19 +29,9 @@ public class Assignment implements Refreshable{
     private int analysisId;
 
     /**
-     * The analysis object associated with this assignment
-     */
-    private Analysis analysis = null;
-
-    /**
      * Unique id for the course associated with this assignment
      */
     private int courseId;
-
-    /**
-     * The course associated with this assignment
-     */
-    private Course course = null;
 
     /**
      * The language of this assignment
@@ -57,6 +47,16 @@ public class Assignment implements Refreshable{
      * The list of unique ids for the file sets associated with this assignment
      */
     private List<Integer> filesetIds;
+
+    /**
+     * The analysis object associated with this assignment
+     */
+    private Analysis analysis = null;
+
+    /**
+     * The course associated with this assignment
+     */
+    private Course course = null;
 
     /**
      * The list of file sets associated with this assignment

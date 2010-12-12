@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERING_INFO;
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SEMESTER;
 
 /**
@@ -32,7 +33,7 @@ public class Offering implements Refreshable{
     /**
      * The associated course object
      */
-    private Course course;
+    private Course course = null;
 
     /**
      * The list of ids for the associated file sets
@@ -40,9 +41,24 @@ public class Offering implements Refreshable{
     private List<Integer> filesetIds;
 
     /**
+     * The student id's for the students enlisted in this offering
+     */
+    private List<Integer> rosterStudentIds;
+
+    /**
      * The list of the associated file sets
      */
     private List<FileSet> filesets;
+
+    /**
+     * The extra offering info for this offering
+     */
+    private List<OfferingInfo> offeringInfo;
+
+    /**
+     * The LDAP dns for this offering
+     */
+    private List<String> ldapDns;
 
     /**
      * The semester of this offering
@@ -67,10 +83,23 @@ public class Offering implements Refreshable{
 
         //Explicitly add non-primitive types
         Map semesterMap = (Map) abstractOffering.get(SEMESTER);
-        semester = new Semester(semesterMap, connection);
+        if(semesterMap != null) {
+            semester = new Semester(semesterMap, connection);
 
-        //Remove these from the map
-        abstractOffering.remove(SEMESTER);
+            //Remove these from the map
+            abstractOffering.remove(SEMESTER);
+        }
+        Object[] offeringInfoMapList = (Object[]) abstractOffering.get(OFFERING_INFO);
+        if(offeringInfoMapList != null){
+            offeringInfo = new ArrayList<OfferingInfo>();
+            for(Object abstractOfferingInfo : offeringInfoMapList){
+                offeringInfo.add(new OfferingInfo((Map) abstractOfferingInfo, connection));
+            }
+
+            //Remove these from the map
+            abstractOffering.remove(OFFERING_INFO);
+        }
+
 
         CoMoToAPIReflector<Offering> reflector = new CoMoToAPIReflector<Offering>();
         reflector.populate(this, abstractOffering);
@@ -159,5 +188,21 @@ public class Offering implements Refreshable{
 
     public void setSemester(Semester semester) {
         this.semester = semester;
+    }
+
+    public List<Integer> getRosterStudentIds() {
+        return rosterStudentIds;
+    }
+
+    public void setRosterStudentIds(List<Integer> rosterStudentIds) {
+        this.rosterStudentIds = rosterStudentIds;
+    }
+
+    public List<String> getLdapDns() {
+        return ldapDns;
+    }
+
+    public void setLdapDns(List<String> ldapDns) {
+        this.ldapDns = ldapDns;
     }
 }

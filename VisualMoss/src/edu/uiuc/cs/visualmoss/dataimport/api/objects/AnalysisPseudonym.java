@@ -26,11 +26,6 @@ public class AnalysisPseudonym implements Refreshable{
     private int analysisId;
 
     /**
-     * The analysis associated with this pseudonym, either initialized with this object or lazily loaded
-     */
-    private Analysis analysis = null;
-
-    /**
      * The numerical pseudonym
      */
     private int pseudonym;
@@ -39,6 +34,11 @@ public class AnalysisPseudonym implements Refreshable{
      * The unique id of the associated submission
      */
     private int submissionId;
+
+    /**
+     * The analysis associated with this pseudonym, either initialized with this object or lazily loaded
+     */
+    private Analysis analysis = null;
 
     /**
      * The submission object associated with this pseudonym, either initialized with this object or lazily loaded

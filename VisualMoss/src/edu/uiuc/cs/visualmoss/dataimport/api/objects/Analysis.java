@@ -41,19 +41,9 @@ public class Analysis implements Refreshable {
     private int assignmentId;
 
     /**
-     * The actual moss analysis object associated with this analysis, loaded lazily
-     */
-    private Assignment assignment = null;
-
-    /**
      * The id to uniquely identify the associated moss analysis with this aggregate analysis
      */
     private int mossAnalysisId;
-
-    /**
-     * The actual moss analysis object associated with this analysis, loaded lazily
-     */
-    private MossAnalysis mossAnalysis = null;
 
     /**
      * The id to uniquely identify the associated jplag analysis with this aggregate analysis
@@ -61,14 +51,24 @@ public class Analysis implements Refreshable {
     private int jplagAnalysisId;
 
     /**
+     * The pseudonyms for the this analysis
+     */
+    private List<AnalysisPseudonym> analysisPseudonyms;
+
+    /**
+     * The actual moss analysis object associated with this analysis, loaded lazily
+     */
+    private Assignment assignment = null;
+
+    /**
      * The actual jplag analysis object associated with this analysis, loaded lazily
      */
     private JplagAnalysis jplagAnalysis = null;
 
     /**
-     * The pseudonyms for the this analysis
+     * The actual moss analysis object associated with this analysis, loaded lazily
      */
-    private List<AnalysisPseudonym> analysisPseudonyms;
+    private MossAnalysis mossAnalysis = null;
 
     /**
      * The connection to the CoMoToAPI. Having a local copy of this connection allows this object to refresh itself with
@@ -97,6 +97,7 @@ public class Analysis implements Refreshable {
         }
         abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
 
+        // Populate the rest of this object using reflection
         CoMoToAPIReflector<Analysis> reflector = new CoMoToAPIReflector<Analysis>();
         reflector.populate(this, abstractAnalysis);
     }

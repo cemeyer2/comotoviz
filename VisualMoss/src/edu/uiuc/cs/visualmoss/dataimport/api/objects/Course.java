@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERINGS;
+
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
@@ -15,16 +17,6 @@ import java.util.Map;
  * <p> <p> Holds the data of a particular course
  */
 public class Course implements Refreshable{
-
-    /**
-     * The unique id for this course
-     */
-    private int id;
-
-    /**
-     * The name of this course
-     */
-    private String name;
 
     /**
      * The list of associated assignment ids
@@ -35,6 +27,26 @@ public class Course implements Refreshable{
      * The list of associated file sets
      */
     private List<Integer> filesetIds;
+
+    /**
+     * The unique id for this course
+     */
+    private int id;
+
+    /**
+     * LDAP information for the course
+     */
+    private String ldapDn;
+
+    /**
+     * The name of this course
+     */
+    private String name;
+
+    /**
+     * The list of offerings associated with this course
+     */
+    private List<Offering> offerings;
 
     /**
      * The list of ids for the associated users
@@ -66,6 +78,14 @@ public class Course implements Refreshable{
 
         //Store the connection
         this.connection = connection;
+
+        //Populate the list of offerings (the non-primitive objects) explicitly
+        Object[] abstractOfferings = (Object[]) abstractCourse.get(OFFERINGS);
+        offerings = new ArrayList<Offering>();
+        for(Object abstractOffering : abstractOfferings){
+            offerings.add(new Offering((Map<String, Object>) abstractOffering, connection));
+        }
+        abstractCourse.remove(OFFERINGS);
 
         //Populate this object using reflection
         CoMoToAPIReflector<Course> reflector = new CoMoToAPIReflector<Course>();
@@ -163,5 +183,21 @@ public class Course implements Refreshable{
 
     public void setFilesetIds(List<Integer> filesetIds) {
         this.filesetIds = filesetIds;
+    }
+
+    public String getLdapDn() {
+        return ldapDn;
+    }
+
+    public void setLdapDn(String ldapDn) {
+        this.ldapDn = ldapDn;
+    }
+
+    public List<Offering> getOfferings() {
+        return offerings;
+    }
+
+    public void setOfferings(List<Offering> offerings) {
+        this.offerings = offerings;
     }
 }

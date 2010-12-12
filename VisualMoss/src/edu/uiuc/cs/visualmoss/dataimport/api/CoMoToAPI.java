@@ -52,6 +52,22 @@ public class CoMoToAPI {
     }
 
     /**
+     * Gets an assignment by its id from the API.
+     *
+     * @param connection The connection to use to grab the list of assignments
+     * @param assignmentId The id of the assignment to grab
+     * @return The assignment
+     */
+    public static Assignment getAssignment(CoMoToAPIConnection connection, int assignmentId) {
+
+        //Get the object from the API
+        Map abstractAssignment = getMap(connection, GET_ASSIGNMENT, assignmentId);
+
+        //Build the resulting list of assignments
+        return new Assignment(abstractAssignment, connection);
+    }
+
+    /**
      * Gets the list of all assignments from a specific course
      *
      * @param connection The connection to use to grab the list of assignments
@@ -75,22 +91,6 @@ public class CoMoToAPI {
     }
 
     /**
-     * Gets the list of all assignments from a specific course
-     *
-     * @param connection The connection to use to grab the list of assignments
-     * @param assignmentId The id of the assignment to grab
-     * @return The assignment
-     */
-    public static Assignment getAssignment(CoMoToAPIConnection connection, int assignmentId) {
-
-        //Get the object from the API
-        Map abstractAssignment = getMap(connection, GET_ASSIGNMENT, assignmentId);
-
-        //Build the resulting list of assignments
-        return new Assignment(abstractAssignment, connection);
-    }
-
-    /**
      * Gets a course by its id from the API
      *
      * @param connection The connection to use to grab the data
@@ -107,6 +107,23 @@ public class CoMoToAPI {
     }
 
     /**
+     * Gets a course by its id from the API
+     *
+     * @param connection The connection to use to grab the data
+     * @param courseId The id of the course to grab
+     * @param extraOfferingInfo Indicates whether we should return extra information about this offering
+     * @return The course
+     */
+    public static Course getCourse(CoMoToAPIConnection connection, int courseId, boolean extraOfferingInfo) {
+
+        //Get the object from the API
+        Map abstractCourse = getMap(connection, GET_COURSE, courseId, extraOfferingInfo);
+
+        //Build the resulting list of assignments
+        return new Course(abstractCourse, connection);
+    }
+
+    /**
      * Gets the list of all courses from the CoMoTo API
      *
      * @param connection The connection from which to grab this data
@@ -116,6 +133,29 @@ public class CoMoToAPI {
 
         //Get the courses from the API
         Object[] abstractCourses = getArray(connection, GET_COURSES);
+
+        //Build the list of courses
+        List<Course> courses = new ArrayList<Course>();
+        for(Object abstractCourse : abstractCourses){
+
+            Course course = new Course((Map) abstractCourse, connection);
+            courses.add(course);
+        }
+
+        return courses;
+    }
+
+    /**
+     * Gets the list of all courses from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param extraOfferingInfo Whether we should get extra offering information from the API as well
+     * @return The list of courses
+     */
+    public static List<Course> getCourses(CoMoToAPIConnection connection, boolean extraOfferingInfo) {
+
+        //Get the courses from the API
+        Object[] abstractCourses = getArray(connection, GET_COURSES, extraOfferingInfo);
 
         //Build the list of courses
         List<Course> courses = new ArrayList<Course>();
