@@ -252,6 +252,86 @@ public class CoMoToAPI {
     }
 
     /**
+     * Gets a moss analysis from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param mossAnalysisId The id of the moss analysis to grab
+     * @param categorizeMatches Whether we should get back categorized matches rather than one pile of matches
+     * @return The moss analysis from the API
+     */
+    public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches) {
+
+        //Get the file set from the api
+        Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches);
+
+        //Build the file set
+        return new MossAnalysis(abstractMossAnalysis, connection);
+    }
+
+    /**
+     * Gets a moss analysis from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param mossAnalysisId The id of the moss analysis to grab
+     * @param categorizeMatches Whether we should get back categorized matches rather than one pile of matches
+     * @param minimumMatchScore The minimum threshold for match scores
+     * @return The moss analysis from the API
+     */
+    public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
+                                               int minimumMatchScore) {
+
+        //Get the file set from the api
+        Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore);
+
+        //Build the file set
+        return new MossAnalysis(abstractMossAnalysis, connection);
+    }
+
+    /**
+     * Gets a moss analysis from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param mossAnalysisId The id of the moss analysis to grab
+     * @param categorizeMatches Whether we should get back categorized matches rather than one pile of matches
+     * @param minimumMatchScore The minimum threshold for match scores
+     * @param singleStudentMaxMatchesLowerBound The lower bound for the maximum number of matches
+     * @return The moss analysis from the API
+     */
+    public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
+                                               int minimumMatchScore, int singleStudentMaxMatchesLowerBound) {
+
+        //Get the file set from the api
+        Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore,
+                singleStudentMaxMatchesLowerBound);
+
+        //Build the file set
+        return new MossAnalysis(abstractMossAnalysis, connection);
+    }
+
+    /**
+     * Gets a moss analysis from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param mossAnalysisId The id of the moss analysis to grab
+     * @param categorizeMatches Whether we should get back categorized matches rather than one pile of matches
+     * @param minimumMatchScore The minimum threshold for match scores
+     * @param singleStudentMaxMatchesLowerBound The lower bound for the maximum number of matches
+     * @param singleStudentMaxMatchesUpperBound The upper bound for the maximum number of matches
+     * @return The moss analysis from the API
+     */
+    public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
+                                               int minimumMatchScore, int singleStudentMaxMatchesLowerBound,
+                                               int singleStudentMaxMatchesUpperBound) {
+
+        //Get the file set from the api
+        Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore,
+                singleStudentMaxMatchesLowerBound, singleStudentMaxMatchesUpperBound);
+
+        //Build the file set
+        return new MossAnalysis(abstractMossAnalysis, connection);
+    }
+
+    /**
      * Gets a moss match object by its id
      *
      * @param connection The connection from which to grab the data
@@ -283,10 +363,34 @@ public class CoMoToAPI {
         return new MossReport(abstractMossReport, connection);
     }
 
+    /**
+     * Gets an offering object from the API
+     *
+     * @param connection The connection rom which to grab the data
+     * @param offeringId The id of the offering to grab
+     * @return The offering object from the API
+     */
     public static Offering getOffering(CoMoToAPIConnection connection, int offeringId) {
 
         //Get the offering from the api
         Map abstractOffering = getMap(connection, GET_OFFERING, offeringId);
+
+        //Build the offering
+        return new Offering(abstractOffering, connection);
+    }
+
+    /**
+     * Gets an offering object from the API
+     *
+     * @param connection The connection rom which to grab the data
+     * @param offeringId The id of the offering to grab
+     * @param extraInfo Whether to grab the extra information for this offering
+     * @return The offering object from the API
+     */
+    public static Offering getOffering(CoMoToAPIConnection connection, int offeringId, boolean extraInfo) {
+
+        //Get the offering from the api
+        Map abstractOffering = getMap(connection, GET_OFFERING, offeringId, extraInfo);
 
         //Build the offering
         return new Offering(abstractOffering, connection);
@@ -309,16 +413,118 @@ public class CoMoToAPI {
     }
 
     /**
+     * Gets a semester by its id
+     *
+     * @param connection The connection from which to grab the data
+     * @param semesterId The id of the semester
+     * @return The semester
+     */
+    public static Semester getSemester(CoMoToAPIConnection connection, int semesterId) {
+
+        //Get the file set from the api
+        Map abstractSemester = getMap(connection, GET_SEMESTER, semesterId);
+
+        //Build the file set
+        return new Semester(abstractSemester, connection);
+    }
+
+    /**
      * Gets a student from the CoMoTo API
      *
      * @param connection The connection from which to grab this data
      * @param studentId The id of the student to grab
      * @return The student from the API
      */
+    public static Student getStudent(CoMoToAPIConnection connection, int studentId){
+
+        //Get the file set from the api
+        Map abstractStudent = getMap(connection, GET_STUDENT, studentId);
+
+        //Build the file set
+        return new Student(abstractStudent, connection);
+    }
+
+    /**
+     * Gets a student from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param studentId The id of the student to grab
+     * @param showHistory Whether to get the student's history as well
+     * @return The student from the API
+     */
     public static Student getStudent(CoMoToAPIConnection connection, int studentId, boolean showHistory){
 
         //Get the file set from the api
         Map abstractStudent = getMap(connection, GET_STUDENT, studentId, showHistory);
+
+        //Build the file set
+        return new Student(abstractStudent, connection);
+    }
+
+    /**
+     * Gets a student from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param studentId The id of the student to grab
+     * @param showHistory Whether to get the student's history as well
+     * @param minimumMatchScore The threshold below which to ignore matches in the students history
+     * @return The student from the API
+     */
+    public static Student getStudent(CoMoToAPIConnection connection, int studentId, boolean showHistory, int minimumMatchScore){
+
+        //Get the file set from the api
+        Map abstractStudent = getMap(connection, GET_STUDENT, studentId, showHistory, minimumMatchScore);
+
+        //Build the file set
+        return new Student(abstractStudent, connection);
+    }
+
+    /**
+     * Gets a student from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param netid The netid of the student to grab
+     * @return The student from the API
+     */
+    public static Student getStudentByNetid(CoMoToAPIConnection connection, String netid){
+
+        //Get the file set from the api
+        Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid);
+
+        //Build the file set
+        return new Student(abstractStudent, connection);
+    }
+
+    /**
+     * Gets a student from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param netid The netid of the student to grab
+     * @param showHistory Whether to get the student's history as well
+     * @return The student from the API
+     */
+    public static Student getStudentByNetid(CoMoToAPIConnection connection, String netid, boolean showHistory){
+
+        //Get the file set from the api
+        Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid, showHistory);
+
+        //Build the file set
+        return new Student(abstractStudent, connection);
+    }
+
+    /**
+     * Gets a student from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param netid The id of the student to grab
+     * @param showHistory Whether to get the student's history as well
+     * @param minimumMatchScore The threshold below which to ignore matches in the students history
+     * @return The student from the API
+     */
+    public static Student getStudentByNetid(CoMoToAPIConnection connection, String netid, boolean showHistory, int minimumMatchScore){
+
+        //Get the file set from the api
+        Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid, showHistory, minimumMatchScore);
 
         //Build the file set
         return new Student(abstractStudent, connection);
@@ -341,6 +547,23 @@ public class CoMoToAPI {
     }
 
     /**
+     * Gets a submission from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param submissionId The id of the submission to grab
+     * @param fullStudentData Whether to grab the full student data from the API with the submission data
+     * @return The submission from the API
+     */
+    public static Submission getSubmission(CoMoToAPIConnection connection, int submissionId, boolean fullStudentData){
+
+        //Get the file set from the api
+        Map abstractSubmission = getMap(connection, GET_SUBMISSION, submissionId, fullStudentData);
+
+        //Build the file set
+        return new Submission(abstractSubmission, connection);
+    }
+
+    /**
      * Gets a submission file from the CoMoTo API
      *
      * @param connection The connection from which to grab this data
@@ -357,18 +580,19 @@ public class CoMoToAPI {
     }
 
     /**
-     * Gets a semester by its id
+     * Gets a submission file from the CoMoTo API
      *
-     * @param connection The connection from which to grab the data
-     * @param semesterId The id of the semester
-     * @return The semester
+     * @param connection The connection from which to grab this data
+     * @param submissionFileId The id of the submission file to grab
+     * @param highlighted Whether to return the submission file as a highlighted file
+     * @return The submission file from the API
      */
-    public static Semester getSemester(CoMoToAPIConnection connection, int semesterId) {
+    public static SubmissionFile getSubmissionFile(CoMoToAPIConnection connection, int submissionFileId, boolean highlighted){
 
         //Get the file set from the api
-        Map abstractSemester = getMap(connection, GET_SEMESTER, semesterId);
+        Map abstractSubmissionFile = getMap(connection, GET_SUBMISSION_FILE, submissionFileId, highlighted);
 
         //Build the file set
-        return new Semester(abstractSemester, connection);
+        return new SubmissionFile(abstractSubmissionFile, connection);
     }
 }

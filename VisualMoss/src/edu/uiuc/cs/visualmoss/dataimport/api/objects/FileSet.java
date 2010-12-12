@@ -83,6 +83,11 @@ public class FileSet implements Refreshable{
     private CoMoToAPIConnection connection;
 
     /**
+     * Records whether this object pulls all the submisison info eagerly from the API
+     */
+    private boolean fullSubmissionInfo = false;
+
+    /**
      * Constructs this file set
      *
      * @param abstractFileSet A map holding the data of this file set
@@ -103,6 +108,7 @@ public class FileSet implements Refreshable{
         //Explicitly add the submission objects
         Object[] abstractSubmissions = (Object[]) abstractFileSet.get(SUBMISSIONS);
         if(abstractSubmissions != null){
+            fullSubmissionInfo = true;
             submissions = new ArrayList<Submission>();
             for(Object abstractSubmission : abstractSubmissions){
                 submissions.add(new Submission((Map<String, Object>) abstractSubmission, connection));
@@ -115,26 +121,36 @@ public class FileSet implements Refreshable{
         reflector.populate(this, abstractFileSet);
     }
 
+
+
     /**
      * {@inheritDoc}
      */
     public void refresh() {
 
         //Grab the new file set from the API
-        FileSet newFileSet = CoMoToAPI.getFileSet(connection, id);
+        FileSet newFileSet;
+        if(fullSubmissionInfo){
+            newFileSet = CoMoToAPI.getFileSet(connection, id, true);
+        } else {
+            newFileSet = CoMoToAPI.getFileSet(connection, id, false);
+        }
 
-        //Copy the primitive data over
-        courseId = newFileSet.getCourseId();
-        offering = newFileSet.getOffering();
-        timestamp = newFileSet.getTimestamp();
+        //Copy the data over
         assignmentIds = newFileSet.getAssignmentIds();
+        courseId = newFileSet.getCourseId();
+        isComplete = newFileSet.isComplete();
+        offering = newFileSet.getOffering();
         submissionIds = newFileSet.getSubmissionIds();
+        timestamp = newFileSet.getTimestamp();
         type = newFileSet.getType();
 
         //Clear the cached data
+        if(!fullSubmissionInfo){
+            submissions = null;
+        }
         course = null;
         assignments = null;
-        submissions = null;
     }
 
     /**

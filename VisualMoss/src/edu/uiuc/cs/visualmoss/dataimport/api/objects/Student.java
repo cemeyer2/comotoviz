@@ -111,6 +111,7 @@ public class Student implements Refreshable{
             abstractStudent.remove(MATCHES);
         }
 
+        //Populate this object using reflection
         CoMoToAPIReflector<Student> reflector = new CoMoToAPIReflector<Student>();
         reflector.populate(this, abstractStudent);
     }

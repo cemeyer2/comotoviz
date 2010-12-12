@@ -31,11 +31,6 @@ public class Offering implements Refreshable{
     private int courseId;
 
     /**
-     * The associated course object
-     */
-    private Course course = null;
-
-    /**
      * The list of ids for the associated file sets
      */
     private List<Integer> filesetIds;
@@ -46,14 +41,9 @@ public class Offering implements Refreshable{
     private List<Integer> rosterStudentIds;
 
     /**
-     * The list of the associated file sets
-     */
-    private List<FileSet> filesets;
-
-    /**
      * The extra offering info for this offering
      */
-    private List<OfferingInfo> offeringInfo;
+    private List<OfferingInfo> offeringInfo = null;
 
     /**
      * The LDAP dns for this offering
@@ -66,9 +56,24 @@ public class Offering implements Refreshable{
     private Semester semester;
 
     /**
+     * The list of the associated file sets
+     */
+    private List<FileSet> filesets = null;
+
+    /**
+     * The associated course object
+     */
+    private Course course = null;
+
+    /**
      * A connection to the API
      */
     private CoMoToAPIConnection connection;
+
+    /**
+     * Whether this object should eagerly load extra offering info
+     */
+    private boolean extraOfferingInfo = false;
 
     /**
      * Creates an offering object
@@ -81,7 +86,7 @@ public class Offering implements Refreshable{
         //Save the connections
         this.connection = connection;
 
-        //Explicitly add non-primitive types
+        //Explicitly add semester object if it exists
         Map semesterMap = (Map) abstractOffering.get(SEMESTER);
         if(semesterMap != null) {
             semester = new Semester(semesterMap, connection);
@@ -89,8 +94,11 @@ public class Offering implements Refreshable{
             //Remove these from the map
             abstractOffering.remove(SEMESTER);
         }
+
+        //Explicitly add extra offering info if it existed
         Object[] offeringInfoMapList = (Object[]) abstractOffering.get(OFFERING_INFO);
         if(offeringInfoMapList != null){
+            extraOfferingInfo = true;
             offeringInfo = new ArrayList<OfferingInfo>();
             for(Object abstractOfferingInfo : offeringInfoMapList){
                 offeringInfo.add(new OfferingInfo((Map) abstractOfferingInfo, connection));
@@ -111,12 +119,24 @@ public class Offering implements Refreshable{
     public void refresh() {
 
         //First, grab the new offering object from the api
-        Offering newOffering = CoMoToAPI.getOffering(connection, id);
+        Offering newOffering;
+        if(extraOfferingInfo){
+            newOffering = CoMoToAPI.getOffering(connection, id, true);
+        } else {
+            newOffering = CoMoToAPI.getOffering(connection, id);
+        }
 
         //Copy the primitive types from the API
         courseId = newOffering.getCourseId();
         filesetIds = newOffering.getFilesetIds();
+        rosterStudentIds = newOffering.getRosterStudentIds();
+        ldapDns = newOffering.getLdapDns();
         semester = newOffering.getSemester();
+        if(extraOfferingInfo){
+            offeringInfo = newOffering.getOfferingInfo();
+        } else {
+            offeringInfo = null;
+        }
 
         //Clear cached data
         filesets = null;
@@ -204,5 +224,13 @@ public class Offering implements Refreshable{
 
     public void setLdapDns(List<String> ldapDns) {
         this.ldapDns = ldapDns;
+    }
+
+    public List<OfferingInfo> getOfferingInfo() {
+        return offeringInfo;
+    }
+
+    public void setOfferingInfo(List<OfferingInfo> offeringInfo) {
+        this.offeringInfo = offeringInfo;
     }
 }

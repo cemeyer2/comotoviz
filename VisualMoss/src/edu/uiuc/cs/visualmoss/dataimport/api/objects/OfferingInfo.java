@@ -14,6 +14,9 @@ import java.util.Map;
  */
 public class OfferingInfo{
 
+    /**
+     * Extra offering information from the API
+     */
     private List<String> cn;
     private List<String> distinguishedName;
     private List<String> extensionAttribute1;
@@ -37,8 +40,18 @@ public class OfferingInfo{
     private List<String> uSNCreated;
     private List<String> whenChanged;
     private List<String> whenCreated;
+
+    /**
+     * The object holding the connection data for the API
+     */
     private CoMoToAPIConnection connection;
 
+    /**
+     * Creates an 'OfferingInfo' object
+     *
+     * @param abstractOfferingInfo A map holding the data of this object
+     * @param connection The connection to the API
+     */
     public OfferingInfo(Map abstractOfferingInfo, CoMoToAPIConnection connection) {
 
         //Save the connections

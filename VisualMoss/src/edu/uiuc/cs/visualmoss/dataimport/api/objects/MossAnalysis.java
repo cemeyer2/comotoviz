@@ -29,20 +29,44 @@ public class MossAnalysis implements Refreshable{
     private int id;
 
     /**
+     * A list of the matches for this moss analysis
+     */
+    private List<MossMatch> matches = null;
+
+    /**
+     * A list of the cross-semester matches for this moss analysis
+     */
+    private List<MossMatch> crossSemesterMatches = null;
+    /**
+     * A list of the same-semester matches for this moss analysis
+     */
+    private List<MossMatch> sameSemesterMatches = null;
+    /**
+     * A list of the solution matches for this moss analysis
+     */
+    private List<MossMatch> solutionMatches = null;
+
+    /**
      * The associated analysis
      */
     private Analysis analysis = null;
-
-    /**
-     * A list of the matches for this moss analysis
-     */
-    private List<MossMatch> matches;
 
     /**
      * A connection to the API used for lazily loading components of this object and refreshing
      */
     private CoMoToAPIConnection connection;
 
+    /**
+     * Whether this analysis contains categorized matches
+     */
+    private boolean categorizedMatches = false;
+
+    /**
+     * Build a moss analysis object
+     *
+     * @param abstractMossAnalysis A map holding the data for this analysis
+     * @param connection The connection to the API
+     */
     public MossAnalysis(Map<String, Object> abstractMossAnalysis, CoMoToAPIConnection connection) {
 
         //Store this connection
@@ -62,9 +86,10 @@ public class MossAnalysis implements Refreshable{
         //Explicitly build and add the cross-semester matches objects
         Object[] abstractCrossSemesterMatches = (Object[]) abstractMossAnalysis.get(CROSS_SEMESTER_MATCHES);
         if(abstractCrossSemesterMatches != null){
-            matches = new ArrayList<MossMatch>();
+            categorizedMatches = true;
+            crossSemesterMatches = new ArrayList<MossMatch>();
             for(Object abstractMatch : abstractCrossSemesterMatches){
-                matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                crossSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(CROSS_SEMESTER_MATCHES);
 
@@ -73,9 +98,9 @@ public class MossAnalysis implements Refreshable{
         //Explicitly build and add the same-semester matches objects
         Object[] abstractSameSemesterMatches = (Object[]) abstractMossAnalysis.get(SAME_SEMESTER_MATCHES);
         if(abstractSameSemesterMatches != null){
-            matches = new ArrayList<MossMatch>();
+            sameSemesterMatches = new ArrayList<MossMatch>();
             for(Object abstractMatch : abstractSameSemesterMatches){
-                matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                sameSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(SAME_SEMESTER_MATCHES);
 
@@ -84,14 +109,15 @@ public class MossAnalysis implements Refreshable{
         //Explicitly build and add the solution matches objects
         Object[] abstractSolutionMatches = (Object[]) abstractMossAnalysis.get(SOLUTION_MATCHES);
         if(abstractSolutionMatches != null){
-            matches = new ArrayList<MossMatch>();
+            solutionMatches = new ArrayList<MossMatch>();
             for(Object abstractMatch : abstractSolutionMatches){
-                matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                solutionMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(SOLUTION_MATCHES);
 
         }
 
+        // Populate the rest of this object using reflection
         CoMoToAPIReflector<MossAnalysis> reflector = new CoMoToAPIReflector<MossAnalysis>();
         reflector.populate(this, abstractMossAnalysis);
     }
@@ -102,11 +128,25 @@ public class MossAnalysis implements Refreshable{
     public void refresh() {
 
         //First, grab the new object from the API
-        MossAnalysis newMossAnalysis = CoMoToAPI.getMossAnalysis(connection, id);
+        MossAnalysis newMossAnalysis;
+        if(categorizedMatches){
+            newMossAnalysis = CoMoToAPI.getMossAnalysis(connection, id, true);
+        } else {
+            newMossAnalysis = CoMoToAPI.getMossAnalysis(connection, id);
+        }
 
         //Copy the primitive data over
         analysisId = newMossAnalysis.getAnalysisId();
         matches = newMossAnalysis.getMatches();
+        if(categorizedMatches){
+            crossSemesterMatches = newMossAnalysis.getCrossSemesterMatches();
+            sameSemesterMatches = newMossAnalysis.getSameSemesterMatches();
+            solutionMatches = newMossAnalysis.getSolutionMatches();
+        } else {
+            crossSemesterMatches = null;
+            sameSemesterMatches = null;
+            solutionMatches = null;
+        }
 
         //Clear cached data
         analysis = null;
@@ -148,5 +188,29 @@ public class MossAnalysis implements Refreshable{
 
     public void setMatches(List<MossMatch> matches) {
         this.matches = matches;
+    }
+
+    public List<MossMatch> getCrossSemesterMatches() {
+        return crossSemesterMatches;
+    }
+
+    public void setCrossSemesterMatches(List<MossMatch> crossSemesterMatches) {
+        this.crossSemesterMatches = crossSemesterMatches;
+    }
+
+    public List<MossMatch> getSameSemesterMatches() {
+        return sameSemesterMatches;
+    }
+
+    public void setSameSemesterMatches(List<MossMatch> sameSemesterMatches) {
+        this.sameSemesterMatches = sameSemesterMatches;
+    }
+
+    public List<MossMatch> getSolutionMatches() {
+        return solutionMatches;
+    }
+
+    public void setSolutionMatches(List<MossMatch> solutionMatches) {
+        this.solutionMatches = solutionMatches;
     }
 }

@@ -24,13 +24,14 @@ public class CoMoToAPIConstants {
     public static final String GET_REPORT = "getReport";
     public static final String GET_SEMESTER = "getSemester";
     public static final String GET_STUDENT = "getStudent";
+    public static final String GET_STUDENT_BY_NETID = "getStudentByNetid";
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";
 
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
     public static final String CROSS_SEMESTER_MATCHES = "cross_semester_matches";
-    public static final String FILESET_IDS = "file_set_ids";
+    public static final String FILESET_IDS = "fileset_ids";
     public static final String JPLAG_REPORT = "jplag_report";
     public static final String MATCHES = "matches";
     public static final String MOSS_REPORT = "moss_report";

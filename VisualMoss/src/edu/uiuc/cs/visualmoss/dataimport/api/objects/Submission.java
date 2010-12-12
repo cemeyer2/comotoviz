@@ -92,6 +92,11 @@ public class Submission implements Refreshable{
     private CoMoToAPIConnection connection;
 
     /**
+     * Whether this object should load student data eagerly
+     */
+    private boolean fullStudentData = false;
+
+    /**
      * Creates a new submission object
      *
      * @param abstractSubmission A map holding the submission data
@@ -112,6 +117,7 @@ public class Submission implements Refreshable{
         //Explicitly add the student object if it exists
         Map studentMap = (Map) abstractSubmission.get(STUDENT);
         if(studentMap != null){
+            fullStudentData = true;
             student = new Student(studentMap, connection);
             abstractSubmission.remove(STUDENT);
         }
@@ -126,21 +132,30 @@ public class Submission implements Refreshable{
     public void refresh() {
 
         //First, grab the new submission from the api
-        Submission newSubmission = CoMoToAPI.getSubmission(connection, id);
+        Submission newSubmission;
+        if(fullStudentData){
+            newSubmission = CoMoToAPI.getSubmission(connection, id, true);
+        } else {
+            newSubmission = CoMoToAPI.getSubmission(connection, id);
+        }
 
         //Copy over the primitive values
-        fileSetId = newSubmission.getFileSetId();
         analysisPseudonym = newSubmission.getAnalysisPseudonym();
+        fileSetId = newSubmission.getFileSetId();
         offeringId = newSubmission.getOfferingId();
-        studentId = newSubmission.getStudentId();
-        type = newSubmission.getType();
         partnerIds = newSubmission.getPartnerIds();
+        studentId = newSubmission.getStudentId();
         submissionFileIds = newSubmission.getSubmissionFileIds();
+        type = newSubmission.getType();
+        if(fullStudentData){
+            student = newSubmission.getStudent();
+        } else {
+            student = null;
+        }
 
         //Clear cached data
         fileSet = null;
         offering = null;
-        student = null;
         partners = null;
         submissionFiles = null;
     }

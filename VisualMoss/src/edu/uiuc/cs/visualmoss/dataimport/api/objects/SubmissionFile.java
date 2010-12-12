@@ -69,10 +69,10 @@ public class SubmissionFile implements Refreshable{
         SubmissionFile newSubmissionFile = CoMoToAPI.getSubmissionFile(connection, id);
 
         //Copy the primitive data over
-        submissionId = newSubmissionFile.getSubmissionId();
-        meta = newSubmissionFile.isMeta();
         content = newSubmissionFile.getContent();
+        meta = newSubmissionFile.isMeta();
         name = newSubmissionFile.getName();
+        submissionId = newSubmissionFile.getSubmissionId();
 
         //Clear cached data
         submission = null;

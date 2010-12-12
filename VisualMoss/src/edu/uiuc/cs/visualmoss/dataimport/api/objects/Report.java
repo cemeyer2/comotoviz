@@ -74,6 +74,7 @@ public class Report implements Refreshable{
         abstractReport.remove(JPLAG_REPORT);
         abstractReport.remove(MOSS_REPORT);
 
+        //Populate this object using reflection
         CoMoToAPIReflector<Report> reflector = new CoMoToAPIReflector<Report>();
         reflector.populate(this, abstractReport);
     }

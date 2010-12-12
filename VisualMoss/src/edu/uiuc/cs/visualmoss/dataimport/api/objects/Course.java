@@ -79,13 +79,15 @@ public class Course implements Refreshable{
         //Store the connection
         this.connection = connection;
 
-        //Populate the list of offerings (the non-primitive objects) explicitly
+        //Populate the list of offerings explicitly
         Object[] abstractOfferings = (Object[]) abstractCourse.get(OFFERINGS);
-        offerings = new ArrayList<Offering>();
-        for(Object abstractOffering : abstractOfferings){
-            offerings.add(new Offering((Map<String, Object>) abstractOffering, connection));
+        if(abstractOfferings != null){
+            offerings = new ArrayList<Offering>();
+            for(Object abstractOffering : abstractOfferings){
+                offerings.add(new Offering((Map<String, Object>) abstractOffering, connection));
+            }
+            abstractCourse.remove(OFFERINGS);
         }
-        abstractCourse.remove(OFFERINGS);
 
         //Populate this object using reflection
         CoMoToAPIReflector<Course> reflector = new CoMoToAPIReflector<Course>();
@@ -101,10 +103,12 @@ public class Course implements Refreshable{
         Course newCourse = CoMoToAPI.getCourse(connection, id);
 
         //Copy the data into this object
-        name = newCourse.getName();
-        userIds = newCourse.getUserIds();
         assignmentIds = newCourse.getAssignmentIds();
         filesetIds = newCourse.getFilesetIds();
+        ldapDn = newCourse.getLdapDn();
+        name = newCourse.getName();
+        offerings = newCourse.getOfferings();
+        userIds = newCourse.getUserIds();
 
         //Clear any cached data
         assignments = null;
@@ -200,4 +204,6 @@ public class Course implements Refreshable{
     public void setOfferings(List<Offering> offerings) {
         this.offerings = offerings;
     }
+
+
 }

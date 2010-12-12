@@ -88,14 +88,16 @@ public class Analysis implements Refreshable {
         //Grab the connection to the API so we can load attributes lazily
         this.connection = connection;
 
-        //Add non-primitive types explicitly
+        //Add analysis pseudonyms explicitly
         Object[] abstractAnalysisPseudonymsArray = (Object[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
-        analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
-        for(Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray){
-            Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
-            analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap, connection));
+        if(abstractAnalysisPseudonymsArray != null){
+            analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
+            for(Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray){
+                Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
+                analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap, connection));
+            }
+            abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
         }
-        abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
 
         // Populate the rest of this object using reflection
         CoMoToAPIReflector<Analysis> reflector = new CoMoToAPIReflector<Analysis>();
@@ -111,12 +113,12 @@ public class Analysis implements Refreshable {
         Analysis newAnalysis = CoMoToAPI.getAnalysis(connection, id);
 
         //Copy the data from this new analysis into our own
-        analysisPseudonyms = newAnalysis.getAnalysisPseudonyms();
-        jplagAnalysisId = newAnalysis.getJplagAnalysisId();
-        mossAnalysisId = newAnalysis.getMossAnalysisId();
         timestamp = newAnalysis.getTimestamp();
         complete = newAnalysis.isComplete();
         assignmentId = newAnalysis.getAssignmentId();
+        mossAnalysisId = newAnalysis.getMossAnalysisId();
+        jplagAnalysisId = newAnalysis.getJplagAnalysisId();
+        analysisPseudonyms = newAnalysis.getAnalysisPseudonyms();
 
         //Void the cached objects
         assignment = null;
