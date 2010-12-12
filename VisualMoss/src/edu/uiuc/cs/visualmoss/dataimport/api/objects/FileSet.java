@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERING;
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SUBMISSIONS;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -22,9 +23,9 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERING;
 public class FileSet implements Refreshable{
 
     /**
-     * Unique id for this file set
+     * The list of ids for the associated assignments
      */
-    private int id;
+    private List<Integer> assignmentIds;
 
     /**
      * The id of the associated course
@@ -32,34 +33,19 @@ public class FileSet implements Refreshable{
     private int courseId;
 
     /**
-     * The associated course object
+     * Unique id for this file set
      */
-    private Course course = null;
+    private int id;
 
     /**
-     * Whether this set is complete or not
+     * Flags whether this file set is complete
      */
-    private boolean complete;
+    private boolean isComplete;
 
     /**
      * The associated offering for this file set, loaded eagerly
      */
     private Offering offering;
-
-    /**
-     * The timestamp for this file set
-     */
-    private DateFormat timestamp;
-
-    /**
-     * The list of ids for the associated assignments
-     */
-    private List<Integer> assignmentIds;
-
-    /**
-     * The list of associated assignments
-     */
-    private List<Assignment> assignments = null;
 
     /**
      * The list of ids for the associated submissions
@@ -69,12 +55,27 @@ public class FileSet implements Refreshable{
     /**
      * The list of associated submission
      */
-    private List<Submission> submissions = null;
+    private List<Submission> submissions;
+
+    /**
+     * The timestamp for this file set
+     */
+    private DateFormat timestamp;
 
     /**
      * Enumerates the type for this class
      */
     private Type type = Type.fileset;
+
+    /**
+     * The associated course object
+     */
+    private Course course = null;
+
+    /**
+     * The list of associated assignments
+     */
+    private List<Assignment> assignments = null;
 
     /**
      * Connection to the API
@@ -92,12 +93,22 @@ public class FileSet implements Refreshable{
         //Save the connection
         this.connection = connection;
 
-        //Explicitly add non primitive types
+        //Explicitly add the 'offering' object
         Map offeringMap = (Map) abstractFileSet.get(CoMoToAPIConstants.OFFERING);
-        offering = new Offering(offeringMap, connection);
+        if(offeringMap != null){
+            offering = new Offering(offeringMap, connection);
+            abstractFileSet.remove(OFFERING);
+        }
 
-        //Remove these entries from the map
-        abstractFileSet.remove(OFFERING);
+        //Explicitly add the submission objects
+        Object[] abstractSubmissions = (Object[]) abstractFileSet.get(SUBMISSIONS);
+        if(abstractSubmissions != null){
+            submissions = new ArrayList<Submission>();
+            for(Object abstractSubmission : abstractSubmissions){
+                submissions.add(new Submission((Map<String, Object>) abstractSubmission, connection));
+            }
+            abstractFileSet.remove(SUBMISSIONS);
+        }
 
         //Populate the rest of this object using reflection
         CoMoToAPIReflector<FileSet> reflector = new CoMoToAPIReflector<FileSet>();
@@ -114,7 +125,6 @@ public class FileSet implements Refreshable{
 
         //Copy the primitive data over
         courseId = newFileSet.getCourseId();
-        complete = newFileSet.isComplete();
         offering = newFileSet.getOffering();
         timestamp = newFileSet.getTimestamp();
         assignmentIds = newFileSet.getAssignmentIds();
@@ -195,14 +205,6 @@ public class FileSet implements Refreshable{
         this.courseId = courseId;
     }
 
-    public boolean isComplete() {
-        return complete;
-    }
-
-    public void setComplete(boolean complete) {
-        this.complete = complete;
-    }
-
     public Offering getOffering() {
         return offering;
     }
@@ -241,5 +243,13 @@ public class FileSet implements Refreshable{
 
     public void setType(String type) {
         this.type = Type.valueOf(type);
+    }
+
+    public boolean isComplete() {
+        return isComplete;
+    }
+
+    public void setComplete(boolean complete) {
+        isComplete = complete;
     }
 }

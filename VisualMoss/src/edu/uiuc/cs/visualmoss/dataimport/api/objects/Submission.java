@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYM;
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
 
 
 /**
@@ -21,9 +22,9 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_
 public class Submission implements Refreshable{
 
     /**
-     * The unique id for this submission
+     * The pseudonym for this submission
      */
-    private int id;
+    private AnalysisPseudonym analysisPseudonym;
 
     /**
      * The unique id of the associated file set
@@ -31,9 +32,9 @@ public class Submission implements Refreshable{
     private int fileSetId;
 
     /**
-     * The associated file set object
+     * The unique id for this submission
      */
-    private FileSet fileSet = null;
+    private int id;
 
     /**
      * The id of the associated offering
@@ -41,9 +42,14 @@ public class Submission implements Refreshable{
     private int offeringId;
 
     /**
-     * The associated offering object
+     * A list of student ids representing the partners on this submission
      */
-    private Offering offering = null;
+    private List<Integer> partnerIds;
+
+    /**
+     * The associated student object
+     */
+    private Student student;
 
     /**
      * The associated student id
@@ -51,9 +57,9 @@ public class Submission implements Refreshable{
     private int studentId;
 
     /**
-     * The associated student object
+     * A list of the associated submission file ids
      */
-    private Student student = null;
+    private List<Integer> submissionFileIds;
 
     /**
      * The type of this submission (Defaults to a student's submission)
@@ -61,24 +67,19 @@ public class Submission implements Refreshable{
     private Type type = Type.studentsubmission;
 
     /**
-     * The pseudonym for this submission
+     * The associated file set object
      */
-    private AnalysisPseudonym analysisPseudonym;
+    private FileSet fileSet = null;
 
     /**
-     * A list of student ids representing the partners on this submission
+     * The associated offering object
      */
-    private List<Integer> partnerIds;
+    private Offering offering = null;
 
     /**
      * A list of associated students objects, representing the partners on this submission
      */
     private List<Student> partners = null;
-
-    /**
-     * A list of the associated submission file ids
-     */
-    private List<Integer> submissionFileIds;
 
     /**
      * A list of the associated submission files
@@ -101,12 +102,19 @@ public class Submission implements Refreshable{
         //Save the connection
         this.connection = connection;
 
-        //Explicitly add non-primitive types
+        //Explicitly add the analysis pseudonym object
         Map analysisPseudonymMap = (Map) abstractSubmission.get(ANALYSIS_PSEUDONYM);
-        analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
+        if(analysisPseudonymMap != null){
+            analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
+            abstractSubmission.remove(ANALYSIS_PSEUDONYM);
+        }
 
-        //Remove them from the map
-        abstractSubmission.remove(ANALYSIS_PSEUDONYM);
+        //Explicitly add the student object if it exists
+        Map studentMap = (Map) abstractSubmission.get(STUDENT);
+        if(studentMap != null){
+            student = new Student(studentMap, connection);
+            abstractSubmission.remove(STUDENT);
+        }
 
         CoMoToAPIReflector<Submission> reflector = new CoMoToAPIReflector<Submission>();
         reflector.populate(this, abstractSubmission);

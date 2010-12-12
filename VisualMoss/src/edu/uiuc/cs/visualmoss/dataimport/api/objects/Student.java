@@ -21,9 +21,14 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MATCHES;
 public class Student implements Refreshable{
 
     /**
-     * The unique id for this student
+     * The name to display for this student
      */
-    private int id;
+    private String displayName;
+
+    /**
+     * The given name for this student
+     */
+    private String givenName;
 
     /**
      * The link to the history for this student
@@ -31,14 +36,44 @@ public class Student implements Refreshable{
     private URL historyLink;
 
     /**
+     * The unique id for this student
+     */
+    private int id;
+
+    /**
+     * The LDAP authentication info for this student
+     */
+    private String ldapDn;
+
+    /**
+     * Whether this student has left UIUC
+     */
+    private String leftUiuc;
+
+    /**
+     * The 'level' of this student
+     */
+    private String levelName;
+
+    /**
      * The student's netid
      */
     private String netid;
 
     /**
+     * The program this student is in
+     */
+    private String programName;
+
+    /**
      * The list of ids for the submissions from this student
      */
     private List<Integer> submissionIds;
+
+    /**
+     * The 'surname' for this student
+     */
+    private String surName;
 
     /**
      * The list of associated submission objects

@@ -39,6 +39,8 @@ public class CoMoToAPIConstants {
     public static final String OFFERING_INFO = "offering_info";
     public static final String PARTNER_IDS = "partner_ids";
     public static final String SEMESTER = "semester";
+    public static final String STUDENT = "student";
+    public static final String SUBMISSIONS = "submissions";
     public static final String SUBMISSION_FILE_IDS = "submission_file_ids";
     public static final String SUBMISSION_IDS = "submission_ids";
     public static final String TIMESTAMP = "timestamp";

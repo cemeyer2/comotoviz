@@ -185,6 +185,41 @@ public class CoMoToAPI {
     }
 
     /**
+     * Get a file set from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param fileSetId The id of the file set to grab
+     * @param fullSubmissionInfo Whether to grab the full submission info for this file set
+     * @return The file set
+     */
+    public static FileSet getFileSet(CoMoToAPIConnection connection, int fileSetId, boolean fullSubmissionInfo) {
+
+        //Get the file set from the api
+        Map abstractFileSet = getMap(connection, GET_FILE_SET, fileSetId, fullSubmissionInfo);
+
+        //Build the file set
+        return new FileSet(abstractFileSet, connection);
+    }
+
+    /**
+     * Get a file set from the CoMoTo API
+     *
+     * @param connection The connection from which to grab this data
+     * @param fileSetId The id of the file set to grab
+     * @param fullSubmissionInfo Whether to grab the full submission data from the API
+     * @param extraOfferingInfo Whether to grab the extra offering information from the API as well
+     * @return The file set
+     */
+    public static FileSet getFileSet(CoMoToAPIConnection connection, int fileSetId, boolean fullSubmissionInfo, boolean extraOfferingInfo) {
+
+        //Get the file set from the api
+        Map abstractFileSet = getMap(connection, GET_FILE_SET, fileSetId, fullSubmissionInfo, extraOfferingInfo);
+
+        //Build the file set
+        return new FileSet(abstractFileSet, connection);
+    }
+
+    /**
      * Get a jplag analysis from the CoMoTo API
      *
      * @param connection The connection from which to grab this data
