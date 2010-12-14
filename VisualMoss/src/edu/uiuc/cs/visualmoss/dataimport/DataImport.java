@@ -162,24 +162,28 @@ public class DataImport {
                 Node submissionOneNode = nodeTable.get(submissionOne.getId());
                 Node submissionTwoNode = nodeTable.get(submissionTwo.getId());
 
-                //Create a new edge for this match
-                Edge edge = graph.addEdge(submissionOneNode, submissionTwoNode);
+                if(submissionOneNode != null && submissionTwoNode != null){
 
-                //Build the data for this edge
-                double score1 = match.getScore1();
-                double score2 = match.getScore2();
-                double maxScore = Math.max(score1, score2);
-                URL matchLink = match.getLink();
+                    //Create a new edge for this match
+                     Edge edge = null;
+                    edge = graph.addEdge(submissionOneNode, submissionTwoNode);
 
-                //Figure out if these two were partners or not
-                boolean arePartners = arePartnered(submissionOne, submissionTwo);
+                    //Build the data for this edge
+                    double score1 = match.getScore1();
+                    double score2 = match.getScore2();
+                    double maxScore = Math.max(score1, score2);
+                    URL matchLink = match.getLink();
 
-                //Set this data on the edge
-                edge.setDouble(SCORE1, score1);
-                edge.setDouble(SCORE2, score2);
-                edge.setDouble(WEIGHT, maxScore);
-                edge.setString(LINK, matchLink.toString());
-                edge.setBoolean(IS_PARTNER, arePartners);
+                    //Figure out if these two were partners or not
+                    boolean arePartners = arePartnered(submissionOne, submissionTwo);
+
+                    //Set this data on the edge
+                    edge.setDouble(SCORE1, score1);
+                    edge.setDouble(SCORE2, score2);
+                    edge.setDouble(WEIGHT, maxScore);
+                    edge.setString(LINK, matchLink.toString());
+                    edge.setBoolean(IS_PARTNER, arePartners);
+                }
             }
 
             //Update the progress bar
@@ -236,8 +240,6 @@ public class DataImport {
         int progress = 0;
         for(FileSet fileSet : fileSets){
 
-            System.out.println("Starting fileset");
-
             //Grab all submissions associated with this file set
             List<Submission> setOfSubmissions = fileSet.getSubmissions(true);
             submissions.addAll(setOfSubmissions);
@@ -251,9 +253,6 @@ public class DataImport {
                 //Add this submission to the hash table
                 int submissionId = submission.getId();
                 submissionsTable.put(submissionId, submission);
-
-                System.out.println("Starting submission");
-
 
                 //Get the student and pseudonym associated with this submission
                 try {
@@ -288,15 +287,11 @@ public class DataImport {
                 } catch (RuntimeException e) {
                     // Something here didn't exist in the API, skip this one
                 }
-                System.out.println("ending submission");
-
             }
 
 
             //Update the progress bar
             progress = updateProgressBar(showProgress, dialog, progress);
-            System.out.println("Ending fileset");
-
         }
         return progress;
     }
