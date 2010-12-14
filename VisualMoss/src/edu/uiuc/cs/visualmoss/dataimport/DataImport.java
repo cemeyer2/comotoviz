@@ -25,7 +25,7 @@ import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Nov 3, 2010
- *
+ * <p/>
  * <p> <p> This class drives the import of data into the visual moss graph structure using the CoMoTo API
  */
 public class DataImport {
@@ -39,7 +39,7 @@ public class DataImport {
 
     /**
      * The default constructor for the data import, which queries the CoMoTo API to populate the courses and assignments
-     *  for each course
+     * for each course
      */
     public DataImport(String courseName, String assignmentName, Pair<String, String> activeDirectoryCredentials) {
 
@@ -50,16 +50,16 @@ public class DataImport {
         List<Course> courses = CoMoToAPI.getCourses(connection);
 
         //Find the course corresponding to this course name
-        for(Course course : courses){
-            if(course.getName().equals(courseName)){
+        for (Course course : courses) {
+            if (course.getName().equals(courseName)) {
                 this.course = course;
             }
         }
 
         //Find the assignment corresponding to the given name
         List<Assignment> assignments = course.getAssignments();
-        for(Assignment assignment : assignments){
-            if(assignment.getName().equals(assignmentName)){
+        for (Assignment assignment : assignments) {
+            if (assignment.getName().equals(assignmentName)) {
                 this.assignment = assignment;
             }
         }
@@ -79,27 +79,28 @@ public class DataImport {
     /**
      * Imports the data from a given file, intended to be a file written in GraphML format
      *
-     * @param inputFile  The file from which to import the data
-     * @throws prefuse.data.io.DataIOException  On an error accessing the file data
+     * @param inputFile The file from which to import the data
+     * @throws prefuse.data.io.DataIOException
+     *          On an error accessing the file data
      */
-	public DataImport(File inputFile) throws DataIOException {
+    public DataImport(File inputFile) throws DataIOException {
 
         //Builds a graph with the default class and assignment from the given input file data
-		graph = new VisualMossGraph(inputFile, CS225, MP3);
-	}
+        graph = new VisualMossGraph(inputFile, CS225, MP3);
+    }
 
     /**
      * Imports the data from a given file, intended to be a file written in GraphML format to be imported into the graph
-     *  structure, using the given course and assignment titles
+     * structure, using the given course and assignment titles
      *
-     * @param inputFile         The input file in GraphML format
-     * @param courseName        The name of the course's data to import
-     * @param assignmentName    The name of the particular assignment we are importing
+     * @param inputFile      The input file in GraphML format
+     * @param courseName     The name of the course's data to import
+     * @param assignmentName The name of the particular assignment we are importing
      */
     public DataImport(File inputFile, String courseName, String assignmentName) throws DataIOException {
 
         //Builds a graph with the given class and assignment from the given input file
-		graph = new VisualMossGraph(inputFile, courseName, assignmentName);
+        graph = new VisualMossGraph(inputFile, courseName, assignmentName);
     }
 
     public VisualMossGraph buildGraph(Assignment assignment, boolean showProgress, JFrame parent) throws DataIOException {
@@ -122,7 +123,7 @@ public class DataImport {
 
         //Get the set of moss matches for this assignment
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
-        
+
         //Get ready to pull out all of the submissions from the file sets
         submissions = new ArrayList<Submission>();
 
@@ -139,7 +140,7 @@ public class DataImport {
         //Add analysis data to the graph
         progress = addMatchNodes(showProgress, dialog, graph, matches, submissionsTable, nodeTable, progress);
 
-         //Hide the dialog -- we're done now
+        //Hide the dialog -- we're done now
         dialog.setVisible(false);
 
         //Keep a copy of this graph we built, and return it
@@ -149,23 +150,23 @@ public class DataImport {
 
     private int addMatchNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<MossMatch> matches,
                               Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable, int progress) {
-        for(MossMatch match : matches){
+        for (MossMatch match : matches) {
 
             //Find the two submissions associated with this match
             Submission submissionOne = submissionsTable.get(match.getSubmission1Id());
             Submission submissionTwo = submissionsTable.get(match.getSubmission2Id());
 
             //Catch situations where we can't find the submission nodes for the edge
-            if(submissionOne != null && submissionTwo != null){
+            if (submissionOne != null && submissionTwo != null) {
 
                 //Find the nodes for these submissions
                 Node submissionOneNode = nodeTable.get(submissionOne.getId());
                 Node submissionTwoNode = nodeTable.get(submissionTwo.getId());
 
-                if(submissionOneNode != null && submissionTwoNode != null){
+                if (submissionOneNode != null && submissionTwoNode != null) {
 
                     //Create a new edge for this match
-                     Edge edge = null;
+                    Edge edge = null;
                     edge = graph.addEdge(submissionOneNode, submissionTwoNode);
 
                     //Build the data for this edge
@@ -208,15 +209,15 @@ public class DataImport {
         boolean arePartners = false;
 
         //Check each student from the second submission's partners with the first submission's author
-        for(Student student: submissionTwoPartners){
-            if(student.getId() == submissionOne.getStudentId()){
+        for (Student student : submissionTwoPartners) {
+            if (student.getId() == submissionOne.getStudentId()) {
                 arePartners = true;
             }
         }
 
         //Check each student from the first submission's partners with the second submission's author
-        for(Student student : submissionOnePartners){
-            if(student.getId() == submissionTwo.getStudentId()){
+        for (Student student : submissionOnePartners) {
+            if (student.getId() == submissionTwo.getStudentId()) {
                 arePartners = true;
             }
         }
@@ -226,19 +227,18 @@ public class DataImport {
     /**
      * Adds the nodes to the graph, each representing a submission for the given assignment
      *
-     * @param showProgress Whether or not to show the progress bar
-     * @param dialog A handle on the dialog to show progress
-     * @param graph The graph object that we're creating
-     * @param fileSets The list of file sets to load and add to the graph
+     * @param showProgress     Whether or not to show the progress bar
+     * @param dialog           A handle on the dialog to show progress
+     * @param graph            The graph object that we're creating
+     * @param fileSets         The list of file sets to load and add to the graph
      * @param submissionsTable A table for referencing submissions quickly
-     * @param nodeTable A table for referencing the nodes quickly
-     *
+     * @param nodeTable        A table for referencing the nodes quickly
      * @return The progress after we've added all of the submission nodes
      */
     private int addSubmissionNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<FileSet> fileSets,
                                    Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable) {
         int progress = 0;
-        for(FileSet fileSet : fileSets){
+        for (FileSet fileSet : fileSets) {
 
             //Grab all submissions associated with this file set
             List<Submission> setOfSubmissions = fileSet.getSubmissions(true);
@@ -266,9 +266,9 @@ public class DataImport {
 
                     //Add this submission's data to the graph
                     Node node = graph.addNode();
-                    if(!isSolution){
+                    if (!isSolution) {
                         node.setString(NETID, student.getNetid());
-                        node.setString(PSEUDONYM, Integer.toString(pseudonym));
+                        node.setString(PSEUDONYM, Integer.toString(student.getId()));
                         node.setString(SEASON, semester.getSeason().name());
                         node.setString(YEAR, Integer.toString(semester.getYear()));
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
@@ -302,8 +302,7 @@ public class DataImport {
      * @param graph The graph object to copy
      * @return A new graph, identical to the input graph
      */
-    private Graph copyGraph(Graph graph)
-    {
+    private Graph copyGraph(Graph graph) {
 
         //Create the new graph and declare the fields of each node
         Graph graph2 = new Graph();
@@ -321,8 +320,7 @@ public class DataImport {
 
         //Copy all of the graph nodes
         Iterator<Node> nodeIterator = graph.nodes();
-        while(nodeIterator.hasNext())
-        {
+        while (nodeIterator.hasNext()) {
             Node oldNode = nodeIterator.next();
             Node newNode = graph2.addNode();
             newNode.setString(NETID, oldNode.getString(NETID));
@@ -335,10 +333,9 @@ public class DataImport {
 
         //Copy all of the graph edges
         Iterator<Edge> edgeIterator = graph.edges();
-        while(edgeIterator.hasNext())
-        {
+        while (edgeIterator.hasNext()) {
             Edge oldEdge = edgeIterator.next();
-            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID),graph2), getNode(oldEdge.getTargetNode().getString(NETID),graph2));
+            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID), graph2), getNode(oldEdge.getTargetNode().getString(NETID), graph2));
             newEdge.setDouble(SCORE1, oldEdge.getDouble(SCORE1));
             newEdge.setDouble(SCORE2, oldEdge.getDouble(SCORE2));
             newEdge.setDouble(WEIGHT, oldEdge.getDouble(WEIGHT));
@@ -358,9 +355,9 @@ public class DataImport {
     private Node getNode(String netId, Graph graph) {
 
         Iterator<Node> nodeIterator = graph.nodes();
-        while(nodeIterator.hasNext()) {
+        while (nodeIterator.hasNext()) {
             Node node = nodeIterator.next();
-            if(node.getString(NETID).equals(netId)) {
+            if (node.getString(NETID).equals(netId)) {
                 return node;
             }
         }
@@ -368,8 +365,8 @@ public class DataImport {
     }
 
     private void estimateTotalWorkForProgressBar(boolean showProgress, LoadingProgressDialog dialog, List<FileSet> fileSets, List<MossMatch> matches) {
-        if(showProgress) {
-            if(fileSets != null){
+        if (showProgress) {
+            if (fileSets != null) {
                 dialog.setTaskLength(fileSets.size() + matches.size());
                 dialog.setIndeterminate(false);
             }
@@ -398,12 +395,12 @@ public class DataImport {
      * Updates the progress bar if necessary
      *
      * @param showProgress Whether or not we're supposed to show the progress bar
-     * @param dialog A handle on the progress bar dialog
-     * @param progress The progress of the job, ranging from 0 to the number of items loaded from the API (edges + nodes)
+     * @param dialog       A handle on the progress bar dialog
+     * @param progress     The progress of the job, ranging from 0 to the number of items loaded from the API (edges + nodes)
      * @return The updated progress value
      */
     private int updateProgressBar(boolean showProgress, LoadingProgressDialog dialog, int progress) {
-        if(showProgress){
+        if (showProgress) {
             progress++;
             dialog.setValue(progress);
         }
@@ -414,11 +411,11 @@ public class DataImport {
      * Intializes the progress bar
      *
      * @param showProgress Whether or not to show the progress bar
-     * @param dialog A handle on the progress bar dialog
+     * @param dialog       A handle on the progress bar dialog
      */
     private void initializeProgressBar(boolean showProgress, LoadingProgressDialog dialog) {
         dialog.init();
-        if(showProgress)
+        if (showProgress)
             dialog.setVisible(true);
     }
 
@@ -463,7 +460,7 @@ public class DataImport {
      *
      * @return
      */
-    public VisualMossGraph getVisualMossGraph(){
+    public VisualMossGraph getVisualMossGraph() {
         return graph;
     }
 }
