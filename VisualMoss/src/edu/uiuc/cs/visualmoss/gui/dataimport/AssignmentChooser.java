@@ -90,25 +90,6 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
 			selectedAssignment = (Assignment)obj;
 			AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
 			worker.execute();
-//
-//            VisualMossGraph graph = null;
-//            try {
-//                graph = importer.buildGraph(selectedAssignment, true, frame);
-//            } catch (DataIOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            //add students as children
-//            for(VisualMossGraphStudent student: graph.getStudents()) {
-//                node.add(new DefaultMutableTreeNode(student));
-//            }
-//            ((DefaultTreeModel)tree.getModel()).reload();
-//
-//            display.changeGraph(graph);
-//            frame.updateTitle(selectedAssignment);
-//            frame.searchStudents();
-
-
 		}
 		else if(obj instanceof Student)
 		{
