@@ -258,7 +258,6 @@ public class DataImport {
                 try {
 
                     Student student = submission.getStudent();
-                    int pseudonym = submission.getAnalysisPseudonym().getPseudonym();
 
                     //Figure out if this submission is a solution
                     Type submissionType = submission.getType();
@@ -268,7 +267,7 @@ public class DataImport {
                     Node node = graph.addNode();
                     if(!isSolution){
                         node.setString(NETID, student.getNetid());
-                        node.setString(PSEUDONYM, Integer.toString(pseudonym));
+                        node.setString(PSEUDONYM, Integer.toString(progress));
                         node.setString(SEASON, semester.getSeason().name());
                         node.setString(YEAR, Integer.toString(semester.getYear()));
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
