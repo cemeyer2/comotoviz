@@ -267,7 +267,7 @@ public class DataImport {
                     Node node = graph.addNode();
                     if(!isSolution){
                         node.setString(NETID, student.getNetid());
-                        node.setString(PSEUDONYM, Integer.toString(progress));
+                        node.setString(PSEUDONYM, Integer.toString(student.getId()));
                         node.setString(SEASON, semester.getSeason().name());
                         node.setString(YEAR, Integer.toString(semester.getYear()));
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));

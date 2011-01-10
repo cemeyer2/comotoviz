@@ -34,6 +34,11 @@ public class Assignment implements Refreshable{
     private int courseId;
 
     /**
+     * Unique id for the report associated with this assignment
+     */
+    private int reportId;
+
+    /**
      * The language of this assignment
      */
     private Language language;
@@ -228,5 +233,13 @@ public class Assignment implements Refreshable{
 
     public void setFilesetIds(List<Integer> filesetIds) {
         this.filesetIds = filesetIds;
+    }
+
+    public int getReportId() {
+        return reportId;
+    }
+
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
     }
 }

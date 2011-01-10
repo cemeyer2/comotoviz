@@ -28,7 +28,7 @@ public class AnalysisPseudonym implements Refreshable{
     /**
      * The numerical pseudonym
      */
-    private int pseudonym;
+    private String pseudonym;
 
     /**
      * The unique id of the associated submission
@@ -132,11 +132,11 @@ public class AnalysisPseudonym implements Refreshable{
         this.id = id;
     }
 
-    public int getPseudonym() {
+    public String getPseudonym() {
         return pseudonym;
     }
 
-    public void setPseudonym(int pseudonym) {
+    public void setPseudonym(String pseudonym) {
         this.pseudonym = pseudonym;
     }
 

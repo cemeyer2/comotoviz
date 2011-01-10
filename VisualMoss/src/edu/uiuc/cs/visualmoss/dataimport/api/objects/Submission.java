@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYM;
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
 
 
@@ -22,9 +21,9 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
 public class Submission implements Refreshable{
 
     /**
-     * The pseudonym for this submission
+     * The pseudonym ids for this submission
      */
-    private AnalysisPseudonym analysisPseudonym;
+    private List<Integer> analysisPseudonymIds;
 
     /**
      * The unique id of the associated file set
@@ -107,13 +106,6 @@ public class Submission implements Refreshable{
         //Save the connection
         this.connection = connection;
 
-        //Explicitly add the analysis pseudonym object
-        Map analysisPseudonymMap = (Map) abstractSubmission.get(ANALYSIS_PSEUDONYM);
-        if(analysisPseudonymMap != null){
-            analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
-            abstractSubmission.remove(ANALYSIS_PSEUDONYM);
-        }
-
         //Explicitly add the student object if it exists
         Map studentMap = (Map) abstractSubmission.get(STUDENT);
         if(studentMap != null){
@@ -140,7 +132,7 @@ public class Submission implements Refreshable{
         }
 
         //Copy over the primitive values
-        analysisPseudonym = newSubmission.getAnalysisPseudonym();
+        analysisPseudonymIds = newSubmission.getAnalysisPseudonymIds();
         fileSetId = newSubmission.getFileSetId();
         offeringId = newSubmission.getOfferingId();
         partnerIds = newSubmission.getPartnerIds();
@@ -281,12 +273,12 @@ public class Submission implements Refreshable{
         this.type = Type.valueOf(type);
     }
 
-    public AnalysisPseudonym getAnalysisPseudonym() {
-        return analysisPseudonym;
+    public List<Integer> getAnalysisPseudonymIds() {
+        return analysisPseudonymIds;
     }
 
-    public void setAnalysisPseudonym(AnalysisPseudonym analysisPseudonym) {
-        this.analysisPseudonym = analysisPseudonym;
+    public void setAnalysisPseudonymIds(List<Integer> analysisPseudonymIds) {
+        this.analysisPseudonymIds = analysisPseudonymIds;
     }
 
     public List<Integer> getPartnerIds() {

@@ -37,10 +37,12 @@ public class MossAnalysis implements Refreshable{
      * A list of the cross-semester matches for this moss analysis
      */
     private List<MossMatch> crossSemesterMatches = null;
+
     /**
      * A list of the same-semester matches for this moss analysis
      */
     private List<MossMatch> sameSemesterMatches = null;
+
     /**
      * A list of the solution matches for this moss analysis
      */
