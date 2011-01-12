@@ -15,9 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-common-3.1.2.jar" afterPath="$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-common-3.1.2.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-client-3.1.2.jar" afterPath="$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-client-3.1.2.jar" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
     <ignored path="$USER_HOME_GRAILS$/" />
@@ -521,7 +519,7 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19412126" sideWeight="0.6643757" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329455" sideWeight="0.6666667" order="3" side_tool="false" content_ui="tabs" />
