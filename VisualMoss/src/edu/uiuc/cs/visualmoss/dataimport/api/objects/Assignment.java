@@ -2,7 +2,9 @@ package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIException;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+import edu.uiuc.cs.visualmoss.dataimport.api.util.ParallelConnectionUtil;
 import org.apache.commons.lang.WordUtils;
 
 import java.util.ArrayList;
@@ -13,10 +15,10 @@ import java.util.Map;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
- *
+ * <p/>
  * <p> <p> Holds the data of an assignment
  */
-public class Assignment implements Refreshable{
+public class Assignment implements Refreshable {
 
     /**
      * Integer uniquely identifying this assignment
@@ -77,7 +79,7 @@ public class Assignment implements Refreshable{
      * Constructor for an assignment object
      *
      * @param abstractAssignment A map holding the data of an assignment
-     * @param connection A connection to the API for refreshing this object and loading data lazily
+     * @param connection         A connection to the API for refreshing this object and loading data lazily
      */
     public Assignment(Map<String, Object> abstractAssignment, CoMoToAPIConnection connection) {
 
@@ -103,7 +105,7 @@ public class Assignment implements Refreshable{
         language = newAssignment.getLanguage();
         name = newAssignment.getName();
         filesetIds = newAssignment.getFilesetIds();
-        
+
         //Invalidate the cached data
         analysis = null;
         course = null;
@@ -118,7 +120,7 @@ public class Assignment implements Refreshable{
     public Analysis getAnalysis() {
 
         //If it's not cached, grab it from the API
-        if(analysis == null){
+        if (analysis == null) {
             analysis = CoMoToAPI.getAnalysis(connection, analysisId);
         }
         return analysis;
@@ -132,7 +134,7 @@ public class Assignment implements Refreshable{
     public Course getCourse() {
 
         //Grab the course from the API if not cached
-        if(course == null){
+        if (course == null) {
             course = CoMoToAPI.getCourse(connection, courseId);
         }
         return course;
@@ -156,11 +158,28 @@ public class Assignment implements Refreshable{
     public List<FileSet> getFilesets(boolean getSubmissionInfo) {
 
         //Grab the list from the API if not cached
-        if(filesets == null) {
+        if (filesets == null) {
             filesets = new ArrayList<FileSet>();
-            for(int fileSetId : filesetIds){
-                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId, getSubmissionInfo));
+            Object[][] params = new Object[filesetIds.size()][3];
+            int i = 0;
+            for (int fileSetId : filesetIds) {
+                params[i] = new Object[]{connection, fileSetId, getSubmissionInfo};
+                i++;
             }
+
+            ParallelConnectionUtil<FileSet> parallelConnector = new ParallelConnectionUtil<FileSet>();
+            try {
+                int parallelFetchCount = 4;
+                filesets = parallelConnector.parallelFetch("getFileSet", params, parallelFetchCount);
+            } catch (CoMoToAPIException e) {
+                e.printStackTrace();
+                System.err.println("Reverting to serial fetch");
+                filesets.clear();
+                for (int fileSetId : filesetIds) {
+                    filesets.add(CoMoToAPI.getFileSet(connection, fileSetId, getSubmissionInfo));
+                }
+            }
+
         }
         return filesets;
     }
@@ -171,11 +190,11 @@ public class Assignment implements Refreshable{
      * @return The string representing this assignment
      */
     @Override
-    public String toString(){
+    public String toString() {
 
         //Make the names uniform and call them 'MP# ...'
         String unformattedName = getName().toLowerCase().trim();
-        if(unformattedName.indexOf("mp")==0){
+        if (unformattedName.indexOf("mp") == 0) {
             unformattedName = "MP" + unformattedName.substring(2);
         }
 
@@ -183,7 +202,7 @@ public class Assignment implements Refreshable{
         return WordUtils.capitalize(unformattedName);
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return new HashMap();
     }
 

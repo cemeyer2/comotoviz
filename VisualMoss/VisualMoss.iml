@@ -10,7 +10,6 @@
     <orderEntry type="library" name="ext" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="module" module-name="Lobo" />
     <orderEntry type="module" module-name="Prefuse-demo" />
   </component>
 </module>
