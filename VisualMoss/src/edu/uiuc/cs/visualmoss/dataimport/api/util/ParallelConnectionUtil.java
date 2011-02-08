@@ -89,7 +89,7 @@ public class ParallelConnectionUtil<T> {
     }
 
     public static void main(String[] args) {
-        CoMoToAPIConnection conn = new CoMoToAPIConnection("cemeyer2", "Blsaoet2009");
+        CoMoToAPIConnection conn = new CoMoToAPIConnection("cemeyer2", "password"); //damn, had to change my password, at least its all centralized
         ParallelConnectionUtil<FileSet> parallelConnection = new ParallelConnectionUtil<FileSet>();
         Object[][] params = new Object[3][];
         params[0] = new Object[]{conn, 1, true};
