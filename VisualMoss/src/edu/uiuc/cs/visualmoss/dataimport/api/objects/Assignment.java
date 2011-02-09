@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.GET_FILE_SET;
+
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
@@ -168,7 +170,7 @@ public class Assignment implements Refreshable {
 
             // Get an accelerator and fetch these filesets using the accelerator
             CoMoToAPIAccelerator<FileSet> accelerator = new CoMoToAPIAccelerator<FileSet>();
-            filesets = accelerator.getAPIObjects(connection, "getFileSet", params);
+            filesets = accelerator.getAPIObjects(connection, GET_FILE_SET, params);
         }
         return filesets;
     }

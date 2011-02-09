@@ -194,6 +194,10 @@ public class Submission implements Refreshable{
         return student;
     }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     /**
      * Get the parters, or list of students, lazily from the API
      *

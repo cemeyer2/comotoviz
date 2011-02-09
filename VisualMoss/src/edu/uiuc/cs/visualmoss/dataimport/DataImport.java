@@ -253,9 +253,17 @@ public class DataImport {
                 studentIdList.add(submission.getStudentId());
             }
 
-            //Get all of the student objects at once, and in parallel
+            // Get all of the student objects at once from the API
+            int[] studentIds = new int[studentIdList.size()];
+            for (int i = 0; i<studentIdList.size(); i++){
+                studentIds[i] = studentIdList.get(i);
+            }
+            List<Student> students = CoMoToAPI.getStudents(connection, studentIds, true);
 
-
+            // Insert all students back into submissions list
+            for (int i = 0; i<submissions.size(); i++) {
+                submissions.get(i).setStudent(students.get(i));
+            }
 
             //Add the submissions to the graph
             for (Submission submission : setOfSubmissions) {
@@ -267,6 +275,7 @@ public class DataImport {
                 //Get the student and pseudonym associated with this submission
                 try {
 
+                    // Since we just grabbed all student data, this shouldn't touch the API
                     Student student = submission.getStudent();
 
                     //Figure out if this submission is a solution

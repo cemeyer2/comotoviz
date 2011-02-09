@@ -24,6 +24,7 @@ public class CoMoToAPIConstants {
     public static final String GET_REPORT = "getReport";
     public static final String GET_SEMESTER = "getSemester";
     public static final String GET_STUDENT = "getStudent";
+    public static final String GET_STUDENTS = "getStudents";
     public static final String GET_STUDENT_BY_NETID = "getStudentByNetid";
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";

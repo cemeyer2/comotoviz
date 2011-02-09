@@ -124,10 +124,7 @@ public class Course implements Refreshable{
 
         //Load the assignments from the API if not cached
         if (assignments == null) {
-            assignments = new ArrayList<Assignment>();
-            for(int assignmentId : assignmentIds){
-                assignments.add(CoMoToAPI.getAssignment(connection, assignmentId));
-            }
+            assignments = CoMoToAPI.getAssignments(connection, id);
         }
         return assignments;
     }

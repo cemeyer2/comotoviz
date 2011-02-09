@@ -479,6 +479,29 @@ public class CoMoToAPI {
         return new Student(abstractStudent, connection);
     }
 
+
+    /**
+     * Gets a list of students from the CoMoTo API
+     *
+     * @param connection    The connection from which to grab this data
+     * @param studentIds    The ids of the student to grab
+     * @param showHistory W hether to get the student's history as well
+     * @return The students from the API
+     */
+    public static List<Student> getStudents(CoMoToAPIConnection connection, int[] studentIds, boolean showHistory){
+
+        //Get the file set from the api
+        Object[] abstractStudents = getArray(connection, GET_STUDENTS, studentIds, showHistory);
+
+        //Build the resulting list of students
+        List<Student> students = new ArrayList<Student>();
+        for(Object abstractStudent : abstractStudents){
+            Student student = new Student((Map) abstractStudent, connection);
+            students.add(student);
+        }
+        return students;
+    }
+
     /**
      * Gets a student from the CoMoTo API
      *
