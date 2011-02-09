@@ -67,7 +67,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 	
 	    //VisualMossGraph graph = new DataImport(new File("graph.xml")).getVisualMossGraph();
 
-	    this.setTitle("vPlag");
+	    this.setTitle("CoMoTo Dynamic Visualization Tool");
 	    container = new VisualMossGraphDisplayContainer(768, 768);
 		graphDisplay = container.getVisualMossGraphDisplay();
 		
@@ -93,7 +93,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
 	
 	public void updateTitle(Assignment assignment)
 	{
-		this.setTitle("vPlag: "+assignment.getCourse().getName()+": "+assignment.getName());
+		this.setTitle("CoMoTo Dynamic Visualization Tool: "+assignment.getCourse().getName()+": "+assignment.getName());
 	}
 	
 	public void addSearchBox()

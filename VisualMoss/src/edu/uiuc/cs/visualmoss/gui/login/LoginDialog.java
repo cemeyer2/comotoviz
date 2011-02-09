@@ -43,7 +43,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,1));
 		panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
-		
+
 		netidField = new JTextField();
 		netidField.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
 		TitledBorder b1 = BorderFactory.createTitledBorder("Netid");

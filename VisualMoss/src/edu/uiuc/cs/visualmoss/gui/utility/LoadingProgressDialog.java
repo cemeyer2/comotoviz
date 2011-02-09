@@ -1,16 +1,10 @@
 package edu.uiuc.cs.visualmoss.gui.utility;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.border.TitledBorder;
-
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 
 public class LoadingProgressDialog extends JDialog
 {
@@ -43,7 +37,7 @@ public class LoadingProgressDialog extends JDialog
 		this.setTitle(title);
 		JPanel panel = new JPanel(new GridLayout(1,1));
 		panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
-		
+
 		TitledBorder b = BorderFactory.createTitledBorder(label);
 		b.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
 		bar.setBorder(b);
@@ -61,17 +55,7 @@ public class LoadingProgressDialog extends JDialog
 		bar.setIndeterminate(value);
 	}
 	
-	public void setTaskLength(int length)
-	{
-		bar.setMaximum(length);
-		bar.setMinimum(0);
-		bar.setValue(0);
-	}
-	
-	public void setValue(int value)
-	{
-		bar.setValue(value);
-		int pct = (int)(((double)bar.getValue()/(double)bar.getMaximum())*100);
-		bar.setString(pct+"%");
-	}
+    public void setMessage(String message) {
+        bar.setString(message);
+    }
 }
