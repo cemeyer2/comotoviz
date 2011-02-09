@@ -12,5 +12,6 @@ public enum Type {
     basesemester,
     studentsubmission,
     solutionsubmission,
-    solutionsemester
+    solutionsemester,
+    solutionfileset
 }

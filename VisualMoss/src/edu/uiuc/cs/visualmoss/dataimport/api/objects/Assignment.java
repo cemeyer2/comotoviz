@@ -225,8 +225,8 @@ public class Assignment implements Refreshable {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = Language.valueOf(language);
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public String getName() {

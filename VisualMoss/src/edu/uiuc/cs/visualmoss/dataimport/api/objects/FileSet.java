@@ -267,9 +267,9 @@ public class FileSet implements Refreshable{
         return type;
     }
 
-    public void setType(String type) {
-        this.type = Type.valueOf(type);
-    }
+    public void setType(Type type) {
+         this.type = type;
+     }
 
     public boolean isComplete() {
         return isComplete;

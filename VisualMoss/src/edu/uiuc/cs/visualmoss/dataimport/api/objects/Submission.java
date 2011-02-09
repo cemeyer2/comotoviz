@@ -114,6 +114,7 @@ public class Submission implements Refreshable{
             abstractSubmission.remove(STUDENT);
         }
 
+        //Populate the rest with reflection
         CoMoToAPIReflector<Submission> reflector = new CoMoToAPIReflector<Submission>();
         reflector.populate(this, abstractSubmission);
     }
@@ -188,7 +189,7 @@ public class Submission implements Refreshable{
     public Student getStudent() {
 
         //Only call the API if it's not cached
-        if(student == null) {
+        if(student == null && type != Type.solutionsubmission) {
             student = CoMoToAPI.getStudent(connection, studentId, true);
         }
         return student;
@@ -273,8 +274,8 @@ public class Submission implements Refreshable{
         return type;
     }
 
-    public void setType(String type) {
-        this.type = Type.valueOf(type);
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public List<Integer> getAnalysisPseudonymIds() {

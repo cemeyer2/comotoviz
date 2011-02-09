@@ -106,7 +106,7 @@ public class DataImport {
     public VisualMossGraph buildGraph(Assignment assignment, boolean showProgress, JFrame parent) throws DataIOException {
 
         //Create the progress bar
-        LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading Graph of \"" + assignment.getName() + "\"", "Loading Graph...");
+        LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading Graph of \"" + assignment.getName() + "\"", "");
         this.assignment = assignment;
 
         //Initialize and display the progress bar if we're supposed to
@@ -118,8 +118,14 @@ public class DataImport {
         //Declare the fields we want in the nodes and edges
         declareGraphFields(graph);
 
+        //Let the user know that we're beginning to load file sets from the API
+        dialog.setMessage("Loading File Sets");
+
         //Get the file sets associated with this assignment from the API
         List<FileSet> fileSets = assignment.getFilesets(true);
+
+        //Let the user know that we're generating matches
+        dialog.setMessage("Loading Analysis Data");
 
         //Get the set of moss matches for this assignment
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
@@ -127,18 +133,21 @@ public class DataImport {
         //Get ready to pull out all of the submissions from the file sets
         submissions = new ArrayList<Submission>();
 
-        //Estimate the proportion of data to be done by counting the number of file sets and matches
-        estimateTotalWorkForProgressBar(showProgress, dialog, fileSets, matches);
+        //Let the user know that we're adding submissions
+        dialog.setMessage("Building Submission Data");
 
         //Get a representation of the submissions as id, object pairs
         Hashtable<Integer, Submission> submissionsTable = new Hashtable<Integer, Submission>();
         Hashtable<Integer, Node> nodeTable = new Hashtable<Integer, Node>();
 
         //Add submission data to the graph
-        int progress = addSubmissionNodes(showProgress, dialog, graph, fileSets, submissionsTable, nodeTable);
+        addSubmissionNodes(graph, fileSets, submissionsTable, nodeTable);
+
+        //Let the user know that we're adding edges
+        dialog.setMessage("Building Similarity Data");
 
         //Add analysis data to the graph
-        progress = addMatchNodes(showProgress, dialog, graph, matches, submissionsTable, nodeTable, progress);
+        addMatchNodes(graph, matches, submissionsTable, nodeTable);
 
         //Hide the dialog -- we're done now
         dialog.setVisible(false);
@@ -148,8 +157,8 @@ public class DataImport {
         return this.graph;
     }
 
-    private int addMatchNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<MossMatch> matches,
-                              Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable, int progress) {
+    private void addMatchNodes(Graph graph, List<MossMatch> matches, Hashtable<Integer, Submission> submissionsTable,
+                                Hashtable<Integer, Node> nodeTable) {
         for (MossMatch match : matches) {
 
             //Find the two submissions associated with this match
@@ -186,12 +195,7 @@ public class DataImport {
                     edge.setBoolean(IS_PARTNER, arePartners);
                 }
             }
-
-            //Update the progress bar
-            progress = updateProgressBar(showProgress, dialog, progress);
         }
-        dialog.setIndeterminate(true);
-        return progress;
     }
 
     /**
@@ -227,17 +231,14 @@ public class DataImport {
     /**
      * Adds the nodes to the graph, each representing a submission for the given assignment
      *
-     * @param showProgress     Whether or not to show the progress bar
-     * @param dialog           A handle on the dialog to show progress
      * @param graph            The graph object that we're creating
      * @param fileSets         The list of file sets to load and add to the graph
      * @param submissionsTable A table for referencing submissions quickly
      * @param nodeTable        A table for referencing the nodes quickly
      * @return The progress after we've added all of the submission nodes
      */
-    private int addSubmissionNodes(boolean showProgress, LoadingProgressDialog dialog, Graph graph, List<FileSet> fileSets,
-                                   Hashtable<Integer, Submission> submissionsTable, Hashtable<Integer, Node> nodeTable) {
-        int progress = 0;
+    private void addSubmissionNodes(Graph graph, List<FileSet> fileSets, Hashtable<Integer, Submission> submissionsTable,
+                                    Hashtable<Integer, Node> nodeTable) {
         for (FileSet fileSet : fileSets) {
 
             //Grab all submissions associated with this file set
@@ -246,24 +247,6 @@ public class DataImport {
 
             //Get the semester data from the file set
             Semester semester = fileSet.getOffering().getSemester();
-
-            //Gather the list of student id's for the submission list
-            List<Integer> studentIdList = new ArrayList<Integer>();
-            for (Submission submission : setOfSubmissions) {
-                studentIdList.add(submission.getStudentId());
-            }
-
-            // Get all of the student objects at once from the API
-            int[] studentIds = new int[studentIdList.size()];
-            for (int i = 0; i<studentIdList.size(); i++){
-                studentIds[i] = studentIdList.get(i);
-            }
-            List<Student> students = CoMoToAPI.getStudents(connection, studentIds, true);
-
-            // Insert all students back into submissions list
-            for (int i = 0; i<submissions.size(); i++) {
-                submissions.get(i).setStudent(students.get(i));
-            }
 
             //Add the submissions to the graph
             for (Submission submission : setOfSubmissions) {
@@ -306,12 +289,7 @@ public class DataImport {
                     // Something here didn't exist in the API, skip this one
                 }
             }
-
-
-            //Update the progress bar
-            progress = updateProgressBar(showProgress, dialog, progress);
         }
-        return progress;
     }
 
     /**
@@ -382,15 +360,6 @@ public class DataImport {
         return null;
     }
 
-    private void estimateTotalWorkForProgressBar(boolean showProgress, LoadingProgressDialog dialog, List<FileSet> fileSets, List<MossMatch> matches) {
-        if (showProgress) {
-            if (fileSets != null) {
-                dialog.setTaskLength(fileSets.size() + matches.size());
-                dialog.setIndeterminate(false);
-            }
-        }
-    }
-
     private void declareGraphFields(Graph graph) {
 
         //Declare all the properties of a submission (e.g. a node in the graph)
@@ -407,22 +376,6 @@ public class DataImport {
         graph.getEdgeTable().addColumn(SCORE2, double.class);
         graph.getEdgeTable().addColumn(LINK, String.class);
         graph.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
-    }
-
-    /**
-     * Updates the progress bar if necessary
-     *
-     * @param showProgress Whether or not we're supposed to show the progress bar
-     * @param dialog       A handle on the progress bar dialog
-     * @param progress     The progress of the job, ranging from 0 to the number of items loaded from the API (edges + nodes)
-     * @return The updated progress value
-     */
-    private int updateProgressBar(boolean showProgress, LoadingProgressDialog dialog, int progress) {
-        if (showProgress) {
-            progress++;
-            dialog.setValue(progress);
-        }
-        return progress;
     }
 
     /**

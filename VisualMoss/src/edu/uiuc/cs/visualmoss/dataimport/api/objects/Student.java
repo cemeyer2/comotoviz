@@ -6,7 +6,6 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -151,16 +150,20 @@ public class Student implements Refreshable{
         return submissions;
     }
 
-    public Map getMap(){
-        return new HashMap();
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public int getId() {
-        return id;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
     }
 
     public URL getHistoryLink() {
@@ -171,12 +174,52 @@ public class Student implements Refreshable{
         this.historyLink = historyLink;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getLdapDn() {
+        return ldapDn;
+    }
+
+    public void setLdapDn(String ldapDn) {
+        this.ldapDn = ldapDn;
+    }
+
+    public String getLeftUiuc() {
+        return leftUiuc;
+    }
+
+    public void setLeftUiuc(String leftUiuc) {
+        this.leftUiuc = leftUiuc;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
+    }
+
     public String getNetid() {
         return netid;
     }
 
     public void setNetid(String netid) {
         this.netid = netid;
+    }
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
     }
 
     public List<Integer> getSubmissionIds() {
@@ -187,11 +230,27 @@ public class Student implements Refreshable{
         this.submissionIds = submissionIds;
     }
 
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
     public List<MossMatch> getMatches() {
         return matches;
     }
 
     public void setMatches(List<MossMatch> matches) {
         this.matches = matches;
+    }
+
+    public CoMoToAPIConnection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(CoMoToAPIConnection connection) {
+        this.connection = connection;
     }
 }

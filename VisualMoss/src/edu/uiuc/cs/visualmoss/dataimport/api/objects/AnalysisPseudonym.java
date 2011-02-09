@@ -48,7 +48,7 @@ public class AnalysisPseudonym implements Refreshable{
     /**
      * A connection to the CoMoTo API for use when lazily loading attributes
      */
-    CoMoToAPIConnection connection;
+    CoMoToAPIConnection connection = null;
 
     /**
      * Constructor for the AnalysisPseudonym class
