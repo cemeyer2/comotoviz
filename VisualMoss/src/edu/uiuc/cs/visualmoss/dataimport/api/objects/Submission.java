@@ -197,7 +197,7 @@ public class Submission implements Refreshable{
     /**
      * Get the parters, or list of students, lazily from the API
      *
-     * @return The list of students representing the parnters for this submission
+     * @return The list of students representing the partners for this submission
      */
     public List<Student> getPartners() {
 

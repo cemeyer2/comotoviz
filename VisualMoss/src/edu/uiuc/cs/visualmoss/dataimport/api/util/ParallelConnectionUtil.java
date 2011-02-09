@@ -15,16 +15,19 @@ import java.util.List;
  * Date:    2/8/11
  * Time:    12:27 PM
  * Package: edu.uiuc.cs.visualmoss.dataimport.api.util
- * Created by IntelliJ IDEA.
  */
 public class ParallelConnectionUtil<T> {
 
-    public ParallelConnectionUtil() {
-    }
-
+    /**
+     * Fetch API objects in parallel
+     *
+     * @param methodName                The API method to call
+     * @param params                    The parameters to the method
+     * @param parallelConnectionCount   The number of parallel connections
+     * @return                          A typed list of API objects
+     * @throws CoMoToAPIException       If we fail to fetch the data in parallel
+     */
     public List<T> parallelFetch(String methodName, Object[][] params, int parallelConnectionCount) throws CoMoToAPIException {
-
-
         List<T> retval = new LinkedList<T>();
         List<Thread> threads = new LinkedList<Thread>();
         for (int i = 0; i < params.length; i++) {

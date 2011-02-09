@@ -247,6 +247,16 @@ public class DataImport {
             //Get the semester data from the file set
             Semester semester = fileSet.getOffering().getSemester();
 
+            //Gather the list of student id's for the submission list
+            List<Integer> studentIdList = new ArrayList<Integer>();
+            for (Submission submission : setOfSubmissions) {
+                studentIdList.add(submission.getStudentId());
+            }
+
+            //Get all of the student objects at once, and in parallel
+
+
+
             //Add the submissions to the graph
             for (Submission submission : setOfSubmissions) {
 

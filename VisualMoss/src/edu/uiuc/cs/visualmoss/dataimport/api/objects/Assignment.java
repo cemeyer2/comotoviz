@@ -1,13 +1,11 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIAccelerator;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIException;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
-import edu.uiuc.cs.visualmoss.dataimport.api.util.ParallelConnectionUtil;
 import org.apache.commons.lang.WordUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -159,7 +157,8 @@ public class Assignment implements Refreshable {
 
         //Grab the list from the API if not cached
         if (filesets == null) {
-            filesets = new ArrayList<FileSet>();
+
+            // Build a 2D parameter list for the API accelerator
             Object[][] params = new Object[filesetIds.size()][3];
             int i = 0;
             for (int fileSetId : filesetIds) {
@@ -167,19 +166,9 @@ public class Assignment implements Refreshable {
                 i++;
             }
 
-            ParallelConnectionUtil<FileSet> parallelConnector = new ParallelConnectionUtil<FileSet>();
-            try {
-                int parallelFetchCount = 4;
-                filesets = parallelConnector.parallelFetch("getFileSet", params, parallelFetchCount);
-            } catch (CoMoToAPIException e) {
-                e.printStackTrace();
-                System.err.println("Reverting to serial fetch");
-                filesets.clear();
-                for (int fileSetId : filesetIds) {
-                    filesets.add(CoMoToAPI.getFileSet(connection, fileSetId, getSubmissionInfo));
-                }
-            }
-
+            // Get an accelerator and fetch these filesets using the accelerator
+            CoMoToAPIAccelerator<FileSet> accelerator = new CoMoToAPIAccelerator<FileSet>();
+            filesets = accelerator.getAPIObjects(connection, "getFileSet", params);
         }
         return filesets;
     }
