@@ -1,11 +1,12 @@
 package edu.uiuc.cs.visualmoss.gui.graph.predicates;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
 import prefuse.data.Schema;
 import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
+
+import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
 
 public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
 
@@ -20,9 +21,11 @@ public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
 	}
 
 	public boolean getBoolean(Tuple t) {
-		String season = t.getString("season");
-		String year = t.getString("year");
-		if(season.equals(VisualMossConstants.CURRENT_SEASON) && year.equals(VisualMossConstants.CURRENT_YEAR))
+		String season = t.getString(SEASON);
+		String year = t.getString(YEAR);
+		String assignmentSeason = t.getString(ASSIGNMENT_YEAR);
+		String assignmentYear = t.getString(ASSIGNMENT_SEASON);
+		if(season.equals(assignmentSeason) && year.equals(assignmentYear))
 		{
 			return true;
 		}

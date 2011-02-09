@@ -36,6 +36,9 @@ public class DataImport {
     private Assignment assignment;
     private Course course;
     private List<Course> courses;
+    private Season assignmentSeason;
+    private int assignmentYear;
+
 
     /**
      * The default constructor for the data import, which queries the CoMoTo API to populate the courses and assignments
@@ -108,6 +111,19 @@ public class DataImport {
         //Create the progress bar
         LoadingProgressDialog dialog = new LoadingProgressDialog(parent, "Loading Graph of \"" + assignment.getName() + "\"", "");
         this.assignment = assignment;
+
+        //Figure out the year and season of this assignment
+        String assignmentTitle = assignment.toString();
+        if(assignmentTitle.toLowerCase().contains("spring")){
+            assignmentSeason = Season.Spring;
+        } else if (assignmentTitle.toLowerCase().contains("summer")){
+            assignmentSeason = Season.Summer;
+        } else if (assignmentTitle.toLowerCase().contains("fall")){
+            assignmentSeason = Season.Fall;
+        } else if (assignmentTitle.toLowerCase().contains("winter")){
+            assignmentSeason = Season.Winter;
+        }
+        assignmentYear = Integer.parseInt(assignmentTitle.substring(assignmentTitle.length()-5, assignmentTitle.length()).trim());
 
         //Initialize and display the progress bar if we're supposed to
         initializeProgressBar(showProgress, dialog);
@@ -272,12 +288,16 @@ public class DataImport {
                         node.setString(PSEUDONYM, Integer.toString(student.getId()));
                         node.setString(SEASON, semester.getSeason().name());
                         node.setString(YEAR, Integer.toString(semester.getYear()));
+                        node.setString(ASSIGNMENT_YEAR, Integer.toString(assignmentYear));
+                        node.setString(ASSIGNMENT_SEASON, assignmentSeason.toString());
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
                     } else {
                         node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
+                        node.setString(ASSIGNMENT_YEAR, Integer.toString(assignmentYear));
+                        node.setString(ASSIGNMENT_SEASON, assignmentSeason.toString());
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
                     }
                     node.setString(IS_SOLUTION, Boolean.toString(isSolution));

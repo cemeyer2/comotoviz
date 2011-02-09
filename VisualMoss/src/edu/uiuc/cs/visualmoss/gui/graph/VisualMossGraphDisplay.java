@@ -1,14 +1,8 @@
 package edu.uiuc.cs.visualmoss.gui.graph;
 
-import java.awt.Color;
-import java.awt.geom.Point2D;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
+import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
+import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossVisibilityPredicate;
 import prefuse.Constants;
 import prefuse.Display;
 import prefuse.Visualization;
@@ -17,11 +11,7 @@ import prefuse.action.RepaintAction;
 import prefuse.action.assignment.ColorAction;
 import prefuse.action.assignment.FontAction;
 import prefuse.action.layout.graph.ForceDirectedLayout;
-import prefuse.controls.DragControl;
-import prefuse.controls.NeighborHighlightControl;
-import prefuse.controls.PanControl;
-import prefuse.controls.WheelZoomControl;
-import prefuse.controls.ZoomControl;
+import prefuse.controls.*;
 import prefuse.data.Edge;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
@@ -31,9 +21,14 @@ import prefuse.util.force.ForceSimulator;
 import prefuse.visual.NodeItem;
 import prefuse.visual.VisualGraph;
 import prefuse.visual.VisualItem;
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
-import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
-import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossVisibilityPredicate;
+
+import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * a wrapper around prefuse classes that customizes them for visualmoss
@@ -90,10 +85,6 @@ public class VisualMossGraphDisplay
 		
 		predicate = new VisualMossVisibilityPredicate(minimumWeightToDisplay, showSingletons, showSolution, includePast, includePartners);
 		
-		//Predicate p = ExpressionParser.predicate("IF ISNODE() THEN DEGREE() > 0 ELSE [weight] >= "+minimumWeightToDisplay);
-		//System.out.println(ExpressionParser.getError());
-		//System.out.println(p == null);
-		
 		display = new Display(vis, predicate);
 		display.addControlListener(new VisualMossControl(parent));
 		display.setHighQuality(true);
@@ -113,22 +104,16 @@ public class VisualMossGraphDisplay
 		//colors for coloring nodes, white background for regular nodes, red background for solution
 		//evals based off of isSolution, which is either "false" or "true", since "true" is alphabetically
 		//after "false", red is used for it
-//		int[] pal = {ColorLib.color(Color.WHITE), ColorLib.color(Color.RED)};
-//		DataColorAction fill = new DataColorAction("graph.nodes", "isSolution",
-//                Constants.NOMINAL, VisualItem.FILLCOLOR, pal);
-//		ColorAction fill = new ColorAction("graph.nodes", VisualItem.STROKECOLOR, ColorLib.gray(200));
-//		fill.add(new VisualMossNodeFillSolutionPredicate(), ColorLib.color(Color.RED));
-//		fill.add(new VisualMossNodeFillCurrentSemesterPredicate(), ColorLib.color(Color.WHITE));
 		VisualMossNodeFillColorAction fill = new VisualMossNodeFillColorAction("graph.nodes", VisualItem.FILLCOLOR);
+
 		//black lines for nodes
-//		ColorAction stroke = new ColorAction("graph.nodes", VisualItem.STROKECOLOR, ColorLib.color(Color.BLACK));
 		VisualMossNodeStrokeColorAction stroke = new VisualMossNodeStrokeColorAction("graph.nodes", VisualItem.STROKECOLOR);
+
 		// use black for node text
 		ColorAction text = new ColorAction("graph.nodes", VisualItem.TEXTCOLOR, ColorLib.gray(0));
+
 		// use light grey for edges
-//		ColorAction edges = new ColorAction("graph.edges", VisualItem.STROKECOLOR, ColorLib.gray(0));
 		VisualMossEdgeStrokeColorAction edges = new VisualMossEdgeStrokeColorAction("graph.edges", VisualItem.STROKECOLOR);
-		//need to figure out how to get hl to work
 		ColorAction hl = new ColorAction("graph.nodes", VisualItem.HIGHLIGHT, ColorLib.rgb(255,200,125));
 		ActionList color = new ActionList();
 		color.add(fill);

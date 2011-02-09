@@ -1,14 +1,12 @@
 package edu.uiuc.cs.visualmoss.gui.graph;
 
-import java.awt.Color;
-
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillCurrentSemesterPredicate;
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossNodeFillSolutionPredicate;
-
 import prefuse.action.assignment.ColorAction;
-import prefuse.data.expression.Predicate;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
+
+import java.awt.*;
 
 public class VisualMossNodeFillColorAction extends ColorAction {
 

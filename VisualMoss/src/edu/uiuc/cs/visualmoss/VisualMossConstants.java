@@ -57,6 +57,9 @@ public class VisualMossConstants {
     public static final String SUBMISSION_ID = "submission_id";
     public static final String WEIGHT = "weight";
     public static final String YEAR = "year";
+    public static final String ASSIGNMENT_YEAR = "assignmentYear";
+    public static final String ASSIGNMENT_SEASON = "assignmentSeason";
+
     public static final String CURRENT_SEASON = getCurrentSeason();
     public static final String CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR)+"";
     private static final String getCurrentSeason(){
