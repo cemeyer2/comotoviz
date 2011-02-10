@@ -3,7 +3,6 @@ package edu.uiuc.cs.visualmoss;
 import prefuse.util.FontLib;
 
 import java.awt.*;
-import java.util.Calendar;
 
 public class VisualMossConstants {
 
@@ -57,19 +56,5 @@ public class VisualMossConstants {
     public static final String SUBMISSION_ID = "submission_id";
     public static final String WEIGHT = "weight";
     public static final String YEAR = "year";
-    public static final String ASSIGNMENT_YEAR = "assignmentYear";
-    public static final String ASSIGNMENT_SEASON = "assignmentSeason";
-
-    public static final String CURRENT_SEASON = getCurrentSeason();
-    public static final String CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR)+"";
-    private static final String getCurrentSeason(){
-        int month = Calendar.getInstance().get(Calendar.MONTH);
-        if(month < 6){
-            return "Spring";
-        } else if(month < 9) {
-            return "Summer";
-        } else {
-            return "Fall";
-        }
-    }
+    public static final String CURRENT_SEMESTER = "currentSemester";
 }

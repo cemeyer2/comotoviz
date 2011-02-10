@@ -281,6 +281,9 @@ public class DataImport {
                     Type submissionType = submission.getType();
                     boolean isSolution = (submissionType == Type.solutionsubmission);
 
+                    //Determine whether this node is from this semester or not
+                    boolean currentSemester = (semester.getYear() == assignmentYear) && (semester.getSeason().equals(assignmentSeason));
+
                     //Add this submission's data to the graph
                     Node node = graph.addNode();
                     if (!isSolution) {
@@ -288,16 +291,14 @@ public class DataImport {
                         node.setString(PSEUDONYM, Integer.toString(student.getId()));
                         node.setString(SEASON, semester.getSeason().name());
                         node.setString(YEAR, Integer.toString(semester.getYear()));
-                        node.setString(ASSIGNMENT_YEAR, Integer.toString(assignmentYear));
-                        node.setString(ASSIGNMENT_SEASON, assignmentSeason.toString());
+                        node.setString(CURRENT_SEMESTER, Boolean.toString(currentSemester));
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
                     } else {
                         node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
                         node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
-                        node.setString(ASSIGNMENT_YEAR, Integer.toString(assignmentYear));
-                        node.setString(ASSIGNMENT_SEASON, assignmentSeason.toString());
+                        node.setString(CURRENT_SEMESTER, Boolean.toString(currentSemester));
                         node.setString(SUBMISSION_ID, Integer.toString(submissionId));
                     }
                     node.setString(IS_SOLUTION, Boolean.toString(isSolution));
@@ -328,6 +329,7 @@ public class DataImport {
         graph2.getNodeTable().addColumn(SEASON, String.class);
         graph2.getNodeTable().addColumn(YEAR, String.class);
         graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+        graph2.getNodeTable().addColumn(CURRENT_SEMESTER, String.class);
         graph2.getEdgeTable().addColumn(WEIGHT, double.class);
         graph2.getEdgeTable().addColumn(SCORE1, double.class);
         graph2.getEdgeTable().addColumn(SCORE2, double.class);
@@ -345,6 +347,7 @@ public class DataImport {
             newNode.setString(SEASON, oldNode.getString(SEASON));
             newNode.setString(YEAR, oldNode.getString(YEAR));
             newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
+            newNode.setString(CURRENT_SEMESTER, oldNode.getString(SUBMISSION_ID));
         }
 
         //Copy all of the graph edges
@@ -389,6 +392,7 @@ public class DataImport {
         graph.getNodeTable().addColumn(SEASON, String.class);
         graph.getNodeTable().addColumn(YEAR, String.class);
         graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
+        graph.getNodeTable().addColumn(CURRENT_SEMESTER, String.class);
 
         //Declare all the properties of an analysis
         graph.getEdgeTable().addColumn(WEIGHT, double.class);   //Weight = max(score1,score2)

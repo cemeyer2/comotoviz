@@ -6,7 +6,7 @@ import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
 
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
+import static edu.uiuc.cs.visualmoss.VisualMossConstants.CURRENT_SEMESTER;
 
 public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
 
@@ -21,15 +21,8 @@ public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
 	}
 
 	public boolean getBoolean(Tuple t) {
-		String season = t.getString(SEASON);
-		String year = t.getString(YEAR);
-		String assignmentSeason = t.getString(ASSIGNMENT_YEAR);
-		String assignmentYear = t.getString(ASSIGNMENT_SEASON);
-		if(season.equals(assignmentSeason) && year.equals(assignmentYear))
-		{
-			return true;
-		}
-		return false;
+		String currentSemester = t.getString(CURRENT_SEMESTER);
+		return Boolean.parseBoolean(currentSemester);
 	}
 
 	public double getDouble(Tuple t) {
