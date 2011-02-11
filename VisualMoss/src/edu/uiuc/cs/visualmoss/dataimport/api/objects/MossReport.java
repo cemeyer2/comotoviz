@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -98,7 +99,7 @@ public class MossReport implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, load the new moss report from the api
         MossReport newMossReport = CoMoToAPI.getMossReport(connection, id);
 

@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -95,7 +96,7 @@ public class Semester implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new object from the API
         Semester newSemester = CoMoToAPI.getSemester(connection, id);
 

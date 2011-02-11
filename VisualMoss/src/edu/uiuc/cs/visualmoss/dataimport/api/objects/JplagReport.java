@@ -37,6 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 
 import java.util.Map;
@@ -56,6 +57,7 @@ public class JplagReport implements Refreshable, Cacheable {
     }
 
     public void refresh() {
+        CoMoToAPICache.remove(this);
     }
 
     @Override

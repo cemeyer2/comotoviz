@@ -37,10 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIAccelerator;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+import edu.uiuc.cs.visualmoss.dataimport.api.*;
 import org.apache.commons.lang.WordUtils;
 
 import java.util.HashMap;
@@ -132,7 +129,7 @@ public class Assignment implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //Grab the new assignment object
         Assignment newAssignment = CoMoToAPI.getAssignment(connection, id);
 

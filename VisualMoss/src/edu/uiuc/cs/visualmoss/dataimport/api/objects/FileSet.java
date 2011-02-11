@@ -163,7 +163,7 @@ public class FileSet implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //Grab the new file set from the API
         FileSet newFileSet;
         if (fullSubmissionInfo) {

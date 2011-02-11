@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -107,7 +108,7 @@ public class AnalysisPseudonym implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //Grab this object again from the API
         AnalysisPseudonym newAnalysisPseudonym = CoMoToAPI.getAnalysisPseudonym(connection, id);
 

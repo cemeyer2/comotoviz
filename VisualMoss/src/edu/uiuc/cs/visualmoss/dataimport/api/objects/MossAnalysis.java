@@ -174,7 +174,7 @@ public class MossAnalysis implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new object from the API
         MossAnalysis newMossAnalysis;
         if (categorizedMatches) {

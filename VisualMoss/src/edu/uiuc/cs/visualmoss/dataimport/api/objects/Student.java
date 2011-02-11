@@ -159,7 +159,7 @@ public class Student implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new student object from the API
         Student newStudent = CoMoToAPI.getStudent(connection, id, true);
 

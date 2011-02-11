@@ -123,7 +123,7 @@ public class Report implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new report object
         Report newReport = CoMoToAPI.getReport(connection, id);
 

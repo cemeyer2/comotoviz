@@ -138,7 +138,7 @@ public class Course implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //Grab the new object from the API
         Course newCourse = CoMoToAPI.getCourse(connection, id);
 

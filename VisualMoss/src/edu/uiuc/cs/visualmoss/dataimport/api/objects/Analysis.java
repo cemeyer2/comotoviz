@@ -148,7 +148,7 @@ public class Analysis implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //Grab this object again from the API
         Analysis newAnalysis = CoMoToAPI.getAnalysis(connection, id);
 

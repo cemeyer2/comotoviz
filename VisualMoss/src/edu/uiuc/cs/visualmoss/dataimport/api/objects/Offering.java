@@ -155,7 +155,7 @@ public class Offering implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new offering object from the api
         Offering newOffering;
         if (extraOfferingInfo) {

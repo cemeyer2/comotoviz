@@ -161,7 +161,7 @@ public class Submission implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
-
+        CoMoToAPICache.remove(this);
         //First, grab the new submission from the api
         Submission newSubmission;
         if (fullStudentData) {
