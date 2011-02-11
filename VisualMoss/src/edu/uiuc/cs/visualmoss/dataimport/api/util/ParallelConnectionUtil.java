@@ -21,11 +21,11 @@ public class ParallelConnectionUtil<T> {
     /**
      * Fetch API objects in parallel
      *
-     * @param methodName                The API method to call
-     * @param params                    The parameters to the method
-     * @param parallelConnectionCount   The number of parallel connections
-     * @return                          A typed list of API objects
-     * @throws CoMoToAPIException       If we fail to fetch the data in parallel
+     * @param methodName              The API method to call
+     * @param params                  The parameters to the method
+     * @param parallelConnectionCount The number of parallel connections
+     * @return A typed list of API objects
+     * @throws CoMoToAPIException If we fail to fetch the data in parallel
      */
     public List<T> parallelFetch(String methodName, Object[][] params, int parallelConnectionCount) throws CoMoToAPIException {
         List<T> retval = new LinkedList<T>();
@@ -77,6 +77,7 @@ public class ParallelConnectionUtil<T> {
             this.retval = retval;
         }
 
+        @SuppressWarnings("unchecked")
         public void run() {
             try {
                 Object APIReturned = targetMethod.invoke(null, this.params);

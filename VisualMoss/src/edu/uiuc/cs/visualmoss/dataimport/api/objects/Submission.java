@@ -4,10 +4,7 @@ import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
 
@@ -15,10 +12,10 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
- *
+ * <p/>
  * <p> <p> Holds the data for a submission
  */
-public class Submission implements Refreshable{
+public class Submission implements Refreshable {
 
     /**
      * The pseudonym ids for this submission
@@ -99,16 +96,18 @@ public class Submission implements Refreshable{
      * Creates a new submission object
      *
      * @param abstractSubmission A map holding the submission data
-     * @param connection A connection to the API
+     * @param connection         A connection to the API
      */
     public Submission(Map abstractSubmission, CoMoToAPIConnection connection) {
 
         //Save the connection
         this.connection = connection;
 
+        this.partnerIds = new LinkedList<Integer>();
+
         //Explicitly add the student object if it exists
         Map studentMap = (Map) abstractSubmission.get(STUDENT);
-        if(studentMap != null){
+        if (studentMap != null) {
             fullStudentData = true;
             student = new Student(studentMap, connection);
             abstractSubmission.remove(STUDENT);
@@ -126,7 +125,7 @@ public class Submission implements Refreshable{
 
         //First, grab the new submission from the api
         Submission newSubmission;
-        if(fullStudentData){
+        if (fullStudentData) {
             newSubmission = CoMoToAPI.getSubmission(connection, id, true);
         } else {
             newSubmission = CoMoToAPI.getSubmission(connection, id);
@@ -140,7 +139,7 @@ public class Submission implements Refreshable{
         studentId = newSubmission.getStudentId();
         submissionFileIds = newSubmission.getSubmissionFileIds();
         type = newSubmission.getType();
-        if(fullStudentData){
+        if (fullStudentData) {
             student = newSubmission.getStudent();
         } else {
             student = null;
@@ -161,7 +160,7 @@ public class Submission implements Refreshable{
     public FileSet getFileSet() {
 
         //Only call the API if it's not cached
-        if(fileSet == null) {
+        if (fileSet == null) {
             fileSet = CoMoToAPI.getFileSet(connection, fileSetId);
         }
         return fileSet;
@@ -175,7 +174,7 @@ public class Submission implements Refreshable{
     public Offering getOffering() {
 
         //Only call the API if it's not cached
-        if(offering == null) {
+        if (offering == null) {
             offering = CoMoToAPI.getOffering(connection, offeringId);
         }
         return offering;
@@ -189,7 +188,7 @@ public class Submission implements Refreshable{
     public Student getStudent() {
 
         //Only call the API if it's not cached
-        if(student == null && type != Type.solutionsubmission) {
+        if (student == null && type != Type.solutionsubmission) {
             student = CoMoToAPI.getStudent(connection, studentId, true);
         }
         return student;
@@ -207,9 +206,9 @@ public class Submission implements Refreshable{
     public List<Student> getPartners() {
 
         //Only call the API if it's not cached
-        if(partners == null) {
+        if (partners == null) {
             partners = new ArrayList<Student>();
-            for(int partnerId : partnerIds){
+            for (int partnerId : partnerIds) {
                 partners.add(CoMoToAPI.getStudent(connection, partnerId, true));
             }
         }
@@ -224,9 +223,9 @@ public class Submission implements Refreshable{
     public List<SubmissionFile> getSubmissionFiles() {
 
         //Only call the API if it's not cached
-        if(submissionFiles == null) {
+        if (submissionFiles == null) {
             submissionFiles = new ArrayList<SubmissionFile>();
-            for(int submissionFileId : submissionFileIds){
+            for (int submissionFileId : submissionFileIds) {
                 submissionFiles.add(CoMoToAPI.getSubmissionFile(connection, submissionFileId));
             }
         }
@@ -234,7 +233,7 @@ public class Submission implements Refreshable{
         return submissionFiles;
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return new HashMap();
     }
 

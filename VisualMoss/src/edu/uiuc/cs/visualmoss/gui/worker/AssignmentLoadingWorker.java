@@ -47,4 +47,12 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
         return null;
     }
 
+    public void runSynchronous() {
+        try {
+            doInBackground();
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
 }
