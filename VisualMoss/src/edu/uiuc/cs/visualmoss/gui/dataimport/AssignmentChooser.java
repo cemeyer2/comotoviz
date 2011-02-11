@@ -105,13 +105,24 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
     }
 
     public void actionPerformed(ActionEvent arg0) {
-        changeAssignment();
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+        changeAssignment(node);
     }
 
-    public void changeAssignment() {
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-        Object obj = node.getUserObject();
+    public DefaultMutableTreeNode getAssignmentTreeNodeById(int id) {
+        DefaultMutableTreeNode retval = null;
+        for (DefaultMutableTreeNode node : assignmentNodes) {
+            if (((Assignment) node.getUserObject()).getId() == id) {
+                retval = node;
+                break;
+            }
+        }
+        return retval;
+    }
 
+    public void changeAssignment(DefaultMutableTreeNode node) {
+
+        Object obj = node.getUserObject();
         if (obj instanceof Assignment) {
             for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
                 assignmentNode.removeAllChildren();
@@ -131,8 +142,10 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
     }
 
     public void mouseClicked(MouseEvent e) {
-        if (e.getClickCount() > 1)
-            changeAssignment();
+        if (e.getClickCount() > 1) {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+            changeAssignment(node);
+        }
     }
 
     public void mouseEntered(MouseEvent e) {

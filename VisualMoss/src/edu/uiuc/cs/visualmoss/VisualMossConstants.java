@@ -62,7 +62,7 @@ public class VisualMossConstants {
     //Help Constants
     public static final String ABOUT_TITLE = "<html>vPlag " + VERSION + "</html>";
     public static final String ABOUT_AUTHORS = "<html>Charlie Meyer<br/>Kevin Phillips<br/>Michael Hines</html>";
-    public static final String ABOUT_COPYRIGHT = "<html>© 2009 The Board of Trustees at the University of Illinois<br/>" +
+    public static final String ABOUT_COPYRIGHT = "<html>© 2011 The Board of Trustees at the University of Illinois<br/>" +
             "University of Illinois at Urbana-Champaign - College of Engineering<br/>" +
             "Department of Computer Science<br/>" +
             "https://maggie.cs.illinois.edu/trac/VisualMoss</html>";

@@ -75,5 +75,14 @@ public class VisualMossMain {
         window.pack();
         window.setVisible(true);
         window.setExtendedState(window.getExtendedState() | Frame.MAXIMIZED_BOTH);
+
+        if (args.length == 1) { //if an assignment id was passed in from comoto
+            try {
+                int assignmentId = Integer.parseInt(args[0]);
+                window.changeAssignment(assignmentId);
+            } catch (NumberFormatException nfe) {
+                //fail silently
+            }
+        }
     }
 }

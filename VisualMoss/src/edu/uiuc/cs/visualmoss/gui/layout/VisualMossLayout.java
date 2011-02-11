@@ -55,6 +55,7 @@ import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -302,6 +303,15 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         int retval = JOptionPane.showConfirmDialog(this, "Are you sure you would like to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
         if (retval == JOptionPane.YES_OPTION) {
             System.exit(0);
+        }
+    }
+
+    public void changeAssignment(int id) {
+        DefaultMutableTreeNode node = leftControls.getAssignmentTreeNodeById(id);
+        if (node != null) {
+            leftControls.changeAssignment(node);
+        } else {
+            JOptionPane.showInputDialog(this, "The requested assignment does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
