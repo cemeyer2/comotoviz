@@ -53,7 +53,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MOSS_REPO
  * <p/>
  * <p> <p> Holds the data of a report
  */
-public class Report implements Refreshable {
+public class Report implements Refreshable, Cacheable {
 
     /**
      * The id of the associated assignment object

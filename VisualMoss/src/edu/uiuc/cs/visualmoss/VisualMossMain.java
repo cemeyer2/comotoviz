@@ -37,6 +37,7 @@
 
 package edu.uiuc.cs.visualmoss;
 
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.exceptions.VisualMossException;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
 import edu.uiuc.cs.visualmoss.gui.login.LoginDialog;
@@ -53,6 +54,8 @@ import java.sql.SQLException;
 public class VisualMossMain {
 
     public static void main(String[] args) throws VisualMossException, MalformedURLException, DataIOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, SQLException {
+
+        CoMoToAPICache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
 
         try {
             PlatformInit init = PlatformInit.getInstance();

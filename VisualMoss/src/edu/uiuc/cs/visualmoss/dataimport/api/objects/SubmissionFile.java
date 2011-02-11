@@ -49,7 +49,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data for a submission file
  */
-public class SubmissionFile implements Refreshable {
+public class SubmissionFile implements Refreshable, Cacheable {
 
     /**
      * The content of this file

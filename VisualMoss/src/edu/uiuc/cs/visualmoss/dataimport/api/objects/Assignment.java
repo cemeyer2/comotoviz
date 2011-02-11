@@ -55,7 +55,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.GET_FILE_
  * <p/>
  * <p> <p> Holds the data of an assignment
  */
-public class Assignment implements Refreshable {
+public class Assignment implements Refreshable, Cacheable {
 
     /**
      * Integer uniquely identifying this assignment

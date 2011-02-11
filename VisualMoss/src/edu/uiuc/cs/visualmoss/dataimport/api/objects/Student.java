@@ -54,7 +54,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.MATCHES;
  * <p/>
  * <p> <p> Holds the data for a student
  */
-public class Student implements Refreshable {
+public class Student implements Refreshable, Cacheable {
 
     /**
      * The name to display for this student
@@ -289,5 +289,9 @@ public class Student implements Refreshable {
 
     public void setConnection(CoMoToAPIConnection connection) {
         this.connection = connection;
+    }
+
+    public int hashCode() {
+        return getId();
     }
 }

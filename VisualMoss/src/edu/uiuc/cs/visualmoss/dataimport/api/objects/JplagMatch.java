@@ -47,7 +47,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a jplag match
  */
-public class JplagMatch implements Refreshable {
+public class JplagMatch implements Refreshable, Cacheable {
 
     public JplagMatch() {
     }
@@ -56,5 +56,10 @@ public class JplagMatch implements Refreshable {
     }
 
     public void refresh() {
+    }
+
+    @Override
+    public int getId() {
+        return -1;
     }
 }

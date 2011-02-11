@@ -55,7 +55,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SEMESTER;
  * <p/>
  * <p> <p> Holds the data of an offering
  */
-public class Offering implements Refreshable {
+public class Offering implements Refreshable, Cacheable {
 
     /**
      * The unique id for this offering

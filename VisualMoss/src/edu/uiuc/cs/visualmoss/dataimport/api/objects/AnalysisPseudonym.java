@@ -50,7 +50,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data for an analysis pseudonym
  */
-public class AnalysisPseudonym implements Refreshable {
+public class AnalysisPseudonym implements Refreshable, Cacheable {
 
     /**
      * The id that uniquely identifies this analysis pseudonym

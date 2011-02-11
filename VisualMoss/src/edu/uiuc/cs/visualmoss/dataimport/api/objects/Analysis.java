@@ -55,7 +55,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.ANALYSIS_
  * <p/>
  * <p> <p> Holds the data of an analysis
  */
-public class Analysis implements Refreshable {
+public class Analysis implements Refreshable, Cacheable {
 
     /**
      * The unique id that identifies this analysis in the API

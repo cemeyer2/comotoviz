@@ -51,7 +51,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a moss report
  */
-public class MossReport implements Refreshable {
+public class MossReport implements Refreshable, Cacheable {
 
     /**
      * A unique id for the associated report

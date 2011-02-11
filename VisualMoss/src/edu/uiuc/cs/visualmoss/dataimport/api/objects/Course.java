@@ -53,7 +53,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.OFFERINGS
  * <p/>
  * <p> <p> Holds the data of a particular course
  */
-public class Course implements Refreshable {
+public class Course implements Refreshable, Cacheable {
 
     /**
      * The list of associated assignment ids

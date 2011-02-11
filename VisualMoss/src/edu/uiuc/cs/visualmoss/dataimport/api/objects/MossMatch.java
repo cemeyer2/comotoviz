@@ -51,7 +51,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a MOSS match
  */
-public class MossMatch implements Refreshable {
+public class MossMatch implements Refreshable, Cacheable {
 
     /**
      * The unique id for this match

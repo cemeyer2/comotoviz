@@ -50,7 +50,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a semester
  */
-public class Semester implements Refreshable {
+public class Semester implements Refreshable, Cacheable {
 
     /**
      * The season

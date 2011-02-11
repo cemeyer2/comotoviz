@@ -57,7 +57,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SUBMISSIO
  * <p/>
  * <p> <p> Holds the data of a file set
  */
-public class FileSet implements Refreshable {
+public class FileSet implements Refreshable, Cacheable {
 
     /**
      * The list of ids for the associated assignments

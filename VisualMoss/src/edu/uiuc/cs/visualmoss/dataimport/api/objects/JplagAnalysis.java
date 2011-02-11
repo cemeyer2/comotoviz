@@ -47,7 +47,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a jplag analysis
  */
-public class JplagAnalysis implements Refreshable {
+public class JplagAnalysis implements Refreshable, Cacheable {
 
     public JplagAnalysis() {
     }
@@ -56,5 +56,10 @@ public class JplagAnalysis implements Refreshable {
     }
 
     public void refresh() {
+    }
+
+    @Override
+    public int getId() {
+        return -1;
     }
 }

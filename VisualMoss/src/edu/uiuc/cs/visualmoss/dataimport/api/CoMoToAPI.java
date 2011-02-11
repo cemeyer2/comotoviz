@@ -64,12 +64,17 @@ public class CoMoToAPI {
      * @return An analysis identified by its id
      */
     public static Analysis getAnalysis(CoMoToAPIConnection connection, int analysisId) {
-
+        Cacheable c = CoMoToAPICache.get(Analysis.class, analysisId);
+        if (c != null) {
+            return (Analysis) c;
+        }
         //Get the object from the API
         Map abstractAnalysis = getMap(connection, GET_ANALYSIS, analysisId);
 
         //Build the resulting data structure
-        return new Analysis(abstractAnalysis, connection);
+        Analysis a = new Analysis(abstractAnalysis, connection);
+        CoMoToAPICache.put(a);
+        return a;
     }
 
     /**
@@ -80,12 +85,17 @@ public class CoMoToAPI {
      * @return An analysis pseudonym identified by its id
      */
     public static AnalysisPseudonym getAnalysisPseudonym(CoMoToAPIConnection connection, int analysisPseudonymId) {
-
+        Cacheable c = CoMoToAPICache.get(AnalysisPseudonym.class, analysisPseudonymId);
+        if (c != null) {
+            return (AnalysisPseudonym) c;
+        }
         //Get the object from the API
         Map abstractAnalysisPseudonym = getMap(connection, GET_ANALYSIS_PSEUDONYM, analysisPseudonymId);
 
         //Build the resulting data structure
-        return new AnalysisPseudonym(abstractAnalysisPseudonym, connection);
+        AnalysisPseudonym ap = new AnalysisPseudonym(abstractAnalysisPseudonym, connection);
+        CoMoToAPICache.put(ap);
+        return ap;
     }
 
     /**
@@ -96,12 +106,17 @@ public class CoMoToAPI {
      * @return The assignment
      */
     public static Assignment getAssignment(CoMoToAPIConnection connection, int assignmentId) {
-
+        Cacheable c = CoMoToAPICache.get(Assignment.class, assignmentId);
+        if (c != null) {
+            return (Assignment) c;
+        }
         //Get the object from the API
         Map abstractAssignment = getMap(connection, GET_ASSIGNMENT, assignmentId);
 
         //Build the resulting list of assignments
-        return new Assignment(abstractAssignment, connection);
+        Assignment a = new Assignment(abstractAssignment, connection);
+        CoMoToAPICache.put(a);
+        return a;
     }
 
     /**
@@ -122,6 +137,7 @@ public class CoMoToAPI {
 
             Assignment assignment = new Assignment((Map) abstractAssignment, connection);
             assignments.add(assignment);
+            CoMoToAPICache.put(assignment);
         }
 
         return assignments;
@@ -135,12 +151,17 @@ public class CoMoToAPI {
      * @return The course
      */
     public static Course getCourse(CoMoToAPIConnection connection, int courseId) {
-
+        Cacheable c = CoMoToAPICache.get(Course.class, courseId);
+        if (c != null) {
+            return (Course) c;
+        }
         //Get the object from the API
         Map abstractCourse = getMap(connection, GET_COURSE, courseId);
 
         //Build the resulting list of assignments
-        return new Course(abstractCourse, connection);
+        Course course = new Course(abstractCourse, connection);
+        CoMoToAPICache.put(course);
+        return course;
     }
 
     /**
@@ -152,12 +173,17 @@ public class CoMoToAPI {
      * @return The course
      */
     public static Course getCourse(CoMoToAPIConnection connection, int courseId, boolean extraOfferingInfo) {
-
+        Cacheable c = CoMoToAPICache.get(Course.class, courseId);
+        if (c != null) {
+            return (Course) c;
+        }
         //Get the object from the API
         Map abstractCourse = getMap(connection, GET_COURSE, courseId, extraOfferingInfo);
 
         //Build the resulting list of assignments
-        return new Course(abstractCourse, connection);
+        Course course = new Course(abstractCourse, connection);
+        CoMoToAPICache.put(course);
+        return course;
     }
 
     /**
@@ -177,6 +203,7 @@ public class CoMoToAPI {
 
             Course course = new Course((Map) abstractCourse, connection);
             courses.add(course);
+            CoMoToAPICache.put(course);
         }
 
         return courses;
@@ -200,6 +227,7 @@ public class CoMoToAPI {
 
             Course course = new Course((Map) abstractCourse, connection);
             courses.add(course);
+            CoMoToAPICache.put(course);
         }
 
         return courses;
@@ -213,12 +241,17 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(CoMoToAPIConnection connection, int fileSetId) {
-
+        Cacheable c = CoMoToAPICache.get(FileSet.class, fileSetId);
+        if (c != null) {
+            return (FileSet) c;
+        }
         //Get the file set from the api
         Map abstractFileSet = getMap(connection, GET_FILE_SET, fileSetId);
 
         //Build the file set
-        return new FileSet(abstractFileSet, connection);
+        FileSet fs = new FileSet(abstractFileSet, connection);
+        CoMoToAPICache.put(fs);
+        return fs;
     }
 
     /**
@@ -230,12 +263,17 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(CoMoToAPIConnection connection, int fileSetId, boolean fullSubmissionInfo) {
-
+        Cacheable c = CoMoToAPICache.get(FileSet.class, fileSetId);
+        if (c != null) {
+            return (FileSet) c;
+        }
         //Get the file set from the api
         Map abstractFileSet = getMap(connection, GET_FILE_SET, fileSetId, fullSubmissionInfo);
 
         //Build the file set
-        return new FileSet(abstractFileSet, connection);
+        FileSet fs = new FileSet(abstractFileSet, connection);
+        CoMoToAPICache.put(fs);
+        return fs;
     }
 
     /**
@@ -248,12 +286,17 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(CoMoToAPIConnection connection, int fileSetId, boolean fullSubmissionInfo, boolean extraOfferingInfo) {
-
+        Cacheable c = CoMoToAPICache.get(FileSet.class, fileSetId);
+        if (c != null) {
+            return (FileSet) c;
+        }
         //Get the file set from the api
         Map abstractFileSet = getMap(connection, GET_FILE_SET, fileSetId, fullSubmissionInfo, extraOfferingInfo);
 
         //Build the file set
-        return new FileSet(abstractFileSet, connection);
+        FileSet fs = new FileSet(abstractFileSet, connection);
+        CoMoToAPICache.put(fs);
+        return fs;
     }
 
     /**
@@ -264,12 +307,17 @@ public class CoMoToAPI {
      * @return The jplag analysis
      */
     public static JplagAnalysis getJplagAnalysis(CoMoToAPIConnection connection, int jplagAnalysisId) {
-
+        Cacheable c = CoMoToAPICache.get(JplagAnalysis.class, jplagAnalysisId);
+        if (c != null) {
+            return (JplagAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractJplagAnalysis = getMap(connection, GET_JPLAG_ANALYSIS, jplagAnalysisId);
 
         //Build the file set
-        return new JplagAnalysis(abstractJplagAnalysis, connection);
+        JplagAnalysis jpa = new JplagAnalysis(abstractJplagAnalysis, connection);
+        CoMoToAPICache.put(jpa);
+        return jpa;
     }
 
     /**
@@ -280,12 +328,17 @@ public class CoMoToAPI {
      * @return The moss analysis from the API
      */
     public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId) {
-
+        Cacheable c = CoMoToAPICache.get(MossAnalysis.class, mossAnalysisId);
+        if (c != null) {
+            return (MossAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId);
 
         //Build the file set
-        return new MossAnalysis(abstractMossAnalysis, connection);
+        MossAnalysis ma = new MossAnalysis(abstractMossAnalysis, connection);
+        CoMoToAPICache.put(ma);
+        return ma;
     }
 
     /**
@@ -297,12 +350,17 @@ public class CoMoToAPI {
      * @return The moss analysis from the API
      */
     public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches) {
-
+        Cacheable c = CoMoToAPICache.get(MossAnalysis.class, mossAnalysisId);
+        if (c != null) {
+            return (MossAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches);
 
         //Build the file set
-        return new MossAnalysis(abstractMossAnalysis, connection);
+        MossAnalysis ma = new MossAnalysis(abstractMossAnalysis, connection);
+        CoMoToAPICache.put(ma);
+        return ma;
     }
 
     /**
@@ -316,12 +374,17 @@ public class CoMoToAPI {
      */
     public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore) {
-
+        Cacheable c = CoMoToAPICache.get(MossAnalysis.class, mossAnalysisId);
+        if (c != null) {
+            return (MossAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore);
 
         //Build the file set
-        return new MossAnalysis(abstractMossAnalysis, connection);
+        MossAnalysis ma = new MossAnalysis(abstractMossAnalysis, connection);
+        CoMoToAPICache.put(ma);
+        return ma;
     }
 
     /**
@@ -337,13 +400,18 @@ public class CoMoToAPI {
      */
     public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore, int singleStudentMaxMatchesLowerBound) {
-
+        Cacheable c = CoMoToAPICache.get(MossAnalysis.class, mossAnalysisId);
+        if (c != null) {
+            return (MossAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore,
                 singleStudentMaxMatchesLowerBound);
 
         //Build the file set
-        return new MossAnalysis(abstractMossAnalysis, connection);
+        MossAnalysis ma = new MossAnalysis(abstractMossAnalysis, connection);
+        CoMoToAPICache.put(ma);
+        return ma;
     }
 
     /**
@@ -362,13 +430,18 @@ public class CoMoToAPI {
     public static MossAnalysis getMossAnalysis(CoMoToAPIConnection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore, int singleStudentMaxMatchesLowerBound,
                                                int singleStudentMaxMatchesUpperBound) {
-
+        Cacheable c = CoMoToAPICache.get(MossAnalysis.class, mossAnalysisId);
+        if (c != null) {
+            return (MossAnalysis) c;
+        }
         //Get the file set from the api
         Map abstractMossAnalysis = getMap(connection, GET_MOSS_ANALYSIS, mossAnalysisId, categorizeMatches, minimumMatchScore,
                 singleStudentMaxMatchesLowerBound, singleStudentMaxMatchesUpperBound);
 
         //Build the file set
-        return new MossAnalysis(abstractMossAnalysis, connection);
+        MossAnalysis ma = new MossAnalysis(abstractMossAnalysis, connection);
+        CoMoToAPICache.put(ma);
+        return ma;
     }
 
     /**
@@ -379,12 +452,17 @@ public class CoMoToAPI {
      * @return The moss match
      */
     public static MossMatch getMossMatch(CoMoToAPIConnection connection, int mossMatchId) {
-
+        Cacheable c = CoMoToAPICache.get(MossMatch.class, mossMatchId);
+        if (c != null) {
+            return (MossMatch) c;
+        }
         //Get the moss match from the API
         Map abstractMossMatch = getMap(connection, GET_MOSS_MATCH, mossMatchId);
 
         //Build the file set
-        return new MossMatch(abstractMossMatch, connection);
+        MossMatch mm = new MossMatch(abstractMossMatch, connection);
+        CoMoToAPICache.put(mm);
+        return mm;
     }
 
     /**
@@ -395,12 +473,17 @@ public class CoMoToAPI {
      * @return The moss report object
      */
     public static MossReport getMossReport(CoMoToAPIConnection connection, int mossReportId) {
-
+        Cacheable c = CoMoToAPICache.get(MossReport.class, mossReportId);
+        if (c != null) {
+            return (MossReport) c;
+        }
         //Get the file set from the api
         Map abstractMossReport = getMap(connection, GET_MOSS_REPORT, mossReportId);
 
         //Build the file set
-        return new MossReport(abstractMossReport, connection);
+        MossReport mr = new MossReport(abstractMossReport, connection);
+        CoMoToAPICache.put(mr);
+        return mr;
     }
 
     /**
@@ -411,12 +494,17 @@ public class CoMoToAPI {
      * @return The offering object from the API
      */
     public static Offering getOffering(CoMoToAPIConnection connection, int offeringId) {
-
+        Cacheable c = CoMoToAPICache.get(Offering.class, offeringId);
+        if (c != null) {
+            return (Offering) c;
+        }
         //Get the offering from the api
         Map abstractOffering = getMap(connection, GET_OFFERING, offeringId);
 
         //Build the offering
-        return new Offering(abstractOffering, connection);
+        Offering o = new Offering(abstractOffering, connection);
+        CoMoToAPICache.put(o);
+        return o;
     }
 
     /**
@@ -428,12 +516,17 @@ public class CoMoToAPI {
      * @return The offering object from the API
      */
     public static Offering getOffering(CoMoToAPIConnection connection, int offeringId, boolean extraInfo) {
-
+        Cacheable c = CoMoToAPICache.get(Offering.class, offeringId);
+        if (c != null) {
+            return (Offering) c;
+        }
         //Get the offering from the api
         Map abstractOffering = getMap(connection, GET_OFFERING, offeringId, extraInfo);
 
         //Build the offering
-        return new Offering(abstractOffering, connection);
+        Offering o = new Offering(abstractOffering, connection);
+        CoMoToAPICache.put(o);
+        return o;
     }
 
     /**
@@ -444,12 +537,17 @@ public class CoMoToAPI {
      * @return The report from the API
      */
     public static Report getReport(CoMoToAPIConnection connection, int reportId) {
-
+        Cacheable c = CoMoToAPICache.get(Report.class, reportId);
+        if (c != null) {
+            return (Report) c;
+        }
         //Get the file set from the api
         Map abstractReport = getMap(connection, GET_REPORT, reportId);
 
         //Build the file set
-        return new Report(abstractReport, connection);
+        Report r = new Report(abstractReport, connection);
+        CoMoToAPICache.put(r);
+        return r;
     }
 
     /**
@@ -460,12 +558,17 @@ public class CoMoToAPI {
      * @return The semester
      */
     public static Semester getSemester(CoMoToAPIConnection connection, int semesterId) {
-
+        Cacheable c = CoMoToAPICache.get(Semester.class, semesterId);
+        if (c != null) {
+            return (Semester) c;
+        }
         //Get the file set from the api
         Map abstractSemester = getMap(connection, GET_SEMESTER, semesterId);
 
         //Build the file set
-        return new Semester(abstractSemester, connection);
+        Semester s = new Semester(abstractSemester, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -476,12 +579,17 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(CoMoToAPIConnection connection, int studentId) {
-
+        Cacheable cached = CoMoToAPICache.get(Student.class, studentId);
+        if (cached != null) {
+            return (Student) cached;
+        }
         //Get the file set from the api
         Map abstractStudent = getMap(connection, GET_STUDENT, studentId);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -493,12 +601,17 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(CoMoToAPIConnection connection, int studentId, boolean showHistory) {
-
+        Cacheable cached = CoMoToAPICache.get(Student.class, studentId);
+        if (cached != null) {
+            return (Student) cached;
+        }
         //Get the file set from the api
         Map abstractStudent = getMap(connection, GET_STUDENT, studentId, showHistory);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -511,12 +624,17 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(CoMoToAPIConnection connection, int studentId, boolean showHistory, int minimumMatchScore) {
-
+        Cacheable cached = CoMoToAPICache.get(Student.class, studentId);
+        if (cached != null) {
+            return (Student) cached;
+        }
         //Get the file set from the api
         Map abstractStudent = getMap(connection, GET_STUDENT, studentId, showHistory, minimumMatchScore);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
 
@@ -538,6 +656,7 @@ public class CoMoToAPI {
         for (Object abstractStudent : abstractStudents) {
             Student student = new Student((Map) abstractStudent, connection);
             students.add(student);
+            CoMoToAPICache.put(student);
         }
         return students;
     }
@@ -555,7 +674,9 @@ public class CoMoToAPI {
         Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -572,7 +693,9 @@ public class CoMoToAPI {
         Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid, showHistory);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -590,7 +713,9 @@ public class CoMoToAPI {
         Map abstractStudent = getMap(connection, GET_STUDENT_BY_NETID, netid, showHistory, minimumMatchScore);
 
         //Build the file set
-        return new Student(abstractStudent, connection);
+        Student s = new Student(abstractStudent, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -601,12 +726,17 @@ public class CoMoToAPI {
      * @return The submission from the API
      */
     public static Submission getSubmission(CoMoToAPIConnection connection, int submissionId) {
-
+        Cacheable cached = CoMoToAPICache.get(Submission.class, submissionId);
+        if (cached != null) {
+            return (Submission) cached;
+        }
         //Get the file set from the api
         Map abstractSubmission = getMap(connection, GET_SUBMISSION, submissionId);
 
         //Build the file set
-        return new Submission(abstractSubmission, connection);
+        Submission s = new Submission(abstractSubmission, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -618,12 +748,17 @@ public class CoMoToAPI {
      * @return The submission from the API
      */
     public static Submission getSubmission(CoMoToAPIConnection connection, int submissionId, boolean fullStudentData) {
-
+        Cacheable cached = CoMoToAPICache.get(Submission.class, submissionId);
+        if (cached != null) {
+            return (Submission) cached;
+        }
         //Get the file set from the api
         Map abstractSubmission = getMap(connection, GET_SUBMISSION, submissionId, fullStudentData);
 
         //Build the file set
-        return new Submission(abstractSubmission, connection);
+        Submission s = new Submission(abstractSubmission, connection);
+        CoMoToAPICache.put(s);
+        return s;
     }
 
     /**
@@ -634,12 +769,17 @@ public class CoMoToAPI {
      * @return The submission file from the API
      */
     public static SubmissionFile getSubmissionFile(CoMoToAPIConnection connection, int submissionFileId) {
-
+        Cacheable cached = CoMoToAPICache.get(SubmissionFile.class, submissionFileId);
+        if (cached != null) {
+            return (SubmissionFile) cached;
+        }
         //Get the file set from the api
         Map abstractSubmissionFile = getMap(connection, GET_SUBMISSION_FILE, submissionFileId);
 
         //Build the file set
-        return new SubmissionFile(abstractSubmissionFile, connection);
+        SubmissionFile sf = new SubmissionFile(abstractSubmissionFile, connection);
+        CoMoToAPICache.put(sf);
+        return sf;
     }
 
     /**
@@ -651,11 +791,16 @@ public class CoMoToAPI {
      * @return The submission file from the API
      */
     public static SubmissionFile getSubmissionFile(CoMoToAPIConnection connection, int submissionFileId, boolean highlighted) {
-
+        Cacheable cached = CoMoToAPICache.get(SubmissionFile.class, submissionFileId);
+        if (cached != null) {
+            return (SubmissionFile) cached;
+        }
         //Get the file set from the api
         Map abstractSubmissionFile = getMap(connection, GET_SUBMISSION_FILE, submissionFileId, highlighted);
 
         //Build the file set
-        return new SubmissionFile(abstractSubmissionFile, connection);
+        SubmissionFile sf = new SubmissionFile(abstractSubmissionFile, connection);
+        CoMoToAPICache.put(sf);
+        return sf;
     }
 }

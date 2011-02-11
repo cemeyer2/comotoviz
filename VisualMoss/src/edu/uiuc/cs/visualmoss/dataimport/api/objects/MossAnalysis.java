@@ -53,7 +53,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.*;
  * <p/>
  * <p> <p> Holds the data of a MOSS analysis
  */
-public class MossAnalysis implements Refreshable {
+public class MossAnalysis implements Refreshable, Cacheable {
 
     /**
      * A unique id for the associated analysis

@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -52,7 +53,7 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.STUDENT;
  * <p/>
  * <p> <p> Holds the data for a submission
  */
-public class Submission implements Refreshable {
+public class Submission implements Refreshable, Cacheable {
 
     /**
      * The pseudonym ids for this submission
@@ -147,6 +148,7 @@ public class Submission implements Refreshable {
         if (studentMap != null) {
             fullStudentData = true;
             student = new Student(studentMap, connection);
+            CoMoToAPICache.put(student);
             abstractSubmission.remove(STUDENT);
         }
 
