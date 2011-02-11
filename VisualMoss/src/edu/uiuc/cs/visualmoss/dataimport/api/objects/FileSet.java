@@ -1,3 +1,40 @@
+/*
+ * University of Illinois/NCSA
+ * Open Source License
+ *
+ * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal with the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimers.
+ *
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimers in the documentation and/or other materials provided
+ *       with the distribution.
+ *
+ *     * Neither the names of the CoMoTo Project team, the University of
+ *       Illinois at Urbana-Champaign, nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       Software without specific prior written permission.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+ */
+
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
@@ -17,10 +54,10 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.SUBMISSIO
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
- *
+ * <p/>
  * <p> <p> Holds the data of a file set
  */
-public class FileSet implements Refreshable{
+public class FileSet implements Refreshable {
 
     /**
      * The list of ids for the associated assignments
@@ -91,7 +128,7 @@ public class FileSet implements Refreshable{
      * Constructs this file set
      *
      * @param abstractFileSet A map holding the data of this file set
-     * @param connection A connection to the API to use for lazily loading and refreshing this object
+     * @param connection      A connection to the API to use for lazily loading and refreshing this object
      */
     public FileSet(Map<String, Object> abstractFileSet, CoMoToAPIConnection connection) {
 
@@ -100,17 +137,17 @@ public class FileSet implements Refreshable{
 
         //Explicitly add the 'offering' object
         Map offeringMap = (Map) abstractFileSet.get(CoMoToAPIConstants.OFFERING);
-        if(offeringMap != null){
+        if (offeringMap != null) {
             offering = new Offering(offeringMap, connection);
             abstractFileSet.remove(OFFERING);
         }
 
         //Explicitly add the submission objects
         Object[] abstractSubmissions = (Object[]) abstractFileSet.get(SUBMISSIONS);
-        if(abstractSubmissions != null){
+        if (abstractSubmissions != null) {
             fullSubmissionInfo = true;
             submissions = new ArrayList<Submission>();
-            for(Object abstractSubmission : abstractSubmissions){
+            for (Object abstractSubmission : abstractSubmissions) {
                 submissions.add(new Submission((Map<String, Object>) abstractSubmission, connection));
             }
             abstractFileSet.remove(SUBMISSIONS);
@@ -122,7 +159,6 @@ public class FileSet implements Refreshable{
     }
 
 
-
     /**
      * {@inheritDoc}
      */
@@ -130,7 +166,7 @@ public class FileSet implements Refreshable{
 
         //Grab the new file set from the API
         FileSet newFileSet;
-        if(fullSubmissionInfo){
+        if (fullSubmissionInfo) {
             newFileSet = CoMoToAPI.getFileSet(connection, id, true);
         } else {
             newFileSet = CoMoToAPI.getFileSet(connection, id, false);
@@ -146,7 +182,7 @@ public class FileSet implements Refreshable{
         type = newFileSet.getType();
 
         //Clear the cached data
-        if(!fullSubmissionInfo){
+        if (!fullSubmissionInfo) {
             submissions = null;
         }
         course = null;
@@ -154,30 +190,30 @@ public class FileSet implements Refreshable{
     }
 
     /**
-      * Grabs the associated course lazily
-      *
-      * @return The course
-      */
-     public Course getCourse() {
+     * Grabs the associated course lazily
+     *
+     * @return The course
+     */
+    public Course getCourse() {
 
-         //Grab the course from the API if not cached
-         if(course == null){
-             course = CoMoToAPI.getCourse(connection, courseId);
-         }
-         return course;
-     }
- 
+        //Grab the course from the API if not cached
+        if (course == null) {
+            course = CoMoToAPI.getCourse(connection, courseId);
+        }
+        return course;
+    }
+
     /**
      * Grabs the list of assignments from the api if not cached in this object
      *
      * @return A list of the assignments associated with this course
      */
-    public List<Assignment> getAssignments(){
+    public List<Assignment> getAssignments() {
 
         //Load the assignments from the API if not cached
         if (assignments == null) {
             assignments = new ArrayList<Assignment>();
-            for(int assignmentId : assignmentIds){
+            for (int assignmentId : assignmentIds) {
                 assignments.add(CoMoToAPI.getAssignment(connection, assignmentId));
             }
         }
@@ -186,7 +222,7 @@ public class FileSet implements Refreshable{
 
     /**
      * Grabs the list of submissions from the api if not cached in this object
-     * 
+     *
      * @return A list of the submissions associated with this file set
      */
     public List<Submission> getSubmissions() {
@@ -204,14 +240,14 @@ public class FileSet implements Refreshable{
         //Load the assignments from the API if not cached
         if (submissions == null) {
             submissions = new ArrayList<Submission>();
-            for(int submissionId : submissionIds){
+            for (int submissionId : submissionIds) {
                 submissions.add(CoMoToAPI.getSubmission(connection, submissionId, fullStudentData));
             }
         }
         return submissions;
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return new HashMap();
     }
 
@@ -268,8 +304,8 @@ public class FileSet implements Refreshable{
     }
 
     public void setType(Type type) {
-         this.type = type;
-     }
+        this.type = type;
+    }
 
     public boolean isComplete() {
         return isComplete;

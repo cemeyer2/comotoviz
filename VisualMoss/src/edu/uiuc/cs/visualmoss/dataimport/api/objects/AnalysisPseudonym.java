@@ -1,3 +1,40 @@
+/*
+ * University of Illinois/NCSA
+ * Open Source License
+ *
+ * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal with the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimers.
+ *
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimers in the documentation and/or other materials provided
+ *       with the distribution.
+ *
+ *     * Neither the names of the CoMoTo Project team, the University of
+ *       Illinois at Urbana-Champaign, nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       Software without specific prior written permission.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+ */
+
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
@@ -10,10 +47,10 @@ import java.util.Map;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 18, 2010
- *
+ * <p/>
  * <p> <p> Holds the data for an analysis pseudonym
  */
-public class AnalysisPseudonym implements Refreshable{
+public class AnalysisPseudonym implements Refreshable {
 
     /**
      * The id that uniquely identifies this analysis pseudonym
@@ -54,7 +91,7 @@ public class AnalysisPseudonym implements Refreshable{
      * Constructor for the AnalysisPseudonym class
      *
      * @param abstractAnalysisPseudonym The map of attributes for the pseudonym
-     * @param connection The connection to the API to use when lazily loading attributes
+     * @param connection                The connection to the API to use when lazily loading attributes
      */
     public AnalysisPseudonym(Map<String, Object> abstractAnalysisPseudonym, CoMoToAPIConnection connection) {
 
@@ -92,7 +129,7 @@ public class AnalysisPseudonym implements Refreshable{
     public Analysis getAnalysis() {
 
         //Load the analysis if not initialized by the analysis
-        if(analysis==null){
+        if (analysis == null) {
             analysis = CoMoToAPI.getAnalysis(connection, analysisId);
         }
         return analysis;
@@ -106,13 +143,13 @@ public class AnalysisPseudonym implements Refreshable{
     public Submission getSubmission() {
 
         //Load the submission if not initialized by the analysis
-        if(submission==null){
+        if (submission == null) {
             submission = CoMoToAPI.getSubmission(connection, submissionId);
         }
         return submission;
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return new HashMap();
     }
 

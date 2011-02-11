@@ -1,3 +1,40 @@
+/*
+ * University of Illinois/NCSA
+ * Open Source License
+ *
+ * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal with the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimers.
+ *
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimers in the documentation and/or other materials provided
+ *       with the distribution.
+ *
+ *     * Neither the names of the CoMoTo Project team, the University of
+ *       Illinois at Urbana-Champaign, nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       Software without specific prior written permission.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+ */
+
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
@@ -13,10 +50,10 @@ import static edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants.*;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
- *
+ * <p/>
  * <p> <p> Holds the data of a MOSS analysis
  */
-public class MossAnalysis implements Refreshable{
+public class MossAnalysis implements Refreshable {
 
     /**
      * A unique id for the associated analysis
@@ -67,7 +104,7 @@ public class MossAnalysis implements Refreshable{
      * Build a moss analysis object
      *
      * @param abstractMossAnalysis A map holding the data for this analysis
-     * @param connection The connection to the API
+     * @param connection           The connection to the API
      */
     public MossAnalysis(Map<String, Object> abstractMossAnalysis, CoMoToAPIConnection connection) {
 
@@ -76,9 +113,9 @@ public class MossAnalysis implements Refreshable{
 
         //Explicitly build and add the general matches objects
         Object[] abstractMatches = (Object[]) abstractMossAnalysis.get(MATCHES);
-        if(abstractMatches != null){
+        if (abstractMatches != null) {
             matches = new ArrayList<MossMatch>();
-            for(Object abstractMatch : abstractMatches){
+            for (Object abstractMatch : abstractMatches) {
                 matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(MATCHES);
@@ -87,10 +124,10 @@ public class MossAnalysis implements Refreshable{
 
         //Explicitly build and add the cross-semester matches objects
         Object[] abstractCrossSemesterMatches = (Object[]) abstractMossAnalysis.get(CROSS_SEMESTER_MATCHES);
-        if(abstractCrossSemesterMatches != null){
+        if (abstractCrossSemesterMatches != null) {
             categorizedMatches = true;
             crossSemesterMatches = new ArrayList<MossMatch>();
-            for(Object abstractMatch : abstractCrossSemesterMatches){
+            for (Object abstractMatch : abstractCrossSemesterMatches) {
                 crossSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(CROSS_SEMESTER_MATCHES);
@@ -99,9 +136,9 @@ public class MossAnalysis implements Refreshable{
 
         //Explicitly build and add the same-semester matches objects
         Object[] abstractSameSemesterMatches = (Object[]) abstractMossAnalysis.get(SAME_SEMESTER_MATCHES);
-        if(abstractSameSemesterMatches != null){
+        if (abstractSameSemesterMatches != null) {
             sameSemesterMatches = new ArrayList<MossMatch>();
-            for(Object abstractMatch : abstractSameSemesterMatches){
+            for (Object abstractMatch : abstractSameSemesterMatches) {
                 sameSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(SAME_SEMESTER_MATCHES);
@@ -110,9 +147,9 @@ public class MossAnalysis implements Refreshable{
 
         //Explicitly build and add the solution matches objects
         Object[] abstractSolutionMatches = (Object[]) abstractMossAnalysis.get(SOLUTION_MATCHES);
-        if(abstractSolutionMatches != null){
+        if (abstractSolutionMatches != null) {
             solutionMatches = new ArrayList<MossMatch>();
-            for(Object abstractMatch : abstractSolutionMatches){
+            for (Object abstractMatch : abstractSolutionMatches) {
                 solutionMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
             }
             abstractMossAnalysis.remove(SOLUTION_MATCHES);
@@ -131,7 +168,7 @@ public class MossAnalysis implements Refreshable{
 
         //First, grab the new object from the API
         MossAnalysis newMossAnalysis;
-        if(categorizedMatches){
+        if (categorizedMatches) {
             newMossAnalysis = CoMoToAPI.getMossAnalysis(connection, id, true);
         } else {
             newMossAnalysis = CoMoToAPI.getMossAnalysis(connection, id);
@@ -140,7 +177,7 @@ public class MossAnalysis implements Refreshable{
         //Copy the primitive data over
         analysisId = newMossAnalysis.getAnalysisId();
         matches = newMossAnalysis.getMatches();
-        if(categorizedMatches){
+        if (categorizedMatches) {
             crossSemesterMatches = newMossAnalysis.getCrossSemesterMatches();
             sameSemesterMatches = newMossAnalysis.getSameSemesterMatches();
             solutionMatches = newMossAnalysis.getSolutionMatches();
@@ -162,7 +199,7 @@ public class MossAnalysis implements Refreshable{
     public Analysis getAnalysis() {
 
         //If it's not cached, grab it from the API
-        if(analysis == null){
+        if (analysis == null) {
             analysis = CoMoToAPI.getAnalysis(connection, analysisId);
         }
         return analysis;

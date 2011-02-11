@@ -1,3 +1,40 @@
+/*
+ * University of Illinois/NCSA
+ * Open Source License
+ *
+ * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal with the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimers.
+ *
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimers in the documentation and/or other materials provided
+ *       with the distribution.
+ *
+ *     * Neither the names of the CoMoTo Project team, the University of
+ *       Illinois at Urbana-Champaign, nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       Software without specific prior written permission.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+ */
+
 package edu.uiuc.cs.visualmoss.dataimport.api;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.util.ParallelConnectionUtil;
@@ -10,17 +47,17 @@ import java.util.List;
 /**
  * User: Jon
  * Date: 2/8/11
- *
+ * <p/>
  * This class wraps the parallel connection utility
  */
 public class CoMoToAPIAccelerator<T> {
     /**
      * This function will call an API method multiple times, in parallel if possible, using the ParallelConnectionUtil
      *
-     * @param   connection      The connection on which to grab the data
-     * @param   methodName      The name of the API method we are calling
-     * @param   parameters      A 2D array of parameters, an array of arrays, where each array represents the parameters for one call
-     * @return  A list of objects of type requested
+     * @param connection The connection on which to grab the data
+     * @param methodName The name of the API method we are calling
+     * @param parameters A 2D array of parameters, an array of arrays, where each array represents the parameters for one call
+     * @return A list of objects of type requested
      */
     public List<T> getAPIObjects(CoMoToAPIConnection connection, String methodName, Object[][] parameters) {
         return getAPIObjects(connection, methodName, 4, parameters);    // Default to four parallel connections
@@ -30,11 +67,11 @@ public class CoMoToAPIAccelerator<T> {
     /**
      * This function will call an API method multiple times, in parallel if possible, using the ParallelConnectionUtil
      *
-     * @param   connection              The connection on which to grab the data
-     * @param   methodName              The name of the API method we are calling
-     * @param   parallelConnections     The number of parallel connections we want to attempt
-     * @param   parameters              A 2D array of parameters, an array of arrays, where each array represents the parameters for one call
-     * @return  A list of objects of type requested
+     * @param connection          The connection on which to grab the data
+     * @param methodName          The name of the API method we are calling
+     * @param parallelConnections The number of parallel connections we want to attempt
+     * @param parameters          A 2D array of parameters, an array of arrays, where each array represents the parameters for one call
+     * @return A list of objects of type requested
      */
     public List<T> getAPIObjects(CoMoToAPIConnection connection, String methodName, int parallelConnections, Object[][] parameters) {
 

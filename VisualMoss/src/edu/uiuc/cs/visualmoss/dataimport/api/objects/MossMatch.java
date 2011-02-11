@@ -1,3 +1,40 @@
+/*
+ * University of Illinois/NCSA
+ * Open Source License
+ *
+ * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal with the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimers.
+ *
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimers in the documentation and/or other materials provided
+ *       with the distribution.
+ *
+ *     * Neither the names of the CoMoTo Project team, the University of
+ *       Illinois at Urbana-Champaign, nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       Software without specific prior written permission.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+ */
+
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
@@ -11,10 +48,10 @@ import java.util.Map;
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Oct 17, 2010
- *
+ * <p/>
  * <p> <p> Holds the data of a MOSS match
  */
-public class MossMatch implements Refreshable{
+public class MossMatch implements Refreshable {
 
     /**
      * The unique id for this match
@@ -75,7 +112,7 @@ public class MossMatch implements Refreshable{
     }
 
     public MossMatch(Map<String, Object> abstractMossMatch, CoMoToAPIConnection connection) {
-        
+
         //Save the connection
         this.connection = connection;
 
@@ -114,7 +151,7 @@ public class MossMatch implements Refreshable{
     public MossAnalysis getMossAnalysis() {
 
         //Only query the API if it's not cached
-        if(mossAnalysis == null) {
+        if (mossAnalysis == null) {
             mossAnalysis = CoMoToAPI.getMossAnalysis(connection, mossAnalysisId);
         }
         return mossAnalysis;
@@ -128,7 +165,7 @@ public class MossMatch implements Refreshable{
     public Submission getSubmission1() {
 
         //Only call the API if it's not cached
-        if(submission1 == null) {
+        if (submission1 == null) {
             submission1 = CoMoToAPI.getSubmission(connection, submission1Id);
         }
         return submission1;
@@ -142,13 +179,13 @@ public class MossMatch implements Refreshable{
     public Submission getSubmission2() {
 
         //Only call the API if it's not cached
-        if(submission2 == null) {
+        if (submission2 == null) {
             submission2 = CoMoToAPI.getSubmission(connection, submission2Id);
         }
         return submission2;
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return new HashMap();
     }
 
