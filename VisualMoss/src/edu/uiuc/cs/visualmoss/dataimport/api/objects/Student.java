@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -142,7 +143,9 @@ public class Student implements Refreshable, Cacheable {
         if (matches != null) {
             matches = new ArrayList<MossMatch>();
             for (Object matchMap : matchesArray) {
-                matches.add(new MossMatch((Map<String, Object>) matchMap, connection));
+                MossMatch mm = new MossMatch((Map<String, Object>) matchMap, connection);
+                CoMoToAPICache.put(mm);
+                matches.add(mm);
             }
             abstractStudent.remove(MATCHES);
         }

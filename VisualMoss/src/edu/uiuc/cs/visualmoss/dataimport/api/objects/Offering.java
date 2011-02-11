@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -127,7 +128,7 @@ public class Offering implements Refreshable, Cacheable {
         Map semesterMap = (Map) abstractOffering.get(SEMESTER);
         if (semesterMap != null) {
             semester = new Semester(semesterMap, connection);
-
+            CoMoToAPICache.put(semester);
             //Remove these from the map
             abstractOffering.remove(SEMESTER);
         }

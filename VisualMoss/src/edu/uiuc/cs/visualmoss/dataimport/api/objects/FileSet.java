@@ -37,10 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConstants;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
+import edu.uiuc.cs.visualmoss.dataimport.api.*;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -139,6 +136,7 @@ public class FileSet implements Refreshable, Cacheable {
         Map offeringMap = (Map) abstractFileSet.get(CoMoToAPIConstants.OFFERING);
         if (offeringMap != null) {
             offering = new Offering(offeringMap, connection);
+            CoMoToAPICache.put(offering);
             abstractFileSet.remove(OFFERING);
         }
 
@@ -148,7 +146,9 @@ public class FileSet implements Refreshable, Cacheable {
             fullSubmissionInfo = true;
             submissions = new ArrayList<Submission>();
             for (Object abstractSubmission : abstractSubmissions) {
-                submissions.add(new Submission((Map<String, Object>) abstractSubmission, connection));
+                Submission s = new Submission((Map<String, Object>) abstractSubmission, connection);
+                CoMoToAPICache.put(s);
+                submissions.add(s);
             }
             abstractFileSet.remove(SUBMISSIONS);
         }

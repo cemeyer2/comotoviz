@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -116,7 +117,9 @@ public class MossAnalysis implements Refreshable, Cacheable {
         if (abstractMatches != null) {
             matches = new ArrayList<MossMatch>();
             for (Object abstractMatch : abstractMatches) {
-                matches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                MossMatch mm = new MossMatch((Map<String, Object>) abstractMatch, connection);
+                CoMoToAPICache.put(mm);
+                matches.add(mm);
             }
             abstractMossAnalysis.remove(MATCHES);
 
@@ -128,7 +131,9 @@ public class MossAnalysis implements Refreshable, Cacheable {
             categorizedMatches = true;
             crossSemesterMatches = new ArrayList<MossMatch>();
             for (Object abstractMatch : abstractCrossSemesterMatches) {
-                crossSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                MossMatch mm = new MossMatch((Map<String, Object>) abstractMatch, connection);
+                CoMoToAPICache.put(mm);
+                crossSemesterMatches.add(mm);
             }
             abstractMossAnalysis.remove(CROSS_SEMESTER_MATCHES);
 
@@ -139,7 +144,9 @@ public class MossAnalysis implements Refreshable, Cacheable {
         if (abstractSameSemesterMatches != null) {
             sameSemesterMatches = new ArrayList<MossMatch>();
             for (Object abstractMatch : abstractSameSemesterMatches) {
-                sameSemesterMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                MossMatch mm = new MossMatch((Map<String, Object>) abstractMatch, connection);
+                CoMoToAPICache.put(mm);
+                sameSemesterMatches.add(mm);
             }
             abstractMossAnalysis.remove(SAME_SEMESTER_MATCHES);
 
@@ -150,7 +157,9 @@ public class MossAnalysis implements Refreshable, Cacheable {
         if (abstractSolutionMatches != null) {
             solutionMatches = new ArrayList<MossMatch>();
             for (Object abstractMatch : abstractSolutionMatches) {
-                solutionMatches.add(new MossMatch((Map<String, Object>) abstractMatch, connection));
+                MossMatch mm = new MossMatch((Map<String, Object>) abstractMatch, connection);
+                CoMoToAPICache.put(mm);
+                solutionMatches.add(mm);
             }
             abstractMossAnalysis.remove(SOLUTION_MATCHES);
 

@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -131,7 +132,9 @@ public class Analysis implements Refreshable, Cacheable {
             analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
             for (Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray) {
                 Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
-                analysisPseudonyms.add(new AnalysisPseudonym(analysisPseudonymMap, connection));
+                AnalysisPseudonym ap = new AnalysisPseudonym(analysisPseudonymMap, connection);
+                CoMoToAPICache.put(ap);
+                analysisPseudonyms.add(ap);
             }
             abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
         }

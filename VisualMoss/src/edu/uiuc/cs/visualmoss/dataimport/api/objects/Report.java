@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss.dataimport.api.objects;
 
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
+import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
 import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIReflector;
 
@@ -106,6 +107,8 @@ public class Report implements Refreshable, Cacheable {
         Map mossReportMap = (Map) abstractReport.get(MOSS_REPORT);
         jplagReport = new JplagReport(jplagReportMap, connection);
         mossReport = new MossReport(mossReportMap, connection);
+        CoMoToAPICache.put(jplagReport);
+        CoMoToAPICache.put(mossReport);
 
         //Remove them from the map
         abstractReport.remove(JPLAG_REPORT);
