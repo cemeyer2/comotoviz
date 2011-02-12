@@ -67,21 +67,8 @@ public class HelpDialog extends JDialog {
         Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
         setIconImage(programIcon);
 
-//	    GridBagConstraints c = new GridBagConstraints();
-//		
-//	    c.weightx = 1.0;
-//	    c.weighty = 0.0;
-//	    c.gridx = 0;
-//	    c.gridy = 0;
-//	    c.anchor = GridBagConstraints.FIRST_LINE_START;
-//	    c.gridwidth = 1;
-//	    c.gridheight = 2;
         panel.add(titleLabel, BorderLayout.NORTH);
-
-//		c.gridy = 3;
-//		c.gridheight = 3;
         panel.add(helpLabel, BorderLayout.CENTER);
-
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         this.setContentPane(panel);

@@ -76,13 +76,13 @@ public class AboutDialog extends JDialog {
         c.weightx = 0.0;
         c.weighty = 0.0;
         c.gridx = 0;
-        c.gridy = 0;
+        c.gridy = 2;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridwidth = 1;
         c.gridheight = 2;
         panel.add(titleLabel, c);
 
-        c.gridy = 3;
+        c.gridy = 4;
         c.gridheight = 3;
         panel.add(authorsLabel, c);
 

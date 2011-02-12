@@ -101,7 +101,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         loginButton.addActionListener(this);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
         setIconImage(programIcon);
 
         this.pack();
