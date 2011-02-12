@@ -44,13 +44,10 @@ import edu.uiuc.cs.visualmoss.utility.ldap.LDAPAuth;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.net.Authenticator;
 
-public class LoginDialog extends JDialog implements ActionListener, WindowListener {
+public class LoginDialog extends JDialog implements ActionListener, WindowListener, KeyListener {
     private final int DIALOG_WIDTH = 400;
     private final int DIALOG_HEIGHT = 200;
 
@@ -99,6 +96,10 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         this.setContentPane(panel);
         this.addWindowListener(this);
 
+        netidField.addActionListener(this);
+        passwordField.addActionListener(this);
+        loginButton.addActionListener(this);
+
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage("uiuc.png");
         setIconImage(programIcon);
@@ -109,24 +110,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
     }
 
     public void actionPerformed(ActionEvent arg0) {
-        netId = netidField.getText();
-        password = new String(passwordField.getPassword());
-
-        //changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
-        //against the http server, it keeps trying until the max redirects limit is reached, which unfortunately
-        //caused the UIUC AD to lock the account, this way we only hit the AD once and won't lock out the account
-        //unless many unsuccessful tries are made
-        boolean auth = LDAPAuth.authenticate(netId, password);
-
-        if (auth) {
-            VisualMossAuthenticator authenticator = new VisualMossAuthenticator();
-            authenticator.setDefaultAuthentication(netId, password);
-            Authenticator.setDefault(authenticator);
-
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid netid or AD password or your AD account may be locked", "Login Error", JOptionPane.ERROR_MESSAGE);
-        }
+        login();
     }
 
     public void windowActivated(WindowEvent arg0) {
@@ -169,5 +153,40 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
 
     public String getPassword() {
         return password;
+    }
+
+    public void keyTyped(KeyEvent e) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }
+
+    private void login() {
+        netId = netidField.getText();
+        password = new String(passwordField.getPassword());
+
+        //changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
+        //against the http server, it keeps trying until the max redirects limit is reached, which unfortunately
+        //caused the UIUC AD to lock the account, this way we only hit the AD once and won't lock out the account
+        //unless many unsuccessful tries are made
+        boolean auth = LDAPAuth.authenticate(netId, password);
+
+        if (auth) {
+            VisualMossAuthenticator authenticator = new VisualMossAuthenticator();
+            authenticator.setDefaultAuthentication(netId, password);
+            Authenticator.setDefault(authenticator);
+
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid netid or AD password or your AD account may be locked", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
