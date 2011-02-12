@@ -129,8 +129,8 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
             }
             selectedAssignment = (Assignment) obj;
             AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
-            //worker.execute();
-            worker.runSynchronous();
+            worker.execute();
+//            worker.runSynchronous();
         } else if (obj instanceof Student) {
             Student stu = (Student) obj;
             display.getVisualMossGraphDisplay().panToNode(stu.getNetid(), 5000);

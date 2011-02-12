@@ -366,7 +366,7 @@ public class DataImport {
         graph2.getNodeTable().addColumn(SEASON, String.class);
         graph2.getNodeTable().addColumn(YEAR, String.class);
         graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
-        graph2.getNodeTable().addColumn(CURRENT_SEMESTER, String.class);
+        graph2.getNodeTable().addColumn(CURRENT_SEMESTER, boolean.class);
         graph2.getEdgeTable().addColumn(WEIGHT, double.class);
         graph2.getEdgeTable().addColumn(SCORE1, double.class);
         graph2.getEdgeTable().addColumn(SCORE2, double.class);
@@ -384,7 +384,7 @@ public class DataImport {
             newNode.setString(SEASON, oldNode.getString(SEASON));
             newNode.setString(YEAR, oldNode.getString(YEAR));
             newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
-            newNode.setString(CURRENT_SEMESTER, oldNode.getString(SUBMISSION_ID));
+            newNode.setBoolean(CURRENT_SEMESTER, oldNode.getBoolean(CURRENT_SEMESTER));
         }
 
         //Copy all of the graph edges
@@ -429,7 +429,7 @@ public class DataImport {
         graph.getNodeTable().addColumn(SEASON, String.class);
         graph.getNodeTable().addColumn(YEAR, String.class);
         graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
-        graph.getNodeTable().addColumn(CURRENT_SEMESTER, String.class);
+        graph.getNodeTable().addColumn(CURRENT_SEMESTER, boolean.class);
 
         //Declare all the properties of an analysis
         graph.getEdgeTable().addColumn(WEIGHT, double.class);   //Weight = max(score1,score2)

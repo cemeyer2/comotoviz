@@ -88,7 +88,7 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
         try {
             doInBackground();
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
