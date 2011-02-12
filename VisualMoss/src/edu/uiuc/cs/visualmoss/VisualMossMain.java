@@ -57,6 +57,8 @@ public class VisualMossMain {
 
         CoMoToAPICache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
 
+        System.out.println(System.getProperty("user.dir"));
+
         try {
             PlatformInit init = PlatformInit.getInstance();
             //init.initLogging(false);

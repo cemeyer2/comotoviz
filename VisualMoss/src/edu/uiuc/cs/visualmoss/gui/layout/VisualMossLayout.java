@@ -91,19 +91,15 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
     public VisualMossLayout(Pair<String, String> activeDirectoryCredentials) throws DataIOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
         Container visualMoss = getContentPane();
         visualMoss.setLayout(new BorderLayout());
-        activeDirectoryCredentials = activeDirectoryCredentials;
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
         // Get the current screen size
         Dimension scrnsize = toolkit.getScreenSize();
         visualMoss.setPreferredSize(new Dimension((int) scrnsize.getWidth() - 75, (int) scrnsize.getHeight() - 75));
 
-
-        //DataImport importer = new DataImport();
-        //Assignment assignment = importer.getAssignment();
-        //graph = importer.buildGraph(assignment, true);
-
-        //VisualMossGraph graph = new DataImport(new File("graph.xml")).getVisualMossGraph();
+        // Change the program icon
+        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        setIconImage(programIcon);
 
         this.setTitle("CoMoTo Dynamic Visualization Tool");
         container = new VisualMossGraphDisplayContainer(768, 768);

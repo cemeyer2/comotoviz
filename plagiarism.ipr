@@ -220,6 +220,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" filepath="$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" filepath="$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lobo/Lobo.iml" filepath="$PROJECT_DIR$/lobo/Lobo.iml" />
       <module fileurl="file://$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" filepath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/VisualMoss/VisualMoss.iml" filepath="$PROJECT_DIR$/VisualMoss/VisualMoss.iml" />
     </modules>
@@ -317,7 +318,20 @@
         <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-lang-2.5.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="file://$PROJECT_DIR$/lobo/Platform_Core" />
+        <root url="file://$PROJECT_DIR$/lobo/Platform_Public_API" />
+        <root url="file://$PROJECT_DIR$/lobo/Common" />
+        <root url="file://$PROJECT_DIR$/lobo/Primary_Extension" />
+        <root url="file://$PROJECT_DIR$/lobo/Testing" />
+        <root url="file://$PROJECT_DIR$/lobo/IzPack_RegistryPanel" />
+        <root url="file://$PROJECT_DIR$/lobo/Detect_Ext" />
+        <root url="file://$PROJECT_DIR$/lobo/JWebContentExtension" />
+        <root url="file://$PROJECT_DIR$/lobo/HTML_Renderer" />
+        <root url="file://$PROJECT_DIR$/lobo/cssparser/src" />
+        <root url="file://$PROJECT_DIR$/lobo/XAMJ_Extension" />
+        <root url="file://$PROJECT_DIR$/lobo/XAMJ_Public_API" />
+      </SOURCES>
     </library>
   </component>
 </project>

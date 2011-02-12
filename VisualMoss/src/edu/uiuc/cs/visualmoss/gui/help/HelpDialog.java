@@ -63,6 +63,10 @@ public class HelpDialog extends JDialog {
         titleLabel.setHorizontalTextPosition(JLabel.CENTER);
         helpLabel.setHorizontalTextPosition(JLabel.CENTER);
 
+        // Change the program icon
+        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        setIconImage(programIcon);
+
 //	    GridBagConstraints c = new GridBagConstraints();
 //		
 //	    c.weightx = 1.0;

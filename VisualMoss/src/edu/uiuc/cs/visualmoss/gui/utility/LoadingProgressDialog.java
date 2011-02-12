@@ -71,6 +71,11 @@ public class LoadingProgressDialog extends JDialog {
         JPanel panel = new JPanel(new GridLayout(1, 1));
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
+        // Change the program icon
+        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        setIconImage(programIcon);
+
+
         TitledBorder b = BorderFactory.createTitledBorder(label);
         b.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         bar.setBorder(b);

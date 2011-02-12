@@ -68,6 +68,11 @@ public class AboutDialog extends JDialog {
 
         GridBagConstraints c = new GridBagConstraints();
 
+        // Change the program icon
+        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        setIconImage(programIcon);
+
+
         c.weightx = 0.0;
         c.weighty = 0.0;
         c.gridx = 0;
