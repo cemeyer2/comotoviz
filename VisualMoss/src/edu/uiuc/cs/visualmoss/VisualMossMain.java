@@ -100,7 +100,6 @@ public class VisualMossMain {
             Object key = keys.nextElement();
             Object value = UIManager.get(key);
             if (value instanceof javax.swing.plaf.FontUIResource) {
-                System.out.println("Setting font for " + key);
                 UIManager.put(key, VisualMossConstants.COMPONENT_LABEL_FONT);
             }
         }
