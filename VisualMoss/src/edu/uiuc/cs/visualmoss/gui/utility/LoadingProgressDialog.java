@@ -81,6 +81,7 @@ public class LoadingProgressDialog extends JDialog {
         bar.setBorder(b);
         bar.setIndeterminate(true);
         bar.setStringPainted(true);
+        bar.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         panel.add(bar);
         this.setContentPane(panel);
         this.pack();

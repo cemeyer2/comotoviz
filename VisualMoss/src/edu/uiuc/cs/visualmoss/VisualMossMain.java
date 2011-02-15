@@ -50,10 +50,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 public class VisualMossMain {
 
     public static void main(String[] args) throws VisualMossException, MalformedURLException, DataIOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, SQLException {
+
+        setDefaultFont();
 
         CoMoToAPICache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
 
@@ -68,6 +71,7 @@ public class VisualMossMain {
             JOptionPane.showMessageDialog(null, "Error initializing lobo browser component.", "Initialization Error", JOptionPane.ERROR_MESSAGE);
             throw new VisualMossException("Lobo did not initialize properly.", ex);
         }
+
 
         LoginDialog loginDialog = new LoginDialog(null);
         String netId = loginDialog.getNetId();
@@ -85,6 +89,19 @@ public class VisualMossMain {
                 window.changeAssignment(assignmentId);
             } catch (NumberFormatException nfe) {
                 //fail silently
+            }
+        }
+    }
+
+    //adopted from http://www.rgagnon.com/javadetails/java-0335.html
+    private static void setDefaultFont() {
+        Enumeration keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements()) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof javax.swing.plaf.FontUIResource) {
+                System.out.println("Setting font for " + key);
+                UIManager.put(key, VisualMossConstants.COMPONENT_LABEL_FONT);
             }
         }
     }

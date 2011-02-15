@@ -99,6 +99,8 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         netidField.addActionListener(this);
         passwordField.addActionListener(this);
         loginButton.addActionListener(this);
+        netidField.addKeyListener(this);
+        passwordField.addKeyListener(this);
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
