@@ -98,8 +98,8 @@
         </copy>
 
         <signjar
-                alias="alias" keystore="keystore"
-                storepass="abc123"
+                alias="comoto" keystore="keystore"
+                storepass="comoto"
                 preservelastmodified="true">
             <path>
                 <fileset dir="jar" includes="**/*.jar"/>
@@ -116,8 +116,8 @@
                 title="VisualMoss"
                 vendor="UIUC"
                 pack200="false"
-                signStorepass="abc123"
-                signAlias="alias">
+                signStorepass="comoto"
+                signAlias="comoto">
             <jw:description>VisualMoss</jw:description>
             <jw:description kind="short">VisualMoss</jw:description>
             <jw:j2se minVersion="1.5">
