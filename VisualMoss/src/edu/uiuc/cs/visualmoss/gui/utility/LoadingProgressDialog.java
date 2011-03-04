@@ -54,7 +54,7 @@ public class LoadingProgressDialog extends JDialog {
         bar = new JProgressBar();
         this.title = title;
         this.label = label;
-//		init();
+        init();
     }
 
     public LoadingProgressDialog(String title, String label) {
@@ -63,7 +63,7 @@ public class LoadingProgressDialog extends JDialog {
         bar = new JProgressBar();
         this.title = title;
         this.label = label;
-//		init();
+        init();
     }
 
     public void init() {
@@ -72,9 +72,8 @@ public class LoadingProgressDialog extends JDialog {
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
-
 
         TitledBorder b = BorderFactory.createTitledBorder(label);
         b.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);

@@ -69,23 +69,23 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
     }
 
     private void init() {
-        this.setTitle("Login");
+        this.setTitle(VisualMossConstants.LOGIN_LABEL);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         netidField = new JTextField();
         netidField.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        TitledBorder b1 = BorderFactory.createTitledBorder("Netid");
+        TitledBorder b1 = BorderFactory.createTitledBorder(VisualMossConstants.NETID_LABEL);
         b1.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         netidField.setBorder(b1);
 
         passwordField = new JPasswordField();
-        TitledBorder b2 = BorderFactory.createTitledBorder("Active Directory Password");
+        TitledBorder b2 = BorderFactory.createTitledBorder(VisualMossConstants.ACTIVE_DIRECTORY_PASSWORD_LABEL);
         b2.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         passwordField.setBorder(b2);
 
-        loginButton = new JButton("Login");
+        loginButton = new JButton(VisualMossConstants.LOGIN_LABEL);
         loginButton.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         loginButton.addActionListener(this);
 
@@ -103,7 +103,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         passwordField.addKeyListener(this);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
         this.pack();

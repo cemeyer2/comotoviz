@@ -69,7 +69,7 @@ public class AboutDialog extends JDialog {
         GridBagConstraints c = new GridBagConstraints();
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
 
@@ -94,7 +94,7 @@ public class AboutDialog extends JDialog {
 
         this.setContentPane(panel);
         this.pack();
-        this.setTitle("About");
+        this.setTitle(VisualMossConstants.ABOUT_LABEL);
         this.setVisible(true);
     }
 }

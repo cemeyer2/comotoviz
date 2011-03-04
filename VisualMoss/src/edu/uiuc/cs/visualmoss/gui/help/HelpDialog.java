@@ -64,7 +64,7 @@ public class HelpDialog extends JDialog {
         helpLabel.setHorizontalTextPosition(JLabel.CENTER);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
         panel.add(titleLabel, BorderLayout.NORTH);

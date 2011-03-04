@@ -98,10 +98,10 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         visualMoss.setPreferredSize(new Dimension((int) scrnsize.getWidth() - 75, (int) scrnsize.getHeight() - 75));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage("VisualMoss/uiuc.png");
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
-        this.setTitle("CoMoTo Dynamic Visualization Tool");
+        this.setTitle(VisualMossConstants.PROGRAM_TITLE);
         container = new VisualMossGraphDisplayContainer(768, 768);
         graphDisplay = container.getVisualMossGraphDisplay();
 

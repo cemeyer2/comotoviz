@@ -59,6 +59,10 @@ public class VisualMossConstants {
     //URL Constants
     public static final String TEXT_REPORT_URL = "report.html";
 
+    //For GUI
+    public static final String PROGRAM_ICON_PATH = "VisualMoss/uiuc.png";
+    public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
+
     //Help Constants
     public static final String ABOUT_TITLE = "<html><center><br/>CoMoTo Dynamic Visualization Tool</center><br/></html>";
     public static final String ABOUT_AUTHORS = "<html>Charlie Meyer<br/>Jon Tedesco<br/>Cinda Heeren<br/>Eric Shaffer<br/><br/></center></html>";
@@ -94,4 +98,9 @@ public class VisualMossConstants {
     public static final String WEIGHT = "weight";
     public static final String YEAR = "year";
     public static final String CURRENT_SEMESTER = "currentSemester";
+    public static final String NETID_LABEL = "Netid";
+    public static final String ACTIVE_DIRECTORY_PASSWORD_LABEL = "Active Directory Password";
+    public static final String LOGIN_LABEL = "Login";
+    public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
+    public static final String ABOUT_LABEL = "About";
 }

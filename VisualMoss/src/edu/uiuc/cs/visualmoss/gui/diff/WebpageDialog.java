@@ -37,6 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.gui.diff;
 
+import edu.uiuc.cs.visualmoss.VisualMossConstants;
 import org.lobobrowser.gui.BrowserPanel;
 import org.lobobrowser.gui.FramePanel;
 
@@ -66,6 +67,13 @@ public class WebpageDialog extends JDialog {
     private void init(String url, boolean showNavigation) throws MalformedURLException {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
+
+
+        // Change the program icon
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        setIconImage(programIcon);
+
+        setTitle(VisualMossConstants.WEBPAGE_DIALOG_TITLE);
 
         if (showNavigation) {
             browserPanel = new BrowserPanel();
