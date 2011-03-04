@@ -241,9 +241,8 @@ public class VisualMossGraphDisplay {
      */
     public void setMinimumEdgeWeightToDisplay(double weight) {
         this.predicate.setMinWeight(weight);
-        repaint();
         setGraph(graph);
-        run();
+        repaint();
     }
 
     /**

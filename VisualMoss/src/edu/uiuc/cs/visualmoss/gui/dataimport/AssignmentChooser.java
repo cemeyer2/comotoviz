@@ -50,6 +50,7 @@ import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,6 +71,11 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
     private VisualMossGraphDisplayContainer display;
     private VisualMossLayout frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
+
+    private Icon openIcon = new ImageIcon("VisualMoss/blue_node.png");
+    private Icon closedIcon = new ImageIcon("VisualMoss/gray_node.png");
+    private Icon leafIcon = new ImageIcon("VisualMoss/small_gray_node.png");
+
 
     public AssignmentChooser(VisualMossLayout frame, VisualMossGraphDisplayContainer display, Pair<String, String> activeDirectoryCredentials) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException {
         super();
@@ -100,6 +106,15 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
         tree = new JTree(coursesNode);
         tree.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
         tree.addMouseListener(this);
+
+        // Set custom icons for the tree
+        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+        renderer.setOpenIcon(openIcon);
+        renderer.setClosedIcon(closedIcon);
+        renderer.setLeafIcon(leafIcon);
+        tree.setCellRenderer(renderer);
+
+
         pane = new JScrollPane(tree);
         this.add(pane, BorderLayout.CENTER);
     }
