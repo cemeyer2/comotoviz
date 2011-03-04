@@ -72,6 +72,24 @@ public class VisualMossMain {
             throw new VisualMossException("Lobo did not initialize properly.", ex);
         }
 
+        // If the system is not linux
+        String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
+
+        if (!systemLookAndFeel.contains("GTK")) {
+            try {
+                // Set System look and feel
+                UIManager.setLookAndFeel(systemLookAndFeel);
+
+            } catch (UnsupportedLookAndFeelException e) {
+                // handle exception
+            } catch (ClassNotFoundException e) {
+                // handle exception
+            } catch (InstantiationException e) {
+                // handle exception
+            } catch (IllegalAccessException e) {
+                // handle exception
+            }
+        }
 
         LoginDialog loginDialog = new LoginDialog(null);
         String netId = loginDialog.getNetId();
