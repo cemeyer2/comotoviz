@@ -242,6 +242,7 @@ public class VisualMossGraphDisplay {
     public void setMinimumEdgeWeightToDisplay(double weight) {
         this.predicate.setMinWeight(weight);
         repaint();
+        setGraph(graph);
         run();
     }
 
@@ -344,6 +345,7 @@ public class VisualMossGraphDisplay {
     public void setIncludePast(boolean includePast) {
         this.predicate.setIncludePast(includePast);
         this.repaint();
+        setGraph(graph);
         run();
     }
 
