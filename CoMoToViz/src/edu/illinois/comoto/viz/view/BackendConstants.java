@@ -51,7 +51,7 @@ import java.awt.*;
 public class BackendConstants {
 
     // Resource locations
-    public static final String PROGRAM_ICON_PATH = "VisualMoss/uiuc.png";
+    public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
 
     //Graph identifiers
     public static final String IS_PARTNER = "isPartner";

@@ -70,9 +70,9 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
     private VisualMossLayout frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
 
-    private Icon openIcon = new ImageIcon("VisualMoss/blue_node.png");
-    private Icon closedIcon = new ImageIcon("VisualMoss/gray_node.png");
-    private Icon leafIcon = new ImageIcon("VisualMoss/small_gray_node.png");
+    private Icon openIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png");
+    private Icon closedIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png");
+    private Icon leafIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png");
 
 
     public AssignmentChooser(VisualMossLayout frame, VisualMossGraphDisplayContainer display, Pair<String, String> activeDirectoryCredentials) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException {

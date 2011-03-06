@@ -51,7 +51,6 @@ public class FrontendConstants {
     public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
     public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
 
-
     // Labels
     public static final String SOLUTION = "Solution";
     public static final String NETID = "Netid";
