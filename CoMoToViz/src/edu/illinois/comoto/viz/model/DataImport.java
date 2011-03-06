@@ -110,8 +110,6 @@ public class DataImport {
 
         //Populate the courses from the API
         courses = CoMoToAPI.getCourses(connection);
-
-
     }
 
     /**
