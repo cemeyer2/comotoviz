@@ -37,13 +37,13 @@
 
 package edu.uiuc.cs.visualmoss.gui.graph.predicates;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Schema;
 import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
 
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.CURRENT_SEMESTER;
 
 public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
 
@@ -58,7 +58,7 @@ public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
     }
 
     public boolean getBoolean(Tuple t) {
-        String currentSemester = t.getString(CURRENT_SEMESTER);
+        String currentSemester = t.getString(BackendConstants.CURRENT_SEMESTER);
         return Boolean.parseBoolean(currentSemester);
     }
 

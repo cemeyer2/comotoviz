@@ -37,7 +37,8 @@
 
 package edu.uiuc.cs.visualmoss.gui.diff;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import org.lobobrowser.gui.BrowserPanel;
 import org.lobobrowser.gui.FramePanel;
 
@@ -70,10 +71,10 @@ public class WebpageDialog extends JDialog {
 
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
-        setTitle(VisualMossConstants.WEBPAGE_DIALOG_TITLE);
+        setTitle(FrontendConstants.WEBPAGE_DIALOG_TITLE);
 
         if (showNavigation) {
             browserPanel = new BrowserPanel();

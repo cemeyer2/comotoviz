@@ -38,7 +38,8 @@
 package edu.uiuc.cs.visualmoss.gui.layout;
 
 import edu.illinois.comoto.api.object.Assignment;
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.uiuc.cs.visualmoss.dataexport.DataExport;
 import edu.uiuc.cs.visualmoss.dataimport.DataImport;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
@@ -63,8 +64,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.CS225;
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.MP3;
 
 public class VisualMossLayout extends JFrame implements ActionListener, WindowListener {
     private static final long serialVersionUID = 1L;
@@ -98,10 +97,10 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         visualMoss.setPreferredSize(new Dimension((int) scrnsize.getWidth() - 75, (int) scrnsize.getHeight() - 75));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
-        this.setTitle(VisualMossConstants.PROGRAM_TITLE);
+        this.setTitle(FrontendConstants.PROGRAM_TITLE);
         container = new VisualMossGraphDisplayContainer(768, 768);
         graphDisplay = container.getVisualMossGraphDisplay();
 
@@ -136,7 +135,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         searchPanel.setLayout(new BorderLayout());
 
         JLabel searchLabel = new JLabel("Search for student: ");
-        searchLabel.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        searchLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         searchPanel.add(searchLabel, BorderLayout.WEST);
 
         searchBox = new JTextField();
@@ -208,9 +207,9 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         menu = new JMenuBar();
         //top level menus
         fileMenu = new JMenu("File");
-        fileMenu.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        fileMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         helpMenu = new JMenu("Help");
-        helpMenu.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        helpMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         //menu items
         add = new JMenuItem("Add Data Set");
         exportGraph = new JMenuItem("Export GraphML");
@@ -219,12 +218,12 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         help = new JMenuItem("Help");
         about = new JMenuItem("About");
 
-        add.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        exportGraph.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        exportImage.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        quit.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        help.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        about.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        add.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        exportGraph.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        exportImage.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        quit.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        help.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        about.setFont(BackendConstants.COMPONENT_LABEL_FONT);
 
         //File Menu
         menu.add(fileMenu);
@@ -285,7 +284,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         } else if (item.equals(about)) {
             new AboutDialog();
         } else if (item.equals(add)) {
-            DataImport importer = new DataImport(CS225, MP3, activeDirectoryCredentials);
+            DataImport importer = new DataImport("cs225", "mp3", activeDirectoryCredentials);
             Assignment assignment = importer.getAssignment();
             VisualMossGraph graph = importer.getGraph();
             graphDisplay.setGraph(graph);

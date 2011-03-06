@@ -37,7 +37,9 @@
 
 package edu.uiuc.cs.visualmoss.gui.help;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,11 +53,11 @@ public class HelpDialog extends JDialog {
         super();
         this.setModal(true);
         JPanel panel = new JPanel(new BorderLayout());
-        JLabel titleLabel = new JLabel(VisualMossConstants.HELP_TITLE);
-        JLabel helpLabel = new JLabel(VisualMossConstants.HELP_TEXT);
+        JLabel titleLabel = new JLabel(FrontendConstants.HELP_TITLE);
+        JLabel helpLabel = new JLabel(FrontendConstants.HELP_TEXT);
 
-        titleLabel.setFont(VisualMossConstants.HELP_TITLE_FONT);
-        helpLabel.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        titleLabel.setFont(BackendConstants.HELP_TITLE_FONT);
+        helpLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
 
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         helpLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -64,7 +66,7 @@ public class HelpDialog extends JDialog {
         helpLabel.setHorizontalTextPosition(JLabel.CENTER);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
         panel.add(titleLabel, BorderLayout.NORTH);

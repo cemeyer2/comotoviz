@@ -37,7 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.gui.graph.predicates;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.data.Schema;
 import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
@@ -58,7 +58,7 @@ public class VisualMossNodeFillSolutionPredicate implements Predicate {
 
     public boolean getBoolean(Tuple t) {
         String netid = t.getString("netid");
-        if (netid.equals(VisualMossConstants.SOLUTION_NODE_LABEL)) {
+        if (netid.equals(FrontendConstants.SOLUTION)) {
             return true;
         }
         return false;

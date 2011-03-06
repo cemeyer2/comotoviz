@@ -40,7 +40,7 @@ package edu.uiuc.cs.visualmoss.gui.dataimport;
 import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.api.object.Course;
 import edu.illinois.comoto.api.object.Student;
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.uiuc.cs.visualmoss.dataimport.DataImport;
 import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
@@ -104,7 +104,7 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
         }
 
         tree = new JTree(coursesNode);
-        tree.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        tree.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         tree.addMouseListener(this);
 
         // Set custom icons for the tree

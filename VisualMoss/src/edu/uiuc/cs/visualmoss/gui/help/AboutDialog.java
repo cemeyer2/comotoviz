@@ -37,7 +37,8 @@
 
 package edu.uiuc.cs.visualmoss.gui.help;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,13 +51,13 @@ public class AboutDialog extends JDialog {
         super();
         this.setModal(true);
         JPanel panel = new JPanel(new GridBagLayout());
-        JLabel titleLabel = new JLabel(VisualMossConstants.ABOUT_TITLE);
-        JLabel authorsLabel = new JLabel(VisualMossConstants.ABOUT_AUTHORS);
-        JLabel copyrightLabel = new JLabel(VisualMossConstants.ABOUT_COPYRIGHT);
+        JLabel titleLabel = new JLabel(FrontendConstants.ABOUT_TITLE);
+        JLabel authorsLabel = new JLabel(FrontendConstants.ABOUT_AUTHORS);
+        JLabel copyrightLabel = new JLabel(FrontendConstants.ABOUT_COPYRIGHT);
 
-        titleLabel.setFont(VisualMossConstants.HELP_TITLE_FONT);
-        authorsLabel.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        copyrightLabel.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        titleLabel.setFont(BackendConstants.HELP_TITLE_FONT);
+        authorsLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        copyrightLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
 
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         authorsLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -69,7 +70,7 @@ public class AboutDialog extends JDialog {
         GridBagConstraints c = new GridBagConstraints();
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
 
@@ -94,7 +95,7 @@ public class AboutDialog extends JDialog {
 
         this.setContentPane(panel);
         this.pack();
-        this.setTitle(VisualMossConstants.ABOUT_LABEL);
+        this.setTitle(FrontendConstants.ABOUT);
         this.setVisible(true);
     }
 }

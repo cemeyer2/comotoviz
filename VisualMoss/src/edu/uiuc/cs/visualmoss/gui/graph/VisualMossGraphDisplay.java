@@ -37,7 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.gui.graph;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.graph.predicates.VisualMossVisibilityPredicate;
 import prefuse.Constants;
@@ -155,7 +155,7 @@ public class VisualMossGraphDisplay {
         actions.add(actionName);
 
         //put verdana as font
-        vis.putAction("font", new FontAction("graph", VisualMossConstants.NODE_LABEL_FONT));
+        vis.putAction("font", new FontAction("graph", BackendConstants.NODE_LABEL_FONT));
         actions.add("font");
     }
 
@@ -378,7 +378,7 @@ public class VisualMossGraphDisplay {
     public String getReportURL() {
         Edge edge = (Edge) graph.getPrefuseGraph().edges().next();
         String link = edge.getString("link");
-        String url = link.substring(0, link.lastIndexOf("/") + 1) + VisualMossConstants.TEXT_REPORT_URL;
+        String url = link.substring(0, link.lastIndexOf("/") + 1) + "FIX ME";
         return url;
     }
 

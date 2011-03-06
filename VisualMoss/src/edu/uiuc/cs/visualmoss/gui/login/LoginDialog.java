@@ -37,7 +37,8 @@
 
 package edu.uiuc.cs.visualmoss.gui.login;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.uiuc.cs.visualmoss.net.VisualMossAuthenticator;
 import edu.uiuc.cs.visualmoss.utility.ldap.LDAPAuth;
 
@@ -69,24 +70,24 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
     }
 
     private void init() {
-        this.setTitle(VisualMossConstants.LOGIN_LABEL);
+        this.setTitle(FrontendConstants.LOGIN);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         netidField = new JTextField();
-        netidField.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
-        TitledBorder b1 = BorderFactory.createTitledBorder(VisualMossConstants.NETID_LABEL);
-        b1.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        netidField.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.NETID);
+        b1.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         netidField.setBorder(b1);
 
         passwordField = new JPasswordField();
-        TitledBorder b2 = BorderFactory.createTitledBorder(VisualMossConstants.ACTIVE_DIRECTORY_PASSWORD_LABEL);
-        b2.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        TitledBorder b2 = BorderFactory.createTitledBorder(FrontendConstants.ACTIVE_DIRECTORY_PASSWORD);
+        b2.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         passwordField.setBorder(b2);
 
-        loginButton = new JButton(VisualMossConstants.LOGIN_LABEL);
-        loginButton.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        loginButton = new JButton(FrontendConstants.LOGIN);
+        loginButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         loginButton.addActionListener(this);
 
         panel.add(netidField);
@@ -103,7 +104,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         passwordField.addKeyListener(this);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
         this.pack();
