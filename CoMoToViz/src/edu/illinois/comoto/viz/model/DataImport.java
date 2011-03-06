@@ -35,11 +35,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.api;
+package edu.illinois.comoto.viz.model;
 
+import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.api.utility.Connection;
-import edu.illinois.comoto.viz.model.VisualMossGraph;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;

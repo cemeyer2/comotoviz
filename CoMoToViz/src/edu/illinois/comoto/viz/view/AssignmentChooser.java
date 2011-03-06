@@ -37,10 +37,10 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.api.DataImport;
 import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.api.object.Course;
 import edu.illinois.comoto.api.object.Student;
+import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;

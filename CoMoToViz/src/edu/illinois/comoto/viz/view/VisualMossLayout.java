@@ -37,8 +37,8 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.api.DataImport;
 import edu.illinois.comoto.api.object.Assignment;
+import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.VisualMossGraph;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplay;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
