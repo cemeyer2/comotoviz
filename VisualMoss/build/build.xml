@@ -90,7 +90,7 @@
                 <attribute name="Built-By" value="${user.name}"/>
                 <attribute name="Implementation-Vendor" value="UIUC"/>
                 <attribute name="Implementation-Title" value="VisualMoss"/>
-                <attribute name="Main-Class" value="edu.uiuc.cs.visualmoss.VisualMossMain"/>
+                <attribute name="Main-Class" value="edu.illinois.comoto.viz.VisualMossMain"/>
             </manifest>
         </jar>
         <copy todir="jar/lib">
@@ -126,7 +126,7 @@
                 <include name="lib/*.jar"/>
                 <include name="lib/ext/*.jar"/>
             </lib>
-            <jw:application mainclass="edu.uiuc.cs.visualmoss.VisualMossMain" jar="jar/VisualMoss.jar"/>
+            <jw:application mainclass="edu.illinois.comoto.viz.VisualMossMain" jar="jar/VisualMoss.jar"/>
         </jw:jnlpwar>
     </target>
 
