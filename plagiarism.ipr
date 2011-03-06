@@ -242,92 +242,54 @@
   <component name="libraryTable">
     <library name="ext">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/commons-beanutils-1.8.3-javadoc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/javafxc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/jmc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/jweb-ext.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/commons-beanutils-1.8.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/cobra-no-commons.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/js.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/commons-beanutils-core-1.8.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/jlfgr-1_0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/javafx-swing.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/javafxgui.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/commons-beanutils-bean-collections-1.8.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/websvc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/primary.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/Scenario.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/commons-beanutils-1.8.3-sources.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/javafxrt.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-common-3.1.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ext/xmlrpc-client-3.1.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="ext1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/javafxrt.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/javafxc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/js.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/jmc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/websvc.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/Scenario.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/javafxgui.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/jlfgr-1_0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lobo/XAMJ_Build/ext/javafx-swing.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/jmc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/jlfgr-1_0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/javafxrt.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/javafxgui.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/Scenario.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/js.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/cobra-no-commons.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/javafx-swing.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/primary.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/javafxc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/jweb-ext.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/xmlrpc-common-3.1.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/websvc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/xmlrpc-client-3.1.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-bean-collections-1.8.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-core-1.8.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
     <library name="lib">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/prefuse-demo/lib/ant.jar!/" />
-        <root url="jar://$PROJECT_DIR$/prefuse-demo/lib/prefuse.jar!/" />
-        <root url="jar://$PROJECT_DIR$/prefuse-demo/lib/lucene-1.4.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/swing-worker-1.2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/velocity-1.4.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ws-commons-util-1.0.2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/mysql-connector-java-5.1.10-bin.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/logkit-1.0.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/Pack200Task.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/prefuse-doc.zip!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/prefuse.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/lucene-1.4.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/commons-logging-1.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/lobo-network-ext-load.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/cobra-no-commons.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/commons-lang-2.5.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war_deps.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/commons-collections.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ant.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/lobo-pub.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/lobo.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war_deps-0.9.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war-0.9.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
-    </library>
-    <library name="lib1">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ant-jnlp-war_deps-0.9.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/cobra-no-commons.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ws-commons-util-1.0.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ant-jnlp-war_deps.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/swing-worker-1.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/lobo-pub.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/mysql-connector-java-5.1.10-bin.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/lobo-network-ext-load.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/Pack200Task.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/js.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ant.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/lucene-1.4.3.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-collections.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/ant-jnlp-war-0.9.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/prefuse.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/velocity-1.4.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/prefuse-doc.zip!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/logkit-1.0.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-logging-1.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/lobo.jar!/" />
-        <root url="jar://$PROJECT_DIR$/VisualMoss/lib/commons-lang-2.5.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="file://$PROJECT_DIR$/lobo/Platform_Core" />
-        <root url="file://$PROJECT_DIR$/lobo/Platform_Public_API" />
-        <root url="file://$PROJECT_DIR$/lobo/Common" />
-        <root url="file://$PROJECT_DIR$/lobo/Primary_Extension" />
-        <root url="file://$PROJECT_DIR$/lobo/Testing" />
-        <root url="file://$PROJECT_DIR$/lobo/IzPack_RegistryPanel" />
-        <root url="file://$PROJECT_DIR$/lobo/Detect_Ext" />
-        <root url="file://$PROJECT_DIR$/lobo/JWebContentExtension" />
-        <root url="file://$PROJECT_DIR$/lobo/HTML_Renderer" />
-        <root url="file://$PROJECT_DIR$/lobo/cssparser/src" />
-        <root url="file://$PROJECT_DIR$/lobo/XAMJ_Extension" />
-        <root url="file://$PROJECT_DIR$/lobo/XAMJ_Public_API" />
-      </SOURCES>
     </library>
   </component>
 </project>

@@ -4,6 +4,3 @@ syntax: glob
 *bin*
 *build*
 *.pyc
-*.ipr
-*.iws
-*.iml
