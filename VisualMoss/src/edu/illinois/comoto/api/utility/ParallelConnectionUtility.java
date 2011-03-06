@@ -39,7 +39,6 @@ package edu.illinois.comoto.api.utility;
 
 import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.CoMoToAPIException;
-import edu.illinois.comoto.api.object.FileSet;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -126,20 +125,6 @@ public class ParallelConnectionUtility<T> {
             } catch (InvocationTargetException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        Connection conn = new Connection("cemeyer2", "password"); //damn, had to change my password, at least its all centralized
-        ParallelConnectionUtility<FileSet> parallelConnection = new ParallelConnectionUtility<FileSet>();
-        Object[][] params = new Object[3][];
-        params[0] = new Object[]{conn, 1, true};
-        params[1] = new Object[]{conn, 2, true};
-        params[2] = new Object[]{conn, 3, true};
-        try {
-            List<FileSet> returned = parallelConnection.parallelFetch("getFileSet", params, 3);
-        } catch (CoMoToAPIException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 }

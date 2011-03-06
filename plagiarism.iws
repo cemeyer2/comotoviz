@@ -14,58 +14,9 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="got rid of minor debug code">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/FrontendConstants.java" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPICache.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIAccelerator.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIConnection.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIAccessTemplate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIReflector.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\VisualMossConstants.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/layout/VisualMossLayout.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/layout/VisualMossLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/worker/AssignmentLoadingWorker.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/worker/AssignmentLoadingWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.ipr" afterPath="$PROJECT_DIR$/plagiarism.ipr" />
+    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIException.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/CoMoToAPIException.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\MossMatch.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/MossMatch.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\MossAnalysis.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/MossAnalysis.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\FileSet.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/FileSet.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Refreshable.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Refreshable.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\HighlightedSubmissionFile.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/HighlightedSubmissionFile.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Season.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Season.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\MossReport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/MossReport.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\DateFormatConverter.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/converter/DateFormatConverter.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Student.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Student.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\EnumConverter.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/converter/EnumConverter.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\OfferingInfo.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/OfferingInfo.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\JplagMatch.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/JplagMatch.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Type.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Type.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPICache.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/Cache.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIAccelerator.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/Accelerator.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIConnection.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/Connection.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Report.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Report.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\converters\ListConverter.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/converter/ListConverter.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\util\ParallelConnectionUtil.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Analysis.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Analysis.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIAccessTemplate.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/AccessTemplate.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\AnalysisPseudonym.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIConstants.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\JplagAnalysis.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/JplagAnalysis.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\SubmissionFile.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/SubmissionFile.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Submission.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Submission.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Semester.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Semester.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Language.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Language.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\JplagReport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/JplagReport.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Offering.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Offering.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPIReflector.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/Reflector.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Assignment.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Assignment.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Cacheable.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Cacheable.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\objects\Course.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/object/Course.java" />
-      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\uiuc\cs\visualmoss\dataimport\api\CoMoToAPI.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/CoMoToAPI.java" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
     <ignored path="$USER_HOME$/.griffon/" />
@@ -162,13 +113,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackendConstants.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BackendConstants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/BackendConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="48" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.4822695">
+            <state line="21" column="27" selection-start="994" selection-end="994" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParallelConnectionUtility.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="42" selection-start="4632" selection-end="4632" vertical-scroll-proportion="0.4489796">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -235,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/worker/AssignmentLoadingWorker.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/dataimport/AssignmentChooser.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/gui/layout/VisualMossLayout.java" />
@@ -251,6 +210,7 @@
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/VisualMossConstants.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/FrontendConstants.java" />
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
+        <option value="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java" />
       </list>
     </option>
   </component>
@@ -884,6 +844,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760596" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4184049" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32883435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760736" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19412126" sideWeight="0.6643757" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329455" sideWeight="0.6666667" order="3" side_tool="false" content_ui="tabs" />
@@ -903,7 +864,6 @@
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760736" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Time Tracker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -928,7 +888,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="got rid of minor debug code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split up VisualMossConstants, restructured directories, and refactored API" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -941,7 +901,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Got viz loading" />
     <MESSAGE value="Temporarily bypassing SwingWorker, nearly adding all submissions sucessfully, but no reflection for enums yet." />
     <MESSAGE value="Loading submissions from API sucessfully (no SwingWorker yet)" />
     <MESSAGE value="Added SwingWorker back in" />
@@ -966,6 +925,7 @@
     <MESSAGE value="Updated dialogs a bit" />
     <MESSAGE value="made font default everywhere, so now joption panes and lobo loading dialogs show up in pretty font, realized i had a key listener but forgot to add it to the loading dialog widgets, so now hitting the enter key is analogous to pressing the login button" />
     <MESSAGE value="got rid of minor debug code" />
+    <MESSAGE value="Split up VisualMossConstants, restructured directories, and refactored API" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1106,10 +1066,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/BackendConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="48" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.4822695">
+        <state line="21" column="27" selection-start="994" selection-end="994" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="42" selection-start="4632" selection-end="4632" vertical-scroll-proportion="0.4489796">
+          <folding />
         </state>
       </provider>
     </entry>
