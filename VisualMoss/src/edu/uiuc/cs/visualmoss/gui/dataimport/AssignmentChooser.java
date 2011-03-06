@@ -37,11 +37,11 @@
 
 package edu.uiuc.cs.visualmoss.gui.dataimport;
 
+import edu.illinois.comoto.api.object.Assignment;
+import edu.illinois.comoto.api.object.Course;
+import edu.illinois.comoto.api.object.Student;
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
 import edu.uiuc.cs.visualmoss.dataimport.DataImport;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Course;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Student;
 import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
 import edu.uiuc.cs.visualmoss.gui.worker.AssignmentLoadingWorker;

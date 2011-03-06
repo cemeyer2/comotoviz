@@ -37,10 +37,10 @@
 
 package edu.uiuc.cs.visualmoss.dataimport;
 
+import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.object.*;
+import edu.illinois.comoto.api.utility.Connection;
 import edu.uiuc.cs.visualmoss.VisualMossConstants;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPI;
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPIConnection;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.*;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
 import edu.uiuc.cs.visualmoss.utility.Pair;
@@ -68,7 +68,7 @@ import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
 public class DataImport {
 
     private VisualMossGraph graph;
-    private CoMoToAPIConnection connection;
+    private Connection connection;
     private ArrayList<Submission> submissions;
     private Assignment assignment;
     private Course course;
@@ -84,7 +84,7 @@ public class DataImport {
     public DataImport(String courseName, String assignmentName, Pair<String, String> activeDirectoryCredentials) {
 
         //Create a connection to the CoMoTo API
-        connection = new CoMoToAPIConnection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
+        connection = new Connection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
         //Populate the courses from the API
         List<Course> courses = CoMoToAPI.getCourses(connection);
@@ -108,7 +108,7 @@ public class DataImport {
     public DataImport(Pair<String, String> activeDirectoryCredentials) {
 
         //Create a connection to the CoMoTo API
-        connection = new CoMoToAPIConnection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
+        connection = new Connection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
         //Populate the courses from the API
         courses = CoMoToAPI.getCourses(connection);
@@ -465,7 +465,7 @@ public class DataImport {
      *
      * @return The connection to the API
      */
-    public CoMoToAPIConnection getConnection() {
+    public Connection getConnection() {
         return connection;
     }
 

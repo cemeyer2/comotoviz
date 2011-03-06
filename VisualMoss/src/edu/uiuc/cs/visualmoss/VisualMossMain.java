@@ -37,7 +37,7 @@
 
 package edu.uiuc.cs.visualmoss;
 
-import edu.uiuc.cs.visualmoss.dataimport.api.CoMoToAPICache;
+import edu.illinois.comoto.api.utility.Cache;
 import edu.uiuc.cs.visualmoss.exceptions.VisualMossException;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
 import edu.uiuc.cs.visualmoss.gui.login.LoginDialog;
@@ -58,7 +58,7 @@ public class VisualMossMain {
 
         setDefaultFont();
 
-        CoMoToAPICache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
+        Cache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
 
         try {
             PlatformInit init = PlatformInit.getInstance();

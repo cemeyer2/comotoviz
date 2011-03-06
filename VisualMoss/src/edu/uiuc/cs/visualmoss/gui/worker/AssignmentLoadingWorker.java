@@ -37,8 +37,8 @@
 
 package edu.uiuc.cs.visualmoss.gui.worker;
 
+import edu.illinois.comoto.api.object.Assignment;
 import edu.uiuc.cs.visualmoss.dataimport.DataImport;
-import edu.uiuc.cs.visualmoss.dataimport.api.objects.Assignment;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraphStudent;
 import edu.uiuc.cs.visualmoss.gui.graph.VisualMossGraphDisplayContainer;
