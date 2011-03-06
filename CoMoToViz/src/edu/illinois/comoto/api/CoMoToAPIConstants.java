@@ -44,8 +44,11 @@ package edu.illinois.comoto.api;
  * <p> <p> Holds constants for interacting with the CoMoTo server
  */
 public class CoMoToAPIConstants {
+
+    // API URL
     public static final String DEFAULT_HOST = "https://comoto.cs.illinois.edu/comoto/api";
 
+    // API methods
     public static final String GET_ANALYSIS = "getAnalysis";
     public static final String GET_ANALYSIS_PSEUDONYM = "getAnalysisPseudonym";
     public static final String GET_ASSIGNMENTS = "getAssignments";
@@ -66,6 +69,7 @@ public class CoMoToAPIConstants {
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";
 
+    // API oebjects
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
     public static final String CROSS_SEMESTER_MATCHES = "cross_semester_matches";
