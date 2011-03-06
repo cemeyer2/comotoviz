@@ -14,9 +14,8 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="removed testing for parallel connection">
+    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" afterPath="$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
     <ignored path="$USER_HOME$/.griffon/" />
@@ -127,8 +126,10 @@
       <file leaf-file-name="DataImport.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="30" selection-start="2546" selection-end="2546" vertical-scroll-proportion="0.30612245">
-              <folding />
+            <state line="371" column="36" selection-start="17161" selection-end="17161" vertical-scroll-proportion="0.45498198">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -888,7 +889,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed testing for parallel connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing constants errors" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -901,7 +902,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Loading submissions from API sucessfully (no SwingWorker yet)" />
     <MESSAGE value="Added SwingWorker back in" />
     <MESSAGE value="Updated project files (upgraded to 10.0), and added converted for string lists" />
     <MESSAGE value="Updated to new API for getCourses and added 'OfferingInfo' object -- not refreshable because there is no unique id for OfferingInfo" />
@@ -926,6 +926,7 @@
     <MESSAGE value="got rid of minor debug code" />
     <MESSAGE value="Split up VisualMossConstants, restructured directories, and refactored API" />
     <MESSAGE value="removed testing for parallel connection" />
+    <MESSAGE value="Fixing constants errors" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1077,8 +1078,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/uiuc/cs/visualmoss/dataimport/DataImport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="30" selection-start="2546" selection-end="2546" vertical-scroll-proportion="0.30612245">
-          <folding />
+        <state line="371" column="36" selection-start="17161" selection-end="17161" vertical-scroll-proportion="0.45498198">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

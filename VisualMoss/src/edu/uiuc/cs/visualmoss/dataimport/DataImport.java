@@ -58,8 +58,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
-import static edu.illinois.comoto.viz.view.BackendConstants.*;
-
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Nov 3, 2010
@@ -229,11 +227,11 @@ public class DataImport {
                     boolean arePartners = arePartnered(submissionOne, submissionTwo);
 
                     //Set this data on the edge
-                    edge.setDouble(SCORE1, score1);
-                    edge.setDouble(SCORE2, score2);
-                    edge.setDouble(WEIGHT, maxScore);
-                    edge.setString(LINK, matchLink.toString());
-                    edge.setBoolean(IS_PARTNER, arePartners);
+                    edge.setDouble(BackendConstants.SCORE1, score1);
+                    edge.setDouble(BackendConstants.SCORE2, score2);
+                    edge.setDouble(BackendConstants.WEIGHT, maxScore);
+                    edge.setString(BackendConstants.LINK, matchLink.toString());
+                    edge.setBoolean(BackendConstants.IS_PARTNER, arePartners);
                 }
             }
         }
@@ -326,7 +324,7 @@ public class DataImport {
                         node.setString(BackendConstants.CURRENT_SEMESTER, Boolean.toString(currentSemester));
                         node.setString(BackendConstants.SUBMISSION_ID, Integer.toString(submissionId));
                     }
-                    node.setString(IS_SOLUTION, Boolean.toString(isSolution));
+                    node.setString(BackendConstants.IS_SOLUTION, Boolean.toString(isSolution));
 
                     //Add this new node to the hash table
                     nodeTable.put(submissionId, node);
@@ -348,43 +346,43 @@ public class DataImport {
 
         //Create the new graph and declare the fields of each node
         Graph graph2 = new Graph();
-        graph2.getNodeTable().addColumn(NETID, String.class);
-        graph2.getNodeTable().addColumn(PSEUDONYM, String.class);
-        graph2.getNodeTable().addColumn(IS_SOLUTION, String.class);
-        graph2.getNodeTable().addColumn(SEASON, String.class);
-        graph2.getNodeTable().addColumn(YEAR, String.class);
-        graph2.getNodeTable().addColumn(SUBMISSION_ID, String.class);
-        graph2.getNodeTable().addColumn(CURRENT_SEMESTER, boolean.class);
-        graph2.getEdgeTable().addColumn(WEIGHT, double.class);
-        graph2.getEdgeTable().addColumn(SCORE1, double.class);
-        graph2.getEdgeTable().addColumn(SCORE2, double.class);
-        graph2.getEdgeTable().addColumn(LINK, String.class);
-        graph2.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+        graph2.getNodeTable().addColumn(BackendConstants.NETID, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.PSEUDONYM, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.IS_SOLUTION, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.SEASON, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.YEAR, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, String.class);
+        graph2.getNodeTable().addColumn(BackendConstants.CURRENT_SEMESTER, boolean.class);
+        graph2.getEdgeTable().addColumn(BackendConstants.WEIGHT, double.class);
+        graph2.getEdgeTable().addColumn(BackendConstants.SCORE1, double.class);
+        graph2.getEdgeTable().addColumn(BackendConstants.SCORE2, double.class);
+        graph2.getEdgeTable().addColumn(BackendConstants.LINK, String.class);
+        graph2.getEdgeTable().addColumn(BackendConstants.IS_PARTNER, boolean.class);
 
         //Copy all of the graph nodes
         Iterator<Node> nodeIterator = graph.nodes();
         while (nodeIterator.hasNext()) {
             Node oldNode = nodeIterator.next();
             Node newNode = graph2.addNode();
-            newNode.setString(NETID, oldNode.getString(NETID));
-            newNode.setString(PSEUDONYM, oldNode.getString(PSEUDONYM));
-            newNode.setString(IS_SOLUTION, oldNode.getString(IS_SOLUTION));
-            newNode.setString(SEASON, oldNode.getString(SEASON));
-            newNode.setString(YEAR, oldNode.getString(YEAR));
-            newNode.setString(SUBMISSION_ID, oldNode.getString(SUBMISSION_ID));
-            newNode.setBoolean(CURRENT_SEMESTER, oldNode.getBoolean(CURRENT_SEMESTER));
+            newNode.setString(BackendConstants.NETID, oldNode.getString(BackendConstants.NETID));
+            newNode.setString(BackendConstants.PSEUDONYM, oldNode.getString(BackendConstants.PSEUDONYM));
+            newNode.setString(BackendConstants.IS_SOLUTION, oldNode.getString(BackendConstants.IS_SOLUTION));
+            newNode.setString(BackendConstants.SEASON, oldNode.getString(BackendConstants.SEASON));
+            newNode.setString(BackendConstants.YEAR, oldNode.getString(BackendConstants.YEAR));
+            newNode.setString(BackendConstants.SUBMISSION_ID, oldNode.getString(BackendConstants.SUBMISSION_ID));
+            newNode.setBoolean(BackendConstants.CURRENT_SEMESTER, oldNode.getBoolean(BackendConstants.CURRENT_SEMESTER));
         }
 
         //Copy all of the graph edges
         Iterator<Edge> edgeIterator = graph.edges();
         while (edgeIterator.hasNext()) {
             Edge oldEdge = edgeIterator.next();
-            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(NETID), graph2), getNode(oldEdge.getTargetNode().getString(NETID), graph2));
-            newEdge.setDouble(SCORE1, oldEdge.getDouble(SCORE1));
-            newEdge.setDouble(SCORE2, oldEdge.getDouble(SCORE2));
-            newEdge.setDouble(WEIGHT, oldEdge.getDouble(WEIGHT));
-            newEdge.setString(LINK, oldEdge.getString(LINK));
-            newEdge.setBoolean(IS_PARTNER, oldEdge.getBoolean(IS_PARTNER));
+            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(BackendConstants.NETID), graph2), getNode(oldEdge.getTargetNode().getString(BackendConstants.NETID), graph2));
+            newEdge.setDouble(BackendConstants.SCORE1, oldEdge.getDouble(BackendConstants.SCORE1));
+            newEdge.setDouble(BackendConstants.SCORE2, oldEdge.getDouble(BackendConstants.SCORE2));
+            newEdge.setDouble(BackendConstants.WEIGHT, oldEdge.getDouble(BackendConstants.WEIGHT));
+            newEdge.setString(BackendConstants.LINK, oldEdge.getString(BackendConstants.LINK));
+            newEdge.setBoolean(BackendConstants.IS_PARTNER, oldEdge.getBoolean(BackendConstants.IS_PARTNER));
         }
         return graph2;
     }
@@ -401,7 +399,7 @@ public class DataImport {
         Iterator<Node> nodeIterator = graph.nodes();
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.next();
-            if (node.getString(NETID).equals(netId)) {
+            if (node.getString(BackendConstants.NETID).equals(netId)) {
                 return node;
             }
         }
@@ -411,20 +409,20 @@ public class DataImport {
     private void declareGraphFields(Graph graph) {
 
         //Declare all the properties of a submission (e.g. a node in the graph)
-        graph.getNodeTable().addColumn(NETID, String.class);
-        graph.getNodeTable().addColumn(PSEUDONYM, String.class);
-        graph.getNodeTable().addColumn(IS_SOLUTION, boolean.class);
-        graph.getNodeTable().addColumn(SEASON, String.class);
-        graph.getNodeTable().addColumn(YEAR, String.class);
-        graph.getNodeTable().addColumn(SUBMISSION_ID, String.class);
-        graph.getNodeTable().addColumn(CURRENT_SEMESTER, boolean.class);
+        graph.getNodeTable().addColumn(BackendConstants.NETID, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.PSEUDONYM, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.IS_SOLUTION, boolean.class);
+        graph.getNodeTable().addColumn(BackendConstants.SEASON, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.YEAR, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.CURRENT_SEMESTER, boolean.class);
 
         //Declare all the properties of an analysis
-        graph.getEdgeTable().addColumn(WEIGHT, double.class);   //Weight = max(score1,score2)
-        graph.getEdgeTable().addColumn(SCORE1, double.class);
-        graph.getEdgeTable().addColumn(SCORE2, double.class);
-        graph.getEdgeTable().addColumn(LINK, String.class);
-        graph.getEdgeTable().addColumn(IS_PARTNER, boolean.class);
+        graph.getEdgeTable().addColumn(BackendConstants.WEIGHT, double.class);   //Weight = max(score1,score2)
+        graph.getEdgeTable().addColumn(BackendConstants.SCORE1, double.class);
+        graph.getEdgeTable().addColumn(BackendConstants.SCORE2, double.class);
+        graph.getEdgeTable().addColumn(BackendConstants.LINK, String.class);
+        graph.getEdgeTable().addColumn(BackendConstants.IS_PARTNER, boolean.class);
     }
 
     /**
