@@ -14,7 +14,11 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="" />
+    <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
+      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\.settings\org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/CoMoToViz/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\.project" afterPath="$PROJECT_DIR$/CoMoToViz/.project" />
+      <change type="MOVED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\.classpath" afterPath="$PROJECT_DIR$/CoMoToViz/.classpath" />
+    </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
     <ignored path="$USER_HOME$/.griffon/" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -281,7 +285,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemId" value="CoMoToViz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -291,7 +295,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemId" value="CoMoToViz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -313,7 +317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="VisualMoss" />
+              <option name="myItemId" value="CoMoToViz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -376,6 +380,28 @@
     <option name="showLabels" value="true" />
   </component>
   <component name="RunManager" selected="Application.VisualMossMain">
+    <configuration default="false" name="ParallelConnectionUtility" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false">
+        <pattern>
+          <option name="PATTERN" value="edu.uiuc.cs.visualmoss.dataimport.api.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="edu.illinois.comoto.api.utility.ParallelConnectionUtility" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="VisualMoss" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="false" name="test" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -403,28 +429,6 @@
       <method>
         <option name="Make" enabled="false" />
       </method>
-    </configuration>
-    <configuration default="false" name="ParallelConnectionUtility" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false">
-        <pattern>
-          <option name="PATTERN" value="edu.uiuc.cs.visualmoss.dataimport.api.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="edu.illinois.comoto.api.utility.ParallelConnectionUtility" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="VisualMoss" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
     </configuration>
     <configuration default="false" name="PrefuseDemo" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" />
@@ -537,12 +541,12 @@
       </method>
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.test" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ParallelConnectionUtility" />
-      <item index="2" class="java.lang.String" itemvalue="Application.PrefuseDemo" />
-      <item index="3" class="java.lang.String" itemvalue="Application.GraphView" />
-      <item index="4" class="java.lang.String" itemvalue="Application.VisualMossMain" />
-      <item index="5" class="java.lang.String" itemvalue="Application.DataImportDriver" />
+      <item index="0" class="java.lang.String" itemvalue="Application.ParallelConnectionUtility" />
+      <item index="1" class="java.lang.String" itemvalue="Application.test" />
+      <item index="2" class="java.lang.String" itemvalue="Application.VisualMossMain" />
+      <item index="3" class="java.lang.String" itemvalue="Application.DataImportDriver" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PrefuseDemo" />
+      <item index="5" class="java.lang.String" itemvalue="Application.GraphView" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -645,7 +649,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleting directories&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted old directory tree" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -658,7 +662,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Finished updates to API objects" />
     <MESSAGE value="Updated all API objects" />
     <MESSAGE value="Updated API usage in DataImport to take advantage of eagerly loading API data" />
     <MESSAGE value="Ignoring null edges" />
@@ -683,6 +686,7 @@
     <MESSAGE value="moved all files into MVC directories&#10;" />
     <MESSAGE value="Added resource directory&#10;" />
     <MESSAGE value="deleting directories&#10;" />
+    <MESSAGE value="deleted old directory tree" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -724,13 +728,13 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-    <buildFile url="file://$PROJECT_DIR$/VisualMoss/build/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/CoMoToViz/build/build.xml">
       <antCommandLine value="" />
       <runInBackground value="true" />
       <targetFilters>
+        <filter targetName="jar" isVisible="false" />
         <filter targetName="compile" isVisible="false" />
         <filter targetName="init" isVisible="false" />
-        <filter targetName="jar" isVisible="false" />
         <filter targetName="war" isVisible="false" />
       </targetFilters>
       <treeView value="true" />
@@ -739,67 +743,67 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/model/VisualMossGraphDisplay.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/VisualMossGraphDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="380" column="75" selection-start="12504" selection-end="12510" vertical-scroll-proportion="0.60535717" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/model/predicates/VisualMossNodeFillCurrentSemesterPredicate.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/VisualMossNodeFillCurrentSemesterPredicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="62" selection-start="2483" selection-end="2483" vertical-scroll-proportion="-0.24464285" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/model/predicates/VisualMossNodeFillSolutionPredicate.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/VisualMossNodeFillSolutionPredicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="51" selection-start="2510" selection-end="2510" vertical-scroll-proportion="0.33214286" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/LoginDialog.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoginDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="81" selection-start="4168" selection-end="4168" vertical-scroll-proportion="0.39488116" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/AboutDialog.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AboutDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="88" column="35" selection-start="3577" selection-end="3577" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/HelpDialog.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/HelpDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="81" selection-start="2849" selection-end="2849" vertical-scroll-proportion="0.6182033" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/BackendConstants.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="5" selection-start="972" selection-end="972" vertical-scroll-proportion="0.4219858" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/FrontendConstants.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/FrontendConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="0" selection-start="1776" selection-end="1776" vertical-scroll-proportion="0.75510204" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/WebpageDialog.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/WebpageDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="9" selection-start="3399" selection-end="3399" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/VisualMossControls.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/VisualMossControls.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="13" selection-start="2268" selection-end="2268" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/VisualMossLayout.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/VisualMossLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="29" selection-start="1948" selection-end="1948" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/model/VisualMossControl.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/VisualMossControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="13" selection-start="2256" selection-end="2256" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/build/build.xml">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/build/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="124" column="17" selection-start="4990" selection-end="4990" vertical-scroll-proportion="0.6985816">
           <folding />
@@ -813,7 +817,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="10" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.29642856" />
       </provider>

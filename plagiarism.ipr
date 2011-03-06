@@ -2,7 +2,7 @@
 <project version="4">
   <component name="AntConfiguration">
     <defaultAnt bundledAnt="true" />
-    <buildFile url="file://$PROJECT_DIR$/VisualMoss/build/build.xml">
+    <buildFile url="file://$PROJECT_DIR$/CoMoToViz/build/build.xml">
       <additionalClassPath />
       <antReference projectDefault="true" />
       <customJdkName value="" />
@@ -229,7 +229,7 @@
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="Java 1.6 (x64)" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/VisualMoss/bin" />
+    <output url="file://$PROJECT_DIR$/CoMoToViz/bin" />
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
