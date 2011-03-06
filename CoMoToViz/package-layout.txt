@@ -1,0 +1,11 @@
+packages:
+edu.uiuc.cs.visualmoss - root package, should contain code that ties together all components and launches application
+edu.uiuc.cs.visualmoss.dataexport - contains code that exports the graph to graphml
+edu.uiuc.cs.visualmoss.dataimport - imports viz data from file and database into app
+edu.uiuc.cs.visualmoss.graph - contains all the backend code for the graph viz
+edu.uiuc.cs.visualmoss.gui - probably will be empty
+edu.uiuc.cs.visualmoss.gui.controls - code to generate right side controls
+edu.uiuc.cs.visualmoss.gui.diff - code for diff window
+edu.uiuc.cs.visualmoss.gui.graph - code to display graph
+edu.uiuc.cs.visualmoss.gui.layout - code to layout the window and tie all the ui components together
+edu.uiuc.cs.visualmoss.gui.tree - code to create tree on left side of ui

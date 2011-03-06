@@ -219,10 +219,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/VisualMoss/CoMoToViz.iml" filepath="$PROJECT_DIR$/VisualMoss/CoMoToViz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" filepath="$PROJECT_DIR$/HTTPS-demo/HTTPS-demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" filepath="$PROJECT_DIR$/LDAPAuth/LDAPAuth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lobo/Lobo.iml" filepath="$PROJECT_DIR$/lobo/Lobo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" filepath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" />
     </modules>
   </component>
   <component name="ProjectResources">
