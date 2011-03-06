@@ -38,6 +38,7 @@
 package edu.uiuc.cs.visualmoss;
 
 import edu.illinois.comoto.api.utility.Cache;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.uiuc.cs.visualmoss.exceptions.VisualMossException;
 import edu.uiuc.cs.visualmoss.gui.layout.VisualMossLayout;
 import edu.uiuc.cs.visualmoss.gui.login.LoginDialog;
@@ -118,7 +119,7 @@ public class VisualMossMain {
             Object key = keys.nextElement();
             Object value = UIManager.get(key);
             if (value instanceof javax.swing.plaf.FontUIResource) {
-                UIManager.put(key, VisualMossConstants.COMPONENT_LABEL_FONT);
+                UIManager.put(key, BackendConstants.COMPONENT_LABEL_FONT);
             }
         }
     }

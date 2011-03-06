@@ -37,6 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.graph;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Edge;
 import prefuse.data.Graph;
 import prefuse.data.Node;
@@ -47,7 +48,6 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.*;
 
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
 
 public class VisualMossGraph {
 
@@ -144,8 +144,8 @@ public class VisualMossGraph {
             Node node = nodeIterator.next();
 
             //Extract its data
-            String netid = node.getString(NETID);
-            String pseudonym = node.getString(PSEUDONYM);
+            String netid = node.getString(BackendConstants.NETID);
+            String pseudonym = node.getString(BackendConstants.PSEUDONYM);
 
             //Build a new VisualMossGraphStudent object to old the basic information about this student
             VisualMossGraphStudent student = new VisualMossGraphStudent(netid, pseudonym);
@@ -160,10 +160,10 @@ public class VisualMossGraph {
             Edge edge = (Edge) nodeIterator.next();
 
             // Extract its data
-            VisualMossGraphStudent student1 = students.get(edge.getSourceNode().getString(NETID));
-            VisualMossGraphStudent student2 = students.get(edge.getTargetNode().getString(NETID));
-            double score1 = edge.getDouble(SCORE1);
-            double score2 = edge.getDouble(SCORE1);
+            VisualMossGraphStudent student1 = students.get(edge.getSourceNode().getString(BackendConstants.NETID));
+            VisualMossGraphStudent student2 = students.get(edge.getTargetNode().getString(BackendConstants.NETID));
+            double score1 = edge.getDouble(BackendConstants.SCORE1);
+            double score2 = edge.getDouble(BackendConstants.SCORE1);
 
             //Build a match from this data and add it to our records
             VisualMossGraphMatch match = new VisualMossGraphMatch(student1, student2, score1, score2);

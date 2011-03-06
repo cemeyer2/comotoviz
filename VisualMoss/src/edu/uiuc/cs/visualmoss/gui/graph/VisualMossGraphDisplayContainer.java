@@ -37,7 +37,7 @@
 
 package edu.uiuc.cs.visualmoss.gui.graph;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 
 import javax.swing.*;
@@ -56,7 +56,7 @@ public class VisualMossGraphDisplayContainer extends JPanel {
         setPreferredSize(new Dimension(width, height));
         graphDisplay = new VisualMossGraphDisplay(graph, this);
         this.statusLabel = new JLabel();
-        this.statusLabel.setFont(VisualMossConstants.STATUS_LABEL_FONT);
+        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
         add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
     }
@@ -68,7 +68,7 @@ public class VisualMossGraphDisplayContainer extends JPanel {
         setPreferredSize(new Dimension(width, height));
         graphDisplay = new VisualMossGraphDisplay(this);
         this.statusLabel = new JLabel();
-        this.statusLabel.setFont(VisualMossConstants.STATUS_LABEL_FONT);
+        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
         add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
     }

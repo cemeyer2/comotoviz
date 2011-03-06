@@ -37,7 +37,8 @@
 
 package edu.uiuc.cs.visualmoss.gui.utility;
 
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+
+import edu.illinois.comoto.viz.view.BackendConstants;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -72,15 +73,15 @@ public class LoadingProgressDialog extends JDialog {
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(VisualMossConstants.PROGRAM_ICON_PATH);
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
         TitledBorder b = BorderFactory.createTitledBorder(label);
-        b.setTitleFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        b.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         bar.setBorder(b);
         bar.setIndeterminate(true);
         bar.setStringPainted(true);
-        bar.setFont(VisualMossConstants.COMPONENT_LABEL_FONT);
+        bar.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         panel.add(bar);
         this.setContentPane(panel);
         this.pack();
