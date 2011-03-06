@@ -40,7 +40,8 @@ package edu.uiuc.cs.visualmoss.dataimport;
 import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.api.utility.Connection;
-import edu.uiuc.cs.visualmoss.VisualMossConstants;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.uiuc.cs.visualmoss.graph.VisualMossGraph;
 import edu.uiuc.cs.visualmoss.gui.utility.LoadingProgressDialog;
 import edu.uiuc.cs.visualmoss.utility.Pair;
@@ -57,7 +58,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
-import static edu.uiuc.cs.visualmoss.VisualMossConstants.*;
+import static edu.illinois.comoto.viz.view.BackendConstants.*;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -114,19 +115,6 @@ public class DataImport {
         courses = CoMoToAPI.getCourses(connection);
 
 
-    }
-
-    /**
-     * Imports the data from a given file, intended to be a file written in GraphML format
-     *
-     * @param inputFile The file from which to import the data
-     * @throws prefuse.data.io.DataIOException
-     *          On an error accessing the file data
-     */
-    public DataImport(File inputFile) throws DataIOException {
-
-        //Builds a graph with the default class and assignment from the given input file data
-        graph = new VisualMossGraph(inputFile, CS225, MP3);
     }
 
     /**
@@ -324,19 +312,19 @@ public class DataImport {
                     //Add this submission's data to the graph
                     Node node = graph.addNode();
                     if (!isSolution) {
-                        node.setString(NETID, student.getNetid());
-                        node.setString(PSEUDONYM, Integer.toString(student.getId()));
-                        node.setString(SEASON, semester.getSeason().name());
-                        node.setString(YEAR, Integer.toString(semester.getYear()));
-                        node.setString(CURRENT_SEMESTER, Boolean.toString(currentSemester));
-                        node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                        node.setString(BackendConstants.NETID, student.getNetid());
+                        node.setString(BackendConstants.PSEUDONYM, Integer.toString(student.getId()));
+                        node.setString(BackendConstants.SEASON, semester.getSeason().name());
+                        node.setString(BackendConstants.YEAR, Integer.toString(semester.getYear()));
+                        node.setString(BackendConstants.CURRENT_SEMESTER, Boolean.toString(currentSemester));
+                        node.setString(BackendConstants.SUBMISSION_ID, Integer.toString(submissionId));
                     } else {
-                        node.setString(NETID, VisualMossConstants.SOLUTION_NODE_LABEL);
-                        node.setString(PSEUDONYM, VisualMossConstants.SOLUTION_NODE_LABEL);
-                        node.setString(SEASON, VisualMossConstants.SOLUTION_NODE_LABEL);
-                        node.setString(YEAR, VisualMossConstants.SOLUTION_NODE_LABEL);
-                        node.setString(CURRENT_SEMESTER, Boolean.toString(currentSemester));
-                        node.setString(SUBMISSION_ID, Integer.toString(submissionId));
+                        node.setString(BackendConstants.NETID, FrontendConstants.SOLUTION);
+                        node.setString(BackendConstants.PSEUDONYM, FrontendConstants.SOLUTION);
+                        node.setString(BackendConstants.SEASON, FrontendConstants.SOLUTION);
+                        node.setString(BackendConstants.YEAR, FrontendConstants.SOLUTION);
+                        node.setString(BackendConstants.CURRENT_SEMESTER, Boolean.toString(currentSemester));
+                        node.setString(BackendConstants.SUBMISSION_ID, Integer.toString(submissionId));
                     }
                     node.setString(IS_SOLUTION, Boolean.toString(isSolution));
 
