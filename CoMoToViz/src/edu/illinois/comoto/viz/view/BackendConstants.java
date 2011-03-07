@@ -52,6 +52,9 @@ public class BackendConstants {
 
     // Resource locations
     public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
+    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
+    public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
+    public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
 
     // Field identifiers
     public static final String IS_PARTNER = "isPartner";
@@ -74,8 +77,6 @@ public class BackendConstants {
     public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
     public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
-
-    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
-    public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
-    public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
+    // GUI component identifiers
+    public static final String ASSIGNMENT_CHOOSER_CLICKED = "assignmentChooser";
 }

@@ -37,26 +37,58 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import java.util.EventListener;
+import edu.illinois.comoto.viz.view.AssignmentChooser;
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
- * <p> Abstract factory that gets an event listener for a specified GUI component. This factory should be extended
- * for any new window or frame.
+ * User: Jon
+ * Date: 3/6/11
  * <p/>
- * <p> This factory can be used to handle key strokes, mouse events, and generic actions
+ * Stores all mouse listeners,
  */
-public interface EventListenerFactory {
+public enum MouseListenerActions {
 
-    /**
-     * <p> Factory method for creating the <code>EventListener</code> for a GUI component. The factory takes as input a
-     * constant that identifies the GUI component, and returns an event listener.
-     * <p/>
-     * <p> Uses an enum to hash GUI constant to event listeners.
-     *
-     * @param buttonConstant unique identifier for this GUI component
-     * @param parameters     any necessary parameters for the listener
-     * @return some action listener for this GUI component
-     * @see EventListener
-     */
-    public EventListener getActionListener(String buttonConstant, Object... parameters);
+    // When the assignment chooser is clicked
+    assignmentChooser {
+        @Override
+        MouseListener getMouseListenerAction(final Object... parameters) {
+            return new MouseListener() {
+
+                // The assignment chooser object
+                AssignmentChooser thisAssignmentChooser = (AssignmentChooser) parameters[0];
+
+                /**
+                 * Change the assignment
+                 *
+                 * @param event All data passed from the mouse event
+                 */
+                public void mouseClicked(MouseEvent event) {
+                    if (event.getClickCount() > 1) {
+                        JTree tree = thisAssignmentChooser.getTree();
+                        DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
+                        thisAssignmentChooser.changeAssignment(node);
+                    }
+                }
+
+                // Other required user input events
+                public void mousePressed(MouseEvent e) {
+                }
+
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                public void mouseEntered(MouseEvent e) {
+                }
+
+                public void mouseExited(MouseEvent e) {
+                }
+            };
+        }
+    };
+
+    abstract MouseListener getMouseListenerAction(Object... parameters);
 }

@@ -38,6 +38,8 @@
 package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.api.object.*;
+import edu.illinois.comoto.viz.controller.EventListenerFactory;
+import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
@@ -48,7 +50,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ import java.util.List;
 /**
  * The tree-based structure for choosing classes and assignments
  */
-public class AssignmentChooser extends JPanel implements MouseListener {
+public class AssignmentChooser extends JPanel {
 
     // The list of courses to choose from
     private final List<Course> courses;
@@ -130,7 +131,11 @@ public class AssignmentChooser extends JPanel implements MouseListener {
         // Add the root node and set GUI properties
         tree = new JTree(coursesNode);
         tree.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        tree.addMouseListener(this);
+
+
+        // Setup the listener
+        EventListenerFactory actionFactory = new MouseListenerFactory();
+        tree.addMouseListener((MouseListener) actionFactory.getActionListener(BackendConstants.ASSIGNMENT_CHOOSER_CLICKED, this));
 
         // Set custom icons for the tree
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
@@ -192,28 +197,7 @@ public class AssignmentChooser extends JPanel implements MouseListener {
         }
     }
 
-    /**
-     * Changes an assignment when a node is clicked
-     *
-     * @param event The event
-     */
-    public void mouseClicked(MouseEvent event) {
-        if (event.getClickCount() > 1) {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-            changeAssignment(node);
-        }
-    }
-
-    // Other required user input events
-    public void mousePressed(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
+    public JTree getTree() {
+        return tree;
     }
 }
