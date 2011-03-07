@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import edu.illinois.comoto.viz.view.AssignmentChooser;
+import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -59,7 +59,7 @@ public enum MouseListenerActions {
             return new MouseListener() {
 
                 // The assignment chooser object
-                AssignmentChooser thisAssignmentChooser = (AssignmentChooser) parameters[0];
+                AssignmentChooserPanel thisAssignmentChooser = (AssignmentChooserPanel) parameters[0];
 
                 /**
                  * Change the assignment

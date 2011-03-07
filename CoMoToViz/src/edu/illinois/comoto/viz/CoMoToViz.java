@@ -42,25 +42,31 @@ import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.utility.VisualMossException;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.LoginDialog;
-import edu.illinois.comoto.viz.view.VisualMossLayout;
+import edu.illinois.comoto.viz.view.MainWindow;
 import org.lobobrowser.main.ExtensionManager;
 import org.lobobrowser.main.PlatformInit;
-import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.sql.SQLException;
 import java.util.Enumeration;
 
-public class VisualMossMain {
+public class CoMoToViz {
 
-    public static void main(String[] args) throws VisualMossException, MalformedURLException, DataIOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, SQLException {
+
+    /**
+     * Entry point for the CoMoTo dynamic visualization
+     *
+     * @param args  Command line arguments to launch the program
+     * @throws VisualMossException  On errors with the viz itself
+     */
+    public static void main(String[] args) throws VisualMossException {
 
         setDefaultFont();
 
-        Cache.setEnabled(true); //enable object caching so calls to the api that are repeated are loaded from cache rather than from the api again
+        // Enable object caching
+        Cache.setEnabled(true);
 
+        // Load all componenets for the lobo browser
         try {
             PlatformInit init = PlatformInit.getInstance();
             //init.initLogging(false);
@@ -73,42 +79,36 @@ public class VisualMossMain {
             throw new VisualMossException("Lobo did not initialize properly.", ex);
         }
 
-        // If the system is not linux
+        // If the system is not linux, use the system look and feel
         String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
-
-        if (!systemLookAndFeel.contains("GTK")) {
+        if (!systemLookAndFeel.contains(BackendConstants.GTK)) {
             try {
                 // Set System look and feel
                 UIManager.setLookAndFeel(systemLookAndFeel);
-
-            } catch (UnsupportedLookAndFeelException e) {
-                // handle exception
-            } catch (ClassNotFoundException e) {
-                // handle exception
-            } catch (InstantiationException e) {
-                // handle exception
-            } catch (IllegalAccessException e) {
-                // handle exception
-            }
+            } catch (UnsupportedLookAndFeelException e) {}
+            catch (ClassNotFoundException e) {}
+            catch (InstantiationException e) {}
+            catch (IllegalAccessException e) {}
         }
 
+        // Show the login dialog and get the credentials
         LoginDialog loginDialog = new LoginDialog(null);
         String netId = loginDialog.getNetId();
         String password = loginDialog.getPassword();
         Pair<String, String> activeDirectoryCredentials = new Pair<String, String>(netId, password);
 
-        VisualMossLayout window = new VisualMossLayout(activeDirectoryCredentials);
+        // Launch the main window
+        MainWindow window = new MainWindow(activeDirectoryCredentials);
         window.pack();
         window.setVisible(true);
         window.setExtendedState(window.getExtendedState() | Frame.MAXIMIZED_BOTH);
 
-        if (args.length == 1) { //if an assignment id was passed in from comoto
+        // Handle command-line arguments
+        if (args.length == 1) {
             try {
                 int assignmentId = Integer.parseInt(args[0]);
                 window.changeAssignment(assignmentId);
-            } catch (NumberFormatException nfe) {
-                //fail silently
-            }
+            } catch (NumberFormatException nfe) {}
         }
     }
 

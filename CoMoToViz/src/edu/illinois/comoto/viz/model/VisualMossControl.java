@@ -39,7 +39,7 @@ package edu.illinois.comoto.viz.model;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
-import edu.illinois.comoto.viz.view.WebpageDialog;
+import edu.illinois.comoto.viz.view.WebPageDialog;
 import prefuse.Display;
 import prefuse.controls.Control;
 import prefuse.data.Node;
@@ -71,7 +71,7 @@ public class VisualMossControl implements Control {
         if (item instanceof EdgeItem) {
             String url = item.getString(BackendConstants.LINK);
             try {
-                new WebpageDialog(null, url, false);
+                new WebPageDialog(null, url, false);
             } catch (MalformedURLException ex) {
                 JOptionPane.showMessageDialog(null, FrontendConstants.EDGE_URL_INVALID_MESSAGE, FrontendConstants.INVALID_URL,
                         JOptionPane.ERROR_MESSAGE);

@@ -58,7 +58,7 @@ import java.awt.event.WindowListener;
 import java.util.Iterator;
 
 
-public class VisualMossLayout extends JFrame {
+public class MainWindow extends JFrame {
 
     //Preferred Window Sizes
     final static int windowWidth = 1024;
@@ -68,8 +68,8 @@ public class VisualMossLayout extends JFrame {
     private VisualMossGraph graph;
     private VisualMossGraphDisplayContainer container;
     private VisualMossGraphDisplay graphDisplay;
-    private VisualMossControls rightControls;
-    private AssignmentChooser leftControls;
+    private ControlsPanel rightControls;
+    private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
 
     // For keeping track of data in this window
@@ -80,7 +80,7 @@ public class VisualMossLayout extends JFrame {
     // The credentials of the user
     private Pair<String, String> activeDirectoryCredentials;
 
-    public VisualMossLayout(Pair<String, String> activeDirectoryCredentials) {
+    public MainWindow(Pair<String, String> activeDirectoryCredentials) {
 
         // Add the primary GUI panes
         Container visualMoss = getContentPane();
@@ -101,9 +101,9 @@ public class VisualMossLayout extends JFrame {
         // Add the controls and graph
         container = new VisualMossGraphDisplayContainer(768, 768);
         graphDisplay = container.getVisualMossGraphDisplay();
-        rightControls = new VisualMossControls();
+        rightControls = new ControlsPanel();
         rightControls.addVisualMossControls(graphDisplay);
-        leftControls = new AssignmentChooser(this, container, activeDirectoryCredentials);
+        leftControls = new AssignmentChooserPanel(this, container, activeDirectoryCredentials);
         leftControls.setPreferredSize(new Dimension(200, windowHeight));
         visualMoss.add(container);
         visualMoss.add(leftControls, BorderLayout.WEST);

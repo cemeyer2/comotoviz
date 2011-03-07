@@ -42,7 +42,7 @@ import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.VisualMossGraph;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
 import edu.illinois.comoto.viz.model.VisualMossGraphStudent;
-import edu.illinois.comoto.viz.view.VisualMossLayout;
+import edu.illinois.comoto.viz.view.MainWindow;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -52,12 +52,12 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 
     private Assignment assignment;
     private VisualMossGraphDisplayContainer container;
-    private VisualMossLayout frame;
+    private MainWindow frame;
     private DataImport importer;
     private JTree tree;
     private DefaultMutableTreeNode node;
 
-    public AssignmentLoadingWorker(Assignment assignment, VisualMossGraphDisplayContainer container, VisualMossLayout frame, DataImport importer, JTree tree, DefaultMutableTreeNode node) {
+    public AssignmentLoadingWorker(Assignment assignment, VisualMossGraphDisplayContainer container, MainWindow frame, DataImport importer, JTree tree, DefaultMutableTreeNode node) {
         this.assignment = assignment;
         this.container = container;
         this.frame = frame;

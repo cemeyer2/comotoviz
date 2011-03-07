@@ -97,4 +97,5 @@ public class BackendConstants {
     public static final String SEARCH_STUDENTS = "searchStudents";
     public static final String LOGIN_WINDOW = "loginWindow";
     public static final String LOGIN = "login";
+    public static final String GTK = "GTK";
 }

@@ -78,7 +78,7 @@ public enum ActionListenerActions {
         ActionListener getActionListenerAction(final Object... parameters) {
 
             // Get a handle on the main window
-            final VisualMossLayout mainWindow = (VisualMossLayout) parameters[0];
+            final MainWindow mainWindow = (MainWindow) parameters[0];
 
             return new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
@@ -142,7 +142,7 @@ public enum ActionListenerActions {
         ActionListener getActionListenerAction(final Object... parameters) {
 
             // Get a handle on the main window
-            final VisualMossLayout mainWindow = (VisualMossLayout) parameters[0];
+            final MainWindow mainWindow = (MainWindow) parameters[0];
 
             return new ActionListener() {
                 public void actionPerformed(ActionEvent event) {

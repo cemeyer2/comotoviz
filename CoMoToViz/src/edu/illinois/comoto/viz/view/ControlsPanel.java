@@ -48,7 +48,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 
-public class VisualMossControls extends JPanel {
+public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     public void addVisualMossControls(final VisualMossGraphDisplay graphDisplay) {
@@ -191,7 +191,7 @@ public class VisualMossControls extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new WebpageDialog(graphDisplay.getReportURL(), true);
+                    new WebPageDialog(graphDisplay.getReportURL(), true);
                 } catch (MalformedURLException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();

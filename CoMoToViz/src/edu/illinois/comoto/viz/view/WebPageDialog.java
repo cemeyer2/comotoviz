@@ -44,7 +44,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.MalformedURLException;
 
-public class WebpageDialog extends JDialog {
+public class WebPageDialog extends JDialog {
     private static final int DIALOG_WIDTH = 950;
     private static final int DIALOG_HEIGHT = 650;
 
@@ -59,7 +59,7 @@ public class WebpageDialog extends JDialog {
      * @param showNavigation            Flag to show or hide navigation
      * @throws MalformedURLException    When this is launched with an invalid URL
      */
-    public WebpageDialog(Frame owner, String url, boolean showNavigation) throws MalformedURLException {
+    public WebPageDialog(Frame owner, String url, boolean showNavigation) throws MalformedURLException {
         super(owner, true);
         initialize(url, showNavigation);
     }
@@ -71,7 +71,7 @@ public class WebpageDialog extends JDialog {
      * @param showNavigation            Flag to show or hide navigation
      * @throws MalformedURLException    When this is launched with an invalid URL
      */
-    public WebpageDialog(String url, boolean showNavigation) throws MalformedURLException {
+    public WebPageDialog(String url, boolean showNavigation) throws MalformedURLException {
         super();
         initialize(url, showNavigation);
     }

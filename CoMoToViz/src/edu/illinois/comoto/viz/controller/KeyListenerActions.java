@@ -37,8 +37,8 @@
 
 package edu.illinois.comoto.viz.controller;
 
+import edu.illinois.comoto.viz.view.MainWindow;
 import edu.illinois.comoto.viz.view.LoginDialog;
-import edu.illinois.comoto.viz.view.VisualMossLayout;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -78,7 +78,7 @@ public enum KeyListenerActions {
     searchStudents {
         @Override
         KeyListener getKeyListenerAction(final Object... parameters) {
-            final VisualMossLayout mainWindow = (VisualMossLayout) parameters[0];
+            final MainWindow mainWindow = (MainWindow) parameters[0];
 
             return new KeyListener() {
                 public void keyTyped(KeyEvent e) {

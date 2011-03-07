@@ -58,7 +58,7 @@ import java.util.List;
 /**
  * The tree-based structure for choosing classes and assignments
  */
-public class AssignmentChooser extends JPanel {
+public class AssignmentChooserPanel extends JPanel {
 
     // The list of courses to choose from
     private final List<Course> courses;
@@ -67,7 +67,7 @@ public class AssignmentChooser extends JPanel {
     private JTree tree;
     private DataImport importer;
     private VisualMossGraphDisplayContainer display;
-    private VisualMossLayout frame;
+    private MainWindow frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
 
     // Load the tree node icons
@@ -82,8 +82,8 @@ public class AssignmentChooser extends JPanel {
      * @param parentContainer            Parent GUI container
      * @param activeDirectoryCredentials AD credentials from login dialog
      */
-    public AssignmentChooser(VisualMossLayout parentFrame, VisualMossGraphDisplayContainer parentContainer,
-                             Pair<String, String> activeDirectoryCredentials) {
+    public AssignmentChooserPanel(MainWindow parentFrame, VisualMossGraphDisplayContainer parentContainer,
+                                  Pair<String, String> activeDirectoryCredentials) {
         super();
         this.importer = new DataImport(activeDirectoryCredentials);
         this.courses = importer.getCourses();
