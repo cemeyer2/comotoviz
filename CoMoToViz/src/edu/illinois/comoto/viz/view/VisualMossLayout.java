@@ -300,8 +300,4 @@ public class VisualMossLayout extends JFrame {
     public VisualMossGraphDisplayContainer getContainer() {
         return container;
     }
-
-    public Pair<String, String> getActiveDirectoryCredentials() {
-        return activeDirectoryCredentials;
-    }
 }
