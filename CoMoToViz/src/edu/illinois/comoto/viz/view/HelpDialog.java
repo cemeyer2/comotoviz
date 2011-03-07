@@ -41,38 +41,41 @@ package edu.illinois.comoto.viz.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The help dialog
+ */
 public class HelpDialog extends JDialog {
 
+    // Dialog size
     private final int DIALOG_WIDTH = 575;
     private final int DIALOG_HEIGHT = 300;
 
     public HelpDialog() {
         super();
         this.setModal(true);
+
+        // Add content
         JPanel panel = new JPanel(new BorderLayout());
         JLabel titleLabel = new JLabel(FrontendConstants.HELP_TITLE);
         JLabel helpLabel = new JLabel(FrontendConstants.HELP_TEXT);
-
         titleLabel.setFont(BackendConstants.HELP_TITLE_FONT);
         helpLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         helpLabel.setHorizontalAlignment(JLabel.CENTER);
-
         titleLabel.setHorizontalTextPosition(JLabel.CENTER);
         helpLabel.setHorizontalTextPosition(JLabel.CENTER);
+        panel.add(titleLabel, BorderLayout.NORTH);
+        panel.add(helpLabel, BorderLayout.CENTER);
+        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
-        panel.add(titleLabel, BorderLayout.NORTH);
-        panel.add(helpLabel, BorderLayout.CENTER);
-        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
-
+        // Display it
         this.setContentPane(panel);
         this.pack();
-        this.setTitle("Help");
+        this.setTitle(FrontendConstants.HELP);
         this.setVisible(true);
     }
 }

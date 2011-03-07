@@ -37,26 +37,25 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import java.util.EventListener;
+import java.awt.event.KeyListener;
 
 /**
- * <p> Abstract factory that gets an event listener for a specified GUI component. This factory should be extended
- * for any new window or frame.
- * <p/>
- * <p> This factory can be used to handle key strokes, mouse events, and generic actions
+ * <p> This factory handles mouse events
  */
-public interface EventListenerFactory {
+public class KeyListenerFactory implements EventListenerFactory {
 
     /**
-     * <p> Factory method for creating the <code>EventListener</code> for a GUI component. The factory takes as input a
-     * constant that identifies the GUI component, and returns an event listener.
+     * <p> Factory method for creating the <code>KeyListener</code> for a GUI component. The factory takes as input a
+     * constant that identifies the GUI component, and returns a key listener.
      * <p/>
      * <p> Uses an enum to hash GUI constant to event listeners.
      *
      * @param buttonConstant unique identifier for this GUI component
-     * @param parameters     any necessary parameters for the listener
-     * @return some event listener for this GUI component
-     * @see EventListener
+     * @param parameters     any parameters needed for this action listener
+     * @return some key listener for this GUI component
+     * @see java.awt.event.KeyListener
      */
-    public EventListener getEventListener(String buttonConstant, Object... parameters);
+    public KeyListener getEventListener(String buttonConstant, Object... parameters) {
+        return KeyListenerActions.valueOf(buttonConstant).getKeyListenerAction(parameters);
+    }
 }

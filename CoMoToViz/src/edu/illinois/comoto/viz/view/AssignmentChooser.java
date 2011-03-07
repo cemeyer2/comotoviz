@@ -135,7 +135,7 @@ public class AssignmentChooser extends JPanel {
 
         // Setup the listener
         EventListenerFactory actionFactory = new MouseListenerFactory();
-        tree.addMouseListener((MouseListener) actionFactory.getActionListener(BackendConstants.ASSIGNMENT_CHOOSER_CLICKED, this));
+        tree.addMouseListener((MouseListener) actionFactory.getEventListener(BackendConstants.ASSIGNMENT_CHOOSER, this));
 
         // Set custom icons for the tree
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();

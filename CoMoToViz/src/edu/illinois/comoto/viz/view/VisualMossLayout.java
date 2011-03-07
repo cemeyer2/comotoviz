@@ -38,35 +38,33 @@
 package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.api.object.Assignment;
-import edu.illinois.comoto.viz.model.DataImport;
+import edu.illinois.comoto.viz.controller.ActionListenerFactory;
+import edu.illinois.comoto.viz.controller.EventListenerFactory;
+import edu.illinois.comoto.viz.controller.KeyListenerFactory;
+import edu.illinois.comoto.viz.controller.WindowListenerFactory;
 import edu.illinois.comoto.viz.model.VisualMossGraph;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplay;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
-import edu.illinois.comoto.viz.utility.DataExport;
-import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
 import edu.illinois.comoto.viz.utility.Pair;
-import prefuse.data.io.DataIOException;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowListener;
 import java.util.Iterator;
 
 
-public class VisualMossLayout extends JFrame implements ActionListener, WindowListener {
-    private static final long serialVersionUID = 1L;
+public class VisualMossLayout extends JFrame {
+
     //Preferred Window Sizes
     final static int windowWidth = 1024;
     final static int windowHeight = 768;
-    JMenuBar menu;
-    JMenu fileMenu, helpMenu;
-    JMenuItem add, exportGraph, exportImage, quit, help, about;
+
+    // GUI elements
     private VisualMossGraph graph;
     private VisualMossGraphDisplayContainer container;
     private VisualMossGraphDisplay graphDisplay;
@@ -74,102 +72,123 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
     private AssignmentChooser leftControls;
     private JTextField searchBox;
 
+    // For keeping track of data in this window
     private NodeItem lastNode;
     private boolean lastNodeWasVisible;
     private int lastFillColor;
 
-
+    // The credentials of the user
     private Pair<String, String> activeDirectoryCredentials;
 
-    public VisualMossLayout(Pair<String, String> activeDirectoryCredentials) throws DataIOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public VisualMossLayout(Pair<String, String> activeDirectoryCredentials) {
+
+        // Add the primary GUI panes
         Container visualMoss = getContentPane();
         visualMoss.setLayout(new BorderLayout());
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
         // Get the current screen size
-        Dimension scrnsize = toolkit.getScreenSize();
-        visualMoss.setPreferredSize(new Dimension((int) scrnsize.getWidth() - 75, (int) scrnsize.getHeight() - 75));
+        Dimension screenSize = toolkit.getScreenSize();
+        visualMoss.setPreferredSize(new Dimension((int) screenSize.getWidth() - 75, (int) screenSize.getHeight() - 75));
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
+        // Set the title
         this.setTitle(FrontendConstants.PROGRAM_TITLE);
+
+        // Add the controls and graph
         container = new VisualMossGraphDisplayContainer(768, 768);
         graphDisplay = container.getVisualMossGraphDisplay();
-
         rightControls = new VisualMossControls();
         rightControls.addVisualMossControls(graphDisplay);
-
         leftControls = new AssignmentChooser(this, container, activeDirectoryCredentials);
         leftControls.setPreferredSize(new Dimension(200, windowHeight));
-
         visualMoss.add(container);
         visualMoss.add(leftControls, BorderLayout.WEST);
         visualMoss.add(rightControls, BorderLayout.EAST);
 
+        // Add extra GUI elements (search box, menu bar)
         addSearchBox();
-
         addMenuBar();
 
+        // Run this graph layout
         container.getVisualMossGraphDisplay().run();
 
-        this.addWindowListener(this);
+        // Add action listener for the window
+        EventListenerFactory windowListenerFactory = new WindowListenerFactory();
+        this.addWindowListener((WindowListener) windowListenerFactory.getEventListener(BackendConstants.MAIN_WINDOW, this));
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
+    /**
+     * Helper function to update the title of the window to show that we have a particular assignment open
+     *
+     * @param assignment    The assignment currently open, whose data to add to the title
+     */
     public void updateTitle(Assignment assignment) {
-        this.setTitle("CoMoTo Dynamic Visualization Tool: " + assignment.getCourse().getName() + ": " + assignment.getName());
+        this.setTitle(FrontendConstants.PROGRAM_TITLE + ": " + assignment.getCourse().getName() + ", " + assignment.getName());
     }
 
+    /**
+     * Build the search box
+     */
     public void addSearchBox() {
-        Container visualMoss = getContentPane();
 
+        // Add the GUI components & panels
+        Container visualMoss = getContentPane();
         JPanel searchPanel = new JPanel();
         searchPanel.setLayout(new BorderLayout());
-
-        JLabel searchLabel = new JLabel("Search for student: ");
+        JLabel searchLabel = new JLabel(FrontendConstants.SEARCH_FOR_STUDENT + ": ");
         searchLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         searchPanel.add(searchLabel, BorderLayout.WEST);
-
         searchBox = new JTextField();
         searchPanel.add(searchBox);
 
-        searchBox.addKeyListener(new KeyListener() {
-            public void keyTyped(KeyEvent e) {
-            }
+        // Create a key listener for this search box
+        EventListenerFactory keyListenerFactory = new KeyListenerFactory();
+        searchBox.addKeyListener((KeyListener) keyListenerFactory.getEventListener(BackendConstants.SEARCH_STUDENTS, this));
 
-            public void keyReleased(KeyEvent e) {
-                searchStudents();
-            }
-
-            public void keyPressed(KeyEvent e) {
-            }
-        });
-
+        // Add the search box
         visualMoss.add(searchPanel, BorderLayout.NORTH);
     }
 
+    /**
+     * Search the graph for students via the text box
+     *
+     * @return Whether or not the student was found
+     */
     public boolean searchStudents() {
+
+        // Get the text that's now in the box
         container.clearStatus();
         String searchText = searchBox.getText();
 
+        // Clear the box background if it's empty
         if (graphDisplay == null || searchText.length() == 0) {
             searchBox.setBackground(Color.white);
             return false;
         }
 
-        Iterator<NodeItem> it = graphDisplay.getNodes();
-        if (it == null) {
+        // If the graph is empty (i.e. no graph loaded)
+        Iterator<NodeItem> iterator = graphDisplay.getNodes();
+        if (iterator == null) {
             searchBox.setBackground(Color.white);
             return false;
         }
-        while (it.hasNext()) {
-            NodeItem node = it.next();
-            String netid = node.getString("netid");
+
+        // Look for the student in the graph
+        while (iterator.hasNext()) {
+            NodeItem node = iterator.next();
+            String netid = node.getString(BackendConstants.NETID);
             if (netid.startsWith(searchText)) {
+
+                // Pan to this node if we found it
                 graphDisplay.panToNode(netid, 500);
                 boolean isVisible = graphDisplay.getVisibilityPredicate().getBoolean(node);
+
+                // Show a message depending on whether or not it's visible
                 if (isVisible) {
                     searchBox.setBackground(Color.green);
                     container.setStatus("Centered on node \"" + netid + "\".");
@@ -177,42 +196,50 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
                     searchBox.setBackground(Color.yellow);
                     container.setStatus("Centered on node \"" + netid + "\" not visible with current settings");
                 }
+
+                // Handle coloring the node
                 if (!lastNodeWasVisible && lastNode != null)
                     lastNode.setVisible(false);
                 if (lastNode != null)
                     lastNode.setFillColor(lastFillColor);
-
                 lastNodeWasVisible = isVisible;
                 lastNode = node;
-
                 lastFillColor = node.getFillColor();
                 node.setFillColor(ColorLib.rgb(0, 255, 0));
+
+                // We found it
                 return true;
             }
         }
+
+        // we couldn't find it
         if (!lastNodeWasVisible && lastNode != null)
             lastNode.setVisible(false);
         searchBox.setBackground(Color.red);
         return false;
     }
 
+    /**
+     * Build the GUI components for the menu bar and add event listeners
+     */
     public void addMenuBar() {
-        //Add menu bar
-        menu = new JMenuBar();
-        //top level menus
-        fileMenu = new JMenu("File");
-        fileMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        helpMenu = new JMenu("Help");
-        helpMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        //menu items
-        add = new JMenuItem("Add Data Set");
-        exportGraph = new JMenuItem("Export GraphML");
-        exportImage = new JMenuItem("Export Image");
-        quit = new JMenuItem("Quit");
-        help = new JMenuItem("Help");
-        about = new JMenuItem("About");
 
-        add.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        //Add menu bar
+        JMenuBar menu = new JMenuBar();
+
+        // Top level menus
+        JMenu fileMenu = new JMenu(FrontendConstants.FILE);
+        fileMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        JMenu helpMenu = new JMenu(FrontendConstants.HELP);
+        helpMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+
+        // Menu items
+        JMenuItem exportGraph = new JMenuItem(FrontendConstants.EXPORT_GRAPH_ML);
+        JMenuItem exportImage = new JMenuItem(FrontendConstants.EXPORT_IMAGE);
+        JMenuItem quit = new JMenuItem(FrontendConstants.QUIT);
+        JMenuItem help = new JMenuItem(FrontendConstants.HELP);
+        JMenuItem about = new JMenuItem(FrontendConstants.ABOUT);
+
         exportGraph.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         exportImage.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         quit.setFont(BackendConstants.COMPONENT_LABEL_FONT);
@@ -231,110 +258,50 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         helpMenu.add(help);
         helpMenu.add(about);
 
-        exportGraph.addActionListener(this);
-        exportImage.addActionListener(this);
-        quit.addActionListener(this);
-        add.addActionListener(this);
-        about.addActionListener(this);
-        help.addActionListener(this);
+        // Use the action listener factory to create the actions for each item
+        EventListenerFactory actionListenerFactory = new ActionListenerFactory();
+        exportGraph.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.EXPORT_GRAPH, this));
+        exportImage.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.EXPORT_IMAGE, this));
+        quit.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.QUIT, this));
+        about.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.ABOUT));
+        help.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.HELP));
 
         this.setJMenuBar(menu);
     }
 
-    public void actionPerformed(ActionEvent ae) {
-        JMenuItem item = (JMenuItem) ae.getSource();
-        if (item.equals(exportImage)) {
-            JFileChooser chooser = new JFileChooser();
-            ExtensionFileFilter filter = new ExtensionFileFilter(FrontendConstants.PNG_IMAGES);
-            filter.addExtension("png");
-            chooser.setFileFilter(filter);
-            int retval = chooser.showSaveDialog(this);
-            if (retval == JFileChooser.APPROVE_OPTION) {
-                File file = chooser.getSelectedFile();
-                try {
-                    graphDisplay.writeToImage(file);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        } else if (item.equals(exportGraph)) {
-            JFileChooser chooser = new JFileChooser();
-            ExtensionFileFilter filter = new ExtensionFileFilter(FrontendConstants.GRAPH_ML_FILES);
-            filter.addExtension("xml");
-            chooser.setFileFilter(filter);
-            int retval = chooser.showSaveDialog(this);
-            if (retval == JFileChooser.APPROVE_OPTION) {
-                File file = chooser.getSelectedFile();
-                try {
-                    new DataExport(container.getVisualMossGraphDisplay().getGraph()).write(file);
-                } catch (DataIOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        } else if (item.equals(quit)) {
-            askAndQuit();
-        } else if (item.equals(about)) {
-            new AboutDialog();
-        } else if (item.equals(add)) {
-            DataImport importer = new DataImport("cs225", "mp3", activeDirectoryCredentials);
-            Assignment assignment = importer.getAssignment();
-            VisualMossGraph graph = importer.getGraph();
-            graphDisplay.setGraph(graph);
-            updateTitle(assignment);
-        } else if (item.equals(help)) {
-            new HelpDialog();
-        }
-    }
-
+    /**
+     * Confirm before the application closes
+     */
     public void askAndQuit() {
-        int retval = JOptionPane.showConfirmDialog(this, FrontendConstants.QUIT_CONFIRMATION_MESSAGE, "Quit?", JOptionPane.YES_NO_OPTION);
-        if (retval == JOptionPane.YES_OPTION) {
+        int doYouWantToQuit = JOptionPane.showConfirmDialog(this, FrontendConstants.QUIT_CONFIRMATION_MESSAGE, FrontendConstants.QUIT_PROMPT, JOptionPane.YES_NO_OPTION);
+        if (doYouWantToQuit == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }
 
+    /**
+     * Change the assignment of the graph
+     *
+     * @param id    The id of the new assignment
+     */
     public void changeAssignment(int id) {
         DefaultMutableTreeNode node = leftControls.getAssignmentTreeNodeById(id);
         if (node != null) {
             leftControls.changeAssignment(node);
         } else {
-            JOptionPane.showInputDialog(this, FrontendConstants.ASSIGNMENT_DOES_NOT_EXIST_MESSAGE, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInputDialog(this, FrontendConstants.ASSIGNMENT_DOES_NOT_EXIST_MESSAGE, FrontendConstants.GENERIC_ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void windowActivated(WindowEvent e) {
-        // TODO Auto-generated method stub
-
+    public VisualMossGraphDisplay getGraphDisplay() {
+        return graphDisplay;
     }
 
-    public void windowClosed(WindowEvent e) {
-        // TODO Auto-generated method stub
-
+    public VisualMossGraphDisplayContainer getContainer() {
+        return container;
     }
 
-    public void windowClosing(WindowEvent e) {
-        askAndQuit();
-    }
-
-    public void windowDeactivated(WindowEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowDeiconified(WindowEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowIconified(WindowEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowOpened(WindowEvent e) {
-        // TODO Auto-generated method stub
-
+    public Pair<String, String> getActiveDirectoryCredentials() {
+        return activeDirectoryCredentials;
     }
 }

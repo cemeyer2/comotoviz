@@ -37,26 +37,36 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import java.util.EventListener;
+import edu.illinois.comoto.viz.view.VisualMossLayout;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
- * <p> Abstract factory that gets an event listener for a specified GUI component. This factory should be extended
- * for any new window or frame.
+ * User: Jon
+ * Date: 3/6/11
  * <p/>
- * <p> This factory can be used to handle key strokes, mouse events, and generic actions
+ * Stores all key listeners,
  */
-public interface EventListenerFactory {
+public enum KeyListenerActions {
 
-    /**
-     * <p> Factory method for creating the <code>EventListener</code> for a GUI component. The factory takes as input a
-     * constant that identifies the GUI component, and returns an event listener.
-     * <p/>
-     * <p> Uses an enum to hash GUI constant to event listeners.
-     *
-     * @param buttonConstant unique identifier for this GUI component
-     * @param parameters     any necessary parameters for the listener
-     * @return some event listener for this GUI component
-     * @see EventListener
-     */
-    public EventListener getEventListener(String buttonConstant, Object... parameters);
+    // When we search for students from the text box
+    searchStudents {
+        @Override
+        KeyListener getKeyListenerAction(final Object... parameters) {
+            final VisualMossLayout mainWindow = (VisualMossLayout) parameters[0];
+
+            return new KeyListener() {
+                public void keyTyped(KeyEvent e) {
+                    mainWindow.searchStudents();
+                }
+
+                // Not used here
+                public void keyPressed(KeyEvent e) {}
+                public void keyReleased(KeyEvent e) {}
+            };
+        }
+    };
+
+    abstract KeyListener getKeyListenerAction(Object... parameters);
 }

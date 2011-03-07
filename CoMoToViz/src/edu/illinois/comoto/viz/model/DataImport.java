@@ -420,7 +420,7 @@ public class DataImport {
      * @param dialog       A handle on the progress bar dialog
      */
     private void initializeProgressBar(boolean showProgress, LoadingProgressDialog dialog) {
-        dialog.init();
+        dialog.initialize();
         if (showProgress)
             dialog.setVisible(true);
     }

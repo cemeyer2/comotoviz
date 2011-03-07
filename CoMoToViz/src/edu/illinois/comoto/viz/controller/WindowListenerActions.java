@@ -37,26 +37,46 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import java.util.EventListener;
+import edu.illinois.comoto.viz.view.VisualMossLayout;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
- * <p> Abstract factory that gets an event listener for a specified GUI component. This factory should be extended
- * for any new window or frame.
+ * User: Jon
+ * Date: 3/6/11
  * <p/>
- * <p> This factory can be used to handle key strokes, mouse events, and generic actions
+ * Stores all window listeners
  */
-public interface EventListenerFactory {
+public enum WindowListenerActions {
 
-    /**
-     * <p> Factory method for creating the <code>EventListener</code> for a GUI component. The factory takes as input a
-     * constant that identifies the GUI component, and returns an event listener.
-     * <p/>
-     * <p> Uses an enum to hash GUI constant to event listeners.
-     *
-     * @param buttonConstant unique identifier for this GUI component
-     * @param parameters     any necessary parameters for the listener
-     * @return some event listener for this GUI component
-     * @see EventListener
-     */
-    public EventListener getEventListener(String buttonConstant, Object... parameters);
+    // When something happens to the main window
+    mainWindow {
+        @Override
+        WindowListener getWindowListenerAction(final Object... parameters) {
+
+            // Get a handle on the layout window
+            final VisualMossLayout thisMainLayout = (VisualMossLayout) parameters[0];
+
+            return new WindowListener() {
+
+                /**
+                 * Prompt user before closing the window
+                 */
+                public void windowClosing(WindowEvent e) {
+                    thisMainLayout.askAndQuit();
+                }
+
+                // Default, empty actions for everything else
+                public void windowClosed(WindowEvent e) {}
+                public void windowOpened(WindowEvent e) {}
+                public void windowIconified(WindowEvent e) {}
+                public void windowDeiconified(WindowEvent e) {}
+                public void windowActivated(WindowEvent e) {}
+                public void windowDeactivated(WindowEvent e) {}
+            };
+        }
+    };
+
+    abstract WindowListener getWindowListenerAction(Object... parameters);
 }

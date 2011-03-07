@@ -51,29 +51,50 @@ public class WebpageDialog extends JDialog {
     private BrowserPanel browserPanel;
     private FramePanel framePanel;
 
-    // Creates a modal webpage dialog
+    /**
+     *  Creates a modal webpage dialog
+     *
+     * @param owner                     The parent frame for this dialog
+     * @param url                       The URL to which to launch this
+     * @param showNavigation            Flag to show or hide navigation
+     * @throws MalformedURLException    When this is launched with an invalid URL
+     */
     public WebpageDialog(Frame owner, String url, boolean showNavigation) throws MalformedURLException {
         super(owner, true);
-        init(url, showNavigation);
+        initialize(url, showNavigation);
     }
 
-    // Creates a modeless webpage dialog
+    /**
+     *  Creates a modeless webpage dialog
+     *
+     * @param url                       The URL to which to launch this
+     * @param showNavigation            Flag to show or hide navigation
+     * @throws MalformedURLException    When this is launched with an invalid URL
+     */
     public WebpageDialog(String url, boolean showNavigation) throws MalformedURLException {
         super();
-        init(url, showNavigation);
+        initialize(url, showNavigation);
     }
 
-    private void init(String url, boolean showNavigation) throws MalformedURLException {
+    /**
+     * Initialize this dialog
+     *
+     * @param url                       The URL to launch
+     * @param showNavigation            Flag to show/hide navigation
+     * @throws MalformedURLException    When this is launched with an invalid URL
+     */
+    private void initialize(String url, boolean showNavigation) throws MalformedURLException {
+
+        // Change the program icon and setup system properties of dialog
+        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
+        setIconImage(programIcon);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
 
-
-        // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
-
+        // Set the title of the dialog
         setTitle(FrontendConstants.WEBPAGE_DIALOG_TITLE);
 
+        // Display the navigation?
         if (showNavigation) {
             browserPanel = new BrowserPanel();
             this.getContentPane().add(browserPanel);
@@ -82,12 +103,21 @@ public class WebpageDialog extends JDialog {
             this.getContentPane().add(framePanel);
         }
 
+        // The URL to launch this to
         setUrl(url);
+
+        // Show it
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
     }
 
+    /**
+     * Attempts to launch this browser dialog to this URL
+     *
+     * @param url                       The URL to which to launch
+     * @throws MalformedURLException    When this is given an invalid URL
+     */
     public void setUrl(String url) throws MalformedURLException {
         if (browserPanel != null) {
             browserPanel.navigate(url);

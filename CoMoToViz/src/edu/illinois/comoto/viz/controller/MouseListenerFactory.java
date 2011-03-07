@@ -40,9 +40,6 @@ package edu.illinois.comoto.viz.controller;
 import java.awt.event.MouseListener;
 
 /**
- * <p> Abstract factory that gets an mouse listener for a specified GUI component. This factory should be extended
- * for any new window or frame.
- * <p/>
  * <p> This factory handles mouse events
  */
 public class MouseListenerFactory implements EventListenerFactory {
@@ -58,7 +55,7 @@ public class MouseListenerFactory implements EventListenerFactory {
      * @return some action listener for this GUI component
      * @see java.awt.event.MouseListener
      */
-    public MouseListener getActionListener(String buttonConstant, Object... parameters) {
+    public MouseListener getEventListener(String buttonConstant, Object... parameters) {
         return MouseListenerActions.valueOf(buttonConstant).getMouseListenerAction(parameters);
     }
 }

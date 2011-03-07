@@ -56,6 +56,13 @@ public class BackendConstants {
     public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
     public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
 
+    //Font constants
+    public static final String FONT_NAME = "Verdana";
+    public static final Font COMPONENT_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
+    public static final Font NODE_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
+    public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
+    public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
+
     // Field identifiers
     public static final String IS_PARTNER = "isPartner";
     public static final String IS_SOLUTION = "isSolution";
@@ -66,19 +73,8 @@ public class BackendConstants {
     public static final String SCORE2 = "score2";
     public static final String SEASON = "season";
     public static final String SUBMISSION_ID = "submission_id";
-    public static final String WEIGHT = "weight";
     public static final String YEAR = "year";
     public static final String CURRENT_SEMESTER = "currentSemester";
-
-    //Font constants
-    public static final String FONT_NAME = "Verdana";
-    public static final Font COMPONENT_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
-    public static final Font NODE_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
-    public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
-    public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
-
-    // GUI component identifiers
-    public static final String ASSIGNMENT_CHOOSER_CLICKED = "assignmentChooser";
     public static final String TLS = "TLS";
     public static final String WEIGHT = "weight";
     public static final String GRAPH = "graph";
@@ -87,6 +83,16 @@ public class BackendConstants {
     public static final String LAYOUT = "layout";
     public static final String NODES = "nodes";
     public static final String FONT = "font";
-    public static final String PNG = "PNG";
-    public static final String PSEUDONYM = "pseudonym";
+    public static final String PNG = "png";
+    public static final String XML = "xml";
+
+    // GUI component identifiers
+    public static final String ASSIGNMENT_CHOOSER = "assignmentChooser";
+    public static final String MAIN_WINDOW = "mainWindow";
+    public static final String EXPORT_GRAPH = "exportGraph";
+    public static final String EXPORT_IMAGE = "exportImage";
+    public static final String QUIT = "quit";
+    public static final String ABOUT = "about";
+    public static final String HELP = "help";
+    public static final String SEARCH_STUDENTS = "searchStudents";
 }

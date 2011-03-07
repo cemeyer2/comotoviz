@@ -54,14 +54,14 @@ public class ExtensionFileFilter extends FileFilter {
         this.description = description;
     }
 
-    public boolean accept(File f) {
-        if (f.isDirectory()) {
+    public boolean accept(File file) {
+        if (file.isDirectory()) {
             return true;
         }
 
         String[] split;
         try {
-            split = f.getCanonicalPath().split(".");
+            split = file.getCanonicalPath().split(".");
             if (split.length == 0) {
                 return false;
             }
@@ -69,9 +69,8 @@ public class ExtensionFileFilter extends FileFilter {
             if (extension != null) {
                 return extensions.contains(extension.toLowerCase());
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
         return false;
     }

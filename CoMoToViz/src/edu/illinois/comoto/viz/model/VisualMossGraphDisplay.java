@@ -39,6 +39,7 @@ package edu.illinois.comoto.viz.model;
 
 import edu.illinois.comoto.viz.model.predicates.VisualMossVisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.Constants;
 import prefuse.Display;
 import prefuse.Visualization;
@@ -328,7 +329,7 @@ public class VisualMossGraphDisplay {
      */
     public void writeToImage(File outFile) throws IOException {
         FileOutputStream os = new FileOutputStream(outFile);
-        this.display.saveImage(os, BackendConstants.PNG, 1);
+        this.display.saveImage(os, FrontendConstants.PNG, 1);
     }
 
     /**

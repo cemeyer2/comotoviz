@@ -57,7 +57,29 @@ public class FrontendConstants {
     public static final String ACTIVE_DIRECTORY_PASSWORD = "Active Directory Password";
     public static final String LOGIN = "Login";
     public static final String ABOUT = "About";
-
+    public static final String COURSES = "Courses";
+    public static final String PNG_IMAGES = "PNG Images";
+    public static final String GRAPH_ML_FILES = "GraphML files";
+    public static final String LAUNCH_TEXT_REPORT = "Launch Text Report";
+    public static final String ANONYMOUS_GRAPH = "Anonymous Graph";
+    public static final String INCLUDE_PARTNER_EDGES = "Include Partner Edges";
+    public static final String INCLUDE_SOLUTION = "Include Solution";
+    public static final String INCLUDE_SINGLETONS = "Include Singletons";
+    public static final String INCLUDE_PAST_STUDENTS = "Include Past Students";
+    public static final String MINIMUM_EDGE_WEIGHT = "Minimum Edge Weight";
+    public static final String ZOOM = "Zoom";
+    public static final String LOGIN_ERROR = "Login Error";
+    public static final String INVALID_URL = "Invalid URL";
+    public static final String SUBMISSION = "Submission";
+    protected static final String QUIT_PROMPT = "Quit?";
+    protected static final String GENERIC_ERROR_MESSAGE = "Error";
+    protected static final String FILE = "File";
+    protected static final String SEARCH_FOR_STUDENT = "Search for student";
+    protected static final String EXPORT_GRAPH_ML = "Export GraphML";
+    protected static final String EXPORT_IMAGE = "Export Image";
+    protected static final String QUIT = "Quit";
+    protected static final String HELP = "Help";
+    protected static final String ADD_DATA_SET = "Add Data Set";
 
     //Help & About Dialog Content
     public static final String ABOUT_TITLE = "<html><center><br/>CoMoTo Dynamic Visualization Tool</center><br/></html>";
@@ -78,26 +100,14 @@ public class FrontendConstants {
             "   the side by side code comparison for the match that that edge represents</html>";
 
 
-    public static final String COURSES = "Courses";
-    public static final String QUIT_CONFIRMATION_MESSAGE = "Are you sure you would like to quit?";
+    // Messages
     public static final String ASSIGNMENT_DOES_NOT_EXIST_MESSAGE = "The requested assignment does not exist";
-    public static final String PNG_IMAGES = "PNG Images";
-    public static final String GRAPH_ML_FILES = "GraphML files";
-    public static final String LAUNCH_TEXT_REPORT = "Launch Text Report";
-    public static final String ANONYMOUS_GRAPH = "Anonymous Graph";
-    public static final String INCLUDE_PARTNER_EDGES = "Include Partner Edges";
-    public static final String INCLUDE_SOLUTION = "Include Solution";
-    public static final String INCLUDE_SINGLETONS = "Include Singletons";
-    public static final String INCLUDE_PAST_STUDENTS = "Include Past Students";
-    public static final String MINIMUM_EDGE_WEIGHT = "Minimum Edge Weight";
-    public static final String ZOOM = "Zoom";
-    public static final String INVALID_CREDENTIALS_MESSAGE = "Invalid netid or AD password or your AD account may be locked";
-    public static final String LOGIN_ERROR = "Login Error";
-    public static final String EDGE_URL_INVALID_MESSAGE = "URL associated with edge is invalid";
-    public static final String INVALID_URL = "Invalid URL";
-    public static final String SUBMISSION = "Submission";
-    public static final String LOADING_FILE_SETS_MESSAGE = "Loading File Sets";
-    public static final String LOADING_ANALYSIS_DATA_MESSAGE = "Loading Analysis Data";
-    public static final String BUILDING_SUBMISSION_DATA_MESSAGE = "Building Submission Data";
     public static final String BUILDING_SIMILARITY_DATA_MESSAGE = "Building Similarity Data";
+    public static final String BUILDING_SUBMISSION_DATA_MESSAGE = "Building Submission Data";
+    public static final String EDGE_URL_INVALID_MESSAGE = "URL associated with edge is invalid";
+    public static final String INVALID_CREDENTIALS_MESSAGE = "Invalid netid or AD password or your AD account may be locked";
+    public static final String LOADING_ANALYSIS_DATA_MESSAGE = "Loading Analysis Data";
+    public static final String LOADING_FILE_SETS_MESSAGE = "Loading File Sets";
+    public static final String QUIT_CONFIRMATION_MESSAGE = "Are you sure you would like to quit?";
+    public static final String PNG = "PNG";
 }

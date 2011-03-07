@@ -170,10 +170,10 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         netId = netidField.getText();
         password = new String(passwordField.getPassword());
 
-        //changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
-        //against the http server, it keeps trying until the max redirects limit is reached, which unfortunately
-        //caused the UIUC AD to lock the account, this way we only hit the AD once and won't lock out the account
-        //unless many unsuccessful tries are made
+        // changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
+        // against the http server, it keeps trying until the max redirects limit is reached, which unfortunately
+        // caused the UIUC AD to lock the account, this way we only hit the AD once and won't lock out the account
+        // unless many unsuccessful tries are made
         boolean auth = LDAPAuth.authenticate(netId, password);
 
         if (auth) {

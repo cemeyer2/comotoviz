@@ -48,11 +48,11 @@ public class LDAPAuth {
     public static boolean authenticate(String netid, String password) {
         String userDN = findUserDN(netid);
         try {
-            LdapContext ctx = createLDAPContext(userDN, password);
-            ctx.close();
+            LdapContext context = createLDAPContext(userDN, password);
+            context.close();
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
             return false;
         }
     }
@@ -62,16 +62,16 @@ public class LDAPAuth {
     }
 
     private static LdapContext createLDAPContext(String bindDN, String bindPassword) throws NamingException {
-        Hashtable env = new Hashtable();
-        env.put("java.naming.factory.initial", "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put("java.naming.provider.url", "ldaps://ad-dc-p1.ad.uiuc.edu/");
-        env.put("java.naming.ldap.factory.socket", "edu.illinois.comoto.viz.utility.TrustAllSSLSocketFactory");
-        env.put("java.naming.security.protocol", "ssl");
-        env.put("java.naming.security.principal", bindDN);
-        env.put("java.naming.security.credentials", bindPassword);
-        env.put("java.naming.security.authentication", "simple");
-        env.put("com.sun.jndi.ldap.connect.pool", "true");
-        LdapContext context = new InitialLdapContext(env, null);
+        Hashtable environment = new Hashtable();
+        environment.put("java.naming.factory.initial", "com.sun.jndi.ldap.LdapCtxFactory");
+        environment.put("java.naming.provider.url", "ldaps://ad-dc-p1.ad.uiuc.edu/");
+        environment.put("java.naming.ldap.factory.socket", "edu.illinois.comoto.viz.utility.TrustAllSSLSocketFactory");
+        environment.put("java.naming.security.protocol", "ssl");
+        environment.put("java.naming.security.principal", bindDN);
+        environment.put("java.naming.security.credentials", bindPassword);
+        environment.put("java.naming.security.authentication", "simple");
+        environment.put("com.sun.jndi.ldap.connect.pool", "true");
+        LdapContext context = new InitialLdapContext(environment, null);
         return context;
     }
 }
