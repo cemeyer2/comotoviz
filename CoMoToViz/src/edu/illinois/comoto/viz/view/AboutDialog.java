@@ -40,37 +40,47 @@ package edu.illinois.comoto.viz.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 'About' dialog window
+ */
 public class AboutDialog extends JDialog {
+
+    // Dimensions
     private final int DIALOG_WIDTH = 500;
     private final int DIALOG_HEIGHT = 300;
 
+    /**
+     * Guild the 'about' dialog window
+     */
     public AboutDialog() {
         super();
         this.setModal(true);
+
+        // Get Data
         JPanel panel = new JPanel(new GridBagLayout());
         JLabel titleLabel = new JLabel(FrontendConstants.ABOUT_TITLE);
         JLabel authorsLabel = new JLabel(FrontendConstants.ABOUT_AUTHORS);
         JLabel copyrightLabel = new JLabel(FrontendConstants.ABOUT_COPYRIGHT);
 
+        // Set fonts
         titleLabel.setFont(BackendConstants.HELP_TITLE_FONT);
         authorsLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         copyrightLabel.setFont(BackendConstants.COMPONENT_LABEL_FONT);
 
+        // Put all data onto the frame
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         authorsLabel.setHorizontalAlignment(JLabel.CENTER);
         copyrightLabel.setHorizontalAlignment(JLabel.CENTER);
-
         titleLabel.setHorizontalTextPosition(JLabel.CENTER);
         authorsLabel.setHorizontalTextPosition(JLabel.CENTER);
         copyrightLabel.setHorizontalTextPosition(JLabel.CENTER);
-
-        GridBagConstraints c = new GridBagConstraints();
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
-
+        // Tweak the layout with gridbags
+        GridBagConstraints c = new GridBagConstraints();
         c.weightx = 0.0;
         c.weighty = 0.0;
         c.gridx = 0;
@@ -79,17 +89,15 @@ public class AboutDialog extends JDialog {
         c.gridwidth = 1;
         c.gridheight = 2;
         panel.add(titleLabel, c);
-
         c.gridy = 4;
         c.gridheight = 3;
         panel.add(authorsLabel, c);
-
         c.gridy = 7;
         c.gridheight = 4;
         panel.add(copyrightLabel, c);
 
+        // Set window size and display
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
-
         this.setContentPane(panel);
         this.pack();
         this.setTitle(FrontendConstants.ABOUT);

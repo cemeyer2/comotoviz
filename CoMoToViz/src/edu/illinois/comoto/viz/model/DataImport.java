@@ -133,17 +133,8 @@ public class DataImport {
         this.assignment = assignment;
 
         //Figure out the year and season of this assignment
-        String assignmentTitle = assignment.toString();
-        if (assignmentTitle.toLowerCase().contains("spring")) {
-            assignmentSeason = Season.Spring;
-        } else if (assignmentTitle.toLowerCase().contains("summer")) {
-            assignmentSeason = Season.Summer;
-        } else if (assignmentTitle.toLowerCase().contains("fall")) {
-            assignmentSeason = Season.Fall;
-        } else if (assignmentTitle.toLowerCase().contains("winter")) {
-            assignmentSeason = Season.Winter;
-        }
-        assignmentYear = Integer.parseInt(assignmentTitle.substring(assignmentTitle.length() - 5, assignmentTitle.length()).trim());
+        assignmentSeason = assignment.getSeason();
+        assignmentYear = assignment.getYear();
 
         //Initialize and display the progress bar if we're supposed to
         initializeProgressBar(showProgress, dialog);

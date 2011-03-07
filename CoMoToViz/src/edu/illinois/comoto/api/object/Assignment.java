@@ -88,6 +88,18 @@ public class Assignment implements Refreshable, Cacheable {
      */
     private String name;
 
+
+    /**
+     * The season of this assignment
+     */
+    private Season season;
+
+
+    /**
+     * The year of this assignment
+     */
+    private int year;
+
     /**
      * The list of unique ids for the file sets associated with this assignment
      */
@@ -143,6 +155,8 @@ public class Assignment implements Refreshable, Cacheable {
         language = newAssignment.getLanguage();
         name = newAssignment.getName();
         filesetIds = newAssignment.getFilesetIds();
+        year = newAssignment.getYear();
+        season = newAssignment.getSeason();
 
         //Invalidate the cached data
         analysis = null;
@@ -272,7 +286,22 @@ public class Assignment implements Refreshable, Cacheable {
     }
 
     public void setName(String name) {
+
+        // Take the full title as the name
         this.name = name;
+
+        //Figure out the year and season of this assignment
+        String assignmentTitle = toString();
+        if (assignmentTitle.toLowerCase().contains("spring")) {
+            season = Season.Spring;
+        } else if (assignmentTitle.toLowerCase().contains("summer")) {
+            season = Season.Summer;
+        } else if (assignmentTitle.toLowerCase().contains("fall")) {
+            season = Season.Fall;
+        } else if (assignmentTitle.toLowerCase().contains("winter")) {
+            season = Season.Winter;
+        }
+        year = Integer.parseInt(assignmentTitle.substring(assignmentTitle.length() - 5, assignmentTitle.length()).trim());
     }
 
     public List<Integer> getFilesetIds() {
@@ -289,5 +318,21 @@ public class Assignment implements Refreshable, Cacheable {
 
     public void setReportId(int reportId) {
         this.reportId = reportId;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

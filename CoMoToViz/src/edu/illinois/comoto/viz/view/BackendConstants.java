@@ -75,4 +75,7 @@ public class BackendConstants {
     public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
 
+    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
+    public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
+    public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
 }

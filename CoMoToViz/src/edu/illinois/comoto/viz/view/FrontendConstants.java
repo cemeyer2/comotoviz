@@ -78,4 +78,5 @@ public class FrontendConstants {
             "   the side by side code comparison for the match that that edge represents</html>";
 
 
+    public static final String COURSES = "Courses";
 }

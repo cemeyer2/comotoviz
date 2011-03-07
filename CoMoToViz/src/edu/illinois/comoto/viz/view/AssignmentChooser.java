@@ -37,70 +37,99 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.api.object.Assignment;
-import edu.illinois.comoto.api.object.Course;
-import edu.illinois.comoto.api.object.Student;
+import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
-import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssignmentChooser extends JPanel implements ActionListener, MouseListener {
-    private final List<Course> courses;
-    private Assignment selectedAssignment;
 
-    private JButton select;
+/**
+ * The tree-based structure for choosing classes and assignments
+ */
+public class AssignmentChooser extends JPanel implements MouseListener {
+
+    // The list of courses to choose from
+    private final List<Course> courses;
+
+    // GUI components
     private JTree tree;
-    private JScrollPane pane;
     private DataImport importer;
     private VisualMossGraphDisplayContainer display;
     private VisualMossLayout frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
 
-    private Icon openIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png");
-    private Icon closedIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png");
-    private Icon leafIcon = new ImageIcon("CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png");
+    // Load the tree node icons
+    private Icon openIcon = new ImageIcon(BackendConstants.OPEN_NODE_ICON_PATH);
+    private Icon closedIcon = new ImageIcon(BackendConstants.CLOSED_NODE_ICON_PATH);
+    private Icon leafIcon = new ImageIcon(BackendConstants.LEAF_NODE_ICON_PATH);
 
-
-    public AssignmentChooser(VisualMossLayout frame, VisualMossGraphDisplayContainer display, Pair<String, String> activeDirectoryCredentials) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, DataIOException {
+    /**
+     * Builds this tree structure given the credentials, and parent GUI elements
+     *
+     * @param parentFrame                Parent GUI frame
+     * @param parentContainer            Parent GUI container
+     * @param activeDirectoryCredentials AD credentials from login dialog
+     */
+    public AssignmentChooser(VisualMossLayout parentFrame, VisualMossGraphDisplayContainer parentContainer,
+                             Pair<String, String> activeDirectoryCredentials) {
         super();
         this.importer = new DataImport(activeDirectoryCredentials);
         this.courses = importer.getCourses();
-        this.display = display;
-        this.frame = frame;
+        this.display = parentContainer;
+        this.frame = parentFrame;
         this.assignmentNodes = new ArrayList<DefaultMutableTreeNode>();
         init();
     }
 
+    /**
+     * Initialize the tree structure
+     */
     private void init() {
         this.setLayout(new BorderLayout());
 
-        DefaultMutableTreeNode coursesNode = new DefaultMutableTreeNode("Courses");
+        //
+        DefaultMutableTreeNode coursesNode = new DefaultMutableTreeNode(FrontendConstants.COURSES);
         for (Course course : courses) {
             DefaultMutableTreeNode courseNode = new DefaultMutableTreeNode(course.getName());
             coursesNode.add(courseNode);
 
+            // Add nodes for each class, and each offering of each class
+            for (Offering offering : course.getOfferings()) {
 
-            for (Assignment assignment : course.getAssignments()) {
-                DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
-                courseNode.add(assignmentNode);
-                assignmentNodes.add(assignmentNode);
+                // Add this semester node
+                Semester semester = offering.getSemester();
+                DefaultMutableTreeNode semesterNode = new DefaultMutableTreeNode(semester);
+
+                // For each assignment in this course during this semester, add it to the semester node
+                for (Assignment assignment : course.getAssignments()) {
+                    if (assignment.getYear() > 0) {
+                        if (assignment.getYear() == semester.getYear() && assignment.getSeason() == semester.getSeason()) {
+                            DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
+                            semesterNode.add(assignmentNode);
+                            assignmentNodes.add(assignmentNode);
+                        }
+                    }
+                }
+
+                // If there are some assignments under this semester, add it
+                if (semesterNode.getChildCount() > 0) {
+                    courseNode.add(semesterNode);
+                }
             }
         }
 
+        // Add the root node and set GUI properties
         tree = new JTree(coursesNode);
         tree.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         tree.addMouseListener(this);
@@ -112,16 +141,27 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
         renderer.setLeafIcon(leafIcon);
         tree.setCellRenderer(renderer);
 
-
-        pane = new JScrollPane(tree);
+        // Add scrollbars to this panel
+        JScrollPane pane = new JScrollPane(tree);
         this.add(pane, BorderLayout.CENTER);
     }
 
+    /**
+     * On some user input event to the tree
+     *
+     * @param arg0 the event that occurred
+     */
     public void actionPerformed(ActionEvent arg0) {
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
         changeAssignment(node);
     }
 
+    /**
+     * Find the node of the tree given the id
+     *
+     * @param id The id of the assignment to find
+     * @return The tree node corresponding to this assignment
+     */
     public DefaultMutableTreeNode getAssignmentTreeNodeById(int id) {
         DefaultMutableTreeNode retval = null;
         for (DefaultMutableTreeNode node : assignmentNodes) {
@@ -133,50 +173,49 @@ public class AssignmentChooser extends JPanel implements ActionListener, MouseLi
         return retval;
     }
 
+    /**
+     * Changes the assignment of the graph, given the node clicked
+     *
+     * @param node The node on which the user clicked
+     */
     public void changeAssignment(DefaultMutableTreeNode node) {
 
-        Object obj = node.getUserObject();
-        if (obj instanceof Assignment) {
+        Object object = node.getUserObject();
+        if (object instanceof Assignment) {
             for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
                 assignmentNode.removeAllChildren();
             }
-            selectedAssignment = (Assignment) obj;
+            Assignment selectedAssignment = (Assignment) object;
             AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
             worker.execute();
-//            worker.runSynchronous();
-        } else if (obj instanceof Student) {
-            Student stu = (Student) obj;
-            display.getVisualMossGraphDisplay().panToNode(stu.getNetid(), 5000);
+        } else if (object instanceof Student) {
+            Student student = (Student) object;
+            display.getVisualMossGraphDisplay().panToNode(student.getNetid(), 5000);
         }
     }
 
-    public Assignment getSelectedAssignment() {
-        return this.selectedAssignment;
-    }
-
-    public void mouseClicked(MouseEvent e) {
-        if (e.getClickCount() > 1) {
+    /**
+     * Changes an assignment when a node is clicked
+     *
+     * @param event The event
+     */
+    public void mouseClicked(MouseEvent event) {
+        if (event.getClickCount() > 1) {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
             changeAssignment(node);
         }
     }
 
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
+    // Other required user input events
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
     }
 
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
+    }
 
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
     }
 }
