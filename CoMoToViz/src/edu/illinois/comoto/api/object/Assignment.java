@@ -288,7 +288,7 @@ public class Assignment implements Refreshable, Cacheable {
     public void setName(String name) {
 
         // Take the full title as the name
-        this.name = name;
+        this.name = name.substring(0, 5).trim();
 
         //Figure out the year and season of this assignment
         String assignmentTitle = toString();
