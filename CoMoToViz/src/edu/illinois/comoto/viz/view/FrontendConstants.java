@@ -71,15 +71,15 @@ public class FrontendConstants {
     public static final String LOGIN_ERROR = "Login Error";
     public static final String INVALID_URL = "Invalid URL";
     public static final String SUBMISSION = "Submission";
-    protected static final String QUIT_PROMPT = "Quit?";
-    protected static final String GENERIC_ERROR_MESSAGE = "Error";
-    protected static final String FILE = "File";
-    protected static final String SEARCH_FOR_STUDENT = "Search for student";
-    protected static final String EXPORT_GRAPH_ML = "Export GraphML";
-    protected static final String EXPORT_IMAGE = "Export Image";
-    protected static final String QUIT = "Quit";
-    protected static final String HELP = "Help";
-    protected static final String ADD_DATA_SET = "Add Data Set";
+    public static final String QUIT_PROMPT = "Quit?";
+    public static final String GENERIC_ERROR_MESSAGE = "Error";
+    public static final String FILE = "File";
+    public static final String SEARCH_FOR_STUDENT = "Search for student";
+    public static final String EXPORT_GRAPH_ML = "Export GraphML";
+    public static final String EXPORT_IMAGE = "Export Image";
+    public static final String QUIT = "Quit";
+    public static final String HELP = "Help";
+    public static final String ADD_DATA_SET = "Add Data Set";
 
     //Help & About Dialog Content
     public static final String ABOUT_TITLE = "<html><center><br/>CoMoTo Dynamic Visualization Tool</center><br/></html>";

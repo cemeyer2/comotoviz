@@ -69,7 +69,7 @@ public class CoMoToAPIConstants {
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";
 
-    // API oebjects
+    // API objects
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
     public static final String CROSS_SEMESTER_MATCHES = "cross_semester_matches";

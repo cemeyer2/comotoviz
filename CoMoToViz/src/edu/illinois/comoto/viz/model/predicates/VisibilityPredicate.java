@@ -50,17 +50,17 @@ import prefuse.visual.VisualItem;
 
 import java.util.Iterator;
 
-public class VisualMossVisibilityPredicate implements Predicate {
+public class VisibilityPredicate implements Predicate {
 
     private double weight;
     private boolean showSingletons, showSolution, includePast, includePartners;
 
     private final String SOLUTION = "[solution]";
 
-    private final VisualMossNodeFillCurrentSemesterPredicate cursem = new VisualMossNodeFillCurrentSemesterPredicate();
-    private final VisualMossNodeFillSolutionPredicate sol = new VisualMossNodeFillSolutionPredicate();
+    private final NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
+    private final NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
 
-    public VisualMossVisibilityPredicate(double weight, boolean showSingletons, boolean showSolution, boolean includePast, boolean includePartners) {
+    public VisibilityPredicate(double weight, boolean showSingletons, boolean showSolution, boolean includePast, boolean includePartners) {
         this.weight = weight;
         this.showSingletons = showSingletons;
         this.showSolution = showSolution;

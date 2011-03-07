@@ -39,10 +39,7 @@ package edu.illinois.comoto.viz.controller;
 
 import edu.illinois.comoto.viz.utility.DataExport;
 import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
-import edu.illinois.comoto.viz.view.AboutDialog;
-import edu.illinois.comoto.viz.view.BackendConstants;
-import edu.illinois.comoto.viz.view.FrontendConstants;
-import edu.illinois.comoto.viz.view.VisualMossLayout;
+import edu.illinois.comoto.viz.view.*;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
@@ -58,6 +55,22 @@ import java.io.IOException;
  * Stores all action listeners
  */
 public enum ActionListenerActions {
+
+    // Login from the login dialog
+    login {
+        @Override
+        ActionListener getActionListenerAction(final Object... parameters) {
+
+            // Get a handle on the login window
+            final LoginDialog loginWindow = (LoginDialog) parameters[0];
+
+            return new ActionListener() {
+                public void actionPerformed(ActionEvent event) {
+                    loginWindow.login();
+                }
+            };
+        }
+    },
 
     // Export the current graph to XML
     exportGraph {
@@ -91,15 +104,9 @@ public enum ActionListenerActions {
     quit {
         @Override
         ActionListener getActionListenerAction(final Object... parameters) {
-
-            // Get a handle on the main window
-            final VisualMossLayout mainWindow = (VisualMossLayout) parameters[0];
-
             return new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
-
-                    // Prompt the user before we exit
-                    mainWindow.askAndQuit();
+                    WindowListenerActions.askAndQuit();
                 }
             };
         }
@@ -162,7 +169,6 @@ public enum ActionListenerActions {
             };
         }
     };
-
 
     abstract ActionListener getActionListenerAction(Object... parameters);
 }

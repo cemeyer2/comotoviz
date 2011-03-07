@@ -37,8 +37,8 @@
 
 package edu.illinois.comoto.viz.model;
 
-import edu.illinois.comoto.viz.model.predicates.VisualMossNodeFillCurrentSemesterPredicate;
-import edu.illinois.comoto.viz.model.predicates.VisualMossNodeFillSolutionPredicate;
+import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
+import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
@@ -47,8 +47,8 @@ import java.awt.*;
 
 public class VisualMossNodeFillColorAction extends ColorAction {
 
-    private VisualMossNodeFillCurrentSemesterPredicate cursem = new VisualMossNodeFillCurrentSemesterPredicate();
-    private VisualMossNodeFillSolutionPredicate sol = new VisualMossNodeFillSolutionPredicate();
+    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
+    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
 
     public VisualMossNodeFillColorAction(String group, String field) {
         super(group, field);

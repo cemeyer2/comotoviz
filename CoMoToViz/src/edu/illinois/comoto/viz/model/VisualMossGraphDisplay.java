@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.model;
 
-import edu.illinois.comoto.viz.model.predicates.VisualMossVisibilityPredicate;
+import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.Constants;
@@ -78,7 +78,7 @@ public class VisualMossGraphDisplay {
     private Display display;
     private Visualization visualization;
     private List<String> actions;
-    private VisualMossVisibilityPredicate predicate;
+    private VisibilityPredicate predicate;
     private VisualMossGraphDisplayContainer parent;
     private LabelRenderer labelRenderer;
     private boolean anonymous;
@@ -135,7 +135,7 @@ public class VisualMossGraphDisplay {
         setLayout(BackendConstants.LAYOUT, 5000); //run the layout engine for 5 seconds
 
         // Set visibility of nodes
-        predicate = new VisualMossVisibilityPredicate(minimumWeightToDisplay, showSingletons, showSolution, includePast, includePartners);
+        predicate = new VisibilityPredicate(minimumWeightToDisplay, showSingletons, showSolution, includePast, includePartners);
 
         // Add the controls to this page and the listeners
         display = new Display(visualization, predicate);
@@ -445,7 +445,7 @@ public class VisualMossGraphDisplay {
         return url;
     }
 
-    public VisualMossVisibilityPredicate getVisibilityPredicate() {
+    public VisibilityPredicate getVisibilityPredicate() {
         return predicate;
     }
 }

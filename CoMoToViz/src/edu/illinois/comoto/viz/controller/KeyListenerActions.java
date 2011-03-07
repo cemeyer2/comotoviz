@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.controller;
 
+import edu.illinois.comoto.viz.view.LoginDialog;
 import edu.illinois.comoto.viz.view.VisualMossLayout;
 
 import java.awt.event.KeyEvent;
@@ -49,6 +50,29 @@ import java.awt.event.KeyListener;
  * Stores all key listeners,
  */
 public enum KeyListenerActions {
+
+    // Login if the enter key was pressed
+    login {
+        @Override
+        KeyListener getKeyListenerAction(final Object... parameters) {
+            return new KeyListener() {
+
+                // Get a handle on the login dialog
+                final LoginDialog loginDialog = (LoginDialog) parameters[0];
+
+                // If the enter key was hit, login
+                public void keyTyped(KeyEvent keyEvent) {
+                    if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+                        loginDialog.login();
+                    }
+                }
+
+                // Ignore other key actions
+                public void keyPressed(KeyEvent e) {}
+                public void keyReleased(KeyEvent e) {}
+            };
+        }
+    },
 
     // When we search for students from the text box
     searchStudents {

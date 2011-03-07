@@ -37,6 +37,10 @@
 
 package edu.illinois.comoto.viz.view;
 
+import edu.illinois.comoto.viz.controller.ActionListenerFactory;
+import edu.illinois.comoto.viz.controller.EventListenerFactory;
+import edu.illinois.comoto.viz.controller.KeyListenerFactory;
+import edu.illinois.comoto.viz.controller.WindowListenerFactory;
 import edu.illinois.comoto.viz.utility.LDAPAuth;
 import edu.illinois.comoto.viz.utility.VisualMossAuthenticator;
 
@@ -46,106 +50,100 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.Authenticator;
 
-public class LoginDialog extends JDialog implements ActionListener, WindowListener, KeyListener {
+/**
+ * A simple login dialog
+ */
+public class LoginDialog extends JDialog {
+
+    // The dimensions of the dialog
     private final int DIALOG_WIDTH = 400;
     private final int DIALOG_HEIGHT = 200;
 
-    private JTextField netidField;
+    // The GUI components
+    private JTextField netIdField;
     private JPasswordField passwordField;
     private JButton loginButton;
 
+    // The credentials
     private String netId;
     private String password;
 
+    /**
+     * Builds a login dialog with a parent frame
+     *
+     * @param owner The parent frame
+     */
     public LoginDialog(JFrame owner) {
         super(owner, true); //make this modal
-        init();
+        initialize();
     }
 
+    /**
+     * Builds a login dialog without a parent frame
+     */
     public LoginDialog() {
         super();
-        init();
+        initialize();
     }
 
-    private void init() {
+    /**
+     * Constructs this dialog
+     */
+    private void initialize() {
+
+        // Create the empty window with the title
         this.setTitle(FrontendConstants.LOGIN);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
         panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
 
-        netidField = new JTextField();
-        netidField.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        // Add the netid and password fields
+        netIdField = new JTextField();
+        netIdField.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.NETID);
         b1.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
-        netidField.setBorder(b1);
-
+        netIdField.setBorder(b1);
         passwordField = new JPasswordField();
         TitledBorder b2 = BorderFactory.createTitledBorder(FrontendConstants.ACTIVE_DIRECTORY_PASSWORD);
         b2.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         passwordField.setBorder(b2);
 
+        // Add the login button and its key listener
         loginButton = new JButton(FrontendConstants.LOGIN);
         loginButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        loginButton.addActionListener(this);
 
-        panel.add(netidField);
+        // Add these components to the window
+        panel.add(netIdField);
         panel.add(passwordField);
         panel.add(loginButton);
-
         this.setContentPane(panel);
-        this.addWindowListener(this);
 
-        netidField.addActionListener(this);
-        passwordField.addActionListener(this);
-        loginButton.addActionListener(this);
-        netidField.addKeyListener(this);
-        passwordField.addKeyListener(this);
+        // Add the window listener
+        EventListenerFactory windowListenerFactory = new WindowListenerFactory();
+        this.addWindowListener((WindowListener) windowListenerFactory.getEventListener(BackendConstants.LOGIN_WINDOW));
+
+        // Add action listeners to each GUI components
+        EventListenerFactory actionListenerFactory = new ActionListenerFactory();
+        ActionListener loginActionListener = (ActionListener) actionListenerFactory.getEventListener(BackendConstants.LOGIN, this);
+        loginButton.addActionListener(loginActionListener);
+        netIdField.addActionListener(loginActionListener);
+        passwordField.addActionListener(loginActionListener);
+
+        // Add a key listener to each GUI components
+        EventListenerFactory keyListenerFactory = new KeyListenerFactory();
+        KeyListener loginKeyListener = (KeyListener) keyListenerFactory.getEventListener(BackendConstants.LOGIN, this);
+        netIdField.addKeyListener(loginKeyListener);
+        passwordField.addKeyListener(loginKeyListener);
+        loginButton.addKeyListener(loginKeyListener);
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
         setIconImage(programIcon);
 
+        // Display the dialog
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-    }
-
-    public void actionPerformed(ActionEvent arg0) {
-        login();
-    }
-
-    public void windowActivated(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowClosed(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowClosing(WindowEvent arg0) {
-        System.exit(0);
-    }
-
-    public void windowDeactivated(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowDeiconified(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowIconified(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void windowOpened(WindowEvent arg0) {
-        // TODO Auto-generated method stub
-
     }
 
     public String getNetId() {
@@ -156,18 +154,11 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         return password;
     }
 
-    public void keyTyped(KeyEvent e) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            login();
-        }
-    }
-
-    private void login() {
-        netId = netidField.getText();
+    /**
+     * Login using the credentials from the fields
+     */
+    public void login() {
+        netId = netIdField.getText();
         password = new String(passwordField.getPassword());
 
         // changed this to use direct LDAP auth rather than query the http server to auth since on unsuccessful auth
@@ -185,9 +176,5 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
         } else {
             JOptionPane.showMessageDialog(this, FrontendConstants.INVALID_CREDENTIALS_MESSAGE, FrontendConstants.LOGIN_ERROR, JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    public void keyReleased(KeyEvent e) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

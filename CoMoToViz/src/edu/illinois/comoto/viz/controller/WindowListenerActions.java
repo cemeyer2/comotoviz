@@ -37,8 +37,9 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import edu.illinois.comoto.viz.view.VisualMossLayout;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 
+import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -50,21 +51,41 @@ import java.awt.event.WindowListener;
  */
 public enum WindowListenerActions {
 
-    // When something happens to the main window
-    mainWindow {
+    // When something happens to the login window
+    loginWindow {
         @Override
         WindowListener getWindowListenerAction(final Object... parameters) {
-
-            // Get a handle on the layout window
-            final VisualMossLayout thisMainLayout = (VisualMossLayout) parameters[0];
-
             return new WindowListener() {
 
                 /**
                  * Prompt user before closing the window
                  */
                 public void windowClosing(WindowEvent e) {
-                    thisMainLayout.askAndQuit();
+                    System.exit(0);
+                }
+
+                // Default, empty actions for everything else
+                public void windowClosed(WindowEvent e) {}
+                public void windowOpened(WindowEvent e) {}
+                public void windowIconified(WindowEvent e) {}
+                public void windowDeiconified(WindowEvent e) {}
+                public void windowActivated(WindowEvent e) {}
+                public void windowDeactivated(WindowEvent e) {}
+            };
+        }
+    },
+
+    // When something happens to the main window
+    mainWindow {
+        @Override
+        WindowListener getWindowListenerAction(final Object... parameters) {
+            return new WindowListener() {
+
+                /**
+                 * Prompt user before closing the window
+                 */
+                public void windowClosing(WindowEvent e) {
+                    askAndQuit();
                 }
 
                 // Default, empty actions for everything else
@@ -77,6 +98,17 @@ public enum WindowListenerActions {
             };
         }
     };
+
+    /**
+     * Prompts the user before closing the window
+     */
+    static public void askAndQuit() {
+        int doYouWantToQuit = JOptionPane.showConfirmDialog(null, FrontendConstants.QUIT_CONFIRMATION_MESSAGE,
+                FrontendConstants.QUIT_PROMPT, JOptionPane.YES_NO_OPTION);
+        if (doYouWantToQuit == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
 
     abstract WindowListener getWindowListenerAction(Object... parameters);
 }

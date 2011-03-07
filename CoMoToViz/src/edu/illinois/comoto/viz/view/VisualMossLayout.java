@@ -118,7 +118,7 @@ public class VisualMossLayout extends JFrame {
 
         // Add action listener for the window
         EventListenerFactory windowListenerFactory = new WindowListenerFactory();
-        this.addWindowListener((WindowListener) windowListenerFactory.getEventListener(BackendConstants.MAIN_WINDOW, this));
+        this.addWindowListener((WindowListener) windowListenerFactory.getEventListener(BackendConstants.MAIN_WINDOW));
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
@@ -262,21 +262,11 @@ public class VisualMossLayout extends JFrame {
         EventListenerFactory actionListenerFactory = new ActionListenerFactory();
         exportGraph.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.EXPORT_GRAPH, this));
         exportImage.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.EXPORT_IMAGE, this));
-        quit.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.QUIT, this));
+        quit.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.QUIT));
         about.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.ABOUT));
         help.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.HELP));
 
         this.setJMenuBar(menu);
-    }
-
-    /**
-     * Confirm before the application closes
-     */
-    public void askAndQuit() {
-        int doYouWantToQuit = JOptionPane.showConfirmDialog(this, FrontendConstants.QUIT_CONFIRMATION_MESSAGE, FrontendConstants.QUIT_PROMPT, JOptionPane.YES_NO_OPTION);
-        if (doYouWantToQuit == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
     }
 
     /**

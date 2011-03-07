@@ -44,7 +44,7 @@ import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
 
-public class VisualMossNodeFillSolutionPredicate implements Predicate {
+public class NodeFillSolutionPredicate implements Predicate {
 
     public void addExpressionListener(ExpressionListener lstnr) {
         // TODO Auto-generated method stub

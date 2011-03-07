@@ -86,7 +86,7 @@ public class BackendConstants {
     public static final String PNG = "png";
     public static final String XML = "xml";
 
-    // GUI component identifiers
+    // GUI component & action identifiers
     public static final String ASSIGNMENT_CHOOSER = "assignmentChooser";
     public static final String MAIN_WINDOW = "mainWindow";
     public static final String EXPORT_GRAPH = "exportGraph";
@@ -95,4 +95,6 @@ public class BackendConstants {
     public static final String ABOUT = "about";
     public static final String HELP = "help";
     public static final String SEARCH_STUDENTS = "searchStudents";
+    public static final String LOGIN_WINDOW = "loginWindow";
+    public static final String LOGIN = "login";
 }

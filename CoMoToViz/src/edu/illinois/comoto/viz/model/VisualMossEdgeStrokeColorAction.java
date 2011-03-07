@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.model;
 
-import edu.illinois.comoto.viz.model.predicates.VisualMossEdgeIsPartnerPredicate;
+import edu.illinois.comoto.viz.model.predicates.EdgeIsPartnerPredicate;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
@@ -46,7 +46,7 @@ import java.awt.*;
 
 public class VisualMossEdgeStrokeColorAction extends ColorAction {
 
-    private VisualMossEdgeIsPartnerPredicate isPartner = new VisualMossEdgeIsPartnerPredicate();
+    private EdgeIsPartnerPredicate isPartner = new EdgeIsPartnerPredicate();
 
     public VisualMossEdgeStrokeColorAction(String group, String field) {
         super(group, field);

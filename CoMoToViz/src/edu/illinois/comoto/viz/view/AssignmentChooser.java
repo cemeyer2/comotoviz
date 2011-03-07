@@ -90,13 +90,13 @@ public class AssignmentChooser extends JPanel {
         this.display = parentContainer;
         this.frame = parentFrame;
         this.assignmentNodes = new ArrayList<DefaultMutableTreeNode>();
-        init();
+        initialize();
     }
 
     /**
      * Initialize the tree structure
      */
-    private void init() {
+    private void initialize() {
         this.setLayout(new BorderLayout());
         DefaultMutableTreeNode coursesNode = new DefaultMutableTreeNode(FrontendConstants.COURSES);
         for (Course course : courses) {

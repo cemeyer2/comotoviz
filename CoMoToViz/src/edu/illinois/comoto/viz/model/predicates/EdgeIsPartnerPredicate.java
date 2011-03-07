@@ -37,15 +37,13 @@
 
 package edu.illinois.comoto.viz.model.predicates;
 
-import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Schema;
 import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
 
-
-public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
+public class EdgeIsPartnerPredicate implements Predicate {
 
     public void addExpressionListener(ExpressionListener lstnr) {
         // TODO Auto-generated method stub
@@ -58,8 +56,10 @@ public class VisualMossNodeFillCurrentSemesterPredicate implements Predicate {
     }
 
     public boolean getBoolean(Tuple t) {
-        String currentSemester = t.getString(BackendConstants.CURRENT_SEMESTER);
-        return Boolean.parseBoolean(currentSemester);
+        if (t.canGetBoolean("isPartner")) {
+            return t.getBoolean("isPartner");
+        }
+        return false;
     }
 
     public double getDouble(Tuple t) {
