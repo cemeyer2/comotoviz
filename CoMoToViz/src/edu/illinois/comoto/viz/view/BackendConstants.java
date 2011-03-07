@@ -79,4 +79,14 @@ public class BackendConstants {
 
     // GUI component identifiers
     public static final String ASSIGNMENT_CHOOSER_CLICKED = "assignmentChooser";
+    public static final String TLS = "TLS";
+    public static final String WEIGHT = "weight";
+    public static final String GRAPH = "graph";
+    public static final String COLOR = "color";
+    public static final String EDGES = "edges";
+    public static final String LAYOUT = "layout";
+    public static final String NODES = "nodes";
+    public static final String FONT = "font";
+    public static final String PNG = "PNG";
+    public static final String PSEUDONYM = "pseudonym";
 }

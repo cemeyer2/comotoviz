@@ -62,7 +62,7 @@ public class VisualMossControls extends JPanel {
         threshholdSlider = new JSlider();
         threshholdSlider.setValue(0);//show all edges by default on load
         threshholdSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        final TitledBorder b0 = BorderFactory.createTitledBorder("Minimum Edge Weight: "
+        final TitledBorder b0 = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": "
                 + threshholdSlider.getValue());
         b0.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         threshholdSlider.setBorder(b0);
@@ -73,7 +73,7 @@ public class VisualMossControls extends JPanel {
         threshholdSlider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 //b0.setTitle("Minimum Edge Weight: "+ threshholdSlider.getValue());
-                TitledBorder bb = BorderFactory.createTitledBorder("Minimum Edge Weight: " + threshholdSlider.getValue());
+                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 threshholdSlider.setBorder(bb);
                 graphDisplay.setMinimumEdgeWeightToDisplay(threshholdSlider.getValue());
@@ -89,7 +89,7 @@ public class VisualMossControls extends JPanel {
         //Zoom Slider
         zoomSlider = new JSlider(0, 100);
         zoomSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        final TitledBorder b1 = BorderFactory.createTitledBorder("Zoom: "
+        final TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": "
                 + zoomSlider.getValue() + "%");
         b1.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         zoomSlider.setBorder(b1);
@@ -102,7 +102,7 @@ public class VisualMossControls extends JPanel {
             double newVal;
 
             public void stateChanged(ChangeEvent e) {
-                TitledBorder bb = BorderFactory.createTitledBorder("Zoom: " + zoomSlider.getValue() + "%");
+                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 zoomSlider.setBorder(bb);
                 if ((newVal = zoomSlider.getValue()) == 0.0)
@@ -114,7 +114,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 1;
         this.add(zoomSlider, c);
 
-        pastStudentButton = new JCheckBox("Include past students");
+        pastStudentButton = new JCheckBox(FrontendConstants.INCLUDE_PAST_STUDENTS);
         pastStudentButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         pastStudentButton.setSelected(false);
         pastStudentButton.addActionListener(new ActionListener() {
@@ -126,7 +126,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 2;
         this.add(pastStudentButton, c);
 
-        singletonsButton = new JCheckBox("Include Singletons");
+        singletonsButton = new JCheckBox(FrontendConstants.INCLUDE_SINGLETONS);
         singletonsButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         singletonsButton.setSelected(true);
         singletonsButton.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 3;
         this.add(singletonsButton, c);
 
-        partnersButton = new JCheckBox("Include Partner Edges");
+        partnersButton = new JCheckBox(FrontendConstants.INCLUDE_PARTNER_EDGES);
         partnersButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         partnersButton.setSelected(false);
         partnersButton.addActionListener(new ActionListener() {
@@ -152,7 +152,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 4;
         this.add(partnersButton, c);
 
-        solutionButton = new JCheckBox("Include Solution");
+        solutionButton = new JCheckBox(FrontendConstants.INCLUDE_SOLUTION);
         solutionButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         solutionButton.setSelected(true);
         solutionButton.addActionListener(new ActionListener() {
@@ -166,7 +166,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 5;
         this.add(solutionButton, c);
 
-        anonymousButton = new JCheckBox("Anonymous Graph");
+        anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         anonymousButton.setSelected(true);
         graphDisplay.setAnonymous(true);
@@ -181,7 +181,7 @@ public class VisualMossControls extends JPanel {
         c.gridy = 6;
         this.add(anonymousButton, c);
 
-        textReportButton = new JButton("Launch Text Report");
+        textReportButton = new JButton(FrontendConstants.LAUNCH_TEXT_REPORT);
         textReportButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         c.weightx = 0.1;
         c.weighty = 0.1;

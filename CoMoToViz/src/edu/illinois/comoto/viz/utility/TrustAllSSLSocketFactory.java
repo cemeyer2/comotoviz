@@ -37,6 +37,8 @@
 
 package edu.illinois.comoto.viz.utility;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
+
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -73,7 +75,7 @@ public class TrustAllSSLSocketFactory extends SSLSocketFactory {
 
     public TrustAllSSLSocketFactory() {
         try {
-            SSLContext sslcontent = SSLContext.getInstance("TLS");
+            SSLContext sslcontent = SSLContext.getInstance(BackendConstants.TLS);
             sslcontent.init(null, new TrustManager[]{
                     new TrustAllTrustManager()
             }, new SecureRandom());

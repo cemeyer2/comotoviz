@@ -106,13 +106,13 @@ public class VisualMossGraphDisplay {
 
         vis = new Visualization();
         if (hasGraph) {
-            VisualGraph vgraph = vis.addGraph("graph", graph.getPrefuseGraph());
+            VisualGraph vgraph = vis.addGraph(BackendConstants.GRAPH, graph.getPrefuseGraph());
         }
-        vis.setInteractive("graph.edges", null, true);
+        vis.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
 
         setRenderers();
-        setColors("color");
-        setLayout("layout", 5000); //run the layout engine for 5 seconds
+        setColors(BackendConstants.COLOR);
+        setLayout(BackendConstants.LAYOUT, 5000); //run the layout engine for 5 seconds
 
         predicate = new VisualMossVisibilityPredicate(minimumWeightToDisplay, showSingletons, showSolution, includePast, includePartners);
 
@@ -124,7 +124,7 @@ public class VisualMossGraphDisplay {
     }
 
     private void setRenderers() {
-        labelRenderer = new LabelRenderer("netid");
+        labelRenderer = new LabelRenderer(BackendConstants.NETID);
         labelRenderer.setRoundedCorner(8, 8); // round the corners on nodes
         vis.setRendererFactory(new DefaultRendererFactory(labelRenderer, new EdgeRenderer(Constants.EDGE_TYPE_CURVE)));
     }
@@ -133,17 +133,17 @@ public class VisualMossGraphDisplay {
         //colors for coloring nodes, white background for regular nodes, red background for solution
         //evals based off of isSolution, which is either "false" or "true", since "true" is alphabetically
         //after "false", red is used for it
-        VisualMossNodeFillColorAction fill = new VisualMossNodeFillColorAction("graph.nodes", VisualItem.FILLCOLOR);
+        VisualMossNodeFillColorAction fill = new VisualMossNodeFillColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.FILLCOLOR);
 
         //black lines for nodes
-        VisualMossNodeStrokeColorAction stroke = new VisualMossNodeStrokeColorAction("graph.nodes", VisualItem.STROKECOLOR);
+        VisualMossNodeStrokeColorAction stroke = new VisualMossNodeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
 
         // use black for node text
-        ColorAction text = new ColorAction("graph.nodes", VisualItem.TEXTCOLOR, ColorLib.gray(0));
+        ColorAction text = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.TEXTCOLOR, ColorLib.gray(0));
 
         // use light grey for edges
-        VisualMossEdgeStrokeColorAction edges = new VisualMossEdgeStrokeColorAction("graph.edges", VisualItem.STROKECOLOR);
-        ColorAction hl = new ColorAction("graph.nodes", VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
+        VisualMossEdgeStrokeColorAction edges = new VisualMossEdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
+        ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
         ActionList color = new ActionList();
         color.add(fill);
         color.add(stroke);
@@ -154,13 +154,13 @@ public class VisualMossGraphDisplay {
         actions.add(actionName);
 
         //put verdana as font
-        vis.putAction("font", new FontAction("graph", BackendConstants.NODE_LABEL_FONT));
-        actions.add("font");
+        vis.putAction(BackendConstants.FONT, new FontAction(BackendConstants.GRAPH, BackendConstants.NODE_LABEL_FONT));
+        actions.add(BackendConstants.FONT);
     }
 
     private void setLayout(String actionName, long time) {
         ActionList layout = new ActionList(time);
-        ForceDirectedLayout l = new ForceDirectedLayout("graph");
+        ForceDirectedLayout l = new ForceDirectedLayout(BackendConstants.GRAPH);
         //set springs here
         ForceSimulator sim = l.getForceSimulator();
         layout.add(l);
@@ -213,14 +213,14 @@ public class VisualMossGraphDisplay {
     }
 
     public void setGraph(VisualMossGraph graph) {
-        System.out.println("starting to change graph");
-        vis.removeGroup("graph");
-        System.out.println("removed old graph, adding new");
-        vis.addGraph("graph", graph.getPrefuseGraph());
-        System.out.println("graph changed");
+        System.out.println("Starting to Change " + BackendConstants.GRAPH);
+        vis.removeGroup(BackendConstants.GRAPH);
+        System.out.println("Removed Old " + BackendConstants.GRAPH + ", Adding New");
+        vis.addGraph(BackendConstants.GRAPH, graph.getPrefuseGraph());
+        System.out.println(BackendConstants.GRAPH + " Changed");
         this.graph = graph;
         run();
-        System.out.println("run complete");
+        System.out.println("Run Complete");
     }
 
     /**
@@ -303,9 +303,9 @@ public class VisualMossGraphDisplay {
      */
     public void setAnonymous(boolean anonymous) {
         if (anonymous) {
-            labelRenderer.setTextField("pseudonym");
+            labelRenderer.setTextField(BackendConstants.PSEUDONYM);
         } else {
-            labelRenderer.setTextField("netid");
+            labelRenderer.setTextField(BackendConstants.NETID);
         }
         repaint();
         this.anonymous = anonymous;
@@ -328,7 +328,7 @@ public class VisualMossGraphDisplay {
      */
     public void writeToImage(File outFile) throws IOException {
         FileOutputStream os = new FileOutputStream(outFile);
-        this.display.saveImage(os, "PNG", 1);
+        this.display.saveImage(os, BackendConstants.PNG, 1);
     }
 
     /**
@@ -347,7 +347,7 @@ public class VisualMossGraphDisplay {
 
     public Iterator<NodeItem> getNodes() {
         if (vis == null) return null;
-        return vis.items("graph.nodes");
+        return vis.items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
     }
 
     /**
@@ -357,11 +357,11 @@ public class VisualMossGraphDisplay {
      * @param netid
      */
     public void panToNode(String netid, int lengthMS) {
-        Iterator<NodeItem> iter = vis.items("graph.nodes");
+        Iterator<NodeItem> iter = vis.items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
         NodeItem node = null;
         while (iter.hasNext()) {
             NodeItem temp = iter.next();
-            if (temp.getString("netid").equals(netid)) {
+            if (temp.getString(BackendConstants.NETID).equals(netid)) {
                 node = temp;
                 break;
             }
@@ -376,7 +376,7 @@ public class VisualMossGraphDisplay {
 
     public String getReportURL() {
         Edge edge = (Edge) graph.getPrefuseGraph().edges().next();
-        String link = edge.getString("link");
+        String link = edge.getString(BackendConstants.LINK);
         String url = link.substring(0, link.lastIndexOf("/") + 1) + "FIX ME";
         return url;
     }

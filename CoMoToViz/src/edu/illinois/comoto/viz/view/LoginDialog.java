@@ -183,7 +183,7 @@ public class LoginDialog extends JDialog implements ActionListener, WindowListen
 
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid netid or AD password or your AD account may be locked", "Login Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, FrontendConstants.INVALID_CREDENTIALS_MESSAGE, FrontendConstants.LOGIN_ERROR, JOptionPane.ERROR_MESSAGE);
         }
     }
 

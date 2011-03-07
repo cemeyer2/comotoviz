@@ -245,7 +245,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         JMenuItem item = (JMenuItem) ae.getSource();
         if (item.equals(exportImage)) {
             JFileChooser chooser = new JFileChooser();
-            ExtensionFileFilter filter = new ExtensionFileFilter("PNG Images");
+            ExtensionFileFilter filter = new ExtensionFileFilter(FrontendConstants.PNG_IMAGES);
             filter.addExtension("png");
             chooser.setFileFilter(filter);
             int retval = chooser.showSaveDialog(this);
@@ -260,7 +260,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
             }
         } else if (item.equals(exportGraph)) {
             JFileChooser chooser = new JFileChooser();
-            ExtensionFileFilter filter = new ExtensionFileFilter("GraphML files");
+            ExtensionFileFilter filter = new ExtensionFileFilter(FrontendConstants.GRAPH_ML_FILES);
             filter.addExtension("xml");
             chooser.setFileFilter(filter);
             int retval = chooser.showSaveDialog(this);
@@ -289,7 +289,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
     }
 
     public void askAndQuit() {
-        int retval = JOptionPane.showConfirmDialog(this, "Are you sure you would like to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
+        int retval = JOptionPane.showConfirmDialog(this, FrontendConstants.QUIT_CONFIRMATION_MESSAGE, "Quit?", JOptionPane.YES_NO_OPTION);
         if (retval == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
@@ -300,7 +300,7 @@ public class VisualMossLayout extends JFrame implements ActionListener, WindowLi
         if (node != null) {
             leftControls.changeAssignment(node);
         } else {
-            JOptionPane.showInputDialog(this, "The requested assignment does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showInputDialog(this, FrontendConstants.ASSIGNMENT_DOES_NOT_EXIST_MESSAGE, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -146,13 +146,13 @@ public class DataImport {
         declareGraphFields(graph);
 
         //Let the user know that we're beginning to load file sets from the API
-        dialog.setMessage("Loading File Sets");
+        dialog.setMessage(FrontendConstants.LOADING_FILE_SETS_MESSAGE);
 
         //Get the file sets associated with this assignment from the API
         List<FileSet> fileSets = assignment.getFilesets(true);
 
         //Let the user know that we're generating matches
-        dialog.setMessage("Loading Analysis Data");
+        dialog.setMessage(FrontendConstants.LOADING_ANALYSIS_DATA_MESSAGE);
 
         //Get the set of moss matches for this assignment
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
@@ -161,7 +161,7 @@ public class DataImport {
         submissions = new ArrayList<Submission>();
 
         //Let the user know that we're adding submissions
-        dialog.setMessage("Building Submission Data");
+        dialog.setMessage(FrontendConstants.BUILDING_SUBMISSION_DATA_MESSAGE);
 
         //Get a representation of the submissions as id, object pairs
         Hashtable<Integer, Submission> submissionsTable = new Hashtable<Integer, Submission>();
@@ -171,7 +171,7 @@ public class DataImport {
         addSubmissionNodes(graph, fileSets, submissionsTable, nodeTable);
 
         //Let the user know that we're adding edges
-        dialog.setMessage("Building Similarity Data");
+        dialog.setMessage(FrontendConstants.BUILDING_SIMILARITY_DATA_MESSAGE);
 
         //Add analysis data to the graph
         addMatchNodes(graph, matches, submissionsTable, nodeTable);

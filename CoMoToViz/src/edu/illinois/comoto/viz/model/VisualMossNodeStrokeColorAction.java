@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.EdgeItem;
@@ -61,8 +62,8 @@ public class VisualMossNodeStrokeColorAction extends ColorAction {
 
         while (edgeIter.hasNext()) {
             EdgeItem edge = edgeIter.next();
-            double weight = edge.getDouble("weight");
-            if (weight > maxEdgeWeight && edge.getBoolean("isPartner") == false) {
+            double weight = edge.getDouble(BackendConstants.WEIGHT);
+            if (weight > maxEdgeWeight && edge.getBoolean(BackendConstants.IS_PARTNER) == false) {
                 maxEdgeWeight = weight;
             }
         }

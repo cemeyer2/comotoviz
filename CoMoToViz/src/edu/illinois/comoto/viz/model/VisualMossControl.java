@@ -37,6 +37,8 @@
 
 package edu.illinois.comoto.viz.model;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebpageDialog;
 import prefuse.Display;
 import prefuse.controls.Control;
@@ -67,11 +69,11 @@ public class VisualMossControl implements Control {
     public void itemClicked(VisualItem item, MouseEvent e) {
         //if is edge, then launch diff viewer here
         if (item instanceof EdgeItem) {
-            String url = item.getString("link");
+            String url = item.getString(BackendConstants.LINK);
             try {
                 new WebpageDialog(null, url, false);
             } catch (MalformedURLException ex) {
-                JOptionPane.showMessageDialog(null, "URL associated with edge is invalid", "Invalid URL",
+                JOptionPane.showMessageDialog(null, FrontendConstants.EDGE_URL_INVALID_MESSAGE, FrontendConstants.INVALID_URL,
                         JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -87,25 +89,25 @@ public class VisualMossControl implements Control {
             EdgeItem edge = (EdgeItem) item;
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
-            String colname = "netid";
+            String colname = BackendConstants.NETID;
             if (container.getVisualMossGraphDisplay().isAnonymous())
-                colname = "pseudonym";
+                colname = BackendConstants.PSEUDONYM;
             String netid1 = source.getString(colname);
             String netid2 = target.getString(colname);
-            double weight = edge.getDouble("weight");
-            String partners = (edge.getBoolean("isPartner")) ? "declared partners " : "";
+            double weight = edge.getDouble(BackendConstants.WEIGHT);
+            String partners = (edge.getBoolean(BackendConstants.IS_PARTNER)) ? "declared partners " : "";
             container.setStatus("Similarity between " + partners + netid1 + " and " + netid2 + " with score " + weight);
         }
         if (item instanceof NodeItem) {
             //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
             NodeItem node = (NodeItem) item;
-            String colname = "netid";
+            String colname = BackendConstants.NETID;
             if (container.getVisualMossGraphDisplay().isAnonymous())
-                colname = "pseudonym";
+                colname = BackendConstants.PSEUDONYM;
             String netid = node.getString(colname);
-            String season = node.getString("season");
-            String year = node.getString("year");
-            container.setStatus("Submission: " + netid + ", " + season + " " + year);
+            String season = node.getString(BackendConstants.SEASON);
+            String year = node.getString(BackendConstants.YEAR);
+            container.setStatus(FrontendConstants.SUBMISSION + ": " + netid + ", " + season + " " + year);
         }
     }
 
