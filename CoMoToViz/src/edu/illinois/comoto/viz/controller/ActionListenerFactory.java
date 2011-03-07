@@ -46,14 +46,14 @@ public class ActionListenerFactory implements EventListenerFactory {
 
     /**
      * <p> Factory method for creating the <code>ActionListener</code> for a GUI component. The factory takes as input a
-     * constant that identifies the GUI component, and returns a window listener.
+     * constant that identifies the GUI component, and returns an action listener.
      * <p/>
      * <p> Uses an enum to hash GUI constant to event listeners.
      *
      * @param buttonConstant unique identifier for this GUI component
      * @param parameters     any parameters needed for this event listener
      * @return some action listener for this GUI component
-     * @see java.awt.event.MouseListener
+     * @see java.awt.event.ActionListener
      */
     public ActionListener getEventListener(String buttonConstant, Object... parameters) {
         return ActionListenerActions.valueOf(buttonConstant).getActionListenerAction(parameters);

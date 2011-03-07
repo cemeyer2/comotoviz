@@ -40,7 +40,7 @@ package edu.illinois.comoto.viz.controller;
 import java.awt.event.KeyListener;
 
 /**
- * <p> This factory handles mouse events
+ * <p> This factory handles key events
  */
 public class KeyListenerFactory implements EventListenerFactory {
 

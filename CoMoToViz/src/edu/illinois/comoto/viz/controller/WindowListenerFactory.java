@@ -45,7 +45,7 @@ import java.awt.event.WindowListener;
 public class WindowListenerFactory implements EventListenerFactory {
 
     /**
-     * <p> Factory method for creating the <code>MouseListener</code> for a GUI component. The factory takes as input a
+     * <p> Factory method for creating the <code>WindowListener</code> for a GUI component. The factory takes as input a
      * constant that identifies the GUI component, and returns a window listener.
      * <p/>
      * <p> Uses an enum to hash GUI constant to event listeners.
@@ -53,7 +53,7 @@ public class WindowListenerFactory implements EventListenerFactory {
      * @param buttonConstant unique identifier for this GUI component
      * @param parameters     any parameters needed for this action listener
      * @return some action listener for this GUI component
-     * @see java.awt.event.MouseListener
+     * @see java.awt.event.WindowListener
      */
     public WindowListener getEventListener(String buttonConstant, Object... parameters) {
         return WindowListenerActions.valueOf(buttonConstant).getWindowListenerAction(parameters);
