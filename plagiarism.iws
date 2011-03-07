@@ -17,6 +17,7 @@
     <list default="true" id="e9a09d5a-ecb4-4004-b787-0a1119021448" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <list id="ab31f4a1-002b-4629-a330-e4c8f898141b" name="Do Not Checkin" comment="Do Not Checkin" />
@@ -117,19 +118,10 @@
       <file leaf-file-name="AssignmentChooser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="71" selection-start="2526" selection-end="2526" vertical-scroll-proportion="0.6347518">
+            <state line="88" column="39" selection-start="3780" selection-end="3780" vertical-scroll-proportion="0.13238771">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Assignment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="27" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -209,7 +201,6 @@
         <option value="$PROJECT_DIR$/VisualMoss/src/edu/illinois/comoto/viz/view/VisualMossLayout.java" />
         <option value="$PROJECT_DIR$/lobo/Platform_Core/org/lobobrowser/main/ExtensionManager.java" />
         <option value="$PROJECT_DIR$/.hgignore" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/FrontendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/factory/ActionListenerFactory.java" />
@@ -219,6 +210,7 @@
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/EventListenerFactory.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Semester.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java" />
       </list>
@@ -731,9 +723,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19412126" sideWeight="0.6643757" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329455" sideWeight="0.6666667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39987752" sideWeight="0.6666667" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329455" sideWeight="0.67239404" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329455" sideWeight="0.6930126" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3814433" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3069874" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IntelliGuard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -864,13 +856,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/VisualMossAuthenticator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="13" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.19621749">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Course.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="13" selection-start="2285" selection-end="2285" vertical-scroll-proportion="0.33333334">
@@ -955,6 +940,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2823" selection-end="2823" vertical-scroll-proportion="0.9048443">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="293" column="28" selection-start="8277" selection-end="8277" vertical-scroll-proportion="-0.03633218">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/EventListenerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="1775" vertical-scroll-proportion="0.0">
@@ -962,16 +961,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="27" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="71" selection-start="2526" selection-end="2526" vertical-scroll-proportion="0.6347518">
+        <state line="88" column="39" selection-start="3780" selection-end="3780" vertical-scroll-proportion="0.13238771">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

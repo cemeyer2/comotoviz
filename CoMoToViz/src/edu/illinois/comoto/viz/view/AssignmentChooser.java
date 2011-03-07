@@ -97,8 +97,6 @@ public class AssignmentChooser extends JPanel implements MouseListener {
      */
     private void init() {
         this.setLayout(new BorderLayout());
-
-        //
         DefaultMutableTreeNode coursesNode = new DefaultMutableTreeNode(FrontendConstants.COURSES);
         for (Course course : courses) {
             DefaultMutableTreeNode courseNode = new DefaultMutableTreeNode(course.getName());

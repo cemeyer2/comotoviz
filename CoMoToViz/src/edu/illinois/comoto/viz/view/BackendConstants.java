@@ -53,7 +53,7 @@ public class BackendConstants {
     // Resource locations
     public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
 
-    //Graph identifiers
+    // Field identifiers
     public static final String IS_PARTNER = "isPartner";
     public static final String IS_SOLUTION = "isSolution";
     public static final String NETID = "netid";

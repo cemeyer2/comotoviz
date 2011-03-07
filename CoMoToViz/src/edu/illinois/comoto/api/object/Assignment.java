@@ -288,17 +288,17 @@ public class Assignment implements Refreshable, Cacheable {
     public void setName(String name) {
 
         // Take the full title as the name
-        this.name = name.substring(0, 5).trim();
+        this.name = name;
 
         //Figure out the year and season of this assignment
         String assignmentTitle = toString();
-        if (assignmentTitle.toLowerCase().contains("spring")) {
+        if (assignmentTitle.toLowerCase().contains(Season.Spring.name().toLowerCase())) {
             season = Season.Spring;
-        } else if (assignmentTitle.toLowerCase().contains("summer")) {
+        } else if (assignmentTitle.toLowerCase().contains(Season.Summer.name().toLowerCase())) {
             season = Season.Summer;
-        } else if (assignmentTitle.toLowerCase().contains("fall")) {
+        } else if (assignmentTitle.toLowerCase().contains(Season.Fall.name().toLowerCase())) {
             season = Season.Fall;
-        } else if (assignmentTitle.toLowerCase().contains("winter")) {
+        } else if (assignmentTitle.toLowerCase().contains(Season.Winter.name().toLowerCase())) {
             season = Season.Winter;
         }
         year = Integer.parseInt(assignmentTitle.substring(assignmentTitle.length() - 5, assignmentTitle.length()).trim());
