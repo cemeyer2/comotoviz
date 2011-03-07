@@ -35,56 +35,45 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph.actions;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
+import prefuse.action.assignment.ColorAction;
+import prefuse.util.ColorLib;
+import prefuse.visual.EdgeItem;
+import prefuse.visual.NodeItem;
+import prefuse.visual.VisualItem;
 
-import javax.swing.*;
-import java.awt.*;
+import java.util.Iterator;
 
-public class VisualMossGraphDisplayContainer extends JPanel {
-    VisualMossGraphDisplay graphDisplay;
-    private final int STATUS_AREA_HEIGHT = 30;
-    JLabel statusLabel;
-    int width, height;
+public class NodeStrokeColorAction extends ColorAction {
 
-    public VisualMossGraphDisplayContainer(VisualMossGraph graph, int width, int height) {
-        this.width = width;
-        this.height = height;
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(width, height));
-        graphDisplay = new VisualMossGraphDisplay(graph, this);
-        this.statusLabel = new JLabel();
-        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
-        add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
-        add(statusLabel, BorderLayout.SOUTH);
+    public NodeStrokeColorAction(String group, String field) {
+        super(group, field);
+        // TODO Auto-generated constructor stub
     }
 
-    public VisualMossGraphDisplayContainer(int width, int height) {
-        this.width = width;
-        this.height = height;
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(width, height));
-        graphDisplay = new VisualMossGraphDisplay(this);
-        this.statusLabel = new JLabel();
-        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
-        add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
-        add(statusLabel, BorderLayout.SOUTH);
-    }
+    @Override
+    public int getColor(VisualItem item) {
+        double maxEdgeWeight = 0;
+        NodeItem node = (NodeItem) item;
 
-    public void changeGraph(VisualMossGraph graph) {
-        graphDisplay.setGraph(graph);
-    }
+        Iterator<EdgeItem> edgeIter = node.edges();
 
-    public void setStatus(String status) {
-        statusLabel.setText(status);
-    }
+        while (edgeIter.hasNext()) {
+            EdgeItem edge = edgeIter.next();
+            double weight = edge.getDouble(BackendConstants.WEIGHT);
+            if (weight > maxEdgeWeight && edge.getBoolean(BackendConstants.IS_PARTNER) == false) {
+                maxEdgeWeight = weight;
+            }
+        }
 
-    public void clearStatus() {
-        setStatus("");
-    }
+        double normalized = maxEdgeWeight * 2.55;
 
-    public final VisualMossGraphDisplay getVisualMossGraphDisplay() {
-        return graphDisplay;
+        int r = (int) Math.round(normalized);
+        int g = (int) (255 - Math.round(normalized));
+        int b = 0;
+
+        return ColorLib.rgb(r, g, b);
     }
 }

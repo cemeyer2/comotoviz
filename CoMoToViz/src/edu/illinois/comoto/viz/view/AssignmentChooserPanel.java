@@ -41,7 +41,7 @@ import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
-import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
+import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
 
@@ -66,7 +66,7 @@ public class AssignmentChooserPanel extends JPanel {
     // GUI components
     private JTree tree;
     private DataImport importer;
-    private VisualMossGraphDisplayContainer display;
+    private GraphDisplayContainer display;
     private MainWindow frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
 
@@ -82,7 +82,7 @@ public class AssignmentChooserPanel extends JPanel {
      * @param parentContainer            Parent GUI container
      * @param activeDirectoryCredentials AD credentials from login dialog
      */
-    public AssignmentChooserPanel(MainWindow parentFrame, VisualMossGraphDisplayContainer parentContainer,
+    public AssignmentChooserPanel(MainWindow parentFrame, GraphDisplayContainer parentContainer,
                                   Pair<String, String> activeDirectoryCredentials) {
         super();
         this.importer = new DataImport(activeDirectoryCredentials);

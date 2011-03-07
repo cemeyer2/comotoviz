@@ -42,9 +42,9 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
-import edu.illinois.comoto.viz.model.VisualMossGraph;
-import edu.illinois.comoto.viz.model.VisualMossGraphDisplay;
-import edu.illinois.comoto.viz.model.VisualMossGraphDisplayContainer;
+import edu.illinois.comoto.viz.model.graph.Graph;
+import edu.illinois.comoto.viz.model.graph.GraphDisplay;
+import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.Pair;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
@@ -65,9 +65,9 @@ public class MainWindow extends JFrame {
     final static int windowHeight = 768;
 
     // GUI elements
-    private VisualMossGraph graph;
-    private VisualMossGraphDisplayContainer container;
-    private VisualMossGraphDisplay graphDisplay;
+    private Graph graph;
+    private GraphDisplayContainer container;
+    private GraphDisplay graphDisplay;
     private ControlsPanel rightControls;
     private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
@@ -99,7 +99,7 @@ public class MainWindow extends JFrame {
         this.setTitle(FrontendConstants.PROGRAM_TITLE);
 
         // Add the controls and graph
-        container = new VisualMossGraphDisplayContainer(768, 768);
+        container = new GraphDisplayContainer(768, 768);
         graphDisplay = container.getVisualMossGraphDisplay();
         rightControls = new ControlsPanel();
         rightControls.addVisualMossControls(graphDisplay);
@@ -283,11 +283,11 @@ public class MainWindow extends JFrame {
         }
     }
 
-    public VisualMossGraphDisplay getGraphDisplay() {
+    public GraphDisplay getGraphDisplay() {
         return graphDisplay;
     }
 
-    public VisualMossGraphDisplayContainer getContainer() {
+    public GraphDisplayContainer getContainer() {
         return container;
     }
 }

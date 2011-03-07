@@ -86,9 +86,9 @@ public class Reflector<T> {
         try {
             beanUtilsBean.populate(apiObject, camelCaseMap);
         } catch (IllegalAccessException e) {
-            System.out.println("Error populating " + apiObject.getClass() + " object:\n" + e.getMessage());
+            System.err.println("Error populating " + apiObject.getClass() + " object:\n" + e.getMessage());
         } catch (InvocationTargetException e) {
-            System.out.println("Error populating " + apiObject.getClass() + " object:\n" + e.getMessage());
+            System.err.println("Error populating " + apiObject.getClass() + " object:\n" + e.getMessage());
         }
     }
 

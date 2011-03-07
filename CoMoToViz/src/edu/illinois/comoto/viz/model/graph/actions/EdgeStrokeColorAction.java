@@ -35,35 +35,30 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph.actions;
 
-import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
+import edu.illinois.comoto.viz.model.predicates.EdgeIsPartnerPredicate;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
 
 import java.awt.*;
 
-public class VisualMossNodeFillColorAction extends ColorAction {
+public class EdgeStrokeColorAction extends ColorAction {
 
-    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
-    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
+    private EdgeIsPartnerPredicate isPartner = new EdgeIsPartnerPredicate();
 
-    public VisualMossNodeFillColorAction(String group, String field) {
+    public EdgeStrokeColorAction(String group, String field) {
         super(group, field);
         // TODO Auto-generated constructor stub
     }
 
     @Override
     public int getColor(VisualItem item) {
-        if (cursem.getBoolean(item)) {
-            return ColorLib.color(Color.WHITE);
+        if (isPartner.getBoolean(item)) {
+            return ColorLib.color(Color.GREEN);
         }
-        if (sol.getBoolean(item)) {
-            return ColorLib.color(Color.red);
-        }
-        return ColorLib.gray(200);
+        return ColorLib.gray(0); //black
     }
 
 }

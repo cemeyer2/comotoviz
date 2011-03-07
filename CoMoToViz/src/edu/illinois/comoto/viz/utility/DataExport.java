@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.utility;
 
-import edu.illinois.comoto.viz.model.VisualMossGraph;
+import edu.illinois.comoto.viz.model.graph.Graph;
 import prefuse.data.io.DataIOException;
 import prefuse.data.io.GraphMLWriter;
 
@@ -49,19 +49,19 @@ import java.io.OutputStream;
  * initialize the graph data again.
  *
  * @see
- * @see edu.illinois.comoto.viz.model.VisualMossGraph
+ * @see edu.illinois.comoto.viz.model.graph.Graph
  */
 public class DataExport {
 
-    private VisualMossGraph graph;
+    private Graph graph;
 
     /**
-     * Simple constructor that builds the data export functionality from an input <code>VisualMossGraph</code> structure
+     * Simple constructor that builds the data export functionality from an input <code>Graph</code> structure
      *
      * @param graph The graph to export
-     * @see edu.illinois.comoto.viz.model.VisualMossGraph
+     * @see edu.illinois.comoto.viz.model.graph.Graph
      */
-    public DataExport(VisualMossGraph graph) {
+    public DataExport(Graph graph) {
         this.graph = graph;
     }
 

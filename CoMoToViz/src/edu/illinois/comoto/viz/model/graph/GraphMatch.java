@@ -35,62 +35,54 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
-
-import java.util.ArrayList;
-import java.util.List;
+package edu.illinois.comoto.viz.model.graph;
 
 /**
  * <p> Created By: Jon Tedesco
  * <p> Date: Nov 8, 2010
  * <p/>
- * <p> <p> A simple representation of a student object for use with the VisualMossGraph class
+ * <p> <p> Simple representation of a match object from the graph
  */
-public class VisualMossGraphStudent implements Comparable<VisualMossGraphStudent> {
+public class GraphMatch {
 
     /**
-     * The basic information of a student
+     * The students associated with this match
      */
-    private final String netid, pseudonym;
+    private final GraphStudent student1, student2;
 
     /**
-     * The matches for this student
+     * The scores associated with this match
      */
-    private final ArrayList<VisualMossGraphMatch> matches;
+    private final double score1, score2;
 
     /**
-     * Creates a new, basic student object from the given data
+     * Creates a new basic match object from the given parameters
      *
-     * @param netid     The netid of this student
-     * @param pseudonym The pseudonym of this student
+     * @param student1 The first student
+     * @param student2 The second student
+     * @param score1   The first match score
+     * @param score2   The second match score
      */
-    protected VisualMossGraphStudent(String netid, String pseudonym) {
-        this.netid = netid;
-        this.pseudonym = pseudonym;
-        this.matches = new ArrayList<VisualMossGraphMatch>();
+    protected GraphMatch(GraphStudent student1, GraphStudent student2, double score1, double score2) {
+        this.score1 = score1;
+        this.score2 = score2;
+        this.student1 = student1;
+        this.student2 = student2;
     }
 
-    public String getNetid() {
-        return netid;
+    public GraphStudent getStudent1() {
+        return student1;
     }
 
-    public String getPseudonym() {
-        return pseudonym;
+    public GraphStudent getStudent2() {
+        return student2;
     }
 
-    protected void addMatch(VisualMossGraphMatch match) {
-        matches.add(match);
+    public double getScore1() {
+        return score1;
     }
 
-    public List<VisualMossGraphMatch> getMatches() {
-        return matches;
-    }
-
-    public int compareTo(VisualMossGraphStudent student) {
-        return getNetid().compareTo(student.getNetid());
-    }
-
-    public String toString() {
-        return getNetid();
+    public double getScore2() {
+        return score2;
     }
 }

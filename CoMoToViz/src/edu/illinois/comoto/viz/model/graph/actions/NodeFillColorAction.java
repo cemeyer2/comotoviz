@@ -35,45 +35,35 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph.actions;
 
-import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
+import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
-import prefuse.visual.EdgeItem;
-import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
 
-import java.util.Iterator;
+import java.awt.*;
 
-public class VisualMossNodeStrokeColorAction extends ColorAction {
+public class NodeFillColorAction extends ColorAction {
 
-    public VisualMossNodeStrokeColorAction(String group, String field) {
+    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
+    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
+
+    public NodeFillColorAction(String group, String field) {
         super(group, field);
         // TODO Auto-generated constructor stub
     }
 
     @Override
     public int getColor(VisualItem item) {
-        double maxEdgeWeight = 0;
-        NodeItem node = (NodeItem) item;
-
-        Iterator<EdgeItem> edgeIter = node.edges();
-
-        while (edgeIter.hasNext()) {
-            EdgeItem edge = edgeIter.next();
-            double weight = edge.getDouble(BackendConstants.WEIGHT);
-            if (weight > maxEdgeWeight && edge.getBoolean(BackendConstants.IS_PARTNER) == false) {
-                maxEdgeWeight = weight;
-            }
+        if (cursem.getBoolean(item)) {
+            return ColorLib.color(Color.WHITE);
         }
-
-        double normalized = maxEdgeWeight * 2.55;
-
-        int r = (int) Math.round(normalized);
-        int g = (int) (255 - Math.round(normalized));
-        int b = 0;
-
-        return ColorLib.rgb(r, g, b);
+        if (sol.getBoolean(item)) {
+            return ColorLib.color(Color.red);
+        }
+        return ColorLib.gray(200);
     }
+
 }

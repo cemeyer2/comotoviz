@@ -35,11 +35,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Edge;
-import prefuse.data.Graph;
 import prefuse.data.Node;
 import prefuse.data.io.DataIOException;
 import prefuse.data.io.GraphMLReader;
@@ -49,22 +48,22 @@ import java.io.InputStream;
 import java.util.*;
 
 
-public class VisualMossGraph {
+public class Graph {
 
     /**
      * The abstract graph structure for this assignment
      */
-    private Graph graph;
+    private prefuse.data.Graph graph;
 
     /**
      * Hash table that hashes netid's to student objects
      */
-    private Hashtable<String, VisualMossGraphStudent> students;
+    private Hashtable<String, GraphStudent> students;
 
     /**
      * The matches in this assignment
      */
-    private ArrayList<VisualMossGraphMatch> matches;
+    private ArrayList<GraphMatch> matches;
 
     /**
      * The name of the course corresponding to this graph
@@ -77,55 +76,55 @@ public class VisualMossGraph {
     private String assignmentName;
 
     /**
-     * Creates a new VisualMossGraph with the given course name and assignment name
+     * Creates a new Graph with the given course name and assignment name
      *
      * @param courseName     The name of the course
      * @param assignmentName The name of this assignment
      */
-    public VisualMossGraph(String courseName, String assignmentName) {
-        students = new Hashtable<String, VisualMossGraphStudent>();
-        matches = new ArrayList<VisualMossGraphMatch>();
+    public Graph(String courseName, String assignmentName) {
+        students = new Hashtable<String, GraphStudent>();
+        matches = new ArrayList<GraphMatch>();
         this.courseName = courseName;
         this.assignmentName = assignmentName;
     }
 
     /**
-     * Creates a new VisualMossGraph from some arbitrary input stream and course and assignment names
+     * Creates a new Graph from some arbitrary input stream and course and assignment names
      *
      * @param stream         The input stream from which to read, containing a graph in GraphML format
      * @param courseName     The name of this course
      * @param assignmentName The name of the assignment corresponding to this graph
      * @throws DataIOException On any errors reading the GraphML format
      */
-    public VisualMossGraph(InputStream stream, String courseName, String assignmentName) throws DataIOException {
+    public Graph(InputStream stream, String courseName, String assignmentName) throws DataIOException {
         this(courseName, assignmentName);
         graph = new GraphMLReader().readGraph(stream);
         initializeSubmissionsAndMatches();
     }
 
     /**
-     * Creates a new VisualMossGraph from some arbitrary input stream and course and assignment names
+     * Creates a new Graph from some arbitrary input stream and course and assignment names
      *
      * @param inputFile      The input file from which to read, containing a graph in GraphML format
      * @param courseName     The name of this course
      * @param assignmentName The name of the assignment corresponding to this graph
      * @throws DataIOException On any errors reading the GraphML format
      */
-    public VisualMossGraph(File inputFile, String courseName, String assignmentName) throws DataIOException {
+    public Graph(File inputFile, String courseName, String assignmentName) throws DataIOException {
         this(courseName, assignmentName);
         graph = new GraphMLReader().readGraph(inputFile);
         initializeSubmissionsAndMatches();
     }
 
     /**
-     * Creates a new VisualMossGraph from some arbitrary input stream and course and assignment names
+     * Creates a new Graph from some arbitrary input stream and course and assignment names
      *
      * @param inputGraph     The input graph from which to read
      * @param courseName     The name of this course
      * @param assignmentName The name of the assignment corresponding to this graph
      * @throws DataIOException On any errors reading the GraphML format
      */
-    public VisualMossGraph(Graph inputGraph, String courseName, String assignmentName) throws DataIOException {
+    public Graph(prefuse.data.Graph inputGraph, String courseName, String assignmentName) throws DataIOException {
         this(courseName, assignmentName);
         graph = inputGraph;
         initializeSubmissionsAndMatches();
@@ -147,8 +146,8 @@ public class VisualMossGraph {
             String netid = node.getString(BackendConstants.NETID);
             String pseudonym = node.getString(BackendConstants.PSEUDONYM);
 
-            //Build a new VisualMossGraphStudent object to old the basic information about this student
-            VisualMossGraphStudent student = new VisualMossGraphStudent(netid, pseudonym);
+            //Build a new GraphStudent object to old the basic information about this student
+            GraphStudent student = new GraphStudent(netid, pseudonym);
             students.put(netid, student);
         }
 
@@ -160,13 +159,13 @@ public class VisualMossGraph {
             Edge edge = (Edge) nodeIterator.next();
 
             // Extract its data
-            VisualMossGraphStudent student1 = students.get(edge.getSourceNode().getString(BackendConstants.NETID));
-            VisualMossGraphStudent student2 = students.get(edge.getTargetNode().getString(BackendConstants.NETID));
+            GraphStudent student1 = students.get(edge.getSourceNode().getString(BackendConstants.NETID));
+            GraphStudent student2 = students.get(edge.getTargetNode().getString(BackendConstants.NETID));
             double score1 = edge.getDouble(BackendConstants.SCORE1);
             double score2 = edge.getDouble(BackendConstants.SCORE1);
 
             //Build a match from this data and add it to our records
-            VisualMossGraphMatch match = new VisualMossGraphMatch(student1, student2, score1, score2);
+            GraphMatch match = new GraphMatch(student1, student2, score1, score2);
             matches.add(match);
             student1.addMatch(match);
             student2.addMatch(match);
@@ -176,19 +175,19 @@ public class VisualMossGraph {
     /**
      * Gets a list of the simple student objects represented in this graph
      *
-     * @return A list of VisualMossGraphStudent objects containing basic student data
+     * @return A list of GraphStudent objects containing basic student data
      */
-    public List<VisualMossGraphStudent> getStudents() {
-        ArrayList<VisualMossGraphStudent> list = new ArrayList<VisualMossGraphStudent>(students.values());
+    public List<GraphStudent> getStudents() {
+        ArrayList<GraphStudent> list = new ArrayList<GraphStudent>(students.values());
         Collections.sort(list);
         return list;
     }
 
-    public List<VisualMossGraphMatch> getMatches() {
+    public List<GraphMatch> getMatches() {
         return matches;
     }
 
-    public Graph getPrefuseGraph() {
+    public prefuse.data.Graph getPrefuseGraph() {
         return graph;
     }
 

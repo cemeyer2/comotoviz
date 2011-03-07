@@ -35,30 +35,56 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph;
 
-import edu.illinois.comoto.viz.model.predicates.EdgeIsPartnerPredicate;
-import prefuse.action.assignment.ColorAction;
-import prefuse.util.ColorLib;
-import prefuse.visual.VisualItem;
+import edu.illinois.comoto.viz.view.BackendConstants;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class VisualMossEdgeStrokeColorAction extends ColorAction {
+public class GraphDisplayContainer extends JPanel {
+    GraphDisplay graphDisplay;
+    private final int STATUS_AREA_HEIGHT = 30;
+    JLabel statusLabel;
+    int width, height;
 
-    private EdgeIsPartnerPredicate isPartner = new EdgeIsPartnerPredicate();
-
-    public VisualMossEdgeStrokeColorAction(String group, String field) {
-        super(group, field);
-        // TODO Auto-generated constructor stub
+    public GraphDisplayContainer(Graph graph, int width, int height) {
+        this.width = width;
+        this.height = height;
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(width, height));
+        graphDisplay = new GraphDisplay(graph, this);
+        this.statusLabel = new JLabel();
+        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
+        add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
+        add(statusLabel, BorderLayout.SOUTH);
     }
 
-    @Override
-    public int getColor(VisualItem item) {
-        if (isPartner.getBoolean(item)) {
-            return ColorLib.color(Color.GREEN);
-        }
-        return ColorLib.gray(0); //black
+    public GraphDisplayContainer(int width, int height) {
+        this.width = width;
+        this.height = height;
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(width, height));
+        graphDisplay = new GraphDisplay(this);
+        this.statusLabel = new JLabel();
+        this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
+        add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
+        add(statusLabel, BorderLayout.SOUTH);
     }
 
+    public void changeGraph(Graph graph) {
+        graphDisplay.setGraph(graph);
+    }
+
+    public void setStatus(String status) {
+        statusLabel.setText(status);
+    }
+
+    public void clearStatus() {
+        setStatus("");
+    }
+
+    public final GraphDisplay getVisualMossGraphDisplay() {
+        return graphDisplay;
+    }
 }

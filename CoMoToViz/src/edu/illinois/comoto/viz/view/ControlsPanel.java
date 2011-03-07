@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.viz.model.VisualMossGraphDisplay;
+import edu.illinois.comoto.viz.model.graph.GraphDisplay;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -51,7 +51,7 @@ import java.net.MalformedURLException;
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
-    public void addVisualMossControls(final VisualMossGraphDisplay graphDisplay) {
+    public void addVisualMossControls(final GraphDisplay graphDisplay) {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         final JCheckBox pastStudentButton, singletonsButton, partnersButton, solutionButton, anonymousButton;

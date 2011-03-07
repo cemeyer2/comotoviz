@@ -35,8 +35,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph;
 
+import edu.illinois.comoto.viz.model.graph.actions.EdgeStrokeColorAction;
+import edu.illinois.comoto.viz.model.graph.actions.NodeFillColorAction;
+import edu.illinois.comoto.viz.model.graph.actions.NodeStrokeColorAction;
+import edu.illinois.comoto.viz.model.graph.control.GraphControl;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
@@ -71,15 +75,15 @@ import java.util.List;
  *
  * @author chuck
  */
-public class VisualMossGraphDisplay {
+public class GraphDisplay {
 
     // Components for displaying the graph
-    private VisualMossGraph graph;
+    private Graph graph;
     private Display display;
     private Visualization visualization;
     private List<String> actions;
     private VisibilityPredicate predicate;
-    private VisualMossGraphDisplayContainer parent;
+    private GraphDisplayContainer parent;
     private LabelRenderer labelRenderer;
     private boolean anonymous;
 
@@ -89,7 +93,7 @@ public class VisualMossGraphDisplay {
      * @param graph     The graph to display
      * @param parent    The parent window
      */
-    protected VisualMossGraphDisplay(VisualMossGraph graph, VisualMossGraphDisplayContainer parent) {
+    protected GraphDisplay(Graph graph, GraphDisplayContainer parent) {
         this.graph = graph;
         this.parent = parent;
         initialize();
@@ -100,7 +104,7 @@ public class VisualMossGraphDisplay {
      *
      * @param parent    The parent window
      */
-    protected VisualMossGraphDisplay(VisualMossGraphDisplayContainer parent) {
+    protected GraphDisplay(GraphDisplayContainer parent) {
         this.parent = parent;
         this.graph = null;
         initialize();
@@ -139,7 +143,7 @@ public class VisualMossGraphDisplay {
 
         // Add the controls to this page and the listeners
         display = new Display(visualization, predicate);
-        display.addControlListener(new VisualMossControl(parent));
+        display.addControlListener(new GraphControl(parent));
         display.setHighQuality(true);
         addControls();
     }
@@ -161,16 +165,16 @@ public class VisualMossGraphDisplay {
         // colors for coloring nodes, white background for regular nodes, red background for solution
         // evals based off of isSolution, which is either "false" or "true", since "true" is alphabetically
         // after "false", red is used for it
-        VisualMossNodeFillColorAction fill = new VisualMossNodeFillColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.FILLCOLOR);
+        NodeFillColorAction fill = new NodeFillColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.FILLCOLOR);
 
         // Black outlines for nodes
-        VisualMossNodeStrokeColorAction stroke = new VisualMossNodeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
+        NodeStrokeColorAction stroke = new NodeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
 
         // use black for node text
         ColorAction text = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.TEXTCOLOR, ColorLib.gray(0));
 
         // use light grey for edges
-        VisualMossEdgeStrokeColorAction edges = new VisualMossEdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
+        EdgeStrokeColorAction edges = new EdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
         ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
 
         // Add the colors
@@ -248,7 +252,7 @@ public class VisualMossGraphDisplay {
      *
      * @param graph The new graph to display
      */
-    public void setGraph(VisualMossGraph graph) {
+    public void setGraph(Graph graph) {
         System.out.println("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);
         System.out.println("Removed Old " + BackendConstants.GRAPH + ", Adding New");
@@ -262,7 +266,7 @@ public class VisualMossGraphDisplay {
     /**
      * Simple getter
      */
-    public VisualMossGraph getGraph() {
+    public Graph getGraph() {
         return graph;
     }
 

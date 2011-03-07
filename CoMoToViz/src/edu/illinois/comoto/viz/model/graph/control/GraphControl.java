@@ -35,8 +35,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model;
+package edu.illinois.comoto.viz.model.graph.control;
 
+import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebPageDialog;
@@ -54,11 +55,11 @@ import java.awt.event.MouseWheelEvent;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 
-public class VisualMossControl implements Control {
+public class GraphControl implements Control {
     private boolean enabled = true;
-    private VisualMossGraphDisplayContainer container;
+    private GraphDisplayContainer container;
 
-    protected VisualMossControl(VisualMossGraphDisplayContainer container) {
+    public GraphControl(GraphDisplayContainer container) {
         this.container = container;
     }
 
@@ -117,96 +118,8 @@ public class VisualMossControl implements Control {
 
         }
         if (item instanceof NodeItem) {
-            //setNeighborHighlight((NodeItem)item, false, (Display)e.getComponent());
+            setNeighborHighlight((NodeItem)item, false, (Display)e.getComponent());
         }
-    }
-
-    public void itemKeyPressed(VisualItem item, KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemKeyReleased(VisualItem item, KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemKeyTyped(VisualItem item, KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemMoved(VisualItem item, MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemPressed(VisualItem item, MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemReleased(VisualItem item, MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void itemWheelMoved(VisualItem item, MouseWheelEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    public void mouseDragged(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseWheelMoved(MouseWheelEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
     public void setEnabled(boolean enabled) {
@@ -225,4 +138,23 @@ public class VisualMossControl implements Control {
         display.repaint();
     }
 
+    // Unused graph controls
+    public void itemKeyPressed(VisualItem item, KeyEvent e) {}
+    public void itemKeyReleased(VisualItem item, KeyEvent e) {}
+    public void itemKeyTyped(VisualItem item, KeyEvent e) {}
+    public void itemMoved(VisualItem item, MouseEvent e) {}
+    public void itemPressed(VisualItem item, MouseEvent e) {}
+    public void itemReleased(VisualItem item, MouseEvent e) {}
+    public void itemWheelMoved(VisualItem item, MouseWheelEvent e) {}
+    public void keyPressed(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
+    public void mouseClicked(MouseEvent e) {}
+    public void mouseDragged(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
+    public void mouseMoved(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseWheelMoved(MouseWheelEvent e) {}
 }
