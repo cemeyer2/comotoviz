@@ -49,6 +49,7 @@ import java.util.List;
 import java.util.Map;
 
 import static edu.illinois.comoto.api.CoMoToAPIConstants.GET_FILE_SET;
+import static edu.illinois.comoto.api.CoMoToAPIConstants.MOSS_ANALYSIS_PRUNED_OFFERING;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -88,17 +89,10 @@ public class Assignment implements Refreshable, Cacheable {
      */
     private String name;
 
-
     /**
-     * The season of this assignment
+     * The 'pruned offering' object that contains information about the semester & year of this class
      */
-    private Season season;
-
-
-    /**
-     * The year of this assignment
-     */
-    private int year;
+    private Offering mossAnalysisPrunedOffering = null;
 
     /**
      * The list of unique ids for the file sets associated with this assignment
@@ -136,6 +130,15 @@ public class Assignment implements Refreshable, Cacheable {
         //Store the connection
         this.connection = connection;
 
+        // Extract the associated offering data out explicitly, if it exists
+        Map abstractMossAnalysisPrunedOffering = (Map) abstractAssignment.get(MOSS_ANALYSIS_PRUNED_OFFERING);
+        if (abstractMossAnalysisPrunedOffering != null && abstractMossAnalysisPrunedOffering.size() > 0) {
+            mossAnalysisPrunedOffering = new Offering(abstractMossAnalysisPrunedOffering, connection);
+            abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
+        } else if(abstractMossAnalysisPrunedOffering.size() <= 0) {
+            abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
+        }
+
         //Populate this object using reflection
         Reflector<Assignment> reflector = new Reflector<Assignment>();
         reflector.populate(this, abstractAssignment);
@@ -155,8 +158,6 @@ public class Assignment implements Refreshable, Cacheable {
         language = newAssignment.getLanguage();
         name = newAssignment.getName();
         filesetIds = newAssignment.getFilesetIds();
-        year = newAssignment.getYear();
-        season = newAssignment.getSeason();
 
         //Invalidate the cached data
         analysis = null;
@@ -235,14 +236,18 @@ public class Assignment implements Refreshable, Cacheable {
     @Override
     public String toString() {
 
-        //Make the names uniform and call them 'MP# ...'
-        String unformattedName = getName().toLowerCase().trim();
-        if (unformattedName.indexOf("mp") == 0) {
-            unformattedName = "MP" + unformattedName.substring(2);
-        }
+        if (getName() != null) {
+            //Make the names uniform and call them 'MP# ...'
+            String unformattedName = getName().toLowerCase().trim();
+            if (unformattedName.indexOf("mp") == 0) {
+                unformattedName = "MP" + unformattedName.substring(2);
+            }
 
-        //Return the display name of this assignment
-        return WordUtils.capitalize(unformattedName);
+            //Return the display name of this assignment
+            return WordUtils.capitalize(unformattedName);
+        } else {
+            return "";
+        }
     }
 
     public Map getMap() {
@@ -289,19 +294,6 @@ public class Assignment implements Refreshable, Cacheable {
 
         // Take the full title as the name
         this.name = name;
-
-        //Figure out the year and season of this assignment
-        String assignmentTitle = toString();
-        if (assignmentTitle.toLowerCase().contains(Season.Spring.name().toLowerCase())) {
-            season = Season.Spring;
-        } else if (assignmentTitle.toLowerCase().contains(Season.Summer.name().toLowerCase())) {
-            season = Season.Summer;
-        } else if (assignmentTitle.toLowerCase().contains(Season.Fall.name().toLowerCase())) {
-            season = Season.Fall;
-        } else if (assignmentTitle.toLowerCase().contains(Season.Winter.name().toLowerCase())) {
-            season = Season.Winter;
-        }
-        year = Integer.parseInt(assignmentTitle.substring(assignmentTitle.length() - 5, assignmentTitle.length()).trim());
     }
 
     public List<Integer> getFilesetIds() {
@@ -320,19 +312,11 @@ public class Assignment implements Refreshable, Cacheable {
         this.reportId = reportId;
     }
 
-    public Season getSeason() {
-        return season;
+    public Offering getMossAnalysisPrunedOffering() {
+        return mossAnalysisPrunedOffering;
     }
 
-    public void setSeason(Season season) {
-        this.season = season;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+    public void setMossAnalysisPrunedOffering(Offering mossAnalysisPrunedOffering) {
+        this.mossAnalysisPrunedOffering = mossAnalysisPrunedOffering;
     }
 }

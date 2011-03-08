@@ -52,10 +52,7 @@ import prefuse.data.io.DataIOException;
 import javax.swing.*;
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -133,8 +130,27 @@ public class DataImport {
         this.assignment = assignment;
 
         //Figure out the year and season of this assignment
-        assignmentSeason = assignment.getSeason();
-        assignmentYear = assignment.getYear();
+        Offering assignmentOffering = assignment.getMossAnalysisPrunedOffering();
+        if (assignmentOffering != null){
+            assignmentSeason = assignment.getMossAnalysisPrunedOffering().getSemester().getSeason();
+            assignmentYear = assignment.getMossAnalysisPrunedOffering().getSemester().getYear();
+        } else {
+
+            // Get the timestamp and parse that
+            Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
+            assignmentYear = assignmentTimestamp.getYear();
+
+            // If this is the spring
+            if(assignmentTimestamp.getMonth() <= 5){
+                assignmentSeason = Season.Spring;
+            // Summer
+            } else if(assignmentTimestamp.getMonth() <= 8) {
+                assignmentSeason = Season.Summer;
+            // Fall
+            } else {
+                assignmentSeason = Season.Fall;
+            }
+        }
 
         //Initialize and display the progress bar if we're supposed to
         initializeProgressBar(showProgress, dialog);

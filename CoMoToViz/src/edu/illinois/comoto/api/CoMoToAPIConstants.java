@@ -76,6 +76,7 @@ public class CoMoToAPIConstants {
     public static final String FILESET_IDS = "fileset_ids";
     public static final String JPLAG_REPORT = "jplag_report";
     public static final String MATCHES = "matches";
+    public static final String MOSS_ANALYSIS_PRUNED_OFFERING = "moss_analysis_pruned_offering";
     public static final String MOSS_REPORT = "moss_report";
     public static final String MOSS_REPORT_FILE_IDS = "moss_report_file_ids";
     public static final String OFFERING = "offering";

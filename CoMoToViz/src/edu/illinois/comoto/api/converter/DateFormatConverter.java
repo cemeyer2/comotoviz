@@ -40,7 +40,9 @@ package edu.illinois.comoto.api.converter;
 import org.apache.commons.beanutils.Converter;
 
 import java.text.DateFormat;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * <p> Created By: Jon Tedesco
@@ -62,10 +64,10 @@ public class DateFormatConverter implements Converter {
         try {
 
             //Try to parse this object into a DateFormat object as a string
-            String timestampString = (String) abstractObject;
-            DateFormat timestamp = new SimpleDateFormat(timestampString);
+            Date timestampDate = (Date) abstractObject;
+            DateFormat timestamp = new SimpleDateFormat(timestampDate.toString(), new DateFormatSymbols());
+            String s = "E M d H:m:s z y";
             return timestamp;
-
         } catch (ClassCastException e) {
 
             return null;

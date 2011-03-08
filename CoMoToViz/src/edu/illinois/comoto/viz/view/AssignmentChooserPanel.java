@@ -52,6 +52,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -112,13 +113,58 @@ public class AssignmentChooserPanel extends JPanel {
 
                 // For each assignment in this course during this semester, add it to the semester node
                 for (Assignment assignment : course.getAssignments()) {
-                    if (assignment.getYear() > 0) {
-                        if (assignment.getYear() == semester.getYear() && assignment.getSeason() == semester.getSeason()) {
-                            DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
+
+                    Offering assignmentOffering = assignment.getMossAnalysisPrunedOffering();
+
+                     DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
+                     Season assignmentSeason = null;
+                     int assignmentYear = -1;
+                     if (assignmentOffering != null) {
+
+                         // Get the data about this assignment
+                         assignmentSeason = assignmentOffering.getSemester().getSeason();
+                         assignmentYear = assignmentOffering.getSemester().getYear();
+
+                     } else {
+                         assignmentYear = -1;
+                     }
+
+                     // Check flag, parse from timestamp if this fails
+                     if (assignmentYear > 0) {
+
+                         // Find where it goes
+                         if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
                             semesterNode.add(assignmentNode);
                             assignmentNodes.add(assignmentNode);
-                        }
-                    }
+                         }
+
+                    } else {
+
+                         try {
+                             // Get the timestamp and parse that
+                             Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
+                             assignmentYear = assignmentTimestamp.getYear();
+
+                             // If this is the spring
+                             if(assignmentTimestamp.getMonth() <= 5){
+                                 assignmentSeason = Season.Spring;
+                             // Summer
+                             } else if(assignmentTimestamp.getMonth() <= 8) {
+                                 assignmentSeason = Season.Summer;
+                             // Fall
+                             } else {
+                                 assignmentSeason = Season.Fall;
+                             }
+
+                             // Find where it goes
+                             if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                                semesterNode.add(assignmentNode);
+                                assignmentNodes.add(assignmentNode);
+                             }
+                         } catch (Exception e) {
+                             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                         }
+                     }
                 }
 
                 // If there are some assignments under this semester, add it
