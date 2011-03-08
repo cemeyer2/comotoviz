@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/MossAnalysis.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/MossAnalysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" />
+      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\api\converter\DateFormatConverter.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
@@ -28,34 +25,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java" line="66" class="edu.illinois.comoto.api.converter.DateFormatConverter" package="edu.illinois.comoto.api.converter">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" line="164" class="edu.illinois.comoto.viz.view.AssignmentChooserPanel" package="edu.illinois.comoto.viz.view">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -96,10 +65,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Offering.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Offering.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Offering.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="6" selection-start="2510" selection-end="2510" vertical-scroll-proportion="0.49408984">
+            <state line="55" column="59" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -126,8 +95,10 @@
       <file leaf-file-name="DataImport.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="42" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="146" column="42" selection-start="6097" selection-end="6097" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,16 +106,27 @@
       <file leaf-file-name="AssignmentChooserPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="29" selection-start="6115" selection-end="6115" vertical-scroll-proportion="0.0">
+            <state line="157" column="57" selection-start="6817" selection-end="6817" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateFormatConverter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java">
+      <file leaf-file-name="FileSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="27" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0">
+            <state line="281" column="29" selection-start="8442" selection-end="8442" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reflector.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="78" column="107" selection-start="3332" selection-end="3332" vertical-scroll-proportion="0.42397138">
               <folding />
             </state>
           </provider>
@@ -160,8 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/actions/NodeStrokeColorAction.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/NodeFillCurrentSemesterPredicate.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplay.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/Graph.java" />
@@ -174,8 +154,10 @@
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" />
       </list>
     </option>
   </component>
@@ -555,7 +537,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2498469" sideWeight="0.67124856" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32875144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -577,7 +559,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="WTF" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Date &amp; Semester/Year support for assignments" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -600,6 +582,7 @@
     <MESSAGE value="Adding lib and ext directories" />
     <MESSAGE value="Fixing backend comments" />
     <MESSAGE value="WTF" />
+    <MESSAGE value="Added Date &amp; Semester/Year support for assignments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -669,13 +652,6 @@
         <state line="83" column="52" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="13" selection-start="2448" selection-end="2448" vertical-scroll-proportion="-0.23290204">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/java/text/SimpleDateFormat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="324" column="29" selection-start="13676" selection-end="13692" vertical-scroll-proportion="0.33146068">
@@ -690,24 +666,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/DateFormatConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="27" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="29" selection-start="6115" selection-end="6115" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="42" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="146" column="42" selection-start="6097" selection-end="6097" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -727,7 +691,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Offering.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="6" selection-start="2510" selection-end="2510" vertical-scroll-proportion="0.49408984">
+        <state line="55" column="59" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="57" selection-start="6817" selection-end="6817" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="281" column="29" selection-start="8442" selection-end="8442" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="107" selection-start="3332" selection-end="3332" vertical-scroll-proportion="0.42397138">
           <folding />
         </state>
       </provider>

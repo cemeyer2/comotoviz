@@ -140,29 +140,26 @@ public class AssignmentChooserPanel extends JPanel {
 
                     } else {
 
-                         try {
-                             // Get the timestamp and parse that
-                             Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
-                             assignmentYear = assignmentTimestamp.getYear();
+                         // Get the timestamp and parse that
+                         Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
+                         assignmentYear = assignmentTimestamp.getYear() + 1900;
+                         int month = assignmentTimestamp.getMonth()+1;
 
-                             // If this is the spring
-                             if(assignmentTimestamp.getMonth() <= 5){
-                                 assignmentSeason = Season.Spring;
-                             // Summer
-                             } else if(assignmentTimestamp.getMonth() <= 8) {
-                                 assignmentSeason = Season.Summer;
-                             // Fall
-                             } else {
-                                 assignmentSeason = Season.Fall;
-                             }
+                         // If this is the spring
+                         if(month <= 5){
+                             assignmentSeason = Season.Spring;
+                         // Summer
+                         } else if(month <= 8) {
+                             assignmentSeason = Season.Summer;
+                         // Fall
+                         } else {
+                             assignmentSeason = Season.Fall;
+                         }
 
-                             // Find where it goes
-                             if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
-                                semesterNode.add(assignmentNode);
-                                assignmentNodes.add(assignmentNode);
-                             }
-                         } catch (Exception e) {
-                             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                         // Find where it goes
+                         if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                            semesterNode.add(assignmentNode);
+                            assignmentNodes.add(assignmentNode);
                          }
                      }
                 }
