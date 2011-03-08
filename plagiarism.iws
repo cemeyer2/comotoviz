@@ -2,46 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/Pack200Task.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war-0.9.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war_deps-0.9.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ant-jnlp-war_deps.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ant.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ant.readme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/cobra-no-commons.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/commons-collections.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/commons-lang-2.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/commons-logging-1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/Scenario.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/cobra-no-commons.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-bean-collections-1.8.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-core-1.8.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/javafx-swing.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/javafxc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/javafxgui.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/javafxrt.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/jlfgr-1_0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/jmc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/js.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/jweb-ext.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/primary.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/websvc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/xmlrpc-client-3.1.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ext/xmlrpc-common-3.1.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/lobo-network-ext-load.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/lobo-pub.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/lobo.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/logkit-1.0.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/lucene-1.4.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/prefuse-doc.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/prefuse.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/swing-worker-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/velocity-1.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/lib/ws-commons-util-1.0.2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/CoMoToViz.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/CoMoToViz.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/Graph.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/Graph.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplay.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplayContainer.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplayContainer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/actions/NodeStrokeColorAction.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/actions/NodeStrokeColorAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/control/GraphControl.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/control/GraphControl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/NodeFillCurrentSemesterPredicate.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/NodeFillCurrentSemesterPredicate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <ignored path="plagiarism.iws" />
@@ -100,7 +69,17 @@
     <favorites_list name="plagiarism" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="BackendConstants.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="22" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.4172577">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -110,7 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/FrontendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooser.java" />
@@ -126,6 +104,7 @@
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphControl.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/control/GraphControl.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" />
       </list>
     </option>
   </component>
@@ -159,6 +138,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,27 +175,155 @@
               <option name="myItemId" value="comoto" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utility" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Favorites" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -351,7 +460,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -361,7 +470,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2498469" sideWeight="0.6701031" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2498469" sideWeight="0.6701031" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -431,16 +540,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/CoMoToViz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="21" selection-start="2588" selection-end="2588" vertical-scroll-proportion="0.31678486" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/WebPageDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="44" selection-start="2115" selection-end="2115" vertical-scroll-proportion="-0.048463356" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoadingProgressDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="13" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.33333334" />
@@ -509,6 +608,20 @@
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.1347518" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="67" selection-start="2990" selection-end="2990" vertical-scroll-proportion="1.3061466">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="22" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.4172577">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

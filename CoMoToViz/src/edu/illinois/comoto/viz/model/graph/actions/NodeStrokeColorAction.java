@@ -37,7 +37,6 @@
 
 package edu.illinois.comoto.viz.model.graph.actions;
 
-import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.EdgeItem;

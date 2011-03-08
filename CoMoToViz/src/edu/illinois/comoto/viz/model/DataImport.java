@@ -42,7 +42,6 @@ import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.viz.model.graph.Graph;
 import edu.illinois.comoto.viz.utility.Pair;
-import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.LoadingProgressDialog;
 import prefuse.data.Edge;

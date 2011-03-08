@@ -40,7 +40,6 @@ package edu.illinois.comoto.viz;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.utility.VisualMossException;
-import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.LoginDialog;
 import edu.illinois.comoto.viz.view.MainWindow;
 import org.lobobrowser.main.ExtensionManager;

@@ -38,7 +38,6 @@
 package edu.illinois.comoto.viz.model.graph.control;
 
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
-import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebPageDialog;
 import prefuse.Display;
