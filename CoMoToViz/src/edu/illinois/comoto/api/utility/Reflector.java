@@ -37,14 +37,12 @@
 
 package edu.illinois.comoto.api.utility;
 
-import edu.illinois.comoto.api.converter.DateFormatConverter;
 import edu.illinois.comoto.api.converter.EnumConverter;
 import edu.illinois.comoto.api.converter.ListConverter;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 
 import java.lang.reflect.InvocationTargetException;
-import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,9 +72,7 @@ public class Reflector<T> {
         ConvertUtilsBean convertUtilsBean = new ConvertUtilsBean();
         convertUtilsBean.deregister(List.class);
         convertUtilsBean.deregister(String.class);
-        convertUtilsBean.deregister(DateFormat.class);
         convertUtilsBean.register(new ListConverter(), List.class);
-        convertUtilsBean.register(new DateFormatConverter(), DateFormat.class);
         convertUtilsBean.register(new EnumConverter(), String.class);
 
         //Build the bean utils object with the specified converters

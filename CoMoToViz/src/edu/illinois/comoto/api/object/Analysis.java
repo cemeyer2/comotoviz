@@ -42,11 +42,7 @@ import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.illinois.comoto.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYMS;
 
@@ -66,7 +62,7 @@ public class Analysis implements Refreshable, Cacheable {
     /**
      * The timestamp of this analysis
      */
-    private DateFormat timestamp;
+    private Date timestamp;
 
     /**
      * Whether this analysis is complete
@@ -230,11 +226,11 @@ public class Analysis implements Refreshable, Cacheable {
         this.id = id;
     }
 
-    public DateFormat getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(DateFormat timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -277,5 +273,4 @@ public class Analysis implements Refreshable, Cacheable {
     public void setAnalysisPseudonyms(List<AnalysisPseudonym> analysisPseudonyms) {
         this.analysisPseudonyms = analysisPseudonyms;
     }
-
 }

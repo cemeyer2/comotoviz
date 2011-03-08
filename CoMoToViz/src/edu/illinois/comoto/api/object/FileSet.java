@@ -43,11 +43,7 @@ import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.illinois.comoto.api.CoMoToAPIConstants.OFFERING;
 import static edu.illinois.comoto.api.CoMoToAPIConstants.SUBMISSIONS;
@@ -98,7 +94,7 @@ public class FileSet implements Refreshable, Cacheable {
     /**
      * The timestamp for this file set
      */
-    private DateFormat timestamp;
+    private Date timestamp;
 
     /**
      * Enumerates the type for this class
@@ -279,11 +275,11 @@ public class FileSet implements Refreshable, Cacheable {
         this.offering = offering;
     }
 
-    public DateFormat getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(DateFormat timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 

@@ -87,6 +87,16 @@ public class MossAnalysis implements Refreshable, Cacheable {
     private List<MossMatch> solutionMatches = null;
 
     /**
+     * The id of the associated offering
+     */
+    private int prunedOfferingId;
+
+    /**
+     * The associated offering
+     */
+    private Offering prunedOffering;
+
+    /**
      * The associated analysis
      */
     private Analysis analysis = null;
@@ -260,5 +270,34 @@ public class MossAnalysis implements Refreshable, Cacheable {
 
     public void setSolutionMatches(List<MossMatch> solutionMatches) {
         this.solutionMatches = solutionMatches;
+    }
+
+    public int getPrunedOfferingId() {
+        return prunedOfferingId;
+    }
+
+    public void setPrunedOfferingId(int prunedOfferingId) {
+        this.prunedOfferingId = prunedOfferingId;
+    }
+
+    public Offering getPrunedOffering() {
+
+       //If it's not cached, grab it from the API
+        if (prunedOffering == null) {
+            prunedOffering = CoMoToAPI.getOffering(connection, prunedOfferingId);
+        }
+        return prunedOffering;
+    }
+
+    public void setPrunedOffering(Offering prunedOffering) {
+        this.prunedOffering = prunedOffering;
+    }
+
+    public boolean isCategorizedMatches() {
+        return categorizedMatches;
+    }
+
+    public void setCategorizedMatches(boolean categorizedMatches) {
+        this.categorizedMatches = categorizedMatches;
     }
 }
