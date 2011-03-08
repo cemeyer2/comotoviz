@@ -81,7 +81,7 @@ public class CoMoToViz {
 
         // If the system is not linux, use the system look and feel
         String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
-        if (!systemLookAndFeel.contains(BackendConstants.GTK)) {
+        if (!System.getProperty("os.name").contains("Linux")) {
             try {
                 // Set System look and feel
                 UIManager.setLookAndFeel(systemLookAndFeel);

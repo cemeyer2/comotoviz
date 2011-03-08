@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ University of Illinois/NCSA
+  ~ Open Source License
+  ~
+  ~ Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+  ~ All rights reserved.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining
+  ~ a copy of this software and associated documentation files (the
+  ~ "Software"), to deal with the Software without restriction, including
+  ~ without limitation the rights to use, copy, modify, merge, publish,
+  ~ distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to
+  ~ the following conditions:
+  ~
+  ~     * Redistributions of source code must retain the above copyright
+  ~       notice, this list of conditions and the following disclaimers.
+  ~
+  ~     * Redistributions in binary form must reproduce the above
+  ~       copyright notice, this list of conditions and the following
+  ~       disclaimers in the documentation and/or other materials provided
+  ~       with the distribution.
+  ~
+  ~     * Neither the names of the CoMoTo Project team, the University of
+  ~       Illinois at Urbana-Champaign, nor the names of its contributors
+  ~       may be used to endorse or promote products derived from this
+  ~       Software without specific prior written permission.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  ~ IN NO EVENT SHALL THE CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+  ~ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  ~ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  ~ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+  -->
+
+<!-- ======================================================================
+     Nov 5, 2009 22:59:51 PM                                                        
+
+     VisualMoss    
+     VisualMoss Build File
+                   
+     cemeyer2                                                                
+     ====================================================================== -->
+<project name="VisualMoss" default="war" xmlns:jw="org.unintelligible.antjnlpwar">
+    <description>
+        VisualMoss BuildFile
+    </description>
+
+    <typedef resource="org/unintelligible/antjnlpwar/antjnlpwar.xml" format="xml" uri="org.unintelligible.antjnlpwar">
+        <classpath>
+            <pathelement location="${basedir}/../lib/ant-jnlp-war_deps-0.9.jar"/>
+            <pathelement location="${basedir}/../lib/velocity-1.4.jar"/>
+            <pathelement location="${basedir}/../lib/commons-collections.jar"/>
+            <pathelement location="${basedir}/../lib/logkit-1.0.1.jar"/>
+            <pathelement location="${basedir}/../lib/Pack200Task.jar"/>
+        </classpath>
+    </typedef>
+
+    <target name="init">
+        <delete dir="build"/>
+        <delete dir="jar"/>
+        <delete dir="dist"/>
+        <delete dir="temp"/>
+        <mkdir dir="build"/>
+        <mkdir dir="jar"/>
+        <mkdir dir="jar/lib"/>
+        <mkdir dir="dist"/>
+        <mkdir dir="temp"/>
+    </target>
+
+    <path id="compile.classpath">
+        <fileset dir="${basedir}/../lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${basedir}/../src" destdir="build/" classpathref="compile.classpath"
+               target="1.5"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="jar/VisualMoss.jar">
+            <fileset dir="build/"/>
+
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Implementation-Vendor" value="UIUC"/>
+                <attribute name="Implementation-Title" value="VisualMoss"/>
+                <attribute name="Main-Class" value="edu.illinois.comoto.viz.VisualMossMain"/>
+            </manifest>
+        </jar>
+        <copy todir="jar/lib">
+            <fileset dir="${basedir}/../lib/"/>
+        </copy>
+
+        <signjar
+                alias="comoto" keystore="keystore"
+                storepass="comoto"
+                preservelastmodified="true">
+            <path>
+                <fileset dir="jar" includes="**/*.jar"/>
+            </path>
+        </signjar>
+
+    </target>
+
+
+    <target name="war" depends="jar">
+        <jw:jnlpwar
+                tofile="dist/VisualMoss.war"
+                codebase="http://comoto.cs.illinois.edu/hg/plagiarism"
+                title="VisualMoss"
+                vendor="UIUC"
+                pack200="false"
+                signStorepass="comoto"
+                signAlias="comoto">
+            <jw:description>VisualMoss</jw:description>
+            <jw:description kind="short">VisualMoss</jw:description>
+            <jw:j2se minVersion="1.5">
+            </jw:j2se>
+            <lib dir="jar">
+                <include name="lib/*.jar"/>
+                <include name="lib/ext/*.jar"/>
+            </lib>
+            <jw:application mainclass="edu.illinois.comoto.viz.VisualMossMain" jar="jar/VisualMoss.jar"/>
+        </jw:jnlpwar>
+    </target>
+
+</project>
