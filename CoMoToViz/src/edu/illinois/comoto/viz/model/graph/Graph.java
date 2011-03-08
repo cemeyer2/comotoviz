@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model.graph;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Edge;
 import prefuse.data.Node;
 import prefuse.data.io.DataIOException;

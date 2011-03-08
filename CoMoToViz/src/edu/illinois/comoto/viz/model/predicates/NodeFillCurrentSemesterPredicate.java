@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model.predicates;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.data.Schema;
 import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;

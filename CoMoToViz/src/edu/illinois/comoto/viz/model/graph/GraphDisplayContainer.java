@@ -37,6 +37,8 @@
 
 package edu.illinois.comoto.viz.model.graph;
 
+import edu.illinois.comoto.viz.view.BackendConstants;
+
 import javax.swing.*;
 import java.awt.*;
 

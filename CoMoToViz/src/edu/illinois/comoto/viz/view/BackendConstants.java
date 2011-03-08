@@ -51,10 +51,10 @@ import java.awt.*;
 public class BackendConstants {
 
     // Resource locations
-    public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
-    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
     public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
     public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
+    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
+    public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
 
     // Field identifiers
     public static final String IS_PARTNER = "isPartner";
@@ -75,16 +75,28 @@ public class BackendConstants {
     public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
     public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
-    // GUI component identifiers
-    public static final String ASSIGNMENT_CHOOSER_CLICKED = "assignmentChooser";
+    // GUI component & action identifiers
     public static final String TLS = "TLS";
     public static final String WEIGHT = "weight";
     public static final String GRAPH = "graph";
-    public static final String COLOR = "color";
-    public static final String EDGES = "edges";
     public static final String LAYOUT = "layout";
     public static final String NODES = "nodes";
     public static final String FONT = "font";
-    public static final String PNG = "PNG";
+    public static final String PNG = "png";
+    public static final String XML = "xml";
+    public static final String ASSIGNMENT_CHOOSER = "assignmentChooser";
+    public static final String MAIN_WINDOW = "mainWindow";
+    public static final String EXPORT_GRAPH = "exportGraph";
+    public static final String EXPORT_IMAGE = "exportImage";
+    public static final String QUIT = "quit";
+    public static final String ABOUT = "about";
+    public static final String HELP = "help";
+    public static final String SEARCH_STUDENTS = "searchStudents";
+    public static final String LOGIN_WINDOW = "loginWindow";
+    public static final String LOGIN = "login";
+    public static final String GTK = "GTK";
     public static final String PSEUDONYM = "pseudonym";
+
+    public static final String EDGES = "edges";
+    public static final String COLOR = "color";
 }

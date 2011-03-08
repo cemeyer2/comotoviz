@@ -42,6 +42,7 @@ import edu.illinois.comoto.viz.model.graph.actions.NodeFillColorAction;
 import edu.illinois.comoto.viz.model.graph.actions.NodeStrokeColorAction;
 import edu.illinois.comoto.viz.model.graph.control.GraphControl;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.Constants;
 import prefuse.Display;
