@@ -99,4 +99,7 @@ public class BackendConstants {
 
     public static final String EDGES = "edges";
     public static final String COLOR = "color";
+
+    public static final String LINUX = "Linux";
+    public static final String OS_PROPERTY = "os.name";
 }

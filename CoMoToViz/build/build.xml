@@ -44,9 +44,9 @@
                    
      cemeyer2                                                                
      ====================================================================== -->
-<project name="VisualMoss" default="war" xmlns:jw="org.unintelligible.antjnlpwar">
+<project name="CoMoToViz" default="war" xmlns:jw="org.unintelligible.antjnlpwar">
     <description>
-        VisualMoss BuildFile
+        CoMoToViz BuildFile
     </description>
 
     <typedef resource="org/unintelligible/antjnlpwar/antjnlpwar.xml" format="xml" uri="org.unintelligible.antjnlpwar">
@@ -71,6 +71,13 @@
         <mkdir dir="temp"/>
     </target>
 
+    <target name="clean">
+        <delete dir="build"/>
+        <delete dir="jar"/>
+        <delete dir="dist"/>
+        <delete dir="temp"/>
+    </target>
+
     <path id="compile.classpath">
         <fileset dir="${basedir}/../lib">
             <include name="**/*.jar"/>
@@ -83,14 +90,14 @@
     </target>
 
     <target name="jar" depends="compile">
-        <jar destfile="jar/VisualMoss.jar">
+        <jar destfile="jar/CoMoToViz.jar">
             <fileset dir="build/"/>
 
             <manifest>
                 <attribute name="Built-By" value="${user.name}"/>
                 <attribute name="Implementation-Vendor" value="UIUC"/>
-                <attribute name="Implementation-Title" value="VisualMoss"/>
-                <attribute name="Main-Class" value="edu.illinois.comoto.viz.VisualMossMain"/>
+                <attribute name="Implementation-Title" value="CoMoToViz"/>
+                <attribute name="Main-Class" value="edu.illinois.comoto.viz.CoMoToViz"/>
             </manifest>
         </jar>
         <copy todir="jar/lib">
@@ -111,22 +118,23 @@
 
     <target name="war" depends="jar">
         <jw:jnlpwar
-                tofile="dist/VisualMoss.war"
-                codebase="http://comoto.cs.illinois.edu/hg/plagiarism"
-                title="VisualMoss"
+                tofile="dist/CoMoToViz.war"
+                codebase="http://comoto.cs.illinois.edu:8080/CoMoToViz/"
+                title="CoMoToViz"
                 vendor="UIUC"
-                pack200="false"
+                pack200="true"
                 signStorepass="comoto"
                 signAlias="comoto">
-            <jw:description>VisualMoss</jw:description>
-            <jw:description kind="short">VisualMoss</jw:description>
+
+            <jw:description>CoMoToViz</jw:description>
+            <jw:description kind="short">CoMoToViz</jw:description>
             <jw:j2se minVersion="1.5">
             </jw:j2se>
             <lib dir="jar">
                 <include name="lib/*.jar"/>
                 <include name="lib/ext/*.jar"/>
             </lib>
-            <jw:application mainclass="edu.illinois.comoto.viz.VisualMossMain" jar="jar/VisualMoss.jar"/>
+            <jw:application mainclass="edu.illinois.comoto.viz.CoMoToViz" jar="jar/CoMoToViz.jar"/>
         </jw:jnlpwar>
     </target>
 
