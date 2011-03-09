@@ -36,17 +36,9 @@
   ~ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
   -->
 
-<!-- ======================================================================
-     Nov 5, 2009 22:59:51 PM                                                        
-
-     VisualMoss    
-     VisualMoss Build File
-                   
-     cemeyer2                                                                
-     ====================================================================== -->
-<project name="CoMoToViz" default="war" xmlns:jw="org.unintelligible.antjnlpwar">
+<project name="CoMoToViz" default="dist" xmlns:jw="org.unintelligible.antjnlpwar">
     <description>
-        CoMoToViz BuildFile
+        CoMoToViz and CoMoToAPI Build File
     </description>
 
     <typedef resource="org/unintelligible/antjnlpwar/antjnlpwar.xml" format="xml" uri="org.unintelligible.antjnlpwar">
@@ -55,24 +47,27 @@
             <pathelement location="${basedir}/../lib/velocity-1.4.jar"/>
             <pathelement location="${basedir}/../lib/commons-collections.jar"/>
             <pathelement location="${basedir}/../lib/logkit-1.0.1.jar"/>
-            <pathelement location="${basedir}/../lib/Pack200Task.jar"/>
         </classpath>
     </typedef>
 
     <target name="init">
-        <delete dir="build"/>
+        <delete dir="build.viz"/>
+        <delete dir="build.api"/>
         <delete dir="jar"/>
         <delete dir="dist"/>
         <delete dir="temp"/>
-        <mkdir dir="build"/>
+        <mkdir dir="build.viz"/>
+        <mkdir dir="build.api"/>
         <mkdir dir="jar"/>
         <mkdir dir="jar/lib"/>
+        <mkdir dir="jar/lib_obf"/>
         <mkdir dir="dist"/>
         <mkdir dir="temp"/>
     </target>
 
     <target name="clean">
-        <delete dir="build"/>
+        <delete dir="build.viz"/>
+        <delete dir="build.api"/>
         <delete dir="jar"/>
         <delete dir="dist"/>
         <delete dir="temp"/>
@@ -84,14 +79,36 @@
         </fileset>
     </path>
 
-    <target name="compile" depends="init">
-        <javac srcdir="${basedir}/../src" destdir="build/" classpathref="compile.classpath"
+    <target name="viz.compile" depends="init">
+        <javac srcdir="${basedir}/../src" destdir="build.viz/" classpathref="compile.classpath"
                target="1.5"/>
     </target>
 
-    <target name="jar" depends="compile">
-        <jar destfile="jar/CoMoToViz.jar">
-            <fileset dir="build/"/>
+    <target name="api.compile" depends="init">
+        <javac srcdir="${basedir}/../src" destdir="build.api/" classpathref="compile.classpath"
+               target="1.5"
+               includes="edu/illinois/comoto/api/**/*">
+        </javac>
+    </target>
+
+    <target name="api.jar" depends="api.compile">
+        <jar destfile="jar/CoMoToAPI.jar">
+            <fileset dir="build.api/"/>
+            <fileset dir="${basedir}/../src/">
+                <include name="edu/illinois/comoto/api/**/*"/>
+            </fileset>
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Implementation-Vendor" value="UIUC"/>
+                <attribute name="Implementation-Title" value="CoMoToAPI"/>
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="viz.jar" depends="viz.compile">
+        <jar destfile="jar/CoMoToViz-orig.jar">
+            <fileset dir="build.viz/"/>
 
             <manifest>
                 <attribute name="Built-By" value="${user.name}"/>
@@ -104,6 +121,34 @@
             <fileset dir="${basedir}/../lib/"/>
         </copy>
 
+                <taskdef name="yguard"
+                 classname="com.yworks.yguard.YGuardTask"
+                 classpath="lib/yguard.jar"/>
+
+        <yguard>
+            <inoutpair in="jar/CoMoToViz-orig.jar" out="jar/CoMoToViz.jar"/>
+
+
+            <externalclasses>
+                <fileset dir="jar/lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </externalclasses>
+            <rename mainclass="edu.illinois.comoto.viz.CoMoToViz" logfile="obfuscatelog.xml">
+                <property name="error-checking" value="pedantic"/>
+            </rename>
+            <shrink
+                    logfile="shrinklog.xml">
+                <keep>
+                    <class classes="protected"
+                           methods="protected"
+                           fields="protected"/>
+                </keep>
+            </shrink>
+
+        </yguard>
+        <delete file="jar/CoMoToViz-orig.jar"/>
+
         <signjar
                 alias="comoto" keystore="keystore"
                 storepass="comoto"
@@ -113,10 +158,11 @@
             </path>
         </signjar>
 
+
     </target>
 
 
-    <target name="war" depends="jar">
+    <target name="war" depends="viz.jar">
         <jw:jnlpwar
                 tofile="dist/CoMoToViz.war"
                 codebase="http://comoto.cs.illinois.edu:8080/CoMoToViz/"
@@ -136,6 +182,14 @@
             </lib>
             <jw:application mainclass="edu.illinois.comoto.viz.CoMoToViz" jar="jar/CoMoToViz.jar"/>
         </jw:jnlpwar>
+    </target>
+
+    <target name="dist" depends="api.jar, war">
+        <copy todir="dist">
+            <fileset dir="jar/">
+                <include name="CoMoToAPI.jar"/>
+            </fileset>
+        </copy>
     </target>
 
 </project>
