@@ -37,13 +37,20 @@
 
 package edu.illinois.comoto.viz.model;
 
-import edu.illinois.comoto.api.object.Assignment;
+import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.LoadingProgressDialog;
+import prefuse.data.Edge;
 import prefuse.data.Graph;
+import prefuse.data.Node;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -75,6 +82,9 @@ public class PrefuseGraphBuilder {
     private VisibilityPredicate predicate;
     private boolean showBuildProgress;
     private LoadingProgressDialog dialog;
+    private Map<Integer, Edge> edges;
+    private Map<Integer, Node> nodes;
+    private List<Student> students;
 
     private PrefuseGraphBuilder() {
         this.predicate = new VisibilityPredicate(DEFAULT_MINIMUM_EDGE_WEIGHT,
@@ -83,6 +93,9 @@ public class PrefuseGraphBuilder {
                 DEFAULT_INCLUDE_PAST_STUDENTS,
                 DEFAULT_INCLUDE_PARTNERS);
         showBuildProgress = DEFAULT_SHOW_BUILD_PROGRESS;
+        nodes = new HashMap<Integer, Node>();
+        edges = new HashMap<Integer, Edge>();
+        students = new LinkedList<Student>();
     }
 
     public PrefuseGraphBuilder setAssignment(Assignment assignment) {
@@ -129,6 +142,11 @@ public class PrefuseGraphBuilder {
         return this;
     }
 
+    public PrefuseGraphBuilder setVisibilityPredicate(VisibilityPredicate predicate) {
+        this.predicate = predicate;
+        return this;
+    }
+
     public double getMinimumEdgeWeight() {
         return this.predicate.getMinWeight();
     }
@@ -158,34 +176,39 @@ public class PrefuseGraphBuilder {
     }
 
     /**
-     * Builds a Prefuse Graph object based on the Assignment previously set and on
+     * Builds a Prefuse GraphToBeRemoved object based on the Assignment previously set and on
      * the other settings
      *
-     * @return a Prefuse Graph object representing the backing Assignment as filtered by this builder's settings
+     * @return a Prefuse GraphToBeRemoved object representing the backing Assignment as filtered by this builder's settings
      * @see prefuse.data.Graph
      */
     public Graph buildPrefuseGraph() {
 
         if (this.getAssignment() == null) {
-            throw new CoMoToVizException("Must set the Assignment on PrefuseGraphBuilder before building a Graph");
+            throw new CoMoToVizException("Must set the Assignment on PrefuseGraphBuilder before building a GraphToBeRemoved");
         }
+
+        nodes.clear();
+        edges.clear();
+        students.clear();
+
         this.initializeLoadingProgressDialog();
         Graph graph = new Graph();
-        graph = initializeGraph(graph);
+        initializeGraph(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.BUILDING_STUDENT_DATA_MESSAGE);
-        graph = addNodes(graph);
+        addNodes(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.BUILDING_MATCH_DATA_MESSAGE);
-        graph = addEdges(graph);
+        addEdges(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.FILTERING_DATA_MESSAGE);
-        graph = filterEdges(graph);
-        graph = filterNodes(graph);
+        filterEdges(graph);
+        filterNodes(graph);
         this.hideLoadingProgressDialog();
 
-        return null;
+        return graph;
     }
 
     //step 1: initialize the backing prefuse tables
-    private Graph initializeGraph(Graph graph) {
+    private void initializeGraph(Graph graph) {
 
         //Declare all the properties of a submission (e.g. a node in the graph)
         graph.getNodeTable().addColumn(BackendConstants.NETID, String.class);
@@ -195,6 +218,7 @@ public class PrefuseGraphBuilder {
         graph.getNodeTable().addColumn(BackendConstants.YEAR, String.class);
         graph.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, String.class);
         graph.getNodeTable().addColumn(BackendConstants.CURRENT_SEMESTER, boolean.class);
+        graph.getNodeTable().addColumn(BackendConstants.STUDENT_ID, int.class);
 
         //Declare all the properties of an analysis
         graph.getEdgeTable().addColumn(BackendConstants.WEIGHT, double.class);   //Weight = max(score1,score2)
@@ -202,30 +226,58 @@ public class PrefuseGraphBuilder {
         graph.getEdgeTable().addColumn(BackendConstants.SCORE2, double.class);
         graph.getEdgeTable().addColumn(BackendConstants.LINK, String.class);
         graph.getEdgeTable().addColumn(BackendConstants.IS_PARTNER, boolean.class);
+        graph.getEdgeTable().addColumn(BackendConstants.MOSSMATCH_ID, int.class);
 
-        return graph;
     }
 
     //step 2: add the nodes from the students
-    private Graph addNodes(Graph graph) {
-        return graph;
+    private void addNodes(Graph graph) {
+        Offering prunedOffering = assignment.getMossAnalysisPrunedOffering();
+
+        List<FileSet> fileSets = assignment.getFilesets(true);
+        for (FileSet fileSet : fileSets) {
+            Offering offering = fileSet.getOffering();
+            boolean isCurrentSemester = true; //default to having all students appear in the graph if the analysis is not pruned
+            if (prunedOffering != null) {
+                isCurrentSemester = (offering.getId() == prunedOffering.getId());
+            }
+            List<Submission> submissions = fileSet.getSubmissions(true);
+            for (Submission submission : submissions) {
+                Student student = submission.getStudent();
+                Node node = VisualItemFactory.createNode(graph, student, isCurrentSemester, submission.getId());
+                nodes.put(submission.getId(), node);
+                if (student != null) {
+                    students.add(student);
+                }
+            }
+        }
     }
 
     //step 3: add the edges from the moss matches
-    private Graph addEdges(Graph graph) {
-        return graph;
+    private void addEdges(Graph graph) {
+        List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
+
+        for (MossMatch match : matches) {
+            Submission submission1 = match.getSubmission1();
+            Submission submission2 = match.getSubmission2();
+            Node node1 = nodes.get(submission1.getId());
+            Node node2 = nodes.get(submission2.getId());
+            if (node1 != null && node2 != null) {
+                Edge edge = VisualItemFactory.createEdge(graph, match, node1, node2);
+                edges.put(match.getId(), edge);
+            }
+        }
     }
 
     //step 5: remove nodes from the backing data that do not pass the predicate
-    private Graph filterNodes(Graph graph) {
+    private void filterNodes(Graph graph) {
 
-        return graph;
+
     }
 
     //step 4: remove edges from the backing data that do not pass the predicate
-    private Graph filterEdges(Graph graph) {
+    private void filterEdges(Graph graph) {
 
-        return graph;
     }
 
     private void initializeLoadingProgressDialog() {
@@ -246,6 +298,10 @@ public class PrefuseGraphBuilder {
         if (this.getShowBuildProgress() && this.dialog != null) {
             this.dialog.setVisible(false);
         }
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
 }

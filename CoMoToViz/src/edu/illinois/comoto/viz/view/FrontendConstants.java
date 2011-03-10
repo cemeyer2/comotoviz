@@ -61,7 +61,7 @@ public class FrontendConstants {
     public static final String PNG_IMAGES = "PNG Images";
     public static final String GRAPH_ML_FILES = "GraphML files";
     public static final String LAUNCH_TEXT_REPORT = "Launch Text Report";
-    public static final String ANONYMOUS_GRAPH = "Anonymous Graph";
+    public static final String ANONYMOUS_GRAPH = "Anonymous GraphToBeRemoved";
     public static final String INCLUDE_PARTNER_EDGES = "Include Partner Edges";
     public static final String INCLUDE_SOLUTION = "Include Solution";
     public static final String INCLUDE_SINGLETONS = "Include Singletons";

@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model.graph;
 
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.graph.actions.EdgeStrokeColorAction;
 import edu.illinois.comoto.viz.model.graph.actions.NodeFillColorAction;
 import edu.illinois.comoto.viz.model.graph.actions.NodeStrokeColorAction;
@@ -53,7 +54,7 @@ import prefuse.action.assignment.ColorAction;
 import prefuse.action.assignment.FontAction;
 import prefuse.action.layout.graph.ForceDirectedLayout;
 import prefuse.controls.*;
-import prefuse.data.Edge;
+import prefuse.data.Graph;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
 import prefuse.render.LabelRenderer;
@@ -90,8 +91,8 @@ public class GraphDisplay {
     /**
      * Displays the graph given a non-empty graph
      *
-     * @param graph     The graph to display
-     * @param parent    The parent window
+     * @param graph  The graph to display
+     * @param parent The parent window
      */
     protected GraphDisplay(Graph graph, GraphDisplayContainer parent) {
         this.graph = graph;
@@ -102,7 +103,7 @@ public class GraphDisplay {
     /**
      * Displays an empty panel where the graph should be
      *
-     * @param parent    The parent window
+     * @param parent The parent window
      */
     protected GraphDisplay(GraphDisplayContainer parent) {
         this.parent = parent;
@@ -129,7 +130,7 @@ public class GraphDisplay {
         // Add the graph itself, and make it interactive
         visualization = new Visualization();
         if (hasGraph) {
-            visualization.addGraph(BackendConstants.GRAPH, graph.getPrefuseGraph());
+            visualization.addGraph(BackendConstants.GRAPH, graph);
         }
         visualization.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
 
@@ -256,9 +257,8 @@ public class GraphDisplay {
         System.out.println("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);
         System.out.println("Removed Old " + BackendConstants.GRAPH + ", Adding New");
-        visualization.addGraph(BackendConstants.GRAPH, graph.getPrefuseGraph());
+        visualization.addGraph(BackendConstants.GRAPH, graph);
         System.out.println(BackendConstants.GRAPH + " Changed");
-        this.graph = graph;
         run();
         System.out.println("Run Complete");
     }
@@ -293,7 +293,7 @@ public class GraphDisplay {
     /**
      * Show or hide the solution(s) node(s)
      *
-     *  @param showSolutions Whether or not to show the solution nodes
+     * @param showSolutions Whether or not to show the solution nodes
      */
     public void setShowSolution(boolean showSolutions) {
         this.predicate.setShowSolution(showSolutions);
@@ -303,7 +303,7 @@ public class GraphDisplay {
     /**
      * Show or hide partner edges
      *
-     * @param includePartners   Whether or not to include partner edges
+     * @param includePartners Whether or not to include partner edges
      */
     public void setIncludePartners(boolean includePartners) {
         this.predicate.setIncludePartners(includePartners);
@@ -375,8 +375,8 @@ public class GraphDisplay {
     /**
      * writes out the current visible portion of the viz in the display to file as a png
      *
-     * @param outFile   The file to which to write the image of the graph
-     * @throws IOException  On error writing to disk
+     * @param outFile The file to which to write the image of the graph
+     * @throws IOException On error writing to disk
      */
     public void writeToImage(File outFile) throws IOException {
         FileOutputStream os = new FileOutputStream(outFile);
@@ -394,7 +394,7 @@ public class GraphDisplay {
     /**
      * Sets whether  past students should be included, and reruns the layout engine
      *
-     * @param includePast   Whether or not to include past students
+     * @param includePast Whether or not to include past students
      */
     public void setIncludePast(boolean includePast) {
         this.predicate.setIncludePast(includePast);
@@ -405,7 +405,7 @@ public class GraphDisplay {
     /**
      * Gets an iterator to navigate through the nodes of the graph
      *
-     * @return  An iterator for the nodes of the graph
+     * @return An iterator for the nodes of the graph
      */
     public Iterator<NodeItem> getNodes() {
         if (visualization == null) return null;
@@ -416,8 +416,8 @@ public class GraphDisplay {
      * animates a pan to a node with the netid supplied, if it exists in the viz. the speed of the
      * animation is given by the number of milliseconds the pan should take
      *
-     * @param netid     The netid of the node to which to pan
-     * @param lengthMS  The number of milliseconds to take to pan
+     * @param netid    The netid of the node to which to pan
+     * @param lengthMS The number of milliseconds to take to pan
      */
     public void panToNode(String netid, int lengthMS) {
         Iterator<NodeItem> iter = visualization.items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
@@ -440,13 +440,13 @@ public class GraphDisplay {
     /**
      * Get the URL for the report (the link to view an analysis in the web browser)
      *
-     * @return  The URL
+     * @return The URL
      */
     public String getReportURL() {
-        Edge edge = (Edge) graph.getPrefuseGraph().edges().next();
-        String link = edge.getString(BackendConstants.LINK);
-        String url = link.substring(0, link.lastIndexOf("/") + 1) + "FIX ME";
-        return url;
+        if (PrefuseGraphBuilder.getBuilder().getAssignment() != null) {
+            return "https://comoto.cs.illinois.edu/comoto/view_analysis/view/" + Integer.toString(PrefuseGraphBuilder.getBuilder().getAssignment().getId());
+        }
+        return null;
     }
 
     public VisibilityPredicate getVisibilityPredicate() {

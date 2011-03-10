@@ -67,6 +67,8 @@ public class BackendConstants {
     public static final String SUBMISSION_ID = "submission_id";
     public static final String YEAR = "year";
     public static final String CURRENT_SEMESTER = "currentSemester";
+    public static final String STUDENT_ID = "student_id";
+    public static final String MOSSMATCH_ID = "mossmatch_id";
 
     //Font constants
     public static final String FONT_NAME = "Verdana";

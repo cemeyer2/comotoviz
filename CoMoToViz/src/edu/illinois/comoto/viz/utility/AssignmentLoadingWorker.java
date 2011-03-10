@@ -38,11 +38,11 @@
 package edu.illinois.comoto.viz.utility;
 
 import edu.illinois.comoto.api.object.Assignment;
-import edu.illinois.comoto.viz.model.DataImport;
-import edu.illinois.comoto.viz.model.graph.Graph;
+import edu.illinois.comoto.api.object.Student;
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
-import edu.illinois.comoto.viz.model.graph.GraphStudent;
 import edu.illinois.comoto.viz.view.MainWindow;
+import prefuse.data.Graph;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -53,15 +53,13 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     private Assignment assignment;
     private GraphDisplayContainer container;
     private MainWindow frame;
-    private DataImport importer;
     private JTree tree;
     private DefaultMutableTreeNode node;
 
-    public AssignmentLoadingWorker(Assignment assignment, GraphDisplayContainer container, MainWindow frame, DataImport importer, JTree tree, DefaultMutableTreeNode node) {
+    public AssignmentLoadingWorker(Assignment assignment, GraphDisplayContainer container, MainWindow frame, JTree tree, DefaultMutableTreeNode node) {
         this.assignment = assignment;
         this.container = container;
         this.frame = frame;
-        this.importer = importer;
         this.tree = tree;
         this.node = node;
     }
@@ -69,10 +67,10 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     @Override
     protected Void doInBackground() throws Exception {
 
-        Graph graph = importer.buildGraph(assignment, true, frame);
+        Graph graph = PrefuseGraphBuilder.getBuilder().setAssignment(assignment).buildPrefuseGraph();
 
         //add students as children
-        for (GraphStudent student : graph.getStudents()) {
+        for (Student student : PrefuseGraphBuilder.getBuilder().getStudents()) {
             node.add(new DefaultMutableTreeNode(student));
         }
         ((DefaultTreeModel) tree.getModel()).reload();

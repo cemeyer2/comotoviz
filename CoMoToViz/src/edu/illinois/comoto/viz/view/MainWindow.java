@@ -42,10 +42,10 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
-import edu.illinois.comoto.viz.model.graph.Graph;
 import edu.illinois.comoto.viz.model.graph.GraphDisplay;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.Pair;
+import prefuse.data.Graph;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
@@ -125,7 +125,7 @@ public class MainWindow extends JFrame {
     /**
      * Helper function to update the title of the window to show that we have a particular assignment open
      *
-     * @param assignment    The assignment currently open, whose data to add to the title
+     * @param assignment The assignment currently open, whose data to add to the title
      */
     public void updateTitle(Assignment assignment) {
         this.setTitle(FrontendConstants.PROGRAM_TITLE + ": " + assignment.getCourse().getName() + ", " + assignment.getName());
@@ -272,7 +272,7 @@ public class MainWindow extends JFrame {
     /**
      * Change the assignment of the graph
      *
-     * @param id    The id of the new assignment
+     * @param id The id of the new assignment
      */
     public void changeAssignment(int id) {
         DefaultMutableTreeNode node = leftControls.getAssignmentTreeNodeById(id);

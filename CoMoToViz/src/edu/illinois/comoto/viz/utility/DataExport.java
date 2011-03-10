@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.utility;
 
-import edu.illinois.comoto.viz.model.graph.Graph;
+import prefuse.data.Graph;
 import prefuse.data.io.DataIOException;
 import prefuse.data.io.GraphMLWriter;
 
@@ -47,19 +47,15 @@ import java.io.OutputStream;
 /**
  * Exports a visual moss graph to GraphML format. Once exported into GraphML format, the file can be given as input to
  * initialize the graph data again.
- *
- * @see
- * @see edu.illinois.comoto.viz.model.graph.Graph
  */
 public class DataExport {
 
     private Graph graph;
 
     /**
-     * Simple constructor that builds the data export functionality from an input <code>Graph</code> structure
+     * Simple constructor that builds the data export functionality from an input <code>GraphToBeRemoved</code> structure
      *
      * @param graph The graph to export
-     * @see edu.illinois.comoto.viz.model.graph.Graph
      */
     public DataExport(Graph graph) {
         this.graph = graph;
@@ -73,7 +69,7 @@ public class DataExport {
      * @see GraphMLWriter
      */
     public void write(String filename) throws DataIOException {
-        new GraphMLWriter().writeGraph(graph.getPrefuseGraph(), filename);
+        new GraphMLWriter().writeGraph(graph, filename);
     }
 
     /**
@@ -84,7 +80,7 @@ public class DataExport {
      * @see GraphMLWriter
      */
     public void write(File file) throws DataIOException {
-        new GraphMLWriter().writeGraph(graph.getPrefuseGraph(), file);
+        new GraphMLWriter().writeGraph(graph, file);
     }
 
     /**
@@ -95,6 +91,6 @@ public class DataExport {
      * @see GraphMLWriter
      */
     public void write(OutputStream outputStream) throws DataIOException {
-        new GraphMLWriter().writeGraph(graph.getPrefuseGraph(), outputStream);
+        new GraphMLWriter().writeGraph(graph, outputStream);
     }
 }

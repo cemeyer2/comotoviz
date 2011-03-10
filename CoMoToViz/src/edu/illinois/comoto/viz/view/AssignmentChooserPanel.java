@@ -116,52 +116,52 @@ public class AssignmentChooserPanel extends JPanel {
 
                     Offering assignmentOffering = assignment.getMossAnalysisPrunedOffering();
 
-                     DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
-                     Season assignmentSeason = null;
-                     int assignmentYear = -1;
-                     if (assignmentOffering != null) {
+                    DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
+                    Season assignmentSeason = null;
+                    int assignmentYear = -1;
+                    if (assignmentOffering != null) {
 
-                         // Get the data about this assignment
-                         assignmentSeason = assignmentOffering.getSemester().getSeason();
-                         assignmentYear = assignmentOffering.getSemester().getYear();
+                        // Get the data about this assignment
+                        assignmentSeason = assignmentOffering.getSemester().getSeason();
+                        assignmentYear = assignmentOffering.getSemester().getYear();
 
-                     } else {
-                         assignmentYear = -1;
-                     }
+                    } else {
+                        assignmentYear = -1;
+                    }
 
-                     // Check flag, parse from timestamp if this fails
-                     if (assignmentYear > 0) {
+                    // Check flag, parse from timestamp if this fails
+                    if (assignmentYear > 0) {
 
-                         // Find where it goes
-                         if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                        // Find where it goes
+                        if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
                             semesterNode.add(assignmentNode);
                             assignmentNodes.add(assignmentNode);
-                         }
+                        }
 
                     } else {
 
-                         // Get the timestamp and parse that
-                         Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
-                         assignmentYear = assignmentTimestamp.getYear() + 1900;
-                         int month = assignmentTimestamp.getMonth()+1;
+                        // Get the timestamp and parse that
+                        Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
+                        assignmentYear = assignmentTimestamp.getYear() + 1900;
+                        int month = assignmentTimestamp.getMonth() + 1;
 
-                         // If this is the spring
-                         if(month <= 5){
-                             assignmentSeason = Season.Spring;
-                         // Summer
-                         } else if(month <= 8) {
-                             assignmentSeason = Season.Summer;
-                         // Fall
-                         } else {
-                             assignmentSeason = Season.Fall;
-                         }
+                        // If this is the spring
+                        if (month <= 5) {
+                            assignmentSeason = Season.Spring;
+                            // Summer
+                        } else if (month <= 8) {
+                            assignmentSeason = Season.Summer;
+                            // Fall
+                        } else {
+                            assignmentSeason = Season.Fall;
+                        }
 
-                         // Find where it goes
-                         if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                        // Find where it goes
+                        if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
                             semesterNode.add(assignmentNode);
                             assignmentNodes.add(assignmentNode);
-                         }
-                     }
+                        }
+                    }
                 }
 
                 // If there are some assignments under this semester, add it
@@ -232,7 +232,7 @@ public class AssignmentChooserPanel extends JPanel {
                 assignmentNode.removeAllChildren();
             }
             Assignment selectedAssignment = (Assignment) object;
-            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, importer, tree, node);
+            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, tree, node);
             worker.execute();
         } else if (object instanceof Student) {
             Student student = (Student) object;
