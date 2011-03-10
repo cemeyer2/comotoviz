@@ -53,7 +53,7 @@ public class CoMoToAPIException extends Exception {
     private Exception causedBy;
 
     /**
-     * Builds a standard java exception of type VisualMossException
+     * Builds a standard java exception of type CoMoToVizException
      *
      * @param reason Message containing the reason for the exception
      */
@@ -62,7 +62,7 @@ public class CoMoToAPIException extends Exception {
     }
 
     /**
-     * Builds a java exception of type VisualMossException with the root exception
+     * Builds a java exception of type CoMoToVizException with the root exception
      *
      * @param reason   Message containing the reason for the exception
      * @param causedBy A handle on the exception that caused this exception
@@ -73,7 +73,7 @@ public class CoMoToAPIException extends Exception {
     }
 
     /**
-     * Gets the root exception for this typed VisualMossException
+     * Gets the root exception for this typed CoMoToVizException
      *
      * @return A handle to the exception that caused this one
      */

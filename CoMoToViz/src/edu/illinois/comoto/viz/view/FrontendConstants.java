@@ -110,4 +110,7 @@ public class FrontendConstants {
     public static final String LOADING_FILE_SETS_MESSAGE = "Loading File Sets";
     public static final String QUIT_CONFIRMATION_MESSAGE = "Are you sure you would like to quit?";
     public static final String PNG = "PNG";
+    public static final String BUILDING_STUDENT_DATA_MESSAGE = "Building Student Data";
+    public static final String BUILDING_MATCH_DATA_MESSAGE = "Building Match Data";
+    public static final String FILTERING_DATA_MESSAGE = "Filtering Data";
 }

@@ -42,13 +42,13 @@ import org.lobobrowser.request.AuthenticatorImpl;
 import java.net.PasswordAuthentication;
 import java.util.Hashtable;
 
-public class VisualMossAuthenticator extends AuthenticatorImpl {
+public class CoMoToiVizAuthenticator extends AuthenticatorImpl {
 
     private static final String DEFAULT = "*";
 
     private Hashtable<String, PasswordAuthentication> myAuthentications;
 
-    public VisualMossAuthenticator() {
+    public CoMoToiVizAuthenticator() {
         myAuthentications = new Hashtable<String, PasswordAuthentication>();
     }
 

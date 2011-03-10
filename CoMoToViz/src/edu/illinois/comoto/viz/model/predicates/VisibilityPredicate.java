@@ -88,6 +88,26 @@ public class VisibilityPredicate implements Predicate {
         this.includePast = includePast;
     }
 
+    public double getMinWeight() {
+        return this.weight;
+    }
+
+    public boolean getIncludePartners() {
+        return this.includePartners;
+    }
+
+    public boolean getShowSolution() {
+        return this.showSolution;
+    }
+
+    public boolean getShowSingletons() {
+        return this.showSingletons;
+    }
+
+    public boolean getIncludePast() {
+        return this.includePast;
+    }
+
 
     public void addExpressionListener(ExpressionListener lstnr) {
         // TODO Auto-generated method stub

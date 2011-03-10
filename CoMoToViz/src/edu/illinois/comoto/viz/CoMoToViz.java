@@ -38,8 +38,8 @@
 package edu.illinois.comoto.viz;
 
 import edu.illinois.comoto.api.utility.Cache;
+import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.Pair;
-import edu.illinois.comoto.viz.utility.VisualMossException;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.LoginDialog;
 import edu.illinois.comoto.viz.view.MainWindow;
@@ -56,10 +56,11 @@ public class CoMoToViz {
     /**
      * Entry point for the CoMoTo dynamic visualization
      *
-     * @param args  Command line arguments to launch the program
-     * @throws VisualMossException  On errors with the viz itself
+     * @param args Command line arguments to launch the program
+     * @throws edu.illinois.comoto.viz.utility.CoMoToVizException
+     *          On errors with the viz itself
      */
-    public static void main(String[] args) throws VisualMossException {
+    public static void main(String[] args) throws CoMoToVizException {
 
         setDefaultFont();
 
@@ -76,7 +77,7 @@ public class CoMoToViz {
             init.initSecurity();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error initializing lobo browser component.", "Initialization Error", JOptionPane.ERROR_MESSAGE);
-            throw new VisualMossException("Lobo did not initialize properly.", ex);
+            throw new CoMoToVizException("Lobo did not initialize properly.", ex);
         }
 
         // If the system is not linux, use the system look and feel
@@ -85,10 +86,11 @@ public class CoMoToViz {
             try {
                 // Set System look and feel
                 UIManager.setLookAndFeel(systemLookAndFeel);
-            } catch (UnsupportedLookAndFeelException e) {}
-            catch (ClassNotFoundException e) {}
-            catch (InstantiationException e) {}
-            catch (IllegalAccessException e) {}
+            } catch (UnsupportedLookAndFeelException e) {
+            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException e) {
+            } catch (IllegalAccessException e) {
+            }
         }
 
         // Show the login dialog and get the credentials
@@ -108,7 +110,8 @@ public class CoMoToViz {
             try {
                 int assignmentId = Integer.parseInt(args[0]);
                 window.changeAssignment(assignmentId);
-            } catch (NumberFormatException nfe) {}
+            } catch (NumberFormatException nfe) {
+            }
         }
     }
 

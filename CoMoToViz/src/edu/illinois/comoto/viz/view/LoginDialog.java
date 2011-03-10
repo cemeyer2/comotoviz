@@ -41,13 +41,15 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
+import edu.illinois.comoto.viz.utility.CoMoToiVizAuthenticator;
 import edu.illinois.comoto.viz.utility.LDAPAuth;
-import edu.illinois.comoto.viz.utility.VisualMossAuthenticator;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowListener;
 import java.net.Authenticator;
 
 /**
@@ -168,7 +170,7 @@ public class LoginDialog extends JDialog {
         boolean auth = LDAPAuth.authenticate(netId, password);
 
         if (auth) {
-            VisualMossAuthenticator authenticator = new VisualMossAuthenticator();
+            CoMoToiVizAuthenticator authenticator = new CoMoToiVizAuthenticator();
             authenticator.setDefaultAuthentication(netId, password);
             Authenticator.setDefault(authenticator);
 

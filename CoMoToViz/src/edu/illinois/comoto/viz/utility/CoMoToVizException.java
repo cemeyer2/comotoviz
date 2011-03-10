@@ -40,7 +40,7 @@ package edu.illinois.comoto.viz.utility;
 /**
  * Exception thrown on most exceptions relating to the VisualMoss application
  */
-public class VisualMossException extends Exception {
+public class CoMoToVizException extends RuntimeException {
 
     /**
      * Unique identifier for this exception type
@@ -53,27 +53,27 @@ public class VisualMossException extends Exception {
     private Exception causedBy;
 
     /**
-     * Builds a standard java exception of type VisualMossException
+     * Builds a standard java exception of type CoMoToVizException
      *
      * @param reason Message containing the reason for the exception
      */
-    public VisualMossException(String reason) {
+    public CoMoToVizException(String reason) {
         super(reason);
     }
 
     /**
-     * Builds a java exception of type VisualMossException with the root exception
+     * Builds a java exception of type CoMoToVizException with the root exception
      *
      * @param reason   Message containing the reason for the exception
      * @param causedBy A handle on the exception that caused this exception
      */
-    public VisualMossException(String reason, Exception causedBy) {
+    public CoMoToVizException(String reason, Exception causedBy) {
         super(reason + ": " + causedBy.getMessage());
         this.causedBy = causedBy;
     }
 
     /**
-     * Gets the root exception for this typed VisualMossException
+     * Gets the root exception for this typed CoMoToVizException
      *
      * @return A handle to the exception that caused this one
      */
