@@ -43,14 +43,13 @@ import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.LoadingProgressDialog;
+import org.apache.log4j.Logger;
 import prefuse.data.Edge;
 import prefuse.data.Graph;
 import prefuse.data.Node;
+import prefuse.data.Tuple;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -63,6 +62,7 @@ public class PrefuseGraphBuilder {
 
     //singleton pattern stuff
     private static PrefuseGraphBuilder instance;
+    static final Logger logger = Logger.getLogger(PrefuseGraphBuilder.class);
 
     public static PrefuseGraphBuilder getBuilder() {
         if (instance == null) {
@@ -182,7 +182,7 @@ public class PrefuseGraphBuilder {
      * @return a Prefuse GraphToBeRemoved object representing the backing Assignment as filtered by this builder's settings
      * @see prefuse.data.Graph
      */
-    public Graph buildPrefuseGraph() {
+    public synchronized Graph buildPrefuseGraph() {
 
         if (this.getAssignment() == null) {
             throw new CoMoToVizException("Must set the Assignment on PrefuseGraphBuilder before building a GraphToBeRemoved");
@@ -200,23 +200,26 @@ public class PrefuseGraphBuilder {
         this.setLoadingProgressDialogMessage(FrontendConstants.BUILDING_MATCH_DATA_MESSAGE);
         addEdges(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.FILTERING_DATA_MESSAGE);
-        filterEdges(graph);
-        filterNodes(graph);
+        filterTuples(graph);
         this.hideLoadingProgressDialog();
 
-        return graph;
+        logger.debug("Filtering complete");
+        logger.debug("Nodes remaining: " + graph.getNodeCount());
+        logger.debug("Edges remaining: " + graph.getEdgeCount());
+
+        return copyGraph(graph);
     }
 
     //step 1: initialize the backing prefuse tables
     private void initializeGraph(Graph graph) {
-
+        logger.debug("Initializing graph backing tables");
         //Declare all the properties of a submission (e.g. a node in the graph)
         graph.getNodeTable().addColumn(BackendConstants.NETID, String.class);
         graph.getNodeTable().addColumn(BackendConstants.PSEUDONYM, String.class);
         graph.getNodeTable().addColumn(BackendConstants.IS_SOLUTION, boolean.class);
         graph.getNodeTable().addColumn(BackendConstants.SEASON, String.class);
         graph.getNodeTable().addColumn(BackendConstants.YEAR, String.class);
-        graph.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, String.class);
+        graph.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, int.class);
         graph.getNodeTable().addColumn(BackendConstants.CURRENT_SEMESTER, boolean.class);
         graph.getNodeTable().addColumn(BackendConstants.STUDENT_ID, int.class);
 
@@ -232,6 +235,7 @@ public class PrefuseGraphBuilder {
 
     //step 2: add the nodes from the students
     private void addNodes(Graph graph) {
+        logger.debug("Adding nodes");
         Offering prunedOffering = assignment.getMossAnalysisPrunedOffering();
 
         List<FileSet> fileSets = assignment.getFilesets(true);
@@ -255,6 +259,7 @@ public class PrefuseGraphBuilder {
 
     //step 3: add the edges from the moss matches
     private void addEdges(Graph graph) {
+        logger.debug("Adding edges");
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
 
         for (MossMatch match : matches) {
@@ -269,16 +274,79 @@ public class PrefuseGraphBuilder {
         }
     }
 
-    //step 5: remove nodes from the backing data that do not pass the predicate
-    private void filterNodes(Graph graph) {
-
-
-    }
-
     //step 4: remove edges from the backing data that do not pass the predicate
-    private void filterEdges(Graph graph) {
-
+    private void filterTuples(Graph graph) {
+        logger.debug("Filtering tuples");
+        Iterator iter = graph.tuples();
+        while (iter.hasNext()) {
+            Tuple t = (Tuple) iter.next();
+            logger.debug("Inspecting tuple: " + t);
+            if (!this.predicate.getBoolean(t)) {
+                boolean removed = graph.removeTuple(t);
+                logger.debug("Removing: " + removed);
+            } else {
+                logger.debug("Keeping");
+            }
+        }
     }
+
+
+    //this is a hack to get around a bug in prefuse
+    private prefuse.data.Graph copyGraph(prefuse.data.Graph graph) {
+
+        //Create the new graph and declare the fields of each node
+        Graph graph2 = new prefuse.data.Graph();
+        initializeGraph(graph2);
+
+        //Copy all of the graph nodes
+        Iterator<Node> nodeIterator = graph.nodes();
+        while (nodeIterator.hasNext()) {
+            Node oldNode = nodeIterator.next();
+            Node newNode = graph2.addNode();
+            newNode.setString(BackendConstants.NETID, oldNode.getString(BackendConstants.NETID));
+            newNode.setString(BackendConstants.PSEUDONYM, oldNode.getString(BackendConstants.PSEUDONYM));
+            newNode.setString(BackendConstants.IS_SOLUTION, oldNode.getString(BackendConstants.IS_SOLUTION));
+            newNode.setString(BackendConstants.SUBMISSION_ID, oldNode.getString(BackendConstants.SUBMISSION_ID));
+            newNode.setBoolean(BackendConstants.CURRENT_SEMESTER, oldNode.getBoolean(BackendConstants.CURRENT_SEMESTER));
+            if (oldNode.canGetInt(BackendConstants.STUDENT_ID)) {
+                newNode.setInt(BackendConstants.STUDENT_ID, oldNode.getInt(BackendConstants.STUDENT_ID));
+            }
+        }
+
+        //Copy all of the graph edges
+        Iterator<Edge> edgeIterator = graph.edges();
+        while (edgeIterator.hasNext()) {
+            Edge oldEdge = edgeIterator.next();
+            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(BackendConstants.NETID), graph2), getNode(oldEdge.getTargetNode().getString(BackendConstants.NETID), graph2));
+            newEdge.setDouble(BackendConstants.SCORE1, oldEdge.getDouble(BackendConstants.SCORE1));
+            newEdge.setDouble(BackendConstants.SCORE2, oldEdge.getDouble(BackendConstants.SCORE2));
+            newEdge.setDouble(BackendConstants.WEIGHT, oldEdge.getDouble(BackendConstants.WEIGHT));
+            newEdge.setString(BackendConstants.LINK, oldEdge.getString(BackendConstants.LINK));
+            newEdge.setBoolean(BackendConstants.IS_PARTNER, oldEdge.getBoolean(BackendConstants.IS_PARTNER));
+            newEdge.setInt(BackendConstants.MOSSMATCH_ID, oldEdge.getInt(BackendConstants.MOSSMATCH_ID));
+        }
+        return graph2;
+    }
+
+    /**
+     * Finds a node by the netId associated with it
+     *
+     * @param netId The netId identifying the node to get
+     * @param graph The graph in which to find the node
+     * @return The node corresponding to the given netId
+     */
+    private Node getNode(String netId, prefuse.data.Graph graph) {
+
+        Iterator<Node> nodeIterator = graph.nodes();
+        while (nodeIterator.hasNext()) {
+            Node node = nodeIterator.next();
+            if (node.getString(BackendConstants.NETID).equals(netId)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
 
     private void initializeLoadingProgressDialog() {
         if (this.getShowBuildProgress()) {

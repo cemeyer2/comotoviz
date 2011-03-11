@@ -144,6 +144,10 @@ public class Semester implements Refreshable, Cacheable {
 
     @Override
     public String toString() {
-        return season.name() + " " + year;
+        if (season != null) {
+            return season.name() + " " + year;
+        } else {
+            return "Semester.toString: not initialized yet";
+        }
     }
 }

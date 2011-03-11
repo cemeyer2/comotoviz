@@ -70,16 +70,16 @@ public class VisualItemFactory {
             //i dont think we need the following 2 table entries
             //node.setString(BackendConstants.SEASON, semester.getSeason().name());
             //node.setString(BackendConstants.YEAR, Integer.toString(semester.getYear()));
-            node.setString(BackendConstants.CURRENT_SEMESTER, Boolean.toString(currentSemester));
-            node.setString(BackendConstants.SUBMISSION_ID, Integer.toString(submissionId));
+            node.setBoolean(BackendConstants.CURRENT_SEMESTER, currentSemester);
+            node.setInt(BackendConstants.SUBMISSION_ID, submissionId);
             node.setInt(BackendConstants.STUDENT_ID, student.getId());
         } else {
             node.setString(BackendConstants.NETID, FrontendConstants.SOLUTION);
             node.setString(BackendConstants.PSEUDONYM, FrontendConstants.SOLUTION);
             node.setString(BackendConstants.SEASON, FrontendConstants.SOLUTION);
             node.setString(BackendConstants.YEAR, FrontendConstants.SOLUTION);
-            node.setString(BackendConstants.CURRENT_SEMESTER, Boolean.toString(currentSemester));
-            node.setString(BackendConstants.SUBMISSION_ID, Integer.toString(submissionId));
+            node.setBoolean(BackendConstants.CURRENT_SEMESTER, currentSemester);
+            node.setInt(BackendConstants.SUBMISSION_ID, submissionId);
         }
         node.setString(BackendConstants.IS_SOLUTION, Boolean.toString(isSolution));
         return node;

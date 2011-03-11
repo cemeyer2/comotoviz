@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.utility;
 
 import edu.illinois.comoto.api.CoMoToAPIConstants;
+import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -60,6 +61,7 @@ public class Connection {
 
     private XmlRpcClient client;
     private XmlRpcClientConfigImpl configuration;
+    private static final Logger logger = Logger.getLogger(Connection.class);
 
     /**
      * Builds a connections using the given user name and password to the default host
@@ -138,7 +140,7 @@ public class Connection {
      * @throws XmlRpcException On errors accessing the API
      */
     public Object execute(String method, Object... parameters) throws XmlRpcException {
-        System.out.println("Executing " + method + " with params: " + Arrays.toString(parameters));
+        logger.info("Executing " + method + " with params: " + Arrays.toString(parameters));
         return client.execute(method, parameters);
     }
 }

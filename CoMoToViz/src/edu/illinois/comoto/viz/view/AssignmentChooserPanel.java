@@ -233,7 +233,9 @@ public class AssignmentChooserPanel extends JPanel {
             }
             Assignment selectedAssignment = (Assignment) object;
             AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, tree, node);
+            //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
+            //worker.runSynchronous();
         } else if (object instanceof Student) {
             Student student = (Student) object;
             display.getVisualMossGraphDisplay().panToNode(student.getNetid(), 5000);

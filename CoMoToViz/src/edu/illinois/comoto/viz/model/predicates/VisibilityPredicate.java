@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model.predicates;
 
+import org.apache.log4j.Logger;
 import prefuse.data.Edge;
 import prefuse.data.Node;
 import prefuse.data.Schema;
@@ -44,9 +45,6 @@ import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
-import prefuse.visual.EdgeItem;
-import prefuse.visual.NodeItem;
-import prefuse.visual.VisualItem;
 
 import java.util.Iterator;
 
@@ -59,6 +57,8 @@ public class VisibilityPredicate implements Predicate {
 
     private final NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
     private final NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
+
+    static final Logger logger = Logger.getLogger(VisibilityPredicate.class);
 
     public VisibilityPredicate(double weight, boolean showSingletons, boolean showSolution, boolean includePast, boolean includePartners) {
         this.weight = weight;
@@ -120,19 +120,21 @@ public class VisibilityPredicate implements Predicate {
     }
 
     public boolean getBoolean(Tuple t) {
+        logger.debug("Entering");
 
-        VisualItem vitem = (VisualItem) t;
 
-        if (vitem instanceof NodeItem) {
-            return handleNode((NodeItem) vitem);
-        } else if (vitem instanceof EdgeItem) {
-            return handleEdge((EdgeItem) vitem);
+        if (t instanceof Node) {
+            logger.debug("Handling node");
+            return handleNode((Node) t);
+        } else if (t instanceof Edge) {
+            logger.debug("Handling edge");
+            return handleEdge((Edge) t);
         }
-
+        logger.debug("Tuple passed was neither edge or node");
         return false;
     }
 
-    private boolean handleNode(NodeItem node) {
+    private boolean handleNode(Node node) {
         //check showSolution
         boolean isSolution = sol.getBoolean(node);
         if (isSolution == true && showSolution == false) {
@@ -171,39 +173,48 @@ public class VisibilityPredicate implements Predicate {
     }
 
     private boolean handleEdge(Edge edge) {
+        logger.debug("Handling edge");
+        logger.debug("Checking solution condition");
         if (showSolution == false) {
+
             if (sol.getBoolean(edge.getTargetNode()) ||
                     sol.getBoolean(edge.getSourceNode())) {
+                logger.debug("Hiding edge because it is connected to the solution");
                 return false;
             }
         }
-
+        logger.debug("Checking partners condition");
         if (includePartners == false) {
             if (edge.getBoolean("isPartner") == true) {
+                logger.debug("Hiding edge because it is a partner edge");
                 return false;
             }
         }
-
+        logger.debug("Checking include past students condition");
         if (includePast == false) {
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
             if (cursem.getBoolean(source) == false && sol.getBoolean(source) == false) {
+                logger.debug("Hiding because edge connects to past semester");
                 return false;
             }
             if (cursem.getBoolean(target) == false && sol.getBoolean(target) == false) {
+                logger.debug("Hiding because edge connects to past semester");
                 return false;
             }
         }
-
+        logger.debug("Checking weight condition");
         double w = edge.getDouble("weight");
         if (w >= weight) {
+            logger.debug("Weight check passed, returning true");
             return true;
         } else {
+            logger.debug("Weight check failed, returning false");
             return false;
         }
     }
 
-    private boolean isLinkedToSolution(NodeItem node) {
+    private boolean isLinkedToSolution(Node node) {
         Iterator iter = node.edges();
         while (iter.hasNext()) {
             Edge edge = (Edge) iter.next();

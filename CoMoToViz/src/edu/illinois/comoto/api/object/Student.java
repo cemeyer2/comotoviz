@@ -297,4 +297,8 @@ public class Student implements Refreshable, Cacheable {
     public int hashCode() {
         return getId();
     }
+
+    public String toString() {
+        return this.getNetid();
+    }
 }

@@ -45,6 +45,7 @@ import edu.illinois.comoto.viz.model.graph.control.GraphControl;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
+import org.apache.log4j.Logger;
 import prefuse.Constants;
 import prefuse.Display;
 import prefuse.Visualization;
@@ -87,6 +88,8 @@ public class GraphDisplay {
     private GraphDisplayContainer parent;
     private LabelRenderer labelRenderer;
     private boolean anonymous;
+
+    private static final Logger logger = Logger.getLogger(GraphDisplay.class);
 
     /**
      * Displays the graph given a non-empty graph
@@ -254,13 +257,14 @@ public class GraphDisplay {
      * @param graph The new graph to display
      */
     public void setGraph(Graph graph) {
-        System.out.println("Starting to Change " + BackendConstants.GRAPH);
+        this.graph = graph;
+        logger.info("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);
-        System.out.println("Removed Old " + BackendConstants.GRAPH + ", Adding New");
+        logger.info("Removed Old " + BackendConstants.GRAPH + ", Adding New");
         visualization.addGraph(BackendConstants.GRAPH, graph);
-        System.out.println(BackendConstants.GRAPH + " Changed");
+        logger.info(BackendConstants.GRAPH + " Changed");
         run();
-        System.out.println("Run Complete");
+        logger.info("Run Complete");
     }
 
     /**
@@ -277,7 +281,9 @@ public class GraphDisplay {
      */
     public void setShowSingletons(boolean showSingletons) {
         this.predicate.setShowSingletons(showSingletons);
+        this.graph = PrefuseGraphBuilder.getBuilder().setVisibilityPredicate(predicate).buildPrefuseGraph();
         repaint();
+        setGraph(this.graph);
     }
 
     /**
@@ -297,7 +303,9 @@ public class GraphDisplay {
      */
     public void setShowSolution(boolean showSolutions) {
         this.predicate.setShowSolution(showSolutions);
+        this.graph = PrefuseGraphBuilder.getBuilder().setVisibilityPredicate(predicate).buildPrefuseGraph();
         repaint();
+        setGraph(this.graph);
     }
 
     /**
@@ -307,7 +315,9 @@ public class GraphDisplay {
      */
     public void setIncludePartners(boolean includePartners) {
         this.predicate.setIncludePartners(includePartners);
+        this.graph = PrefuseGraphBuilder.getBuilder().setVisibilityPredicate(predicate).buildPrefuseGraph();
         repaint();
+        setGraph(this.graph);
     }
 
     /**
@@ -398,8 +408,9 @@ public class GraphDisplay {
      */
     public void setIncludePast(boolean includePast) {
         this.predicate.setIncludePast(includePast);
-        this.repaint();
-        setGraph(graph);
+        this.graph = PrefuseGraphBuilder.getBuilder().setVisibilityPredicate(predicate).buildPrefuseGraph();
+        repaint();
+        setGraph(this.graph);
     }
 
     /**
