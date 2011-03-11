@@ -47,6 +47,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URI;
 
 public class ControlsPanel extends JPanel {
@@ -74,11 +76,29 @@ public class ControlsPanel extends JPanel {
         threshholdSlider.setPaintLabels(true);
         threshholdSlider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                //b0.setTitle("Minimum Edge Weight: "+ threshholdSlider.getValue());
+                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
+                bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
+                threshholdSlider.setBorder(bb);
+            }
+        });
+        threshholdSlider.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent mouseEvent) {
+            }
+
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+
+            public void mouseReleased(MouseEvent mouseEvent) {
                 TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 threshholdSlider.setBorder(bb);
                 graphDisplay.setMinimumEdgeWeightToDisplay(threshholdSlider.getValue());
+            }
+
+            public void mouseEntered(MouseEvent mouseEvent) {
+            }
+
+            public void mouseExited(MouseEvent mouseEvent) {
             }
         });
         c.weightx = 0.0;

@@ -41,6 +41,7 @@ import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebPageDialog;
+import org.apache.log4j.Logger;
 import prefuse.Display;
 import prefuse.controls.Control;
 import prefuse.data.Node;
@@ -59,6 +60,9 @@ public class GraphControl implements Control {
     private boolean enabled = true;
     private GraphDisplayContainer container;
 
+    private static Logger logger = Logger.getLogger(GraphControl.class);
+
+
     public GraphControl(GraphDisplayContainer container) {
         this.container = container;
     }
@@ -68,15 +72,22 @@ public class GraphControl implements Control {
     }
 
     public void itemClicked(VisualItem item, MouseEvent e) {
-        //if is edge, then launch diff viewer here
-        if (item instanceof EdgeItem) {
-            String url = item.getString(BackendConstants.LINK);
-            try {
-                new WebPageDialog(null, url, false);
-            } catch (MalformedURLException ex) {
-                JOptionPane.showMessageDialog(null, FrontendConstants.EDGE_URL_INVALID_MESSAGE, FrontendConstants.INVALID_URL,
-                        JOptionPane.ERROR_MESSAGE);
+
+        logger.info("Item clicked: " + item);
+        try {
+            //if is edge, then launch diff viewer here
+            if (item instanceof EdgeItem) {
+                logger.info("Item is an edge");
+                String url = item.getString(BackendConstants.LINK);
+                try {
+                    new WebPageDialog(null, url, false);
+                } catch (MalformedURLException ex) {
+                    JOptionPane.showMessageDialog(null, FrontendConstants.EDGE_URL_INVALID_MESSAGE, FrontendConstants.INVALID_URL,
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
+        } catch (Exception ex) {
+            logger.error("Exception thrown in itemClicked", ex);
         }
     }
 
@@ -86,29 +97,36 @@ public class GraphControl implements Control {
     }
 
     public void itemEntered(VisualItem item, MouseEvent e) {
-        if (item instanceof EdgeItem) {
-            EdgeItem edge = (EdgeItem) item;
-            Node source = edge.getSourceNode();
-            Node target = edge.getTargetNode();
-            String colname = BackendConstants.NETID;
-            if (container.getGraphDisplay().isAnonymous())
-                colname = BackendConstants.PSEUDONYM;
-            String netid1 = source.getString(colname);
-            String netid2 = target.getString(colname);
-            double weight = edge.getDouble(BackendConstants.WEIGHT);
-            String partners = (edge.getBoolean(BackendConstants.IS_PARTNER)) ? "declared partners " : "";
-            container.setStatus("Similarity between " + partners + netid1 + " and " + netid2 + " with score " + weight);
-        }
-        if (item instanceof NodeItem) {
-            //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
-            NodeItem node = (NodeItem) item;
-            String colname = BackendConstants.NETID;
-            if (container.getGraphDisplay().isAnonymous())
-                colname = BackendConstants.PSEUDONYM;
-            String netid = node.getString(colname);
-            String season = node.getString(BackendConstants.SEASON);
-            String year = node.getString(BackendConstants.YEAR);
-            container.setStatus(FrontendConstants.SUBMISSION + ": " + netid + ", " + season + " " + year);
+        logger.info("Item entered: " + item);
+        try {
+            if (item instanceof EdgeItem) {
+                logger.info("Item is an edge");
+                EdgeItem edge = (EdgeItem) item;
+                Node source = edge.getSourceNode();
+                Node target = edge.getTargetNode();
+                String colname = BackendConstants.NETID;
+                if (container.getGraphDisplay().isAnonymous())
+                    colname = BackendConstants.PSEUDONYM;
+                String netid1 = source.getString(colname);
+                String netid2 = target.getString(colname);
+                double weight = edge.getDouble(BackendConstants.WEIGHT);
+                String partners = (edge.getBoolean(BackendConstants.IS_PARTNER)) ? "declared partners " : "";
+                container.setStatus("Similarity between " + partners + netid1 + " and " + netid2 + " with score " + weight);
+            }
+            if (item instanceof NodeItem) {
+                logger.info("Item is a node");
+                //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
+                NodeItem node = (NodeItem) item;
+                String colname = BackendConstants.NETID;
+                if (container.getGraphDisplay().isAnonymous())
+                    colname = BackendConstants.PSEUDONYM;
+                String netid = node.getString(colname);
+                String season = node.getString(BackendConstants.SEASON);
+                String year = node.getString(BackendConstants.YEAR);
+                container.setStatus(FrontendConstants.SUBMISSION + ": " + netid + ", " + season + " " + year);
+            }
+        } catch (Exception ex) {
+            logger.error("Exception caught in itemEntered", ex);
         }
     }
 
@@ -123,6 +141,7 @@ public class GraphControl implements Control {
     }
 
     public void setEnabled(boolean enabled) {
+        logger.info("setEnabled: " + enabled);
         this.enabled = enabled;
     }
 

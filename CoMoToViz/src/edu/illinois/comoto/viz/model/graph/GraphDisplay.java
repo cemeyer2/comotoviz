@@ -55,7 +55,10 @@ import prefuse.action.RepaintAction;
 import prefuse.action.assignment.ColorAction;
 import prefuse.action.assignment.FontAction;
 import prefuse.action.layout.graph.ForceDirectedLayout;
-import prefuse.controls.*;
+import prefuse.controls.DragControl;
+import prefuse.controls.PanControl;
+import prefuse.controls.WheelZoomControl;
+import prefuse.controls.ZoomControl;
 import prefuse.data.Graph;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
@@ -89,6 +92,7 @@ public class GraphDisplay {
     private GraphDisplayContainer parent;
     private LabelRenderer labelRenderer;
     private boolean anonymous;
+    private GraphControl control;
 
     private static final Logger logger = Logger.getLogger(GraphDisplay.class);
 
@@ -145,10 +149,11 @@ public class GraphDisplay {
 
         // Set visibility of nodes
         predicate = PrefuseGraphBuilder.getBuilder().getPredicate();
-
+        control = new GraphControl(parent);
         // Add the controls to this page and the listeners
         display = new Display(visualization, predicate);
-        display.addControlListener(new GraphControl(parent));
+
+        display.addControlListener(control);
         display.setHighQuality(true);
         addControls();
     }
@@ -188,7 +193,7 @@ public class GraphDisplay {
         color.add(stroke);
         color.add(text);
         color.add(edges);
-        color.add(hl);
+//        color.add(hl); //cant figure out how to get this to work, just causes warnings to print out
         visualization.putAction(actionName, color);
         actions.add(actionName);
 
@@ -214,10 +219,12 @@ public class GraphDisplay {
      * Add the control listeners for this graph
      */
     private void addControls() {
+        control.setEnabled(true);
+        display.addControlListener(control);
         display.addControlListener(new DragControl());
         display.addControlListener(new PanControl());
         display.addControlListener(new ZoomControl());
-        display.addControlListener(new NeighborHighlightControl());
+//        display.addControlListener(new NeighborHighlightControl(BackendConstants.COLOR)); //cant figure out how to get this to work, it just causes warnings to print out
         display.addControlListener(new WheelZoomControl());
     }
 
@@ -296,7 +303,9 @@ public class GraphDisplay {
      */
     public void setMinimumEdgeWeightToDisplay(double weight) {
         this.predicate.setMinWeight(weight);
+        this.graph = PrefuseGraphBuilder.getBuilder().setVisibilityPredicate(predicate).buildPrefuseGraph();
         repaint();
+        setGraph(this.graph);
     }
 
     /**
