@@ -41,6 +41,7 @@ import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
@@ -48,6 +49,8 @@ import edu.illinois.comoto.viz.utility.Pair;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
@@ -76,6 +79,12 @@ public class AssignmentChooserPanel extends JPanel {
     private Icon closedIcon = new ImageIcon(BackendConstants.CLOSED_NODE_ICON_PATH);
     private Icon leafIcon = new ImageIcon(BackendConstants.LEAF_NODE_ICON_PATH);
 
+    //chosen assignment node
+    private DefaultMutableTreeNode currentAssignmentTreeNode;
+
+    //Loading dialog
+    private LoadingProgressDialog dialog;
+
     /**
      * Builds this tree structure given the credentials, and parent GUI elements
      *
@@ -86,12 +95,14 @@ public class AssignmentChooserPanel extends JPanel {
     public AssignmentChooserPanel(MainWindow parentFrame, GraphDisplayContainer parentContainer,
                                   Pair<String, String> activeDirectoryCredentials) {
         super();
+        initializeLoadingProgressDialog();
         this.importer = new DataImport(activeDirectoryCredentials);
         this.courses = importer.getCourses();
         this.display = parentContainer;
         this.frame = parentFrame;
         this.assignmentNodes = new ArrayList<DefaultMutableTreeNode>();
         initialize();
+        hideLoadingProgressDialog();
     }
 
     /**
@@ -225,24 +236,57 @@ public class AssignmentChooserPanel extends JPanel {
      * @param node The node on which the user clicked
      */
     public void changeAssignment(DefaultMutableTreeNode node) {
-
+        currentAssignmentTreeNode = node;
         Object object = node.getUserObject();
         if (object instanceof Assignment) {
-            for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
-                assignmentNode.removeAllChildren();
-            }
+//            for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
+//                assignmentNode.removeAllChildren();
+//            }
             Assignment selectedAssignment = (Assignment) object;
-            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, tree, node);
+            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, this);
             //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
             //worker.runSynchronous();
         } else if (object instanceof Student) {
             Student student = (Student) object;
-            display.getVisualMossGraphDisplay().panToNode(student.getNetid(), 5000);
+            display.getGraphDisplay().panToNode(student.getNetid(), 5000);
         }
     }
 
     public JTree getTree() {
         return tree;
+    }
+
+    /**
+     * repopulates the children of the tree node that corresponds
+     * to the currently showing assignment with the students
+     * that are currently visible in the graph
+     */
+    public void populateCurrentAssignmentNodeWithStudents() {
+        if (currentAssignmentTreeNode != null) {
+            if (currentAssignmentTreeNode.getChildCount() > 0) {
+                currentAssignmentTreeNode.removeAllChildren();
+            }
+            //add students as children
+            for (Student student : PrefuseGraphBuilder.getBuilder().getStudents()) {
+                currentAssignmentTreeNode.add(new DefaultMutableTreeNode(student));
+            }
+            ((DefaultTreeModel) getTree().getModel()).reload();
+            getTree().scrollPathToVisible(new TreePath(currentAssignmentTreeNode.getPath()));
+            getTree().expandRow(getTree().getRowForPath(new TreePath(currentAssignmentTreeNode.getPath())));
+
+        }
+    }
+
+    private void initializeLoadingProgressDialog() {
+        this.dialog = new LoadingProgressDialog(null, "");
+        this.dialog.initialize();
+        this.dialog.setVisible(true);
+        this.dialog.setMessage("Loading analysis index data...");
+        this.dialog.setIndeterminate(true);
+    }
+
+    private void hideLoadingProgressDialog() {
+        this.dialog.setVisible(false);
     }
 }

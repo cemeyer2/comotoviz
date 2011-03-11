@@ -45,6 +45,7 @@ import edu.illinois.comoto.viz.controller.WindowListenerFactory;
 import edu.illinois.comoto.viz.model.graph.GraphDisplay;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.Pair;
+import org.apache.log4j.Logger;
 import prefuse.data.Graph;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
@@ -80,6 +81,8 @@ public class MainWindow extends JFrame {
     // The credentials of the user
     private Pair<String, String> activeDirectoryCredentials;
 
+    private static Logger logger = Logger.getLogger(MainWindow.class);
+
     public MainWindow(Pair<String, String> activeDirectoryCredentials) {
 
         // Add the primary GUI panes
@@ -99,8 +102,8 @@ public class MainWindow extends JFrame {
         this.setTitle(FrontendConstants.PROGRAM_TITLE);
 
         // Add the controls and graph
-        container = new GraphDisplayContainer(768, 768);
-        graphDisplay = container.getVisualMossGraphDisplay();
+        container = new GraphDisplayContainer(768, 768, this);
+        graphDisplay = container.getGraphDisplay();
         rightControls = new ControlsPanel();
         rightControls.addVisualMossControls(graphDisplay);
         leftControls = new AssignmentChooserPanel(this, container, activeDirectoryCredentials);
@@ -114,7 +117,7 @@ public class MainWindow extends JFrame {
         addMenuBar();
 
         // Run this graph layout
-        container.getVisualMossGraphDisplay().run();
+        container.getGraphDisplay().run();
 
         // Add action listener for the window
         EventListenerFactory windowListenerFactory = new WindowListenerFactory();
@@ -287,7 +290,15 @@ public class MainWindow extends JFrame {
         return graphDisplay;
     }
 
-    public GraphDisplayContainer getContainer() {
+    public ControlsPanel getControlsPanel() {
+        return rightControls;
+    }
+
+    public AssignmentChooserPanel getAssignmentChooserPanel() {
+        return leftControls;
+    }
+
+    public GraphDisplayContainer getGraphDisplayContainer() {
         return container;
     }
 }

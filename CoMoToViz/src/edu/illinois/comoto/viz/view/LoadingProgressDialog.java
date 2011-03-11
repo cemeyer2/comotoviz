@@ -56,9 +56,9 @@ public class LoadingProgressDialog extends JDialog {
     /**
      * Build this progress bar
      *
-     * @param owner     The parent GUI element
-     * @param title     The title to appear at the top of the dialog
-     * @param label     The text to appear in the progress bar itself
+     * @param owner The parent GUI element
+     * @param title The title to appear at the top of the dialog
+     * @param label The text to appear in the progress bar itself
      */
     public LoadingProgressDialog(JFrame owner, String title, String label) {
         super(owner, false); //make this not modal
@@ -71,8 +71,8 @@ public class LoadingProgressDialog extends JDialog {
     /**
      * Build this progress bar (with no parent)
      *
-     * @param title     The title to appear at the top of the dialog
-     * @param label     The text to appear in the progress bar itself
+     * @param title The title to appear at the top of the dialog
+     * @param label The text to appear in the progress bar itself
      */
     public LoadingProgressDialog(String title, String label) {
         super();
@@ -110,13 +110,13 @@ public class LoadingProgressDialog extends JDialog {
         // Display it
         this.pack();
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //center the dialog on the screen
     }
 
     /**
      * Set the flag of whether this actually displays the progress of just a message
      *
-     * @param value     Whether try to show the bar displaying progress (false) or just spin (true)
+     * @param value Whether try to show the bar displaying progress (false) or just spin (true)
      */
     public void setIndeterminate(boolean value) {
         bar.setIndeterminate(value);
@@ -125,7 +125,7 @@ public class LoadingProgressDialog extends JDialog {
     /**
      * The message to display over the bar (percentage if not indeterminate)
      *
-     * @param message   The message to display
+     * @param message The message to display
      */
     public void setMessage(String message) {
         bar.setString(message);

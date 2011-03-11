@@ -91,7 +91,7 @@ public class GraphControl implements Control {
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
             String colname = BackendConstants.NETID;
-            if (container.getVisualMossGraphDisplay().isAnonymous())
+            if (container.getGraphDisplay().isAnonymous())
                 colname = BackendConstants.PSEUDONYM;
             String netid1 = source.getString(colname);
             String netid2 = target.getString(colname);
@@ -103,7 +103,7 @@ public class GraphControl implements Control {
             //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
             NodeItem node = (NodeItem) item;
             String colname = BackendConstants.NETID;
-            if (container.getVisualMossGraphDisplay().isAnonymous())
+            if (container.getGraphDisplay().isAnonymous())
                 colname = BackendConstants.PSEUDONYM;
             String netid = node.getString(colname);
             String season = node.getString(BackendConstants.SEASON);
@@ -118,7 +118,7 @@ public class GraphControl implements Control {
 
         }
         if (item instanceof NodeItem) {
-            setNeighborHighlight((NodeItem)item, false, (Display)e.getComponent());
+            setNeighborHighlight((NodeItem) item, false, (Display) e.getComponent());
         }
     }
 
@@ -139,22 +139,57 @@ public class GraphControl implements Control {
     }
 
     // Unused graph controls
-    public void itemKeyPressed(VisualItem item, KeyEvent e) {}
-    public void itemKeyReleased(VisualItem item, KeyEvent e) {}
-    public void itemKeyTyped(VisualItem item, KeyEvent e) {}
-    public void itemMoved(VisualItem item, MouseEvent e) {}
-    public void itemPressed(VisualItem item, MouseEvent e) {}
-    public void itemReleased(VisualItem item, MouseEvent e) {}
-    public void itemWheelMoved(VisualItem item, MouseWheelEvent e) {}
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
-    public void keyTyped(KeyEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
-    public void mouseDragged(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-    public void mouseMoved(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseWheelMoved(MouseWheelEvent e) {}
+    public void itemKeyPressed(VisualItem item, KeyEvent e) {
+    }
+
+    public void itemKeyReleased(VisualItem item, KeyEvent e) {
+    }
+
+    public void itemKeyTyped(VisualItem item, KeyEvent e) {
+    }
+
+    public void itemMoved(VisualItem item, MouseEvent e) {
+    }
+
+    public void itemPressed(VisualItem item, MouseEvent e) {
+    }
+
+    public void itemReleased(VisualItem item, MouseEvent e) {
+    }
+
+    public void itemWheelMoved(VisualItem item, MouseWheelEvent e) {
+    }
+
+    public void keyPressed(KeyEvent e) {
+    }
+
+    public void keyReleased(KeyEvent e) {
+    }
+
+    public void keyTyped(KeyEvent e) {
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
+    }
+
+    public void mouseMoved(MouseEvent e) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseWheelMoved(MouseWheelEvent e) {
+    }
 }

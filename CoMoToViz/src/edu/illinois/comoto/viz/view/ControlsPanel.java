@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.viz.model.graph.GraphDisplay;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -46,10 +47,11 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
+import java.net.URI;
 
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
+    Logger logger = Logger.getLogger(ControlsPanel.class);
 
     public void addVisualMossControls(final GraphDisplay graphDisplay) {
         this.setLayout(new GridBagLayout());
@@ -60,7 +62,7 @@ public class ControlsPanel extends JPanel {
 
         //Threshold Slider
         threshholdSlider = new JSlider();
-        threshholdSlider.setValue(0);//show all edges by default on load
+        threshholdSlider.setValue(FrontendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT);//show all edges by default on load
         threshholdSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         final TitledBorder b0 = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": "
                 + threshholdSlider.getValue());
@@ -116,7 +118,7 @@ public class ControlsPanel extends JPanel {
 
         pastStudentButton = new JCheckBox(FrontendConstants.INCLUDE_PAST_STUDENTS);
         pastStudentButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        pastStudentButton.setSelected(false);
+        pastStudentButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PAST_STUDENTS);
         pastStudentButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -128,7 +130,7 @@ public class ControlsPanel extends JPanel {
 
         singletonsButton = new JCheckBox(FrontendConstants.INCLUDE_SINGLETONS);
         singletonsButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        singletonsButton.setSelected(true);
+        singletonsButton.setSelected(FrontendConstants.DEFAULT_SHOW_SINGLETONS);
         singletonsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (singletonsButton.isSelected())
@@ -142,7 +144,7 @@ public class ControlsPanel extends JPanel {
 
         partnersButton = new JCheckBox(FrontendConstants.INCLUDE_PARTNER_EDGES);
         partnersButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        partnersButton.setSelected(false);
+        partnersButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PARTNERS);
         partnersButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -154,7 +156,7 @@ public class ControlsPanel extends JPanel {
 
         solutionButton = new JCheckBox(FrontendConstants.INCLUDE_SOLUTION);
         solutionButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        solutionButton.setSelected(true);
+        solutionButton.setSelected(FrontendConstants.DEFAULT_SHOW_SOLUTION);
         solutionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (solutionButton.isSelected())
@@ -191,10 +193,14 @@ public class ControlsPanel extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new WebPageDialog(graphDisplay.getReportURL(), true);
-                } catch (MalformedURLException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
+                    Desktop desktop = Desktop.getDesktop();
+                    if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                        desktop.browse(new URI(graphDisplay.getReportURL()));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e1) {
+                    logger.error("Error launching browser", e1);
                 }
             }
         });

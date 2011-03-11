@@ -45,6 +45,7 @@ import edu.illinois.comoto.viz.model.graph.control.GraphControl;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
+import edu.illinois.comoto.viz.view.MainWindow;
 import org.apache.log4j.Logger;
 import prefuse.Constants;
 import prefuse.Display;
@@ -143,7 +144,7 @@ public class GraphDisplay {
         setLayout(BackendConstants.LAYOUT, 5000); //run the layout engine for 5 seconds
 
         // Set visibility of nodes
-        predicate = new VisibilityPredicate(minimumWeightToDisplay, showSingletons, showSolution, includePast, includePartners);
+        predicate = PrefuseGraphBuilder.getBuilder().getPredicate();
 
         // Add the controls to this page and the listeners
         display = new Display(visualization, predicate);
@@ -257,6 +258,8 @@ public class GraphDisplay {
      * @param graph The new graph to display
      */
     public void setGraph(Graph graph) {
+        MainWindow grandparent = parent.getParent();
+        grandparent.getAssignmentChooserPanel().populateCurrentAssignmentNodeWithStudents();//when the backing data on the graph changes, update the list of students that are in it
         this.graph = graph;
         logger.info("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);

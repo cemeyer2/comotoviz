@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.model.graph;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.MainWindow;
 import prefuse.data.Graph;
 
 import javax.swing.*;
@@ -48,10 +49,12 @@ public class GraphDisplayContainer extends JPanel {
     private final int STATUS_AREA_HEIGHT = 30;
     JLabel statusLabel;
     int width, height;
+    private MainWindow parent;
 
-    public GraphDisplayContainer(Graph graph, int width, int height) {
+    public GraphDisplayContainer(Graph graph, int width, int height, MainWindow parent) {
         this.width = width;
         this.height = height;
+        this.parent = parent;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(width, height));
         graphDisplay = new GraphDisplay(graph, this);
@@ -61,9 +64,10 @@ public class GraphDisplayContainer extends JPanel {
         add(statusLabel, BorderLayout.SOUTH);
     }
 
-    public GraphDisplayContainer(int width, int height) {
+    public GraphDisplayContainer(int width, int height, MainWindow parent) {
         this.width = width;
         this.height = height;
+        this.parent = parent;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(width, height));
         graphDisplay = new GraphDisplay(this);
@@ -85,7 +89,11 @@ public class GraphDisplayContainer extends JPanel {
         setStatus("");
     }
 
-    public final GraphDisplay getVisualMossGraphDisplay() {
+    public final GraphDisplay getGraphDisplay() {
         return graphDisplay;
+    }
+
+    public MainWindow getParent() {
+        return parent;
     }
 }

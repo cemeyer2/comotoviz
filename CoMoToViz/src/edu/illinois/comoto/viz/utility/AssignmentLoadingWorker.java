@@ -38,45 +38,35 @@
 package edu.illinois.comoto.viz.utility;
 
 import edu.illinois.comoto.api.object.Assignment;
-import edu.illinois.comoto.api.object.Student;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
+import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.MainWindow;
 import prefuse.data.Graph;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 
     private Assignment assignment;
     private GraphDisplayContainer container;
     private MainWindow frame;
-    private JTree tree;
-    private DefaultMutableTreeNode node;
+    private AssignmentChooserPanel assignmentChooserPanel;
 
-    public AssignmentLoadingWorker(Assignment assignment, GraphDisplayContainer container, MainWindow frame, JTree tree, DefaultMutableTreeNode node) {
+    public AssignmentLoadingWorker(Assignment assignment, GraphDisplayContainer container, MainWindow frame, AssignmentChooserPanel assignmentChooserPanel) {
         this.assignment = assignment;
         this.container = container;
         this.frame = frame;
-        this.tree = tree;
-        this.node = node;
+        this.assignmentChooserPanel = assignmentChooserPanel;
     }
 
     @Override
     protected Void doInBackground() throws Exception {
 
         Graph graph = PrefuseGraphBuilder.getBuilder().setAssignment(assignment).buildPrefuseGraph();
-
-        //add students as children
-        for (Student student : PrefuseGraphBuilder.getBuilder().getStudents()) {
-            node.add(new DefaultMutableTreeNode(student));
-        }
-        ((DefaultTreeModel) tree.getModel()).reload();
-
         container.changeGraph(graph);
         frame.updateTitle(assignment);
+        assignmentChooserPanel.populateCurrentAssignmentNodeWithStudents();
         frame.searchStudents();
 
         return null;

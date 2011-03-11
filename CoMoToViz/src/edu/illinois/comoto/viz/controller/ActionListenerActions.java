@@ -90,12 +90,12 @@ public enum ActionListenerActions {
                     if (retval == JFileChooser.APPROVE_OPTION) {
                         File file = chooser.getSelectedFile();
                         try {
-                            new DataExport(mainWindow.getContainer().getVisualMossGraphDisplay().getGraph()).write(file);
+                            new DataExport(mainWindow.getGraphDisplayContainer().getGraphDisplay().getGraph()).write(file);
                         } catch (DataIOException exception) {
                             exception.printStackTrace();
                         }
                     }
-                 }
+                }
             };
         }
     },

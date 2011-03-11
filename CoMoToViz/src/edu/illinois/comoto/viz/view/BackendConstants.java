@@ -104,4 +104,11 @@ public class BackendConstants {
 
     public static final String LINUX = "Linux";
     public static final String OS_PROPERTY = "os.name";
+
+    public static final double DEFAULT_MINIMUM_EDGE_WEIGHT = FrontendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT;
+    public static final boolean DEFAULT_SHOW_SINGLETONS = FrontendConstants.DEFAULT_SHOW_SINGLETONS;
+    public static final boolean DEFAULT_SHOW_SOLUTION = FrontendConstants.DEFAULT_SHOW_SOLUTION;
+    public static final boolean DEFAULT_INCLUDE_PAST_STUDENTS = FrontendConstants.DEFAULT_INCLUDE_PAST_STUDENTS;
+    public static final boolean DEFAULT_INCLUDE_PARTNERS = FrontendConstants.DEFAULT_INCLUDE_PARTNERS;
+    public static final boolean DEFAULT_SHOW_BUILD_PROGRESS = true;
 }

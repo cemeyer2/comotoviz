@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.model;
 
+import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
@@ -71,13 +72,6 @@ public class PrefuseGraphBuilder {
         return instance;
     }
 
-    private final double DEFAULT_MINIMUM_EDGE_WEIGHT = 0.0d;
-    private final boolean DEFAULT_SHOW_SINGLETONS = true;
-    private final boolean DEFAULT_SHOW_SOLUTION = true;
-    private final boolean DEFAULT_INCLUDE_PAST_STUDENTS = false;
-    private final boolean DEFAULT_INCLUDE_PARTNERS = true;
-    private final boolean DEFAULT_SHOW_BUILD_PROGRESS = true;
-
     private Assignment assignment;
     private VisibilityPredicate predicate;
     private boolean showBuildProgress;
@@ -87,12 +81,12 @@ public class PrefuseGraphBuilder {
     private List<Student> students;
 
     private PrefuseGraphBuilder() {
-        this.predicate = new VisibilityPredicate(DEFAULT_MINIMUM_EDGE_WEIGHT,
-                DEFAULT_SHOW_SINGLETONS,
-                DEFAULT_SHOW_SOLUTION,
-                DEFAULT_INCLUDE_PAST_STUDENTS,
-                DEFAULT_INCLUDE_PARTNERS);
-        showBuildProgress = DEFAULT_SHOW_BUILD_PROGRESS;
+        this.predicate = new VisibilityPredicate(BackendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT,
+                BackendConstants.DEFAULT_SHOW_SINGLETONS,
+                BackendConstants.DEFAULT_SHOW_SOLUTION,
+                BackendConstants.DEFAULT_INCLUDE_PAST_STUDENTS,
+                BackendConstants.DEFAULT_INCLUDE_PARTNERS);
+        showBuildProgress = BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS;
         nodes = new HashMap<Integer, Node>();
         edges = new HashMap<Integer, Edge>();
         students = new LinkedList<Student>();
@@ -100,6 +94,7 @@ public class PrefuseGraphBuilder {
 
     public PrefuseGraphBuilder setAssignment(Assignment assignment) {
         this.assignment = assignment;
+        this.setShowBuildProgress(BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS);
         return this;
     }
 
@@ -206,7 +201,7 @@ public class PrefuseGraphBuilder {
         logger.debug("Filtering complete");
         logger.debug("Nodes remaining: " + graph.getNodeCount());
         logger.debug("Edges remaining: " + graph.getEdgeCount());
-
+        this.setShowBuildProgress(!BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS);
         return copyGraph(graph);
     }
 
@@ -250,9 +245,6 @@ public class PrefuseGraphBuilder {
                 Student student = submission.getStudent();
                 Node node = VisualItemFactory.createNode(graph, student, isCurrentSemester, submission.getId());
                 nodes.put(submission.getId(), node);
-                if (student != null) {
-                    students.add(student);
-                }
             }
         }
     }
@@ -309,7 +301,12 @@ public class PrefuseGraphBuilder {
             newNode.setString(BackendConstants.SUBMISSION_ID, oldNode.getString(BackendConstants.SUBMISSION_ID));
             newNode.setBoolean(BackendConstants.CURRENT_SEMESTER, oldNode.getBoolean(BackendConstants.CURRENT_SEMESTER));
             if (oldNode.canGetInt(BackendConstants.STUDENT_ID)) {
-                newNode.setInt(BackendConstants.STUDENT_ID, oldNode.getInt(BackendConstants.STUDENT_ID));
+                int studentId = oldNode.getInt(BackendConstants.STUDENT_ID);
+                newNode.setInt(BackendConstants.STUDENT_ID, studentId);
+                if (studentId >= 0) {
+                    Student student = CoMoToAPI.getStudent(DataImport.getConnection(), studentId, true);
+                    students.add(student);
+                }
             }
         }
 

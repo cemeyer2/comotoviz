@@ -113,4 +113,9 @@ public class FrontendConstants {
     public static final String BUILDING_STUDENT_DATA_MESSAGE = "Building Student Data";
     public static final String BUILDING_MATCH_DATA_MESSAGE = "Building Match Data";
     public static final String FILTERING_DATA_MESSAGE = "Filtering Data";
+    public static final int DEFAULT_MINIMUM_EDGE_WEIGHT = 0;
+    public static final boolean DEFAULT_SHOW_SINGLETONS = true;
+    public static final boolean DEFAULT_SHOW_SOLUTION = true;
+    public static final boolean DEFAULT_INCLUDE_PAST_STUDENTS = false;
+    public static final boolean DEFAULT_INCLUDE_PARTNERS = true;
 }

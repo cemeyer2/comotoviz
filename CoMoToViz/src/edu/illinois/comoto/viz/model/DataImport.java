@@ -44,6 +44,7 @@ import edu.illinois.comoto.api.object.Season;
 import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.viz.utility.Pair;
+import edu.illinois.comoto.viz.view.LoadingProgressDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,13 +57,14 @@ import java.util.List;
  */
 public class DataImport {
 
-    private Connection connection;
+    private static Connection connection; //kind of a hack to allow me to not have to pass this object around everywhere else i need it
     private ArrayList<Submission> submissions;
     private Assignment assignment;
     private Course course;
     private List<Course> courses;
     private Season assignmentSeason;
     private int assignmentYear;
+    private LoadingProgressDialog dialog;
 
 
     /**
@@ -70,7 +72,6 @@ public class DataImport {
      * for each course
      */
     public DataImport(String courseName, String assignmentName, Pair<String, String> activeDirectoryCredentials) {
-
         //Create a connection to the CoMoTo API
         connection = new Connection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
@@ -94,7 +95,6 @@ public class DataImport {
     }
 
     public DataImport(Pair<String, String> activeDirectoryCredentials) {
-
         //Create a connection to the CoMoTo API
         connection = new Connection(activeDirectoryCredentials.getFirst(), activeDirectoryCredentials.getSecond());
 
@@ -107,7 +107,7 @@ public class DataImport {
      *
      * @return The connection to the API
      */
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 
