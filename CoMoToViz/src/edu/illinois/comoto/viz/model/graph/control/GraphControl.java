@@ -50,9 +50,12 @@ import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 
@@ -204,6 +207,17 @@ public class GraphControl implements Control {
     }
 
     public void mousePressed(MouseEvent e) {
+        Point p = e.getPoint();
+        AffineTransform at = container.getGraphDisplay().getDisplay().getInverseTransform();
+        AffineTransform at2 = container.getGraphDisplay().getDisplay().getTransform();
+        Point2D p2 = at.transform(p, null);
+        Point2D p3 = at2.transform(p, null);
+        logger.info("Mouse press absolute: " + p);
+        logger.info("Mouse press itransformed: " + p2);
+        logger.info("Mouse press transformed: " + p3);
+        double x = container.getGraphDisplay().getDisplay().getX();
+        double y = container.getGraphDisplay().getDisplay().getY();
+        logger.info("Corner: (" + x + "," + y + ")");
     }
 
     public void mouseReleased(MouseEvent e) {

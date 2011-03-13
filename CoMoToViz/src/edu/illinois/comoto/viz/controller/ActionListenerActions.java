@@ -160,7 +160,7 @@ public enum ActionListenerActions {
                         // Try to dump this graph to the file as an image
                         File file = chooser.getSelectedFile();
                         try {
-                            mainWindow.getGraphDisplay().writeToImage(file);
+                            mainWindow.getGraphDisplayContainer().getGraphDisplay().writeToImage(file);
                         } catch (IOException exception) {
                             exception.printStackTrace();
                         }

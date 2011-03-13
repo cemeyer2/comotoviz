@@ -166,6 +166,11 @@ public class Course implements Refreshable, Cacheable {
         if (assignments == null) {
             assignments = CoMoToAPI.getAssignments(connection, id);
         }
+        for (Assignment assignment : assignments) {
+            if (assignment.getAnalysisId() < 0) {
+                assignments.remove(assignment);
+            }
+        }
         return assignments;
     }
 

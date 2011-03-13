@@ -240,6 +240,10 @@ public class GraphDisplay {
         return this.display;
     }
 
+    public Display getDisplay() {
+        return display;
+    }
+
     /**
      * runs all actions associated with this visualization, including coloring and layout
      */
@@ -270,9 +274,13 @@ public class GraphDisplay {
         this.graph = graph;
         logger.info("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);
+        visualization.reset();
         logger.info("Removed Old " + BackendConstants.GRAPH + ", Adding New");
         visualization.addGraph(BackendConstants.GRAPH, graph);
+        visualization.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
+        visualization.repaint();
         logger.info(BackendConstants.GRAPH + " Changed");
+        display.damageReport();
         run();
         logger.info("Run Complete");
     }

@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.viz.model.graph.GraphDisplay;
+import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -55,7 +55,7 @@ public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     Logger logger = Logger.getLogger(ControlsPanel.class);
 
-    public void addVisualMossControls(final GraphDisplay graphDisplay) {
+    public void addVisualMossControls(final GraphDisplayContainer container) {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         final JCheckBox pastStudentButton, singletonsButton, partnersButton, solutionButton, anonymousButton;
@@ -92,7 +92,7 @@ public class ControlsPanel extends JPanel {
                 TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 threshholdSlider.setBorder(bb);
-                graphDisplay.setMinimumEdgeWeightToDisplay(threshholdSlider.getValue());
+                container.getGraphDisplay().setMinimumEdgeWeightToDisplay(threshholdSlider.getValue());
             }
 
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -129,7 +129,7 @@ public class ControlsPanel extends JPanel {
                 zoomSlider.setBorder(bb);
                 if ((newVal = zoomSlider.getValue()) == 0.0)
                     newVal = 0.001;
-                graphDisplay.setZoom(newVal / oldVal);
+                container.getGraphDisplay().setZoom(newVal / oldVal);
                 oldVal = newVal;
             }
         });
@@ -142,7 +142,7 @@ public class ControlsPanel extends JPanel {
         pastStudentButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                graphDisplay.setIncludePast(pastStudentButton.isSelected());
+                container.getGraphDisplay().setIncludePast(pastStudentButton.isSelected());
             }
         });
         c.gridy = 2;
@@ -154,9 +154,9 @@ public class ControlsPanel extends JPanel {
         singletonsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (singletonsButton.isSelected())
-                    graphDisplay.setShowSingletons(true);
+                    container.getGraphDisplay().setShowSingletons(true);
                 else
-                    graphDisplay.setShowSingletons(false);
+                    container.getGraphDisplay().setShowSingletons(false);
             }
         });
         c.gridy = 3;
@@ -168,7 +168,7 @@ public class ControlsPanel extends JPanel {
         partnersButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                graphDisplay.setIncludePartners(partnersButton.isSelected());
+                container.getGraphDisplay().setIncludePartners(partnersButton.isSelected());
             }
         });
         c.gridy = 4;
@@ -180,9 +180,9 @@ public class ControlsPanel extends JPanel {
         solutionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (solutionButton.isSelected())
-                    graphDisplay.setShowSolution(true);
+                    container.getGraphDisplay().setShowSolution(true);
                 else
-                    graphDisplay.setShowSolution(false);
+                    container.getGraphDisplay().setShowSolution(false);
             }
         });
         c.gridy = 5;
@@ -191,13 +191,12 @@ public class ControlsPanel extends JPanel {
         anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         anonymousButton.setSelected(true);
-        graphDisplay.setAnonymous(true);
         anonymousButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (anonymousButton.isSelected())
-                    graphDisplay.setAnonymous(true);
+                    container.getGraphDisplay().setAnonymous(true);
                 else
-                    graphDisplay.setAnonymous(false);
+                    container.getGraphDisplay().setAnonymous(false);
             }
         });
         c.gridy = 6;
@@ -215,7 +214,7 @@ public class ControlsPanel extends JPanel {
                 try {
                     Desktop desktop = Desktop.getDesktop();
                     if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                        desktop.browse(new URI(graphDisplay.getReportURL()));
+                        desktop.browse(new URI(container.getGraphDisplay().getReportURL()));
                     } else {
                         JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser", JOptionPane.ERROR_MESSAGE);
                     }

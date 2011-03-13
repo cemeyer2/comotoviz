@@ -39,6 +39,7 @@ package edu.illinois.comoto.viz.model.graph;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.MainWindow;
+import prefuse.Display;
 import prefuse.data.Graph;
 
 import javax.swing.*;
@@ -46,6 +47,7 @@ import java.awt.*;
 
 public class GraphDisplayContainer extends JPanel {
     GraphDisplay graphDisplay;
+    Display display;
     private final int STATUS_AREA_HEIGHT = 30;
     JLabel statusLabel;
     int width, height;
@@ -60,7 +62,8 @@ public class GraphDisplayContainer extends JPanel {
         graphDisplay = new GraphDisplay(graph, this);
         this.statusLabel = new JLabel();
         this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
-        add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
+        display = graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT);
+        add(display, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
     }
 

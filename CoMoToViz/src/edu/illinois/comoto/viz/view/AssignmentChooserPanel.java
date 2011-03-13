@@ -124,7 +124,6 @@ public class AssignmentChooserPanel extends JPanel {
 
                 // For each assignment in this course during this semester, add it to the semester node
                 for (Assignment assignment : course.getAssignments()) {
-
                     Offering assignmentOffering = assignment.getMossAnalysisPrunedOffering();
 
                     DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);

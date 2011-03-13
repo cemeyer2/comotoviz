@@ -42,7 +42,6 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
-import edu.illinois.comoto.viz.model.graph.GraphDisplay;
 import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.Pair;
 import org.apache.log4j.Logger;
@@ -68,7 +67,6 @@ public class MainWindow extends JFrame {
     // GUI elements
     private Graph graph;
     private GraphDisplayContainer container;
-    private GraphDisplay graphDisplay;
     private ControlsPanel rightControls;
     private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
@@ -103,9 +101,8 @@ public class MainWindow extends JFrame {
 
         // Add the controls and graph
         container = new GraphDisplayContainer(768, 768, this);
-        graphDisplay = container.getGraphDisplay();
         rightControls = new ControlsPanel();
-        rightControls.addVisualMossControls(graphDisplay);
+        rightControls.addVisualMossControls(container);
         leftControls = new AssignmentChooserPanel(this, container, activeDirectoryCredentials);
         leftControls.setPreferredSize(new Dimension(200, windowHeight));
         visualMoss.add(container);
@@ -169,13 +166,13 @@ public class MainWindow extends JFrame {
         String searchText = searchBox.getText();
 
         // Clear the box background if it's empty
-        if (graphDisplay == null || searchText.length() == 0) {
+        if (container == null || searchText.length() == 0) {
             searchBox.setBackground(Color.white);
             return false;
         }
 
         // If the graph is empty (i.e. no graph loaded)
-        Iterator<NodeItem> iterator = graphDisplay.getNodes();
+        Iterator<NodeItem> iterator = container.getGraphDisplay().getNodes();
         if (iterator == null) {
             searchBox.setBackground(Color.white);
             return false;
@@ -188,8 +185,8 @@ public class MainWindow extends JFrame {
             if (netid.startsWith(searchText)) {
 
                 // Pan to this node if we found it
-                graphDisplay.panToNode(netid, 500);
-                boolean isVisible = graphDisplay.getVisibilityPredicate().getBoolean(node);
+                container.getGraphDisplay().panToNode(netid, 500);
+                boolean isVisible = container.getGraphDisplay().getVisibilityPredicate().getBoolean(node);
 
                 // Show a message depending on whether or not it's visible
                 if (isVisible) {
@@ -284,10 +281,6 @@ public class MainWindow extends JFrame {
         } else {
             JOptionPane.showInputDialog(this, FrontendConstants.ASSIGNMENT_DOES_NOT_EXIST_MESSAGE, FrontendConstants.GENERIC_ERROR_MESSAGE, JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    public GraphDisplay getGraphDisplay() {
-        return graphDisplay;
     }
 
     public ControlsPanel getControlsPanel() {

@@ -135,7 +135,7 @@ public class Assignment implements Refreshable, Cacheable {
         if (abstractMossAnalysisPrunedOffering != null && abstractMossAnalysisPrunedOffering.size() > 0) {
             mossAnalysisPrunedOffering = new Offering(abstractMossAnalysisPrunedOffering, connection);
             abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
-        } else if(abstractMossAnalysisPrunedOffering.size() <= 0) {
+        } else if (abstractMossAnalysisPrunedOffering.size() <= 0) {
             abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
         }
 
@@ -173,7 +173,7 @@ public class Assignment implements Refreshable, Cacheable {
     public Analysis getAnalysis() {
 
         //If it's not cached, grab it from the API
-        if (analysis == null) {
+        if (analysis == null && analysisId >= 0) {
             analysis = CoMoToAPI.getAnalysis(connection, analysisId);
         }
         return analysis;
