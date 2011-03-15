@@ -118,4 +118,5 @@ public class FrontendConstants {
     public static final boolean DEFAULT_SHOW_SOLUTION = true;
     public static final boolean DEFAULT_INCLUDE_PAST_STUDENTS = false;
     public static final boolean DEFAULT_INCLUDE_PARTNERS = true;
+    public static final long DEFAULT_LAYOUT_ENGINE_RUN_TIME = 5000;
 }

@@ -40,13 +40,18 @@ package edu.illinois.comoto.viz.view.graph;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.Constants;
 import prefuse.Visualization;
+import prefuse.action.ActionList;
+import prefuse.action.RepaintAction;
+import prefuse.action.layout.graph.ForceDirectedLayout;
 import prefuse.data.Graph;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
 import prefuse.render.LabelRenderer;
 import prefuse.render.RendererFactory;
+import prefuse.util.force.ForceSimulator;
 
 import java.util.LinkedList;
 
@@ -60,6 +65,7 @@ import java.util.LinkedList;
 public class GraphDisplayBuilder {
     private static GraphDisplayBuilder builder;
     private LinkedList<String> visualizationActions;
+    private long layoutEngineRunTime = FrontendConstants.DEFAULT_LAYOUT_ENGINE_RUN_TIME;
 
     public static GraphDisplayBuilder getBuilder() {
         if (builder == null) {
@@ -84,6 +90,7 @@ public class GraphDisplayBuilder {
         VisibilityPredicate predicate = PrefuseGraphBuilder.getBuilder().getPredicate();
         Visualization visualization = buildVisualization(graph);
         GraphDisplay display = new GraphDisplay(visualization, this.visualizationActions);
+        display.setHighQuality(true);
         return display;
     }
 
@@ -91,7 +98,9 @@ public class GraphDisplayBuilder {
         Visualization visualization = new Visualization();
         visualization.addGraph(BackendConstants.GRAPH, graph);
         visualization.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
-
+        visualization.setRendererFactory(getRendererFactory());
+        visualization.putAction(BackendConstants.LAYOUT, getLayoutAction());
+        this.visualizationActions.add(BackendConstants.LAYOUT);
         return visualization;
     }
 
@@ -99,6 +108,25 @@ public class GraphDisplayBuilder {
         LabelRenderer labelRenderer = new LabelRenderer(BackendConstants.NETID);
         labelRenderer.setRoundedCorner(8, 8); // round the corners on nodes
         return new DefaultRendererFactory(labelRenderer, new EdgeRenderer(Constants.EDGE_TYPE_CURVE));
+    }
+
+    private ActionList getLayoutAction() {
+        ActionList layout = new ActionList(layoutEngineRunTime);
+        ForceDirectedLayout l = new ForceDirectedLayout(BackendConstants.GRAPH);
+        ForceSimulator sim = l.getForceSimulator();
+        layout.add(l);
+        layout.add(new RepaintAction());
+        return layout;
+    }
+
+
+    public long getLayoutEngineRunTime() {
+        return this.layoutEngineRunTime;
+    }
+
+    public GraphDisplayBuilder setLayoutEngineRunTime(long layoutEngineRunTime) {
+        this.layoutEngineRunTime = layoutEngineRunTime;
+        return this;
     }
 
 }
