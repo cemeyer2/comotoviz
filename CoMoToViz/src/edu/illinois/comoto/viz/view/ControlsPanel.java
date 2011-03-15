@@ -37,7 +37,8 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -55,7 +56,7 @@ public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     Logger logger = Logger.getLogger(ControlsPanel.class);
 
-    public void addVisualMossControls(final GraphDisplayContainer container) {
+    public void initialize(final GraphPanel graphPanel) {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         final JCheckBox pastStudentButton, singletonsButton, partnersButton, solutionButton, anonymousButton;
@@ -92,7 +93,8 @@ public class ControlsPanel extends JPanel {
                 TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 threshholdSlider.setBorder(bb);
-                container.getGraphDisplay().setMinimumEdgeWeightToDisplay(threshholdSlider.getValue());
+                PrefuseGraphBuilder.getBuilder().setMinimumEdgeWeight(threshholdSlider.getValue());
+                graphPanel.reloadGraph();
             }
 
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -127,9 +129,11 @@ public class ControlsPanel extends JPanel {
                 TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");
                 bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                 zoomSlider.setBorder(bb);
-                if ((newVal = zoomSlider.getValue()) == 0.0)
+                if ((newVal = zoomSlider.getValue()) == 0.0) {
                     newVal = 0.001;
-                container.getGraphDisplay().setZoom(newVal / oldVal);
+                }
+                logger.fatal("Need to implement slider zoom after prefuse refactoring");
+                //graphPanel.getGraphDisplay().setZoom(newVal / oldVal);
                 oldVal = newVal;
             }
         });
@@ -142,7 +146,8 @@ public class ControlsPanel extends JPanel {
         pastStudentButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                container.getGraphDisplay().setIncludePast(pastStudentButton.isSelected());
+                PrefuseGraphBuilder.getBuilder().setIncludePastStudents(pastStudentButton.isSelected());
+                graphPanel.reloadGraph();
             }
         });
         c.gridy = 2;
@@ -153,10 +158,8 @@ public class ControlsPanel extends JPanel {
         singletonsButton.setSelected(FrontendConstants.DEFAULT_SHOW_SINGLETONS);
         singletonsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (singletonsButton.isSelected())
-                    container.getGraphDisplay().setShowSingletons(true);
-                else
-                    container.getGraphDisplay().setShowSingletons(false);
+                PrefuseGraphBuilder.getBuilder().setShowSingletons(singletonsButton.isSelected());
+                graphPanel.reloadGraph();
             }
         });
         c.gridy = 3;
@@ -168,7 +171,8 @@ public class ControlsPanel extends JPanel {
         partnersButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                container.getGraphDisplay().setIncludePartners(partnersButton.isSelected());
+                PrefuseGraphBuilder.getBuilder().setIncludePartners(partnersButton.isSelected());
+                graphPanel.reloadGraph();
             }
         });
         c.gridy = 4;
@@ -179,10 +183,8 @@ public class ControlsPanel extends JPanel {
         solutionButton.setSelected(FrontendConstants.DEFAULT_SHOW_SOLUTION);
         solutionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (solutionButton.isSelected())
-                    container.getGraphDisplay().setShowSolution(true);
-                else
-                    container.getGraphDisplay().setShowSolution(false);
+                PrefuseGraphBuilder.getBuilder().setShowSolution(solutionButton.isSelected());
+                graphPanel.reloadGraph();
             }
         });
         c.gridy = 5;
@@ -193,10 +195,11 @@ public class ControlsPanel extends JPanel {
         anonymousButton.setSelected(true);
         anonymousButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (anonymousButton.isSelected())
-                    container.getGraphDisplay().setAnonymous(true);
-                else
-                    container.getGraphDisplay().setAnonymous(false);
+                logger.fatal("need to implement anonymous after prefuse refactoring");
+//                if (anonymousButton.isSelected())
+//                    graphPanel.getGraphDisplay().setAnonymous(true);
+//                else
+//                    graphPanel.getGraphDisplay().setAnonymous(false);
             }
         });
         c.gridy = 6;
@@ -214,7 +217,10 @@ public class ControlsPanel extends JPanel {
                 try {
                     Desktop desktop = Desktop.getDesktop();
                     if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                        desktop.browse(new URI(container.getGraphDisplay().getReportURL()));
+                        if (PrefuseGraphBuilder.getBuilder().getAssignment() != null) {
+                            String url = "https://comoto.cs.illinois.edu/comoto/view_analysis/view/" + Integer.toString(PrefuseGraphBuilder.getBuilder().getAssignment().getId());
+                            desktop.browse(new URI(url));
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser", JOptionPane.ERROR_MESSAGE);
                     }

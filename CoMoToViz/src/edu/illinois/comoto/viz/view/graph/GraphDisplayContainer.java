@@ -46,7 +46,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GraphDisplayContainer extends JPanel {
-    GraphDisplay graphDisplay;
+    GraphDisplayOld graphDisplay;
     Display display;
     private final int STATUS_AREA_HEIGHT = 30;
     JLabel statusLabel;
@@ -59,7 +59,7 @@ public class GraphDisplayContainer extends JPanel {
         this.parent = parent;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(width, height));
-        graphDisplay = new GraphDisplay(graph, this);
+        graphDisplay = new GraphDisplayOld(graph, this);
         this.statusLabel = new JLabel();
         this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
         display = graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT);
@@ -73,7 +73,7 @@ public class GraphDisplayContainer extends JPanel {
         this.parent = parent;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(width, height));
-        graphDisplay = new GraphDisplay(this);
+        graphDisplay = new GraphDisplayOld(this);
         this.statusLabel = new JLabel();
         this.statusLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
         add(graphDisplay.getDisplay(width, height - STATUS_AREA_HEIGHT), BorderLayout.CENTER);
@@ -92,7 +92,7 @@ public class GraphDisplayContainer extends JPanel {
         setStatus("");
     }
 
-    public final GraphDisplay getGraphDisplay() {
+    public final GraphDisplayOld getGraphDisplay() {
         return graphDisplay;
     }
 

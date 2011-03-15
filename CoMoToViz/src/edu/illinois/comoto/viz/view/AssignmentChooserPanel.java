@@ -43,8 +43,9 @@ import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
+import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.Pair;
-import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -70,9 +71,9 @@ public class AssignmentChooserPanel extends JPanel {
     // GUI components
     private JTree tree;
     private DataImport importer;
-    private GraphDisplayContainer display;
     private MainWindow frame;
     private ArrayList<DefaultMutableTreeNode> assignmentNodes;
+    private GraphPanel graphPanel;
 
     // Load the tree node icons
     private Icon openIcon = new ImageIcon(BackendConstants.OPEN_NODE_ICON_PATH);
@@ -89,18 +90,17 @@ public class AssignmentChooserPanel extends JPanel {
      * Builds this tree structure given the credentials, and parent GUI elements
      *
      * @param parentFrame                Parent GUI frame
-     * @param parentContainer            Parent GUI container
+     * @param graphPanel                 the gui component that actually displays the graph
      * @param activeDirectoryCredentials AD credentials from login dialog
      */
-    public AssignmentChooserPanel(MainWindow parentFrame, GraphDisplayContainer parentContainer,
-                                  Pair<String, String> activeDirectoryCredentials) {
+    public AssignmentChooserPanel(MainWindow parentFrame, GraphPanel graphPanel, Pair<String, String> activeDirectoryCredentials) {
         super();
         initializeLoadingProgressDialog();
         this.importer = new DataImport(activeDirectoryCredentials);
         this.courses = importer.getCourses();
-        this.display = parentContainer;
         this.frame = parentFrame;
         this.assignmentNodes = new ArrayList<DefaultMutableTreeNode>();
+        this.graphPanel = graphPanel;
         initialize();
         hideLoadingProgressDialog();
     }
@@ -242,13 +242,14 @@ public class AssignmentChooserPanel extends JPanel {
 //                assignmentNode.removeAllChildren();
 //            }
             Assignment selectedAssignment = (Assignment) object;
-            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, display, frame, this);
+            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, graphPanel, frame, this);
             //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
             //worker.runSynchronous();
         } else if (object instanceof Student) {
-            Student student = (Student) object;
-            display.getGraphDisplay().panToNode(student.getNetid(), 5000);
+            throw new CoMoToVizException("Need to implement pan to node after prefuse refactoring");
+//            Student student = (Student) object;
+//            display.getGraphDisplay().panToNode(student.getNetid(), 5000);
         }
     }
 

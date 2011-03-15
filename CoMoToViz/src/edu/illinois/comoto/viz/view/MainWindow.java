@@ -42,11 +42,11 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
+import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.Pair;
-import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 import prefuse.data.Graph;
-import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
@@ -55,7 +55,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowListener;
-import java.util.Iterator;
 
 
 public class MainWindow extends JFrame {
@@ -66,7 +65,7 @@ public class MainWindow extends JFrame {
 
     // GUI elements
     private Graph graph;
-    private GraphDisplayContainer container;
+    private GraphPanel graphPanel;
     private ControlsPanel rightControls;
     private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
@@ -100,12 +99,13 @@ public class MainWindow extends JFrame {
         this.setTitle(FrontendConstants.PROGRAM_TITLE);
 
         // Add the controls and graph
-        container = new GraphDisplayContainer(768, 768, this);
+        graphPanel = new GraphPanel(768, 768);
         rightControls = new ControlsPanel();
-        rightControls.addVisualMossControls(container);
-        leftControls = new AssignmentChooserPanel(this, container, activeDirectoryCredentials);
+        rightControls.initialize(graphPanel);
+        leftControls = new AssignmentChooserPanel(this, graphPanel, activeDirectoryCredentials);
         leftControls.setPreferredSize(new Dimension(200, windowHeight));
-        visualMoss.add(container);
+        graphPanel.setAssignmentChooserPanel(leftControls);
+        visualMoss.add(graphPanel, BorderLayout.CENTER);
         visualMoss.add(leftControls, BorderLayout.WEST);
         visualMoss.add(rightControls, BorderLayout.EAST);
 
@@ -161,62 +161,63 @@ public class MainWindow extends JFrame {
      */
     public boolean searchStudents() {
 
-        // Get the text that's now in the box
-        container.clearStatus();
-        String searchText = searchBox.getText();
-
-        // Clear the box background if it's empty
-        if (container == null || searchText.length() == 0) {
-            searchBox.setBackground(Color.white);
-            return false;
-        }
-
-        // If the graph is empty (i.e. no graph loaded)
-        Iterator<NodeItem> iterator = container.getGraphDisplay().getNodes();
-        if (iterator == null) {
-            searchBox.setBackground(Color.white);
-            return false;
-        }
-
-        // Look for the student in the graph
-        while (iterator.hasNext()) {
-            NodeItem node = iterator.next();
-            String netid = node.getString(BackendConstants.NETID);
-            if (netid.startsWith(searchText)) {
-
-                // Pan to this node if we found it
-                container.getGraphDisplay().panToNode(netid, 500);
-                boolean isVisible = container.getGraphDisplay().getVisibilityPredicate().getBoolean(node);
-
-                // Show a message depending on whether or not it's visible
-                if (isVisible) {
-                    searchBox.setBackground(Color.green);
-                    container.setStatus("Centered on node \"" + netid + "\".");
-                } else {
-                    searchBox.setBackground(Color.yellow);
-                    container.setStatus("Centered on node \"" + netid + "\" not visible with current settings");
-                }
-
-                // Handle coloring the node
-                if (!lastNodeWasVisible && lastNode != null)
-                    lastNode.setVisible(false);
-                if (lastNode != null)
-                    lastNode.setFillColor(lastFillColor);
-                lastNodeWasVisible = isVisible;
-                lastNode = node;
-                lastFillColor = node.getFillColor();
-                node.setFillColor(ColorLib.rgb(0, 255, 0));
-
-                // We found it
-                return true;
-            }
-        }
-
-        // we couldn't find it
-        if (!lastNodeWasVisible && lastNode != null)
-            lastNode.setVisible(false);
-        searchBox.setBackground(Color.red);
-        return false;
+        throw new CoMoToVizException("Need to implement searchStudents after prefuse refactoring");
+//        // Get the text that's now in the box
+//        container.clearStatus();
+//        String searchText = searchBox.getText();
+//
+//        // Clear the box background if it's empty
+//        if (container == null || searchText.length() == 0) {
+//            searchBox.setBackground(Color.white);
+//            return false;
+//        }
+//
+//        // If the graph is empty (i.e. no graph loaded)
+//        Iterator<NodeItem> iterator = container.getGraphDisplay().getNodes();
+//        if (iterator == null) {
+//            searchBox.setBackground(Color.white);
+//            return false;
+//        }
+//
+//        // Look for the student in the graph
+//        while (iterator.hasNext()) {
+//            NodeItem node = iterator.next();
+//            String netid = node.getString(BackendConstants.NETID);
+//            if (netid.startsWith(searchText)) {
+//
+//                // Pan to this node if we found it
+//                container.getGraphDisplay().panToNode(netid, 500);
+//                boolean isVisible = container.getGraphDisplay().getVisibilityPredicate().getBoolean(node);
+//
+//                // Show a message depending on whether or not it's visible
+//                if (isVisible) {
+//                    searchBox.setBackground(Color.green);
+//                    container.setStatus("Centered on node \"" + netid + "\".");
+//                } else {
+//                    searchBox.setBackground(Color.yellow);
+//                    container.setStatus("Centered on node \"" + netid + "\" not visible with current settings");
+//                }
+//
+//                // Handle coloring the node
+//                if (!lastNodeWasVisible && lastNode != null)
+//                    lastNode.setVisible(false);
+//                if (lastNode != null)
+//                    lastNode.setFillColor(lastFillColor);
+//                lastNodeWasVisible = isVisible;
+//                lastNode = node;
+//                lastFillColor = node.getFillColor();
+//                node.setFillColor(ColorLib.rgb(0, 255, 0));
+//
+//                // We found it
+//                return true;
+//            }
+//        }
+//
+//        // we couldn't find it
+//        if (!lastNodeWasVisible && lastNode != null)
+//            lastNode.setVisible(false);
+//        searchBox.setBackground(Color.red);
+//        return false;
     }
 
     /**
@@ -291,7 +292,7 @@ public class MainWindow extends JFrame {
         return leftControls;
     }
 
-    public GraphDisplayContainer getGraphDisplayContainer() {
-        return container;
+    public GraphPanel getGraphPanel() {
+        return this.graphPanel;
     }
 }

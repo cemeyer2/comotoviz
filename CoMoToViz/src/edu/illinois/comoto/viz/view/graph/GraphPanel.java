@@ -37,50 +37,55 @@
 
 package edu.illinois.comoto.viz.view.graph;
 
+import edu.illinois.comoto.viz.utility.CoMoToVizException;
+import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import org.apache.log4j.Logger;
-import prefuse.Display;
-import prefuse.Visualization;
 
-import java.util.List;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
  * Date:    3/15/11
- * Time:    5:19 PM
+ * Time:    5:17 PM
  * Package: edu.illinois.comoto.viz.view.graph
  * Created by IntelliJ IDEA.
  */
-public class GraphDisplay extends Display {
+public class GraphPanel extends JPanel {
 
-    private Visualization visualization;
-    private List<String> visualizationActions;
-    private static final Logger logger = Logger.getLogger(GraphDisplay.class);
+    private GraphDisplay currentDisplay;
+    private AssignmentChooserPanel assignmentChooserPanel;
+    private static final Logger logger = Logger.getLogger(GraphPanel.class);
 
-    protected GraphDisplay(Visualization visualization, List<String> visualizationActions) {
-        super(visualization);
-        this.visualization = visualization;
-        this.visualizationActions = visualizationActions;
+    public GraphPanel(int width, int height) {
+        setLayout(new BorderLayout());
+        Dimension size = new Dimension(width, height);
+        setPreferredSize(size);
+        setSize(size);
+        currentDisplay = null;
     }
 
-    protected void runAllActions() {
-        logger.info("Running all actions");
-        if (this.visualizationActions != null && this.visualization != null) {
-            for (String action : visualizationActions) {
-                logger.info("Running action: " + action);
-                this.visualization.run(action);
+    public void reloadGraph() {
+        logger.info("Reloading graph");
+        try {
+            if (currentDisplay != null) {
+                remove(currentDisplay);
             }
-        }
-    }
-
-    protected void runAction(String action) {
-        if (this.visualizationActions != null && this.visualization != null) {
-            if (this.visualizationActions.contains(action)) {
-                logger.info("Running action: " + action);
-                this.visualization.run(action);
-            } else {
-                logger.error("Tried to run action '" + action + "' that is not loaded into this visualization");
+            currentDisplay = GraphDisplayBuilder.getBuilder().buildDisplay();
+            if (assignmentChooserPanel != null) {
+                assignmentChooserPanel.populateCurrentAssignmentNodeWithStudents();
             }
+            add(currentDisplay, BorderLayout.CENTER);
+            revalidate();
+            repaint();
+            currentDisplay.runAllActions();
+        } catch (CoMoToVizException e) {
+            logger.error("Tried to reload graph on invalid builder", e);
         }
+        logger.info("Reloaded");
     }
 
+    public void setAssignmentChooserPanel(AssignmentChooserPanel assignmentChooserPanel) {
+        this.assignmentChooserPanel = assignmentChooserPanel;
+    }
 }

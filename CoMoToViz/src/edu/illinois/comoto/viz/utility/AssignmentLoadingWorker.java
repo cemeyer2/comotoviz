@@ -41,21 +41,22 @@ import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.MainWindow;
-import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
-import prefuse.data.Graph;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 
 public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 
     private Assignment assignment;
-    private GraphDisplayContainer container;
+    private GraphPanel graphPanel;
     private MainWindow frame;
     private AssignmentChooserPanel assignmentChooserPanel;
+    private static final Logger logger = Logger.getLogger(AssignmentLoadingWorker.class);
 
-    public AssignmentLoadingWorker(Assignment assignment, GraphDisplayContainer container, MainWindow frame, AssignmentChooserPanel assignmentChooserPanel) {
+    public AssignmentLoadingWorker(Assignment assignment, GraphPanel graphPanel, MainWindow frame, AssignmentChooserPanel assignmentChooserPanel) {
         this.assignment = assignment;
-        this.container = container;
+        this.graphPanel = graphPanel;
         this.frame = frame;
         this.assignmentChooserPanel = assignmentChooserPanel;
     }
@@ -63,11 +64,14 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     @Override
     protected Void doInBackground() throws Exception {
 
-        Graph graph = PrefuseGraphBuilder.getBuilder().setAssignment(assignment).buildPrefuseGraph();
-        container.changeGraph(graph);
+        PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
+        graphPanel.reloadGraph();
         frame.updateTitle(assignment);
-        assignmentChooserPanel.populateCurrentAssignmentNodeWithStudents();
-        frame.searchStudents();
+        try {
+            frame.searchStudents();
+        } catch (Exception e) { //expecting this now due to refactoring
+            logger.error("Need to complete prefuse refactoring", e);
+        }
 
         return null;
     }

@@ -37,16 +37,18 @@
 
 package edu.illinois.comoto.viz.controller;
 
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
+import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.DataExport;
 import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
 import edu.illinois.comoto.viz.view.*;
+import org.apache.log4j.Logger;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 /**
  * User: Jon
@@ -90,7 +92,7 @@ public enum ActionListenerActions {
                     if (retval == JFileChooser.APPROVE_OPTION) {
                         File file = chooser.getSelectedFile();
                         try {
-                            new DataExport(mainWindow.getGraphDisplayContainer().getGraphDisplay().getGraph()).write(file);
+                            new DataExport(PrefuseGraphBuilder.getBuilder().buildPrefuseGraph()).write(file);
                         } catch (DataIOException exception) {
                             exception.printStackTrace();
                         }
@@ -160,9 +162,10 @@ public enum ActionListenerActions {
                         // Try to dump this graph to the file as an image
                         File file = chooser.getSelectedFile();
                         try {
-                            mainWindow.getGraphDisplayContainer().getGraphDisplay().writeToImage(file);
-                        } catch (IOException exception) {
-                            exception.printStackTrace();
+                            throw new CoMoToVizException("need to implement write to file after prefuse refactoring");
+                            //mainWindow.getGraphDisplayContainer().getGraphDisplay().writeToImage(file);
+                        } catch (Exception exception) {
+                            logger.fatal("Incomplete implementation", exception);
                         }
                     }
                 }
@@ -171,4 +174,6 @@ public enum ActionListenerActions {
     };
 
     abstract ActionListener getActionListenerAction(Object... parameters);
+
+    private static final Logger logger = Logger.getLogger(ActionListenerActions.class);
 }
