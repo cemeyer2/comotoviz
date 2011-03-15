@@ -80,7 +80,7 @@
     </path>
 
     <target name="viz.compile" depends="init">
-        <javac srcdir="${basedir}/../src" destdir="build.viz/" classpathref="compile.classpath"
+        <javac srcdir="${basedir}/../src" destdir="build.viz/" classpathref="compile.classpath" debug="true"
                target="1.5"/>
     </target>
 
@@ -107,6 +107,14 @@
     </target>
 
     <target name="viz.jar" depends="viz.compile">
+        <copy todir="build.viz">
+            <fileset dir="${basedir}/../src">
+                <include name="log4j.properties"/>
+            </fileset>
+        </copy>
+        <copy todir="build.viz">
+            <fileset dir="${basedir}/../src/edu/illinois/comoto/viz/resources/"/>
+        </copy>
         <jar destfile="jar/CoMoToViz-orig.jar">
             <fileset dir="build.viz/"/>
 
@@ -121,10 +129,10 @@
             <fileset dir="${basedir}/../lib/"/>
         </copy>
 
-                <taskdef name="yguard"
+        <taskdef name="yguard"
                  classname="com.yworks.yguard.YGuardTask"
                  classpath="lib/yguard.jar"/>
-
+        <!--
         <yguard>
             <inoutpair in="jar/CoMoToViz-orig.jar" out="jar/CoMoToViz.jar"/>
 
@@ -148,7 +156,10 @@
 
         </yguard>
         <delete file="jar/CoMoToViz-orig.jar"/>
+        -->
+    </target>
 
+    <target name="viz.sign" depends="viz.jar">
         <signjar
                 alias="comoto" keystore="keystore"
                 storepass="comoto"
@@ -157,12 +168,23 @@
                 <fileset dir="jar" includes="**/*.jar"/>
             </path>
         </signjar>
+    </target>
 
-
+    <target name="viz.run" depends="viz.jar">
+        <java classname="edu.illinois.comoto.viz.CoMoToViz"
+              fork="true"
+              failonerror="true"
+                >
+            <classpath>
+                <fileset dir="jar/">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </java>
     </target>
 
 
-    <target name="war" depends="viz.jar">
+    <target name="war" depends="viz.sign">
         <jw:jnlpwar
                 tofile="dist/CoMoToViz.war"
                 codebase="http://comoto.cs.illinois.edu:8080/CoMoToViz/"

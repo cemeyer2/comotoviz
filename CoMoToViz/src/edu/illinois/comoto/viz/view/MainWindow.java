@@ -42,8 +42,8 @@ import edu.illinois.comoto.viz.controller.ActionListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.KeyListenerFactory;
 import edu.illinois.comoto.viz.controller.WindowListenerFactory;
-import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.Pair;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
 import org.apache.log4j.Logger;
 import prefuse.data.Graph;
 import prefuse.util.ColorLib;
@@ -114,7 +114,7 @@ public class MainWindow extends JFrame {
         addMenuBar();
 
         // Run this graph layout
-        container.getGraphDisplay().run();
+//        container.getGraphDisplay().run();
 
         // Add action listener for the window
         EventListenerFactory windowListenerFactory = new WindowListenerFactory();

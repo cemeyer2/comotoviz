@@ -35,17 +35,17 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model.graph;
+package edu.illinois.comoto.viz.view.graph;
 
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.model.graph.actions.EdgeStrokeColorAction;
-import edu.illinois.comoto.viz.model.graph.actions.NodeFillColorAction;
-import edu.illinois.comoto.viz.model.graph.actions.NodeStrokeColorAction;
-import edu.illinois.comoto.viz.model.graph.control.GraphControl;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.MainWindow;
+import edu.illinois.comoto.viz.view.graph.actions.EdgeStrokeColorAction;
+import edu.illinois.comoto.viz.view.graph.actions.NodeFillColorAction;
+import edu.illinois.comoto.viz.view.graph.actions.NodeStrokeColorAction;
+import edu.illinois.comoto.viz.view.graph.control.GraphControl;
 import org.apache.log4j.Logger;
 import prefuse.Constants;
 import prefuse.Display;
@@ -193,7 +193,7 @@ public class GraphDisplay {
         color.add(stroke);
         color.add(text);
         color.add(edges);
-//        color.add(hl); //cant figure out how to get this to work, just causes warnings to print out
+        color.add(hl); //cant figure out how to get this to work, just causes warnings to print out
         visualization.putAction(actionName, color);
         actions.add(actionName);
 
@@ -274,13 +274,10 @@ public class GraphDisplay {
         this.graph = graph;
         logger.info("Starting to Change " + BackendConstants.GRAPH);
         visualization.removeGroup(BackendConstants.GRAPH);
-        visualization.reset();
         logger.info("Removed Old " + BackendConstants.GRAPH + ", Adding New");
         visualization.addGraph(BackendConstants.GRAPH, graph);
         visualization.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
-        visualization.repaint();
         logger.info(BackendConstants.GRAPH + " Changed");
-        display.damageReport();
         run();
         logger.info("Run Complete");
     }

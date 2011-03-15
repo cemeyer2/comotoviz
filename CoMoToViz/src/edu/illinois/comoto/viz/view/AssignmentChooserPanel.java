@@ -42,9 +42,9 @@ import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;

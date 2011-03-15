@@ -35,12 +35,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model.graph.control;
+package edu.illinois.comoto.viz.view.graph.control;
 
-import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebPageDialog;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
 import org.apache.log4j.Logger;
 import prefuse.Display;
 import prefuse.controls.Control;

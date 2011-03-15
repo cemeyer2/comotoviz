@@ -37,7 +37,7 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;

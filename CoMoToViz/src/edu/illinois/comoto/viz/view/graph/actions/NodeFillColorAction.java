@@ -35,7 +35,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.model.graph.actions;
+package edu.illinois.comoto.viz.view.graph.actions;
 
 import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
 import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;

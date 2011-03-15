@@ -39,9 +39,9 @@ package edu.illinois.comoto.viz.utility;
 
 import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.model.graph.GraphDisplayContainer;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.MainWindow;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayContainer;
 import prefuse.data.Graph;
 
 import javax.swing.*;
