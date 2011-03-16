@@ -41,6 +41,20 @@
         CoMoToViz and CoMoToAPI Build File
     </description>
 
+    <property name="path" value="/CoMoToViz"/>
+    <property name="url" value="http://comoto.cs.illinois.edu:8080/manager"/>
+    <property name="username" value="manager"/>
+    <property name="password" value="comotoviz"/>
+    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="list" classname="org.apache.catalina.ant.ListTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="roles" classname="org.apache.catalina.ant.RolesTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="start" classname="org.apache.catalina.ant.StartTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="stop" classname="org.apache.catalina.ant.StopTask" classpath="lib/catalina-ant.jar"/>
+    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpath="lib/catalina-ant.jar"/>
+
+
     <typedef resource="org/unintelligible/antjnlpwar/antjnlpwar.xml" format="xml" uri="org.unintelligible.antjnlpwar">
         <classpath>
             <pathelement location="${basedir}/../lib/ant-jnlp-war_deps-0.9.jar"/>
@@ -208,7 +222,19 @@
         </jw:jnlpwar>
     </target>
 
-    <target name="dist" depends="api.jar, war">
+    <target name="viz.deploy" description="Install web application"
+            depends="viz.undeploy">
+        <deploy url="${url}" username="${username}" password="${password}"
+                path="${path}" war="dist/CoMoToViz.war"/>
+    </target>
+
+    <target name="viz.undeploy" description="Remove web application" depends="war">
+        <undeploy url="${url}" username="${username}" password="${password}"
+                  path="${path}"/>
+    </target>
+
+
+    <target name="dist" depends="api.jar, viz.deploy">
         <copy todir="dist">
             <fileset dir="jar/">
                 <include name="CoMoToAPI.jar"/>
