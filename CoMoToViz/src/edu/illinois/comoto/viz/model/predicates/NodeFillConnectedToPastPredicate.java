@@ -35,39 +35,70 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.view.graph.actions;
+package edu.illinois.comoto.viz.model.predicates;
 
-import edu.illinois.comoto.viz.model.predicates.NodeFillConnectedToPastPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
-import prefuse.action.assignment.ColorAction;
-import prefuse.util.ColorLib;
-import prefuse.visual.VisualItem;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import org.apache.log4j.Logger;
+import prefuse.data.Schema;
+import prefuse.data.Tuple;
+import prefuse.data.event.ExpressionListener;
+import prefuse.data.expression.ExpressionVisitor;
+import prefuse.data.expression.Predicate;
 
-import java.awt.*;
 
-public class NodeFillColorAction extends ColorAction {
+public class NodeFillConnectedToPastPredicate implements Predicate {
 
-    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
-    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
-    private NodeFillConnectedToPastPredicate past = new NodeFillConnectedToPastPredicate();
+    private static final Logger LOGGER = Logger.getLogger(NodeFillConnectedToPastPredicate.class);
 
-    public NodeFillColorAction(String group, String field) {
-        super(group, field);
-        // TODO Auto-generated constructor stub
+    public void addExpressionListener(ExpressionListener lstnr) {
+        // TODO Auto-generated method stub
+
     }
 
-    @Override
-    public int getColor(VisualItem item) {
-        if (past.getBoolean(item)) {
-            return ColorLib.color(Color.YELLOW);
-        } else if (cursem.getBoolean(item)) {
-            return ColorLib.color(Color.WHITE);
-        } else if (sol.getBoolean(item)) {
-            return ColorLib.color(Color.RED);
-        } else {
-            return ColorLib.gray(200);
+    public Object get(Tuple t) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public boolean getBoolean(Tuple t) {
+        if (t.canGetBoolean(BackendConstants.CONNECTED_TO_PAST)) {
+            return t.getBoolean(BackendConstants.CONNECTED_TO_PAST);
         }
+        return false;
+    }
+
+    public double getDouble(Tuple t) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public float getFloat(Tuple t) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public int getInt(Tuple t) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public long getLong(Tuple t) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public Class getType(Schema s) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void removeExpressionListener(ExpressionListener lstnr) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void visit(ExpressionVisitor v) {
+        // TODO Auto-generated method stub
 
     }
 

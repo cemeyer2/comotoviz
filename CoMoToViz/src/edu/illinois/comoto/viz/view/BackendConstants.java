@@ -50,6 +50,7 @@ import java.awt.*;
 
 public class BackendConstants {
 
+
     private BackendConstants() {
     }
 
@@ -72,6 +73,7 @@ public class BackendConstants {
     public static final String CURRENT_SEMESTER = "currentSemester";
     public static final String STUDENT_ID = "student_id";
     public static final String MOSSMATCH_ID = "mossmatch_id";
+    public static final String CONNECTED_TO_PAST = "connectedToPast";
 
     //Font constants
     public static final String FONT_NAME = "Verdana";

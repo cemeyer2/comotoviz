@@ -213,6 +213,7 @@ public class PrefuseGraphBuilder {
         graph.getNodeTable().addColumn(BackendConstants.SUBMISSION_ID, int.class);
         graph.getNodeTable().addColumn(BackendConstants.CURRENT_SEMESTER, boolean.class);
         graph.getNodeTable().addColumn(BackendConstants.STUDENT_ID, int.class);
+        graph.getNodeTable().addColumn(BackendConstants.CONNECTED_TO_PAST, boolean.class, false);
 
         //Declare all the properties of an analysis
         graph.getEdgeTable().addColumn(BackendConstants.WEIGHT, double.class);   //Weight = max(score1,score2)
@@ -298,6 +299,7 @@ public class PrefuseGraphBuilder {
             newNode.setString(BackendConstants.SEASON, oldNode.getString(BackendConstants.SEASON));
             newNode.setString(BackendConstants.YEAR, oldNode.getString(BackendConstants.YEAR));
             newNode.setBoolean(BackendConstants.CURRENT_SEMESTER, oldNode.getBoolean(BackendConstants.CURRENT_SEMESTER));
+            newNode.setBoolean(BackendConstants.CONNECTED_TO_PAST, oldNode.getBoolean(BackendConstants.CONNECTED_TO_PAST));
             if (oldNode.canGetInt(BackendConstants.STUDENT_ID)) {
                 int studentId = oldNode.getInt(BackendConstants.STUDENT_ID);
                 newNode.setInt(BackendConstants.STUDENT_ID, studentId);

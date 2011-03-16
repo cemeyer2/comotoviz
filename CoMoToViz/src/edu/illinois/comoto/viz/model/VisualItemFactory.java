@@ -108,7 +108,21 @@ public class VisualItemFactory {
         edge.setString(BackendConstants.LINK, matchLink.toString());
         edge.setBoolean(BackendConstants.IS_PARTNER, arePartners);
         edge.setInt(BackendConstants.MOSSMATCH_ID, match.getId());
+
+        checkPast(node1, node2);
+
         return edge;
+    }
+
+    private static void checkPast(Node node1, Node node2) {
+        boolean node1currentSemester = node1.getBoolean(BackendConstants.CURRENT_SEMESTER);
+        boolean node2currentSemester = node2.getBoolean(BackendConstants.CURRENT_SEMESTER);
+        if (node1currentSemester && !node2currentSemester) {
+            node1.setBoolean(BackendConstants.CONNECTED_TO_PAST, true);
+        }
+        if (node2currentSemester && !node1currentSemester) {
+            node2.setBoolean(BackendConstants.CONNECTED_TO_PAST, true);
+        }
     }
 
     /**
