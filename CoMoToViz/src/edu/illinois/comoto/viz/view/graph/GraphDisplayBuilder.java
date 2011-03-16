@@ -78,6 +78,7 @@ public class GraphDisplayBuilder {
     private static GraphDisplayBuilder builder;
     private LinkedList<String> visualizationActions;
     private long layoutEngineRunTime = FrontendConstants.DEFAULT_LAYOUT_ENGINE_RUN_TIME;
+    private boolean isAnonymous = FrontendConstants.DEFAULT_ANONYMOUS;
 
     public static GraphDisplayBuilder getBuilder() {
         if (builder == null) {
@@ -130,6 +131,9 @@ public class GraphDisplayBuilder {
     private RendererFactory getRendererFactory() {
         LabelRenderer labelRenderer = new LabelRenderer(BackendConstants.NETID);
         labelRenderer.setRoundedCorner(8, 8); // round the corners on nodes
+        if (this.isAnonymous) {
+            labelRenderer.setTextField(BackendConstants.PSEUDONYM);
+        }
         return new DefaultRendererFactory(labelRenderer, new EdgeRenderer(Constants.EDGE_TYPE_CURVE));
     }
 
@@ -194,6 +198,14 @@ public class GraphDisplayBuilder {
     public GraphDisplayBuilder setLayoutEngineRunTime(long layoutEngineRunTime) {
         this.layoutEngineRunTime = layoutEngineRunTime;
         return this;
+    }
+
+    public boolean isAnonymous() {
+        return this.isAnonymous;
+    }
+
+    public void setAnonymous(boolean isAnonymous) {
+        this.isAnonymous = isAnonymous;
     }
 
 }

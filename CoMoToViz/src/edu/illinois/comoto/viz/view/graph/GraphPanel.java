@@ -43,6 +43,7 @@ import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -88,4 +89,24 @@ public class GraphPanel extends JPanel {
     public void setAssignmentChooserPanel(AssignmentChooserPanel assignmentChooserPanel) {
         this.assignmentChooserPanel = assignmentChooserPanel;
     }
+
+    /**
+     * zooms the display about the point that is currently centered
+     *
+     * @param level the scale factor to zoom by, 1.05 would zoom in 5%, .95 would zoom out 5%, etc
+     */
+    public void setZoom(double level) {
+        this.currentDisplay.zoom(new Point2D.Double(this.currentDisplay.getWidth() / 2d, this.currentDisplay.getHeight() / 2d), (double) level);
+        this.currentDisplay.repaint();
+    }
+
+    /**
+     * Gets the current zoom scale factor
+     *
+     * @return The zoom factor
+     */
+    public double getZoom() {
+        return this.currentDisplay.getScale();
+    }
+
 }

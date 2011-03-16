@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 
@@ -132,8 +133,7 @@ public class ControlsPanel extends JPanel {
                 if ((newVal = zoomSlider.getValue()) == 0.0) {
                     newVal = 0.001;
                 }
-                logger.fatal("Need to implement slider zoom after prefuse refactoring");
-                //graphPanel.getGraphDisplay().setZoom(newVal / oldVal);
+                graphPanel.setZoom(newVal / oldVal);
                 oldVal = newVal;
             }
         });
@@ -192,14 +192,11 @@ public class ControlsPanel extends JPanel {
 
         anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        anonymousButton.setSelected(true);
+        anonymousButton.setSelected(FrontendConstants.DEFAULT_ANONYMOUS);
         anonymousButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                logger.fatal("need to implement anonymous after prefuse refactoring");
-//                if (anonymousButton.isSelected())
-//                    graphPanel.getGraphDisplay().setAnonymous(true);
-//                else
-//                    graphPanel.getGraphDisplay().setAnonymous(false);
+                GraphDisplayBuilder.getBuilder().setAnonymous(anonymousButton.isSelected());
+                graphPanel.reloadGraph();
             }
         });
         c.gridy = 6;
