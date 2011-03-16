@@ -71,7 +71,7 @@ public class AssignmentChooserPanel extends JPanel {
     private JTree tree;
     private DataImport importer;
     private MainWindow frame;
-    private ArrayList<DefaultMutableTreeNode> assignmentNodes;
+    private List<DefaultMutableTreeNode> assignmentNodes;
     private GraphPanel graphPanel;
 
     // Load the tree node icons

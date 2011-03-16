@@ -62,16 +62,13 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     }
 
     @Override
-    protected Void doInBackground() throws Exception {
+    protected Void doInBackground() {
 
         PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
         graphPanel.reloadGraph();
         frame.updateTitle(assignment);
-        try {
-            frame.searchStudents();
-        } catch (Exception e) { //expecting this now due to refactoring
-            logger.error("Need to complete prefuse refactoring", e);
-        }
+
+        frame.searchStudents();
 
         return null;
     }

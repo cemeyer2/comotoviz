@@ -66,6 +66,7 @@ import prefuse.util.force.ForceSimulator;
 import prefuse.visual.VisualItem;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -76,7 +77,7 @@ import java.util.LinkedList;
  */
 public class GraphDisplayBuilder {
     private static GraphDisplayBuilder builder;
-    private LinkedList<String> visualizationActions;
+    private List<String> visualizationActions;
     private long layoutEngineRunTime = FrontendConstants.DEFAULT_LAYOUT_ENGINE_RUN_TIME;
     private boolean isAnonymous = FrontendConstants.DEFAULT_ANONYMOUS;
 

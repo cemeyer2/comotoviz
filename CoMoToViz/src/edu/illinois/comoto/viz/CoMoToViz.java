@@ -52,6 +52,8 @@ import java.util.Enumeration;
 
 public class CoMoToViz {
 
+    private CoMoToViz() {
+    }
 
     /**
      * Entry point for the CoMoTo dynamic visualization
@@ -60,7 +62,7 @@ public class CoMoToViz {
      * @throws edu.illinois.comoto.viz.utility.CoMoToVizException
      *          On errors with the viz itself
      */
-    public static void main(String[] args) throws CoMoToVizException {
+    public static void main(String[] args) {
 
         setDefaultFont();
 

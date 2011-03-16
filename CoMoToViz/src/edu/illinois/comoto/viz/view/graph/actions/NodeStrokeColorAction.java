@@ -63,7 +63,7 @@ public class NodeStrokeColorAction extends ColorAction {
         while (edgeIter.hasNext()) {
             EdgeItem edge = edgeIter.next();
             double weight = edge.getDouble(BackendConstants.WEIGHT);
-            if (weight > maxEdgeWeight && edge.getBoolean(BackendConstants.IS_PARTNER) == false) {
+            if (weight > maxEdgeWeight && !edge.getBoolean(BackendConstants.IS_PARTNER)) {
                 maxEdgeWeight = weight;
             }
         }

@@ -59,6 +59,9 @@ import java.util.List;
  */
 public class VisualItemFactory {
 
+    private VisualItemFactory() {
+    }
+
     public static Node createNode(Graph graph, Student student, Semester semester, boolean currentSemester, int submissionId) {
 
         boolean isSolution = (student == null);

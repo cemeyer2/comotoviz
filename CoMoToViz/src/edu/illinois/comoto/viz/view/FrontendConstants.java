@@ -47,6 +47,9 @@ package edu.illinois.comoto.viz.view;
  */
 public class FrontendConstants {
 
+    private FrontendConstants() {
+    }
+
     //Window Titles
     public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
     public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
@@ -120,4 +123,14 @@ public class FrontendConstants {
     public static final boolean DEFAULT_INCLUDE_PARTNERS = true;
     public static final long DEFAULT_LAYOUT_ENGINE_RUN_TIME = 5000;
     public static final boolean DEFAULT_ANONYMOUS = false;
+
+    // Dimensions
+    public static final int ABOUT_DIALOG_WIDTH = 500;
+    public static final int ABOUT_DIALOG_HEIGHT = 300;
+    public static final int HELP_DIALOG_WIDTH = 575;
+    public static final int HELP_DIALOG_HEIGHT = 300;
+    public static final int LOADING_PROGRESS_DIALOG_WIDTH = 400;
+    public static final int LOADING_PROGRESS_DIALOG_HEIGHT = 50;
+    public static final int LOGIN_DIALOG_WIDTH = 400;
+    public static final int LOGIN_DIALOG_HEIGHT = 200;
 }

@@ -40,13 +40,9 @@ package edu.illinois.comoto.viz.model;
 import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.api.object.Course;
-import edu.illinois.comoto.api.object.Season;
-import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.viz.utility.Pair;
-import edu.illinois.comoto.viz.view.LoadingProgressDialog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,13 +54,9 @@ import java.util.List;
 public class DataImport {
 
     private static Connection connection; //kind of a hack to allow me to not have to pass this object around everywhere else i need it
-    private ArrayList<Submission> submissions;
     private Assignment assignment;
     private Course course;
     private List<Course> courses;
-    private Season assignmentSeason;
-    private int assignmentYear;
-    private LoadingProgressDialog dialog;
 
 
     /**

@@ -55,6 +55,9 @@ import java.util.Map;
 
 public class CoMoToAPI {
 
+    private CoMoToAPI() {
+    }
+
     /**
      * Gets an analysis by its id
      *

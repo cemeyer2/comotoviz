@@ -40,6 +40,7 @@ package edu.illinois.comoto.api.utility;
 import edu.illinois.comoto.api.object.Cacheable;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -55,12 +56,15 @@ import java.util.HashMap;
  */
 public class Cache {
 
-    private static HashMap<Class, HashMap<Integer, Cacheable>> cache;
+    private static Map<Class, HashMap<Integer, Cacheable>> cache;
     private static boolean enabled;
 
     static {
         cache = new HashMap<Class, HashMap<Integer, Cacheable>>();
         enabled = false;
+    }
+
+    private Cache() {
     }
 
     /**
@@ -71,13 +75,13 @@ public class Cache {
      * @see edu.illinois.comoto.api.object.Cacheable
      */
     public static boolean put(Cacheable c) {
-        if (isEnabled() == false) {
+        if (!isEnabled()) {
             return false;
         }
         Class level1Key = c.getClass();
         int level2Key = c.getId();
 
-        HashMap<Integer, Cacheable> level2Cache = getLevel2Cache(level1Key);
+        Map<Integer, Cacheable> level2Cache = getLevel2Cache(level1Key);
         if (!level2Cache.containsKey(level2Key)) {
             level2Cache.put(level2Key, c);
             return true;
@@ -94,12 +98,11 @@ public class Cache {
      * @see edu.illinois.comoto.api.object.Cacheable
      */
     public static Cacheable get(Class objectClass, int id) {
-        if (isEnabled() == false) {
+        if (!isEnabled()) {
             return null;
         }
-        HashMap<Integer, Cacheable> level2Cache = getLevel2Cache(objectClass);
-        Cacheable c = level2Cache.get(id);
-        return c;
+        Map<Integer, Cacheable> level2Cache = getLevel2Cache(objectClass);
+        return level2Cache.get(id);
     }
 
     /**
@@ -110,10 +113,10 @@ public class Cache {
      * @see edu.illinois.comoto.api.object.Cacheable
      */
     public static boolean remove(Cacheable c) {
-        if (isEnabled() == false) {
+        if (!isEnabled()) {
             return false;
         }
-        HashMap<Integer, Cacheable> level2Cache = getLevel2Cache(c.getClass());
+        Map<Integer, Cacheable> level2Cache = getLevel2Cache(c.getClass());
         if (level2Cache.containsKey(c.getId())) {
             level2Cache.remove(c);
             return true;
@@ -121,7 +124,7 @@ public class Cache {
         return false;
     }
 
-    private static HashMap<Integer, Cacheable> getLevel2Cache(Class key) {
+    private static Map<Integer, Cacheable> getLevel2Cache(Class key) {
         HashMap<Integer, Cacheable> level2Cache = cache.get(key);
         if (level2Cache == null) {
             level2Cache = new HashMap<Integer, Cacheable>();

@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.utility;
 
 import edu.illinois.comoto.api.CoMoToAPIConstants;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
@@ -88,7 +89,7 @@ public class Connection {
         try {
             initializeConnection();
         } catch (MalformedURLException e) {
-            throw new RuntimeException("Error initializing connection to: " + userName + " at " + host);
+            throw new CoMoToAPIException("Error initializing connection to: " + userName + " at " + host, e);
         }
     }
 

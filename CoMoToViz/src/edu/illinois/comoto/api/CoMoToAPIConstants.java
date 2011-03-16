@@ -45,6 +45,9 @@ package edu.illinois.comoto.api;
  */
 public class CoMoToAPIConstants {
 
+    private CoMoToAPIConstants() {
+    }
+
     // API URL
     public static final String DEFAULT_HOST = "https://comoto.cs.illinois.edu/comoto/api";
 

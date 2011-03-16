@@ -48,8 +48,6 @@ import java.awt.*;
 public class LoadingProgressDialog extends JDialog {
 
     // The dimensions and elements of the progress bar
-    private final int DIALOG_WIDTH = 400;
-    private final int DIALOG_HEIGHT = 50;
     private JProgressBar bar;
     private String title, label;
 
@@ -91,7 +89,7 @@ public class LoadingProgressDialog extends JDialog {
         // Set the title and dimensions
         this.setTitle(title);
         JPanel panel = new JPanel(new GridLayout(1, 1));
-        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
+        panel.setPreferredSize(new Dimension(FrontendConstants.LOADING_PROGRESS_DIALOG_WIDTH, FrontendConstants.LOADING_PROGRESS_DIALOG_HEIGHT));
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);

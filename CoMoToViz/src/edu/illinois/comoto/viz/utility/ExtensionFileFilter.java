@@ -42,11 +42,12 @@ import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /* ImageFilter.java is used by FileChooserDemo2.java. */
 public class ExtensionFileFilter extends FileFilter {
 
-    ArrayList<String> extensions;
+    List<String> extensions;
     String description;
 
     public ExtensionFileFilter(String description) {

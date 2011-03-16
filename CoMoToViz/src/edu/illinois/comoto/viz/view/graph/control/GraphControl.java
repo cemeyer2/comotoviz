@@ -133,9 +133,9 @@ public class GraphControl implements Control {
 
     public void itemExited(VisualItem item, MouseEvent e) {
         GraphPanel.getGraphPanel().clearMessage();
-        if (item instanceof EdgeItem) {
-
-        }
+//        if (item instanceof EdgeItem) {
+//
+//        }
         if (item instanceof NodeItem) {
             setNeighborHighlight((NodeItem) item, false, (Display) e.getComponent());
         }

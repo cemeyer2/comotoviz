@@ -128,10 +128,8 @@ public class PrefuseGraphBuilder {
     }
 
     public PrefuseGraphBuilder setShowBuildProgress(boolean showBuildProgress) {
-        if (this.dialog != null) {
-            if (this.dialog.isVisible()) {
-                throw new CoMoToVizException("Cannot switch build progress visibility setting while building graph");
-            }
+        if (this.dialog != null && this.dialog.isVisible()) {
+            throw new CoMoToVizException("Cannot switch build progress visibility setting while building graph");
         }
         this.showBuildProgress = showBuildProgress;
         return this;

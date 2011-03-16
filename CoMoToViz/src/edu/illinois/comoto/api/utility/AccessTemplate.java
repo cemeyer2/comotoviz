@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.api.utility;
 
+import edu.illinois.comoto.api.CoMoToAPIException;
 import org.apache.xmlrpc.XmlRpcException;
 
 import java.util.Map;
@@ -48,6 +49,9 @@ import java.util.Map;
  * <p> <p> Each method in here outlines how to actually grab the data from the XML RPC client
  */
 public class AccessTemplate {
+
+    private AccessTemplate() {
+    }
 
     /**
      * Grabs a Map of data from the API, an object of some arbitrary type
@@ -61,7 +65,7 @@ public class AccessTemplate {
         try {
             return (Map) connection.execute(method, parameters);
         } catch (XmlRpcException e) {
-            throw new RuntimeException("Error getting the map from the requested method:\t" + e.getMessage());
+            throw new CoMoToAPIException("Error getting the map from the requested method:\t" + e.getMessage(), e);
         }
     }
 
@@ -77,7 +81,7 @@ public class AccessTemplate {
         try {
             return (Object[]) connection.execute(method, parameters);
         } catch (XmlRpcException e) {
-            throw new RuntimeException("Error getting the list from the requested method:\t" + e.getMessage());
+            throw new CoMoToAPIException("Error getting the list from the requested method:\t" + e.getMessage(), e);
         }
     }
 

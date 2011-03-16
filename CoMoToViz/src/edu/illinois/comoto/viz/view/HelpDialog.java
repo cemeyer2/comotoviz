@@ -46,9 +46,6 @@ import java.awt.*;
  */
 public class HelpDialog extends JDialog {
 
-    // Dialog size
-    private final int DIALOG_WIDTH = 575;
-    private final int DIALOG_HEIGHT = 300;
 
     public HelpDialog() {
         super();
@@ -66,7 +63,7 @@ public class HelpDialog extends JDialog {
         helpLabel.setHorizontalTextPosition(JLabel.CENTER);
         panel.add(titleLabel, BorderLayout.NORTH);
         panel.add(helpLabel, BorderLayout.CENTER);
-        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
+        panel.setPreferredSize(new Dimension(FrontendConstants.HELP_DIALOG_WIDTH, FrontendConstants.HELP_DIALOG_HEIGHT));
 
         // Change the program icon
         Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);

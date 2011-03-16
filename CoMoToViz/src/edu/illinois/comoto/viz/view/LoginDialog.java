@@ -57,10 +57,6 @@ import java.net.Authenticator;
  */
 public class LoginDialog extends JDialog {
 
-    // The dimensions of the dialog
-    private final int DIALOG_WIDTH = 400;
-    private final int DIALOG_HEIGHT = 200;
-
     // The GUI components
     private JTextField netIdField;
     private JPasswordField passwordField;
@@ -97,7 +93,7 @@ public class LoginDialog extends JDialog {
         this.setTitle(FrontendConstants.LOGIN);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
-        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
+        panel.setPreferredSize(new Dimension(FrontendConstants.LOGIN_DIALOG_WIDTH, FrontendConstants.LOGIN_DIALOG_HEIGHT));
 
         // Add the netid and password fields
         netIdField = new JTextField();

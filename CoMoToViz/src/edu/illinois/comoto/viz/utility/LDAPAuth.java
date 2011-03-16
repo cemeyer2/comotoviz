@@ -45,6 +45,9 @@ import java.util.Hashtable;
 
 public class LDAPAuth {
 
+    private LDAPAuth() {
+    }
+
     public static boolean authenticate(String netid, String password) {
         String userDN = findUserDN(netid);
         try {
@@ -71,7 +74,6 @@ public class LDAPAuth {
         environment.put("java.naming.security.credentials", bindPassword);
         environment.put("java.naming.security.authentication", "simple");
         environment.put("com.sun.jndi.ldap.connect.pool", "true");
-        LdapContext context = new InitialLdapContext(environment, null);
-        return context;
+        return new InitialLdapContext(environment, null);
     }
 }

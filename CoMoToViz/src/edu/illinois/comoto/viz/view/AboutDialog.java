@@ -45,9 +45,6 @@ import java.awt.*;
  */
 public class AboutDialog extends JDialog {
 
-    // Dimensions
-    private final int DIALOG_WIDTH = 500;
-    private final int DIALOG_HEIGHT = 300;
 
     /**
      * Guild the 'about' dialog window
@@ -97,7 +94,7 @@ public class AboutDialog extends JDialog {
         panel.add(copyrightLabel, c);
 
         // Set window size and display
-        panel.setPreferredSize(new Dimension(DIALOG_WIDTH, DIALOG_HEIGHT));
+        panel.setPreferredSize(new Dimension(FrontendConstants.ABOUT_DIALOG_WIDTH, FrontendConstants.ABOUT_DIALOG_HEIGHT));
         this.setContentPane(panel);
         this.pack();
         this.setTitle(FrontendConstants.ABOUT);

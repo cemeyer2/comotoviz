@@ -53,8 +53,6 @@ public class VisibilityPredicate implements Predicate {
     private double weight;
     private boolean showSingletons, showSolution, includePast, includePartners;
 
-    private final String SOLUTION = "[solution]";
-
     private final NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
     private final NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
 
@@ -137,18 +135,16 @@ public class VisibilityPredicate implements Predicate {
     private boolean handleNode(Node node) {
         //check showSolution
         boolean isSolution = sol.getBoolean(node);
-        if (isSolution == true && showSolution == false) {
+        if (isSolution && !showSolution) {
             return false;
         }
 
-        if (includePast == false) {
-            if (cursem.getBoolean(node) == false && !isSolution) {
-                return false;
-            }
+        if (!includePast && !cursem.getBoolean(node) && !isSolution) {
+            return false;
         }
 
         //check to see if it is a singleton
-        if (showSingletons == false) {
+        if (!showSingletons) {
             if (node.getDegree() == 0) {
                 return false;
             }
@@ -160,7 +156,7 @@ public class VisibilityPredicate implements Predicate {
                 boolean isVisible = handleEdge(edge);
                 anyEdgeVisible = anyEdgeVisible || isVisible;
 
-                if (isLinkedToSolution(node) && showSolution == false && node.getDegree() == 1) {
+                if (isLinkedToSolution(node) && !showSolution && node.getDegree() == 1) {
                     return true;
                 }
 
@@ -175,30 +171,25 @@ public class VisibilityPredicate implements Predicate {
     private boolean handleEdge(Edge edge) {
         logger.debug("Handling edge");
         logger.debug("Checking solution condition");
-        if (showSolution == false) {
-
-            if (sol.getBoolean(edge.getTargetNode()) ||
-                    sol.getBoolean(edge.getSourceNode())) {
-                logger.debug("Hiding edge because it is connected to the solution");
-                return false;
-            }
+        if (!showSolution && (sol.getBoolean(edge.getTargetNode()) ||
+                sol.getBoolean(edge.getSourceNode()))) {
+            logger.debug("Hiding edge because it is connected to the solution");
+            return false;
         }
         logger.debug("Checking partners condition");
-        if (includePartners == false) {
-            if (edge.getBoolean("isPartner") == true) {
-                logger.debug("Hiding edge because it is a partner edge");
-                return false;
-            }
+        if (!includePartners && edge.getBoolean("isPartner")) {
+            logger.debug("Hiding edge because it is a partner edge");
+            return false;
         }
         logger.debug("Checking include past students condition");
-        if (includePast == false) {
+        if (!includePast) {
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
-            if (cursem.getBoolean(source) == false && sol.getBoolean(source) == false) {
+            if (!cursem.getBoolean(source) && !sol.getBoolean(source)) {
                 logger.debug("Hiding because edge connects to past semester");
                 return false;
             }
-            if (cursem.getBoolean(target) == false && sol.getBoolean(target) == false) {
+            if (!cursem.getBoolean(target) && !sol.getBoolean(target)) {
                 logger.debug("Hiding because edge connects to past semester");
                 return false;
             }
