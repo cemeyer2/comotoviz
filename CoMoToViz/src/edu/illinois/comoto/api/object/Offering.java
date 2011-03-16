@@ -205,9 +205,9 @@ public class Offering implements Refreshable, Cacheable {
         //Grab the list from the API if not cached
         if (filesetIds == null) {
             filesets = new ArrayList<FileSet>();
-            for (int fileSetId : filesetIds) {
-                filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
-            }
+        }
+        for (int fileSetId : filesetIds) {
+            filesets.add(CoMoToAPI.getFileSet(connection, fileSetId));
         }
         return filesets;
     }

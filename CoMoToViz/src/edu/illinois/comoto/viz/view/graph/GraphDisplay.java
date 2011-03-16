@@ -54,7 +54,7 @@ public class GraphDisplay extends Display {
 
     private Visualization visualization;
     private List<String> visualizationActions;
-    private static final Logger logger = Logger.getLogger(GraphDisplay.class);
+    private static final Logger LOGGER = Logger.getLogger(GraphDisplay.class);
 
     protected GraphDisplay(Visualization visualization, List<String> visualizationActions) {
         super(visualization);
@@ -63,10 +63,10 @@ public class GraphDisplay extends Display {
     }
 
     protected void runAllActions() {
-        logger.info("Running all actions");
+        LOGGER.info("Running all actions");
         if (this.visualizationActions != null && this.visualization != null) {
             for (String action : visualizationActions) {
-                logger.info("Running action: " + action);
+                LOGGER.info("Running action: " + action);
                 this.visualization.run(action);
             }
         }
@@ -75,10 +75,10 @@ public class GraphDisplay extends Display {
     protected void runAction(String action) {
         if (this.visualizationActions != null && this.visualization != null) {
             if (this.visualizationActions.contains(action)) {
-                logger.info("Running action: " + action);
+                LOGGER.info("Running action: " + action);
                 this.visualization.run(action);
             } else {
-                logger.error("Tried to run action '" + action + "' that is not loaded into this visualization");
+                LOGGER.error("Tried to run action '" + action + "' that is not loaded into this visualization");
             }
         }
     }

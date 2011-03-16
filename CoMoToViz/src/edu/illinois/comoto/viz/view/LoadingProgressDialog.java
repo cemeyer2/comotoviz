@@ -63,7 +63,7 @@ public class LoadingProgressDialog extends JDialog {
         bar = new JProgressBar();
         this.title = title;
         this.label = label;
-        initialize();
+        initializeDialog();
     }
 
     /**
@@ -78,13 +78,13 @@ public class LoadingProgressDialog extends JDialog {
         bar = new JProgressBar();
         this.title = title;
         this.label = label;
-        initialize();
+        initializeDialog();
     }
 
     /**
      * Initialize this dialog
      */
-    public void initialize() {
+    public void initializeDialog() {
 
         // Set the title and dimensions
         this.setTitle(title);

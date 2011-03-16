@@ -278,7 +278,7 @@ public class AssignmentChooserPanel extends JPanel {
 
     private void initializeLoadingProgressDialog() {
         this.dialog = new LoadingProgressDialog(null, "");
-        this.dialog.initialize();
+        this.dialog.initializeDialog();
         this.dialog.setVisible(true);
         this.dialog.setMessage("Loading analysis index data...");
         this.dialog.setIndeterminate(true);

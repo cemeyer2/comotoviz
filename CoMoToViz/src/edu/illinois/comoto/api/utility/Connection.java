@@ -62,7 +62,7 @@ public class Connection {
 
     private XmlRpcClient client;
     private XmlRpcClientConfigImpl configuration;
-    private static final Logger logger = Logger.getLogger(Connection.class);
+    private static final Logger LOGGER = Logger.getLogger(Connection.class);
 
     /**
      * Builds a connections using the given user name and password to the default host
@@ -141,7 +141,7 @@ public class Connection {
      * @throws XmlRpcException On errors accessing the API
      */
     public Object execute(String method, Object... parameters) throws XmlRpcException {
-        logger.info("Executing " + method + " with params: " + Arrays.toString(parameters));
+        LOGGER.info("Executing " + method + " with params: " + Arrays.toString(parameters));
         return client.execute(method, parameters);
     }
 }

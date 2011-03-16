@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.utility;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
+import org.apache.log4j.Logger;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLContext;
@@ -47,11 +48,16 @@ import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 public class TrustAllSSLSocketFactory extends SSLSocketFactory {
+
+    private static final Logger LOGGER = Logger.getLogger(TrustAllSSLSocketFactory.class);
+
     private static class TrustAllTrustManager
             implements X509TrustManager {
 
@@ -74,15 +80,20 @@ public class TrustAllSSLSocketFactory extends SSLSocketFactory {
 
 
     public TrustAllSSLSocketFactory() {
+        SSLContext sslcontent = null;
         try {
-            SSLContext sslcontent = SSLContext.getInstance(BackendConstants.TLS);
+            sslcontent = SSLContext.getInstance(BackendConstants.TLS);
+        } catch (NoSuchAlgorithmException e) {
+            LOGGER.fatal(e.getMessage(), e);
+        }
+        try {
             sslcontent.init(null, new TrustManager[]{
                     new TrustAllTrustManager()
             }, new SecureRandom());
-            _factory = sslcontent.getSocketFactory();
-        } catch (Throwable t) {
-            //do nothing
+        } catch (KeyManagementException e) {
+            LOGGER.fatal(e.getMessage(), e);
         }
+        _factory = sslcontent.getSocketFactory();
     }
 
     public static SocketFactory getDefault() {

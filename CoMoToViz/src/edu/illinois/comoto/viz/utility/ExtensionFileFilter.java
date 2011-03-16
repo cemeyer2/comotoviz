@@ -38,6 +38,8 @@
 package edu.illinois.comoto.viz.utility;
 
 
+import org.apache.log4j.Logger;
+
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +51,7 @@ public class ExtensionFileFilter extends FileFilter {
 
     private List<String> extensions;
     private String description;
+    private static final Logger LOGGER = Logger.getLogger(ExtensionFileFilter.class);
 
     public ExtensionFileFilter(String description) {
         extensions = new ArrayList<String>();
@@ -71,7 +74,7 @@ public class ExtensionFileFilter extends FileFilter {
                 return extensions.contains(extension.toLowerCase());
             }
         } catch (IOException exception) {
-            exception.printStackTrace();
+            LOGGER.fatal("Error parsing", exception);
         }
         return false;
     }

@@ -39,6 +39,7 @@ package edu.illinois.comoto.api.utility;
 
 import edu.illinois.comoto.api.CoMoToAPI;
 import edu.illinois.comoto.api.CoMoToAPIException;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -52,6 +53,8 @@ import java.util.List;
  * Package: edu.uiuc.cs.visualmoss.dataimport.api.util
  */
 public class ParallelConnectionUtility<T> {
+
+    private static final Logger LOGGER = Logger.getLogger(ParallelConnectionUtility.class);
 
     /**
      * Fetch API objects in parallel
@@ -119,11 +122,11 @@ public class ParallelConnectionUtility<T> {
                 Object APIReturned = targetMethod.invoke(null, this.params);
                 retval.add((T) APIReturned);
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                LOGGER.fatal(e.getMessage(), e);
             } catch (IllegalAccessException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                LOGGER.fatal(e.getMessage(), e);
             } catch (InvocationTargetException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                LOGGER.fatal(e.getMessage(), e);
             }
         }
     }

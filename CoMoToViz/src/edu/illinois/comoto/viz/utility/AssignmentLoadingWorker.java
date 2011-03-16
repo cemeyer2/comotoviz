@@ -50,7 +50,7 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     private Assignment assignment;
     private GraphPanel graphPanel;
     private MainWindow frame;
-    private static final Logger logger = Logger.getLogger(AssignmentLoadingWorker.class);
+    private static final Logger LOGGER = Logger.getLogger(AssignmentLoadingWorker.class);
 
     public AssignmentLoadingWorker(Assignment assignment, GraphPanel graphPanel, MainWindow frame) {
         this.assignment = assignment;
@@ -60,7 +60,7 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 
     @Override
     protected Void doInBackground() {
-        logger.info("SwingWorker running...");
+        LOGGER.info("SwingWorker running...");
         PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
         graphPanel.reloadGraph();
         frame.updateTitle(assignment);
@@ -71,11 +71,7 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     }
 
     public void runSynchronous() {
-        try {
-            doInBackground();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        doInBackground();
     }
 
 }

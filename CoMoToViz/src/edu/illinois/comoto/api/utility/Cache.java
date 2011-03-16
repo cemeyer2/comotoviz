@@ -118,7 +118,7 @@ public class Cache {
         }
         Map<Integer, Cacheable> level2Cache = getLevel2Cache(c.getClass());
         if (level2Cache.containsKey(c.getId())) {
-            level2Cache.remove(c);
+            level2Cache.remove(c.getId());
             return true;
         }
         return false;

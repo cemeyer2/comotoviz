@@ -62,13 +62,11 @@ import java.util.*;
 public class PrefuseGraphBuilder {
 
     //singleton pattern stuff
-    private static PrefuseGraphBuilder instance;
-    static final Logger logger = Logger.getLogger(PrefuseGraphBuilder.class);
+    private static PrefuseGraphBuilder instance = new PrefuseGraphBuilder();
+    ;
+    static final Logger LOGGER = Logger.getLogger(PrefuseGraphBuilder.class);
 
     public static PrefuseGraphBuilder getBuilder() {
-        if (instance == null) {
-            instance = new PrefuseGraphBuilder();
-        }
         return instance;
     }
 
@@ -196,16 +194,16 @@ public class PrefuseGraphBuilder {
         filterTuples(graph);
         this.hideLoadingProgressDialog();
 
-        logger.debug("Filtering complete");
-        logger.debug("Nodes remaining: " + graph.getNodeCount());
-        logger.debug("Edges remaining: " + graph.getEdgeCount());
+        LOGGER.debug("Filtering complete");
+        LOGGER.debug("Nodes remaining: " + graph.getNodeCount());
+        LOGGER.debug("Edges remaining: " + graph.getEdgeCount());
         this.setShowBuildProgress(!BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS);
         return copyGraph(graph);
     }
 
     //step 1: initialize the backing prefuse tables
     private void initializeGraph(Graph graph) {
-        logger.debug("Initializing graph backing tables");
+        LOGGER.debug("Initializing graph backing tables");
         //Declare all the properties of a submission (e.g. a node in the graph)
         graph.getNodeTable().addColumn(BackendConstants.NETID, String.class);
         graph.getNodeTable().addColumn(BackendConstants.PSEUDONYM, String.class);
@@ -228,7 +226,7 @@ public class PrefuseGraphBuilder {
 
     //step 2: add the nodes from the students
     private void addNodes(Graph graph) {
-        logger.debug("Adding nodes");
+        LOGGER.debug("Adding nodes");
         Offering prunedOffering = assignment.getMossAnalysisPrunedOffering();
 
         List<FileSet> fileSets = assignment.getFilesets(true);
@@ -249,7 +247,7 @@ public class PrefuseGraphBuilder {
 
     //step 3: add the edges from the moss matches
     private void addEdges(Graph graph) {
-        logger.debug("Adding edges");
+        LOGGER.debug("Adding edges");
         List<MossMatch> matches = assignment.getAnalysis().getMossAnalysis(true).getMatches();
 
         for (MossMatch match : matches) {
@@ -266,16 +264,16 @@ public class PrefuseGraphBuilder {
 
     //step 4: remove edges from the backing data that do not pass the predicate
     private void filterTuples(Graph graph) {
-        logger.debug("Filtering tuples");
+        LOGGER.debug("Filtering tuples");
         Iterator iter = graph.tuples();
         while (iter.hasNext()) {
             Tuple t = (Tuple) iter.next();
-            logger.debug("Inspecting tuple: " + t);
+            LOGGER.debug("Inspecting tuple: " + t);
             if (!this.predicate.getBoolean(t)) {
                 boolean removed = graph.removeTuple(t);
-                logger.debug("Removing: " + removed);
+                LOGGER.debug("Removing: " + removed);
             } else {
-                logger.debug("Keeping");
+                LOGGER.debug("Keeping");
             }
         }
     }
@@ -348,7 +346,7 @@ public class PrefuseGraphBuilder {
     private void initializeLoadingProgressDialog() {
         if (this.getShowBuildProgress()) {
             this.dialog = new LoadingProgressDialog(null, "Loading Graph of \"" + this.getAssignment().getName() + "\"", "");
-            this.dialog.initialize();
+            this.dialog.initializeDialog();
             this.dialog.setVisible(true);
         }
     }

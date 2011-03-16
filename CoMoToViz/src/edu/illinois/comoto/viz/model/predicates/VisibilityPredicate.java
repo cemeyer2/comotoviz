@@ -56,7 +56,7 @@ public class VisibilityPredicate implements Predicate {
     private final NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
     private final NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
 
-    static final Logger logger = Logger.getLogger(VisibilityPredicate.class);
+    static final Logger LOGGER = Logger.getLogger(VisibilityPredicate.class);
 
     public VisibilityPredicate(double weight, boolean showSingletons, boolean showSolution, boolean includePast, boolean includePartners) {
         this.weight = weight;
@@ -118,17 +118,17 @@ public class VisibilityPredicate implements Predicate {
     }
 
     public boolean getBoolean(Tuple t) {
-        logger.debug("Entering");
+        LOGGER.debug("Entering");
 
 
         if (t instanceof Node) {
-            logger.debug("Handling node");
+            LOGGER.debug("Handling node");
             return handleNode((Node) t);
         } else if (t instanceof Edge) {
-            logger.debug("Handling edge");
+            LOGGER.debug("Handling edge");
             return handleEdge((Edge) t);
         }
-        logger.debug("Tuple passed was neither edge or node");
+        LOGGER.debug("Tuple passed was neither edge or node");
         return false;
     }
 
@@ -169,38 +169,38 @@ public class VisibilityPredicate implements Predicate {
     }
 
     private boolean handleEdge(Edge edge) {
-        logger.debug("Handling edge");
-        logger.debug("Checking solution condition");
+        LOGGER.debug("Handling edge");
+        LOGGER.debug("Checking solution condition");
         if (!showSolution && (sol.getBoolean(edge.getTargetNode()) ||
                 sol.getBoolean(edge.getSourceNode()))) {
-            logger.debug("Hiding edge because it is connected to the solution");
+            LOGGER.debug("Hiding edge because it is connected to the solution");
             return false;
         }
-        logger.debug("Checking partners condition");
+        LOGGER.debug("Checking partners condition");
         if (!includePartners && edge.getBoolean("isPartner")) {
-            logger.debug("Hiding edge because it is a partner edge");
+            LOGGER.debug("Hiding edge because it is a partner edge");
             return false;
         }
-        logger.debug("Checking include past students condition");
+        LOGGER.debug("Checking include past students condition");
         if (!includePast) {
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
             if (!cursem.getBoolean(source) && !sol.getBoolean(source)) {
-                logger.debug("Hiding because edge connects to past semester");
+                LOGGER.debug("Hiding because edge connects to past semester");
                 return false;
             }
             if (!cursem.getBoolean(target) && !sol.getBoolean(target)) {
-                logger.debug("Hiding because edge connects to past semester");
+                LOGGER.debug("Hiding because edge connects to past semester");
                 return false;
             }
         }
-        logger.debug("Checking weight condition");
+        LOGGER.debug("Checking weight condition");
         double w = edge.getDouble("weight");
         if (w >= weight) {
-            logger.debug("Weight check passed, returning true");
+            LOGGER.debug("Weight check passed, returning true");
             return true;
         } else {
-            logger.debug("Weight check failed, returning false");
+            LOGGER.debug("Weight check failed, returning false");
             return false;
         }
     }

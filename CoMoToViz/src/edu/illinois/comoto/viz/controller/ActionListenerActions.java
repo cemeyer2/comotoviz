@@ -94,7 +94,7 @@ public enum ActionListenerActions {
                         try {
                             new DataExport(PrefuseGraphBuilder.getBuilder().buildPrefuseGraph()).write(file);
                         } catch (DataIOException exception) {
-                            exception.printStackTrace();
+                            LOGGER.fatal("Error exporting graph", exception);
                         }
                     }
                 }
@@ -164,7 +164,7 @@ public enum ActionListenerActions {
                         try {
                             mainWindow.getGraphPanel().writeToImage(file);
                         } catch (IOException ioe) {
-                            logger.fatal("Error writing graph to image file", ioe);
+                            LOGGER.fatal("Error writing graph to image file", ioe);
                             JOptionPane.showMessageDialog(null, "Error writing image to file. Please try again.", "IO Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -175,5 +175,5 @@ public enum ActionListenerActions {
 
     abstract ActionListener getActionListenerAction(Object... parameters);
 
-    private static final Logger logger = Logger.getLogger(ActionListenerActions.class);
+    private static final Logger LOGGER = Logger.getLogger(ActionListenerActions.class);
 }

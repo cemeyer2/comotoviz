@@ -159,7 +159,7 @@ public class GraphDisplayBuilder {
 
         // use light grey for edges
         EdgeStrokeColorAction edges = new EdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
-        ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
+//        ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
 
         // Add the colors
         ActionList colorActions = new ActionList();

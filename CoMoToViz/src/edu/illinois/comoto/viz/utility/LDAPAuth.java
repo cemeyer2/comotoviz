@@ -37,6 +37,8 @@
 
 package edu.illinois.comoto.viz.utility;
 
+import org.apache.log4j.Logger;
+
 import javax.naming.NamingException;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
@@ -45,17 +47,22 @@ import java.util.Hashtable;
 
 public class LDAPAuth {
 
+    private static final Logger LOGGER = Logger.getLogger(LDAPAuth.class);
+
     private LDAPAuth() {
     }
 
     public static boolean authenticate(String netid, String password) {
+        LOGGER.info("LDAP authenticating user: " + netid);
         String userDN = findUserDN(netid);
+        LOGGER.info("DN: " + userDN);
         try {
             LdapContext context = createLDAPContext(userDN, password);
+            LOGGER.info("Successfully authenticated");
             context.close();
             return true;
         } catch (Exception exception) {
-            exception.printStackTrace();
+            LOGGER.info("Authentication failure", exception);
             return false;
         }
     }

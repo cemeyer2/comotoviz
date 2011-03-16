@@ -67,7 +67,7 @@ public class GraphPanel extends JPanel {
     // For keeping track of data in this window
     private NodeItem lastNode;
     private int lastFillColor;
-    private static final Logger logger = Logger.getLogger(GraphPanel.class);
+    private static final Logger LOGGER = Logger.getLogger(GraphPanel.class);
     private static GraphPanel pseudoSingleton;
 
     public GraphPanel(int width, int height) {
@@ -82,7 +82,7 @@ public class GraphPanel extends JPanel {
     }
 
     public void reloadGraph() {
-        logger.info("Reloading graph");
+        LOGGER.info("Reloading graph");
         try {
             if (currentDisplay != null) {
                 remove(currentDisplay);
@@ -96,9 +96,9 @@ public class GraphPanel extends JPanel {
             repaint();
             currentDisplay.runAllActions();
         } catch (CoMoToVizException e) {
-            logger.error("Tried to reload graph on invalid builder", e);
+            LOGGER.error("Tried to reload graph on invalid builder", e);
         }
-        logger.info("Reloaded");
+        LOGGER.info("Reloaded");
     }
 
     public void setAssignmentChooserPanel(AssignmentChooserPanel assignmentChooserPanel) {

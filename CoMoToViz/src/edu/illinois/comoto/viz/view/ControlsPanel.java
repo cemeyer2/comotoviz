@@ -55,7 +55,7 @@ import java.net.URI;
 
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = Logger.getLogger(ControlsPanel.class);
+    private static final Logger LOGGER = Logger.getLogger(ControlsPanel.class);
 
     public void initialize(final GraphPanel graphPanel) {
         this.setLayout(new GridBagLayout());
@@ -222,7 +222,7 @@ public class ControlsPanel extends JPanel {
                         JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (Exception e1) {
-                    logger.error("Error launching browser", e1);
+                    LOGGER.error("Error launching browser", e1);
                 }
             }
         });
