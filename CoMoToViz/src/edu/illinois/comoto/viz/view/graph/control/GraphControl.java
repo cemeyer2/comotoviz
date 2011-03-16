@@ -40,9 +40,12 @@ package edu.illinois.comoto.viz.view.graph.control;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.WebPageDialog;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 import prefuse.Display;
 import prefuse.controls.Control;
+import prefuse.data.Node;
 import prefuse.visual.EdgeItem;
 import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
@@ -93,47 +96,49 @@ public class GraphControl implements Control {
     }
 
     public void itemEntered(VisualItem item, MouseEvent e) {
-//        logger.info("Item entered: " + item);
-//        try {
-//            if (item instanceof EdgeItem) {
-//                logger.info("Item is an edge");
-//                EdgeItem edge = (EdgeItem) item;
-//                Node source = edge.getSourceNode();
-//                Node target = edge.getTargetNode();
-//                String colname = BackendConstants.NETID;
-//                if (container.getGraphDisplay().isAnonymous())
-//                    colname = BackendConstants.PSEUDONYM;
-//                String netid1 = source.getString(colname);
-//                String netid2 = target.getString(colname);
-//                double weight = edge.getDouble(BackendConstants.WEIGHT);
-//                String partners = (edge.getBoolean(BackendConstants.IS_PARTNER)) ? "declared partners " : "";
-//                container.setStatus("Similarity between " + partners + netid1 + " and " + netid2 + " with score " + weight);
-//            }
-//            if (item instanceof NodeItem) {
-//                logger.info("Item is a node");
-//                //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
-//                NodeItem node = (NodeItem) item;
-//                String colname = BackendConstants.NETID;
-//                if (container.getGraphDisplay().isAnonymous())
-//                    colname = BackendConstants.PSEUDONYM;
-//                String netid = node.getString(colname);
-//                String season = node.getString(BackendConstants.SEASON);
-//                String year = node.getString(BackendConstants.YEAR);
-//                container.setStatus(FrontendConstants.SUBMISSION + ": " + netid + ", " + season + " " + year);
-//            }
-//        } catch (Exception ex) {
-//            logger.error("Exception caught in itemEntered", ex);
-//        }
+        logger.info("Item entered: " + item);
+        try {
+            if (item instanceof EdgeItem) {
+                logger.info("Item is an edge");
+                EdgeItem edge = (EdgeItem) item;
+                Node source = edge.getSourceNode();
+                Node target = edge.getTargetNode();
+                String colname = BackendConstants.NETID;
+                if (GraphDisplayBuilder.getBuilder().isAnonymous()) {
+                    colname = BackendConstants.PSEUDONYM;
+                }
+                String netid1 = source.getString(colname);
+                String netid2 = target.getString(colname);
+                double weight = edge.getDouble(BackendConstants.WEIGHT);
+                String partners = (edge.getBoolean(BackendConstants.IS_PARTNER)) ? "declared partners " : "";
+                GraphPanel.getGraphPanel().setMessage("Similarity between " + partners + netid1 + " and " + netid2 + " with score " + weight);
+            }
+            if (item instanceof NodeItem) {
+                logger.info("Item is a node");
+                //setNeighborHighlight((NodeItem)item, true, (Display)e.getComponent());
+                NodeItem node = (NodeItem) item;
+                String colname = BackendConstants.NETID;
+                if (GraphDisplayBuilder.getBuilder().isAnonymous()) {
+                    colname = BackendConstants.PSEUDONYM;
+                }
+                String netid = node.getString(colname);
+                String season = node.getString(BackendConstants.SEASON);
+                String year = node.getString(BackendConstants.YEAR);
+                GraphPanel.getGraphPanel().setMessage(FrontendConstants.SUBMISSION + ": " + netid + ", " + season + " " + year);
+            }
+        } catch (Exception ex) {
+            logger.error("Exception caught in itemEntered", ex);
+        }
     }
 
     public void itemExited(VisualItem item, MouseEvent e) {
-//        container.clearStatus();
-//        if (item instanceof EdgeItem) {
-//
-//        }
-//        if (item instanceof NodeItem) {
-//            setNeighborHighlight((NodeItem) item, false, (Display) e.getComponent());
-//        }
+        GraphPanel.getGraphPanel().clearMessage();
+        if (item instanceof EdgeItem) {
+
+        }
+        if (item instanceof NodeItem) {
+            setNeighborHighlight((NodeItem) item, false, (Display) e.getComponent());
+        }
     }
 
     public void setEnabled(boolean enabled) {

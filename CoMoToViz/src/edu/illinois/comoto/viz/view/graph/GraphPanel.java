@@ -65,8 +65,10 @@ public class GraphPanel extends JPanel {
     private NodeItem lastNode;
     private int lastFillColor;
     private static final Logger logger = Logger.getLogger(GraphPanel.class);
+    private static GraphPanel pseudoSingleton;
 
     public GraphPanel(int width, int height) {
+        pseudoSingleton = this;
         setLayout(new BorderLayout());
         Dimension size = new Dimension(width, height);
         setPreferredSize(size);
@@ -161,6 +163,10 @@ public class GraphPanel extends JPanel {
 
     public GraphDisplay getCurrentGraphDisplay() {
         return this.currentDisplay;
+    }
+
+    public static GraphPanel getGraphPanel() {
+        return pseudoSingleton;
     }
 
 

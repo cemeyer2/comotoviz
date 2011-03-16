@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.model;
 
 import edu.illinois.comoto.api.object.MossMatch;
+import edu.illinois.comoto.api.object.Semester;
 import edu.illinois.comoto.api.object.Student;
 import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.viz.view.BackendConstants;
@@ -58,7 +59,7 @@ import java.util.List;
  */
 public class VisualItemFactory {
 
-    public static Node createNode(Graph graph, Student student, boolean currentSemester, int submissionId) {
+    public static Node createNode(Graph graph, Student student, Semester semester, boolean currentSemester, int submissionId) {
 
         boolean isSolution = (student == null);
 
@@ -67,9 +68,8 @@ public class VisualItemFactory {
         if (!isSolution) {
             node.setString(BackendConstants.NETID, student.getNetid());
             node.setString(BackendConstants.PSEUDONYM, Integer.toString(student.getId()));
-            //i dont think we need the following 2 table entries
-            //node.setString(BackendConstants.SEASON, semester.getSeason().name());
-            //node.setString(BackendConstants.YEAR, Integer.toString(semester.getYear()));
+            node.setString(BackendConstants.SEASON, semester.getSeason().name());
+            node.setString(BackendConstants.YEAR, Integer.toString(semester.getYear()));
             node.setBoolean(BackendConstants.CURRENT_SEMESTER, currentSemester);
             node.setInt(BackendConstants.SUBMISSION_ID, submissionId);
             node.setInt(BackendConstants.STUDENT_ID, student.getId());

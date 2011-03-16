@@ -243,7 +243,7 @@ public class PrefuseGraphBuilder {
             List<Submission> submissions = fileSet.getSubmissions(true);
             for (Submission submission : submissions) {
                 Student student = submission.getStudent();
-                Node node = VisualItemFactory.createNode(graph, student, isCurrentSemester, submission.getId());
+                Node node = VisualItemFactory.createNode(graph, student, offering.getSemester(), isCurrentSemester, submission.getId());
                 nodes.put(submission.getId(), node);
             }
         }
@@ -299,6 +299,8 @@ public class PrefuseGraphBuilder {
             newNode.setString(BackendConstants.PSEUDONYM, oldNode.getString(BackendConstants.PSEUDONYM));
             newNode.setString(BackendConstants.IS_SOLUTION, oldNode.getString(BackendConstants.IS_SOLUTION));
             newNode.setString(BackendConstants.SUBMISSION_ID, oldNode.getString(BackendConstants.SUBMISSION_ID));
+            newNode.setString(BackendConstants.SEASON, oldNode.getString(BackendConstants.SEASON));
+            newNode.setString(BackendConstants.YEAR, oldNode.getString(BackendConstants.YEAR));
             newNode.setBoolean(BackendConstants.CURRENT_SEMESTER, oldNode.getBoolean(BackendConstants.CURRENT_SEMESTER));
             if (oldNode.canGetInt(BackendConstants.STUDENT_ID)) {
                 int studentId = oldNode.getInt(BackendConstants.STUDENT_ID);
