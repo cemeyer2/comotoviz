@@ -55,6 +55,8 @@ import java.util.Map;
 
 public class CoMoToAPI {
 
+    private static Connection cachedConnection;
+
     private CoMoToAPI() {
     }
 
@@ -66,6 +68,7 @@ public class CoMoToAPI {
      * @return An analysis identified by its id
      */
     public static Analysis getAnalysis(Connection connection, int analysisId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Analysis.class, analysisId);
         if (c != null) {
             return (Analysis) c;
@@ -87,6 +90,7 @@ public class CoMoToAPI {
      * @return An analysis pseudonym identified by its id
      */
     public static AnalysisPseudonym getAnalysisPseudonym(Connection connection, int analysisPseudonymId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(AnalysisPseudonym.class, analysisPseudonymId);
         if (c != null) {
             return (AnalysisPseudonym) c;
@@ -108,6 +112,7 @@ public class CoMoToAPI {
      * @return The assignment
      */
     public static Assignment getAssignment(Connection connection, int assignmentId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Assignment.class, assignmentId);
         if (c != null) {
             return (Assignment) c;
@@ -129,6 +134,7 @@ public class CoMoToAPI {
      * @return The list of assignments
      */
     public static List<Assignment> getAssignments(Connection connection, int courseId) {
+        connection = getCachedConnection(connection);
 
         //Get the object from the API
         Object[] abstractAssignments = AccessTemplate.getArray(connection, CoMoToAPIConstants.GET_ASSIGNMENTS, courseId);
@@ -153,6 +159,7 @@ public class CoMoToAPI {
      * @return The course
      */
     public static Course getCourse(Connection connection, int courseId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Course.class, courseId);
         if (c != null) {
             return (Course) c;
@@ -175,6 +182,7 @@ public class CoMoToAPI {
      * @return The course
      */
     public static Course getCourse(Connection connection, int courseId, boolean extraOfferingInfo) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Course.class, courseId);
         if (c != null) {
             return (Course) c;
@@ -195,6 +203,7 @@ public class CoMoToAPI {
      * @return The list of courses
      */
     public static List<Course> getCourses(Connection connection) {
+        connection = getCachedConnection(connection);
 
         //Get the courses from the API
         Object[] abstractCourses = AccessTemplate.getArray(connection, CoMoToAPIConstants.GET_COURSES);
@@ -219,6 +228,7 @@ public class CoMoToAPI {
      * @return The list of courses
      */
     public static List<Course> getCourses(Connection connection, boolean extraOfferingInfo) {
+        connection = getCachedConnection(connection);
 
         //Get the courses from the API
         Object[] abstractCourses = AccessTemplate.getArray(connection, CoMoToAPIConstants.GET_COURSES, extraOfferingInfo);
@@ -243,6 +253,7 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(Connection connection, int fileSetId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(FileSet.class, fileSetId);
         if (c != null) {
             return (FileSet) c;
@@ -265,6 +276,7 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(Connection connection, int fileSetId, boolean fullSubmissionInfo) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(FileSet.class, fileSetId);
         if (c != null) {
             return (FileSet) c;
@@ -288,6 +300,7 @@ public class CoMoToAPI {
      * @return The file set
      */
     public static FileSet getFileSet(Connection connection, int fileSetId, boolean fullSubmissionInfo, boolean extraOfferingInfo) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(FileSet.class, fileSetId);
         if (c != null) {
             return (FileSet) c;
@@ -309,6 +322,7 @@ public class CoMoToAPI {
      * @return The jplag analysis
      */
     public static JplagAnalysis getJplagAnalysis(Connection connection, int jplagAnalysisId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(JplagAnalysis.class, jplagAnalysisId);
         if (c != null) {
             return (JplagAnalysis) c;
@@ -330,6 +344,7 @@ public class CoMoToAPI {
      * @return The moss analysis from the API
      */
     public static MossAnalysis getMossAnalysis(Connection connection, int mossAnalysisId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossAnalysis.class, mossAnalysisId);
         if (c != null) {
             return (MossAnalysis) c;
@@ -352,6 +367,7 @@ public class CoMoToAPI {
      * @return The moss analysis from the API
      */
     public static MossAnalysis getMossAnalysis(Connection connection, int mossAnalysisId, boolean categorizeMatches) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossAnalysis.class, mossAnalysisId);
         if (c != null) {
             return (MossAnalysis) c;
@@ -376,6 +392,7 @@ public class CoMoToAPI {
      */
     public static MossAnalysis getMossAnalysis(Connection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossAnalysis.class, mossAnalysisId);
         if (c != null) {
             return (MossAnalysis) c;
@@ -402,6 +419,7 @@ public class CoMoToAPI {
      */
     public static MossAnalysis getMossAnalysis(Connection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore, int singleStudentMaxMatchesLowerBound) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossAnalysis.class, mossAnalysisId);
         if (c != null) {
             return (MossAnalysis) c;
@@ -432,6 +450,7 @@ public class CoMoToAPI {
     public static MossAnalysis getMossAnalysis(Connection connection, int mossAnalysisId, boolean categorizeMatches,
                                                int minimumMatchScore, int singleStudentMaxMatchesLowerBound,
                                                int singleStudentMaxMatchesUpperBound) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossAnalysis.class, mossAnalysisId);
         if (c != null) {
             return (MossAnalysis) c;
@@ -454,6 +473,7 @@ public class CoMoToAPI {
      * @return The moss match
      */
     public static MossMatch getMossMatch(Connection connection, int mossMatchId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossMatch.class, mossMatchId);
         if (c != null) {
             return (MossMatch) c;
@@ -475,6 +495,7 @@ public class CoMoToAPI {
      * @return The moss report object
      */
     public static MossReport getMossReport(Connection connection, int mossReportId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(MossReport.class, mossReportId);
         if (c != null) {
             return (MossReport) c;
@@ -496,6 +517,7 @@ public class CoMoToAPI {
      * @return The offering object from the API
      */
     public static Offering getOffering(Connection connection, int offeringId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Offering.class, offeringId);
         if (c != null) {
             return (Offering) c;
@@ -518,6 +540,7 @@ public class CoMoToAPI {
      * @return The offering object from the API
      */
     public static Offering getOffering(Connection connection, int offeringId, boolean extraInfo) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Offering.class, offeringId);
         if (c != null) {
             return (Offering) c;
@@ -539,6 +562,7 @@ public class CoMoToAPI {
      * @return The report from the API
      */
     public static Report getReport(Connection connection, int reportId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Report.class, reportId);
         if (c != null) {
             return (Report) c;
@@ -560,6 +584,7 @@ public class CoMoToAPI {
      * @return The semester
      */
     public static Semester getSemester(Connection connection, int semesterId) {
+        connection = getCachedConnection(connection);
         Cacheable c = Cache.get(Semester.class, semesterId);
         if (c != null) {
             return (Semester) c;
@@ -581,6 +606,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(Connection connection, int studentId) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(Student.class, studentId);
         if (cached != null) {
             return (Student) cached;
@@ -603,6 +629,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(Connection connection, int studentId, boolean showHistory) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(Student.class, studentId);
         if (cached != null) {
             return (Student) cached;
@@ -626,6 +653,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudent(Connection connection, int studentId, boolean showHistory, int minimumMatchScore) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(Student.class, studentId);
         if (cached != null) {
             return (Student) cached;
@@ -649,6 +677,7 @@ public class CoMoToAPI {
      * @return The students from the API
      */
     public static List<Student> getStudents(Connection connection, int[] studentIds, boolean showHistory) {
+        connection = getCachedConnection(connection);
 
         //Get the file set from the api
         Object[] abstractStudents = AccessTemplate.getArray(connection, CoMoToAPIConstants.GET_STUDENTS, studentIds, showHistory);
@@ -671,6 +700,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudentByNetid(Connection connection, String netid) {
+        connection = getCachedConnection(connection);
 
         //Get the file set from the api
         Map abstractStudent = AccessTemplate.getMap(connection, CoMoToAPIConstants.GET_STUDENT_BY_NETID, netid);
@@ -690,6 +720,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudentByNetid(Connection connection, String netid, boolean showHistory) {
+        connection = getCachedConnection(connection);
 
         //Get the file set from the api
         Map abstractStudent = AccessTemplate.getMap(connection, CoMoToAPIConstants.GET_STUDENT_BY_NETID, netid, showHistory);
@@ -710,6 +741,7 @@ public class CoMoToAPI {
      * @return The student from the API
      */
     public static Student getStudentByNetid(Connection connection, String netid, boolean showHistory, int minimumMatchScore) {
+        connection = getCachedConnection(connection);
 
         //Get the file set from the api
         Map abstractStudent = AccessTemplate.getMap(connection, CoMoToAPIConstants.GET_STUDENT_BY_NETID, netid, showHistory, minimumMatchScore);
@@ -728,6 +760,7 @@ public class CoMoToAPI {
      * @return The submission from the API
      */
     public static Submission getSubmission(Connection connection, int submissionId) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(Submission.class, submissionId);
         if (cached != null) {
             return (Submission) cached;
@@ -750,6 +783,7 @@ public class CoMoToAPI {
      * @return The submission from the API
      */
     public static Submission getSubmission(Connection connection, int submissionId, boolean fullStudentData) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(Submission.class, submissionId);
         if (cached != null) {
             return (Submission) cached;
@@ -771,6 +805,7 @@ public class CoMoToAPI {
      * @return The submission file from the API
      */
     public static SubmissionFile getSubmissionFile(Connection connection, int submissionFileId) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(SubmissionFile.class, submissionFileId);
         if (cached != null) {
             return (SubmissionFile) cached;
@@ -793,6 +828,7 @@ public class CoMoToAPI {
      * @return The submission file from the API
      */
     public static SubmissionFile getSubmissionFile(Connection connection, int submissionFileId, boolean highlighted) {
+        connection = getCachedConnection(connection);
         Cacheable cached = Cache.get(SubmissionFile.class, submissionFileId);
         if (cached != null) {
             return (SubmissionFile) cached;
@@ -804,5 +840,24 @@ public class CoMoToAPI {
         SubmissionFile sf = new SubmissionFile(abstractSubmissionFile, connection);
         Cache.put(sf);
         return sf;
+    }
+
+    private static Connection getCachedConnection(Connection connection) {
+        if (connection != null) {
+            cachedConnection = connection;
+            return connection;
+        } else if (cachedConnection != null) {
+            return cachedConnection;
+        } else {
+            throw new CoMoToAPIException("Cannot use API without a cached connection");
+        }
+    }
+
+    public static boolean hasCachedConnection() {
+        return cachedConnection != null;
+    }
+
+    public static void clearCachedConnection() {
+        cachedConnection = null;
     }
 }

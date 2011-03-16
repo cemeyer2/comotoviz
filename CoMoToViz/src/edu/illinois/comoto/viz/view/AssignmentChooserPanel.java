@@ -247,7 +247,7 @@ public class AssignmentChooserPanel extends JPanel {
             //worker.runSynchronous();
         } else if (object instanceof Student) {
             Student student = (Student) object;
-            graphPanel.panToNode(student.getNetid(), 5000);
+            graphPanel.panToNode(student.getNetid(), 2500);
         }
     }
 
