@@ -195,6 +195,7 @@ public class MainWindow extends JFrame {
         fileMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         JMenu helpMenu = new JMenu(FrontendConstants.HELP);
         helpMenu.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        JMenu toolsMenu = new JMenu(FrontendConstants.TOOLS);
 
         // Menu items
         JMenuItem exportGraph = new JMenuItem(FrontendConstants.EXPORT_GRAPH_ML);
@@ -202,6 +203,7 @@ public class MainWindow extends JFrame {
         JMenuItem quit = new JMenuItem(FrontendConstants.QUIT);
         JMenuItem help = new JMenuItem(FrontendConstants.HELP);
         JMenuItem about = new JMenuItem(FrontendConstants.ABOUT);
+        JMenuItem sim = new JMenuItem(FrontendConstants.EDIT_FORCE_SIM);
 
         exportGraph.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         exportImage.setFont(BackendConstants.COMPONENT_LABEL_FONT);
@@ -216,6 +218,9 @@ public class MainWindow extends JFrame {
         fileMenu.add(exportImage);
         fileMenu.add(quit);
 
+        menu.add(toolsMenu);
+        toolsMenu.add(sim);
+
         //Help Menu
         menu.add(helpMenu);
         helpMenu.add(help);
@@ -228,6 +233,7 @@ public class MainWindow extends JFrame {
         quit.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.QUIT));
         about.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.ABOUT));
         help.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.HELP));
+        sim.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.SIM));
 
         this.setJMenuBar(menu);
     }

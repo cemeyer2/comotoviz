@@ -61,6 +61,7 @@ import prefuse.render.EdgeRenderer;
 import prefuse.render.LabelRenderer;
 import prefuse.render.RendererFactory;
 import prefuse.util.ColorLib;
+import prefuse.util.force.ForceSimulator;
 import prefuse.visual.VisualItem;
 
 import java.util.LinkedList;
@@ -78,6 +79,7 @@ public class GraphDisplayBuilder {
     private List<String> visualizationActions;
     private long layoutEngineRunTime = FrontendConstants.DEFAULT_LAYOUT_ENGINE_RUN_TIME;
     private boolean isAnonymous = FrontendConstants.DEFAULT_ANONYMOUS;
+    private ForceSimulator forceSimulator;
 
     public static GraphDisplayBuilder getBuilder() {
         if (builder == null) {
@@ -137,8 +139,13 @@ public class GraphDisplayBuilder {
 
     private ActionList getLayoutActions() {
         ActionList layout = new ActionList(layoutEngineRunTime);
-        ForceDirectedLayout l = new ForceDirectedLayout(BackendConstants.GRAPH);
-//        ForceSimulator sim = l.getForceSimulator();
+        ForceDirectedLayout l;
+        if (this.getForceSimulator() != null) {
+            l = new ForceDirectedLayout(BackendConstants.GRAPH, forceSimulator, false, true);
+        } else {
+            l = new ForceDirectedLayout(BackendConstants.GRAPH);
+        }
+        forceSimulator = l.getForceSimulator();
         layout.add(l);
         layout.add(new RepaintAction());
         return layout;
@@ -202,8 +209,18 @@ public class GraphDisplayBuilder {
         return this.isAnonymous;
     }
 
-    public void setAnonymous(boolean isAnonymous) {
+    public GraphDisplayBuilder setAnonymous(boolean isAnonymous) {
         this.isAnonymous = isAnonymous;
+        return this;
+    }
+
+    public ForceSimulator getForceSimulator() {
+        return this.forceSimulator;
+    }
+
+    public GraphDisplayBuilder setForceSimulator(ForceSimulator forceSimulator) {
+        this.forceSimulator = forceSimulator;
+        return this;
     }
 
 }

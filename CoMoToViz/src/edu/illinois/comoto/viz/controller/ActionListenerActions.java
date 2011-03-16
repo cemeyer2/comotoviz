@@ -138,6 +138,18 @@ public enum ActionListenerActions {
         }
     },
 
+    sim {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+            return new ActionListener() {
+
+                public void actionPerformed(ActionEvent actionEvent) {
+                    new EditForceSimulatorDialog();
+                }
+            };
+        }
+    },
+
     // Export the image of this graph
     exportImage {
         @Override

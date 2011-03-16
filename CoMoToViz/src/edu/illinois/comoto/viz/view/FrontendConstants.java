@@ -47,6 +47,7 @@ package edu.illinois.comoto.viz.view;
  */
 public class FrontendConstants {
 
+
     private FrontendConstants() {
     }
 
@@ -84,6 +85,9 @@ public class FrontendConstants {
     public static final String QUIT = "Quit";
     public static final String HELP = "Help";
     public static final String ADD_DATA_SET = "Add Data Set";
+    public static final String TOOLS = "Tools";
+    public static final String EDIT_FORCE_SIM = "Edit Force Simulator";
+
 
     //Help & About Dialog Content
     public static final String ABOUT_TITLE = "<html><center><br/>CoMoTo Dynamic Visualization Tool</center><br/></html>";

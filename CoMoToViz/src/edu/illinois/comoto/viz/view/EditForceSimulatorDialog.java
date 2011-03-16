@@ -35,51 +35,41 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.viz.view.graph;
+package edu.illinois.comoto.viz.view;
 
-import org.apache.log4j.Logger;
-import prefuse.Display;
-import prefuse.Visualization;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
+import prefuse.util.force.ForceSimulator;
+import prefuse.util.ui.JForcePanel;
 
-import java.util.List;
+import javax.swing.*;
+import java.awt.*;
 
 /**
- * Author:  Charlie Meyer <cemeyer2@illinois.edu>
- * Date:    3/15/11
- * Time:    5:19 PM
- * Package: edu.illinois.comoto.viz.view.graph
- * Created by IntelliJ IDEA.
+ * 'About' dialog window
  */
-public class GraphDisplay extends Display {
+public class EditForceSimulatorDialog extends JDialog {
 
-    private Visualization visualization;
-    private List<String> visualizationActions;
-    private static final Logger LOGGER = Logger.getLogger(GraphDisplay.class);
 
-    protected GraphDisplay(Visualization visualization, List<String> visualizationActions) {
-        super(visualization);
-        this.visualization = visualization;
-        this.visualizationActions = visualizationActions;
-    }
+    /**
+     * Guild the 'about' dialog window
+     */
+    public EditForceSimulatorDialog() {
+        super();
+        this.setModal(false);
 
-    protected void runAllActions() {
-        LOGGER.info("Running all actions");
-        if (this.visualizationActions != null && this.visualization != null) {
-            for (String action : visualizationActions) {
-                LOGGER.info("Running action: " + action);
-                this.visualization.run(action);
-            }
-        }
-    }
+        ForceSimulator simulator = GraphDisplayBuilder.getBuilder().getForceSimulator();
+        if (simulator != null) {
+            JForcePanel forcePanel = new JForcePanel(simulator);
 
-    protected void runAction(String action) {
-        if (this.visualizationActions != null && this.visualization != null) {
-            if (this.visualizationActions.contains(action)) {
-                LOGGER.info("Running action: " + action);
-                this.visualization.run(action);
-            } else {
-                LOGGER.error("Tried to run action '" + action + "' that is not loaded into this visualization");
-            }
+
+            // Set window size and display
+            forcePanel.setPreferredSize(new Dimension(FrontendConstants.ABOUT_DIALOG_WIDTH, FrontendConstants.ABOUT_DIALOG_HEIGHT));
+            this.setContentPane(forcePanel);
+            this.pack();
+            this.setTitle(FrontendConstants.EDIT_FORCE_SIM);
+            this.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cannot edit a force simulator if no graph has been loaded.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

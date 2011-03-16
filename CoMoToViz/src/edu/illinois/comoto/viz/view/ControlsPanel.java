@@ -227,6 +227,5 @@ public class ControlsPanel extends JPanel {
             }
         });
         this.add(textReportButton, c);
-
     }
 }
