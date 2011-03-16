@@ -94,4 +94,5 @@ public class CoMoToAPIConstants {
     public static final String SUBMISSION_FILE_IDS = "submission_file_ids";
     public static final String SUBMISSION_IDS = "submission_ids";
     public static final String TIMESTAMP = "timestamp";
+    public static final String DIRECTORY_INFO = "directory_info";
 }

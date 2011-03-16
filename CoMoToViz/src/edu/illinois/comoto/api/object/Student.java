@@ -47,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static edu.illinois.comoto.api.CoMoToAPIConstants.DIRECTORY_INFO;
 import static edu.illinois.comoto.api.CoMoToAPIConstants.MATCHES;
 
 /**
@@ -128,6 +129,11 @@ public class Student implements Refreshable, Cacheable, Comparable<Student> {
     private Connection connection;
 
     /**
+     * PH data
+     */
+    private Map<String, Object[]> directoryInfo;
+
+    /**
      * Creates a student object
      *
      * @param abstractStudent A map containing the data for this object
@@ -149,6 +155,8 @@ public class Student implements Refreshable, Cacheable, Comparable<Student> {
             }
             abstractStudent.remove(MATCHES);
         }
+        directoryInfo = (Map<String, Object[]>) abstractStudent.get(DIRECTORY_INFO);
+        abstractStudent.remove(DIRECTORY_INFO);
 
         //Populate this object using reflection
         Reflector<Student> reflector = new Reflector<Student>();
@@ -304,5 +312,9 @@ public class Student implements Refreshable, Cacheable, Comparable<Student> {
 
     public int compareTo(Student student) {
         return getNetid().compareTo(student.getNetid());
+    }
+
+    public Map<String, Object[]> getDirectoryInfo() {
+        return directoryInfo;
     }
 }

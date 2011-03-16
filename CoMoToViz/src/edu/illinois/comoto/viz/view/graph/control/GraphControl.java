@@ -37,8 +37,11 @@
 
 package edu.illinois.comoto.viz.view.graph.control;
 
+import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.object.Student;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
+import edu.illinois.comoto.viz.view.StudentInfoDialog;
 import edu.illinois.comoto.viz.view.WebPageDialog;
 import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
@@ -83,6 +86,13 @@ public class GraphControl implements Control {
                 } catch (MalformedURLException ex) {
                     JOptionPane.showMessageDialog(null, FrontendConstants.EDGE_URL_INVALID_MESSAGE, FrontendConstants.INVALID_URL,
                             JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (item instanceof NodeItem) {
+                logger.info("Item is a node");
+                if (e.getButton() != MouseEvent.BUTTON1) {
+                    logger.info("launching dialog");
+                    Student student = CoMoToAPI.getStudent(null, item.getInt(BackendConstants.STUDENT_ID));
+                    new StudentInfoDialog(student);
                 }
             }
         } catch (Exception ex) {

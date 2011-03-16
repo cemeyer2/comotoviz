@@ -53,6 +53,7 @@ public class FrontendConstants {
     //Window Titles
     public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
     public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
+    public static final String STUDENT_INFO_DIALOG_TITLE = "Directory Info for ";
 
     // Labels
     public static final String SOLUTION = "Solution";
@@ -133,4 +134,6 @@ public class FrontendConstants {
     public static final int LOADING_PROGRESS_DIALOG_HEIGHT = 50;
     public static final int LOGIN_DIALOG_WIDTH = 400;
     public static final int LOGIN_DIALOG_HEIGHT = 200;
+    public static final int STUDENT_INFO_DIALOG_WIDTH = 350;
+    public static final int STUDENT_INFO_DIALOG_HEIGHT = 700;
 }
