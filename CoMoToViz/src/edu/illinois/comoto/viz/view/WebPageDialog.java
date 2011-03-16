@@ -52,12 +52,12 @@ public class WebPageDialog extends JDialog {
     private FramePanel framePanel;
 
     /**
-     *  Creates a modal webpage dialog
+     * Creates a modal webpage dialog
      *
-     * @param owner                     The parent frame for this dialog
-     * @param url                       The URL to which to launch this
-     * @param showNavigation            Flag to show or hide navigation
-     * @throws MalformedURLException    When this is launched with an invalid URL
+     * @param owner          The parent frame for this dialog
+     * @param url            The URL to which to launch this
+     * @param showNavigation Flag to show or hide navigation
+     * @throws MalformedURLException When this is launched with an invalid URL
      */
     public WebPageDialog(Frame owner, String url, boolean showNavigation) throws MalformedURLException {
         super(owner, true);
@@ -65,11 +65,11 @@ public class WebPageDialog extends JDialog {
     }
 
     /**
-     *  Creates a modeless webpage dialog
+     * Creates a modeless webpage dialog
      *
-     * @param url                       The URL to which to launch this
-     * @param showNavigation            Flag to show or hide navigation
-     * @throws MalformedURLException    When this is launched with an invalid URL
+     * @param url            The URL to which to launch this
+     * @param showNavigation Flag to show or hide navigation
+     * @throws MalformedURLException When this is launched with an invalid URL
      */
     public WebPageDialog(String url, boolean showNavigation) throws MalformedURLException {
         super();
@@ -79,15 +79,14 @@ public class WebPageDialog extends JDialog {
     /**
      * Initialize this dialog
      *
-     * @param url                       The URL to launch
-     * @param showNavigation            Flag to show/hide navigation
-     * @throws MalformedURLException    When this is launched with an invalid URL
+     * @param url            The URL to launch
+     * @param showNavigation Flag to show/hide navigation
+     * @throws MalformedURLException When this is launched with an invalid URL
      */
     private void initialize(String url, boolean showNavigation) throws MalformedURLException {
 
         // Change the program icon and setup system properties of dialog
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
 
@@ -115,8 +114,8 @@ public class WebPageDialog extends JDialog {
     /**
      * Attempts to launch this browser dialog to this URL
      *
-     * @param url                       The URL to which to launch
-     * @throws MalformedURLException    When this is given an invalid URL
+     * @param url The URL to which to launch
+     * @throws MalformedURLException When this is given an invalid URL
      */
     public void setUrl(String url) throws MalformedURLException {
         if (browserPanel != null) {

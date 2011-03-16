@@ -66,8 +66,7 @@ public class HelpDialog extends JDialog {
         panel.setPreferredSize(new Dimension(FrontendConstants.HELP_DIALOG_WIDTH, FrontendConstants.HELP_DIALOG_HEIGHT));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
 
         // Display it
         this.setContentPane(panel);

@@ -92,8 +92,7 @@ public class LoadingProgressDialog extends JDialog {
         panel.setPreferredSize(new Dimension(FrontendConstants.LOADING_PROGRESS_DIALOG_WIDTH, FrontendConstants.LOADING_PROGRESS_DIALOG_HEIGHT));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
 
         // Add the GUI elements
         TitledBorder b = BorderFactory.createTitledBorder(label);

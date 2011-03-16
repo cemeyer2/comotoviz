@@ -39,7 +39,9 @@ package edu.illinois.comoto.viz.view;
 
 import prefuse.util.FontLib;
 
+import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  * User: Jon
@@ -54,11 +56,50 @@ public class BackendConstants {
     private BackendConstants() {
     }
 
+    //Icons
+    public static Icon CLOSED_NODE_ICON = null;
+    public static Icon LEAF_NODE_ICON = null;
+    public static Icon OPEN_NODE_ICON = null;
+    public static Image PROGRAM_IMAGE = null;
+
     // Resource locations
-    public static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
-    public static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
-    public static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
-    public static final String PROGRAM_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
+    private static final String CLOSED_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/gray_node.png";
+    private static final String LEAF_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/small_gray_node.png";
+    private static final String OPEN_NODE_ICON_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/blue_node.png";
+    private static final String PROGRAM_IMAGE_PATH = "CoMoToViz/src/edu/illinois/comoto/viz/resources/illinois.png";
+    private static final URL CLOSED_NODE_ICON_RESOURCE = BackendConstants.class.getResource("/gray_node.png");
+    private static final URL LEAF_NODE_ICON_RESOURCE = BackendConstants.class.getResource("/small_gray_node.png");
+    private static final URL OPEN_NODE_ICON_RESOURCE = BackendConstants.class.getResource("/blue_node.png");
+    private static final URL PROGRAM_IMAGE_RESOURCE = BackendConstants.class.getResource("/illinois.png");
+
+
+    //icon initialization
+    static {
+        //for each icon, check if it can be loaded from the jar, if not, load from disk
+        if (CLOSED_NODE_ICON_RESOURCE != null) {
+            CLOSED_NODE_ICON = new ImageIcon(CLOSED_NODE_ICON_RESOURCE);
+        } else {
+            CLOSED_NODE_ICON = new ImageIcon(CLOSED_NODE_ICON_PATH);
+        }
+
+        if (LEAF_NODE_ICON_RESOURCE != null) {
+            LEAF_NODE_ICON = new ImageIcon(LEAF_NODE_ICON_RESOURCE);
+        } else {
+            LEAF_NODE_ICON = new ImageIcon(LEAF_NODE_ICON_PATH);
+        }
+
+        if (OPEN_NODE_ICON_RESOURCE != null) {
+            OPEN_NODE_ICON = new ImageIcon(OPEN_NODE_ICON_RESOURCE);
+        } else {
+            OPEN_NODE_ICON = new ImageIcon(OPEN_NODE_ICON_PATH);
+        }
+
+        if (PROGRAM_IMAGE_RESOURCE != null) {
+            PROGRAM_IMAGE = Toolkit.getDefaultToolkit().getImage(PROGRAM_IMAGE_RESOURCE);
+        } else {
+            PROGRAM_IMAGE = Toolkit.getDefaultToolkit().getImage(PROGRAM_IMAGE_PATH);
+        }
+    }
 
     // Field identifiers
     public static final String IS_PARTNER = "isPartner";

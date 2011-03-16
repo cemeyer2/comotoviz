@@ -73,11 +73,6 @@ public class AssignmentChooserPanel extends JPanel {
     private List<DefaultMutableTreeNode> assignmentNodes;
     private GraphPanel graphPanel;
 
-    // Load the tree node icons
-    private Icon openIcon = new ImageIcon(BackendConstants.OPEN_NODE_ICON_PATH);
-    private Icon closedIcon = new ImageIcon(BackendConstants.CLOSED_NODE_ICON_PATH);
-    private Icon leafIcon = new ImageIcon(BackendConstants.LEAF_NODE_ICON_PATH);
-
     //chosen assignment node
     private DefaultMutableTreeNode currentAssignmentTreeNode;
 
@@ -190,9 +185,9 @@ public class AssignmentChooserPanel extends JPanel {
 
         // Set custom icons for the tree
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-        renderer.setOpenIcon(openIcon);
-        renderer.setClosedIcon(closedIcon);
-        renderer.setLeafIcon(leafIcon);
+        renderer.setOpenIcon(BackendConstants.OPEN_NODE_ICON);
+        renderer.setClosedIcon(BackendConstants.CLOSED_NODE_ICON);
+        renderer.setLeafIcon(BackendConstants.LEAF_NODE_ICON);
         tree.setCellRenderer(renderer);
 
         // Add scrollbars to this panel

@@ -73,8 +73,7 @@ public class AboutDialog extends JDialog {
         copyrightLabel.setHorizontalTextPosition(JLabel.CENTER);
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
 
         // Tweak the layout with gridbags
         GridBagConstraints c = new GridBagConstraints();

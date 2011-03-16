@@ -78,8 +78,7 @@ public class MainWindow extends JFrame {
         visualMoss.setPreferredSize(new Dimension((int) screenSize.getWidth() - 75, (int) screenSize.getHeight() - 75));
 
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
 
         // Set the title
         this.setTitle(FrontendConstants.PROGRAM_TITLE);

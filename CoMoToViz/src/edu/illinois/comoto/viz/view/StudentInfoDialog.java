@@ -73,8 +73,7 @@ public class StudentInfoDialog extends JDialog {
         JScrollPane tablePane = getJTable();
         add(tablePane, BorderLayout.CENTER);
         // Change the program icon
-        Image programIcon = Toolkit.getDefaultToolkit().getImage(BackendConstants.PROGRAM_ICON_PATH);
-        setIconImage(programIcon);
+        setIconImage(BackendConstants.PROGRAM_IMAGE);
 
         // Display the dialog
         this.pack();
