@@ -41,17 +41,29 @@ import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
+import edu.illinois.comoto.viz.view.graph.actions.EdgeStrokeColorAction;
+import edu.illinois.comoto.viz.view.graph.actions.NodeFillColorAction;
+import edu.illinois.comoto.viz.view.graph.actions.NodeStrokeColorAction;
+import edu.illinois.comoto.viz.view.graph.control.GraphControl;
 import prefuse.Constants;
 import prefuse.Visualization;
 import prefuse.action.ActionList;
 import prefuse.action.RepaintAction;
+import prefuse.action.assignment.ColorAction;
+import prefuse.action.assignment.FontAction;
 import prefuse.action.layout.graph.ForceDirectedLayout;
+import prefuse.controls.DragControl;
+import prefuse.controls.PanControl;
+import prefuse.controls.WheelZoomControl;
+import prefuse.controls.ZoomControl;
 import prefuse.data.Graph;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
 import prefuse.render.LabelRenderer;
 import prefuse.render.RendererFactory;
+import prefuse.util.ColorLib;
 import prefuse.util.force.ForceSimulator;
+import prefuse.visual.VisualItem;
 
 import java.util.LinkedList;
 
@@ -91,6 +103,7 @@ public class GraphDisplayBuilder {
         Visualization visualization = buildVisualization(graph);
         GraphDisplay display = new GraphDisplay(visualization, this.visualizationActions);
         display.setHighQuality(true);
+        addControls(display);
         return display;
     }
 
@@ -99,8 +112,18 @@ public class GraphDisplayBuilder {
         visualization.addGraph(BackendConstants.GRAPH, graph);
         visualization.setInteractive(BackendConstants.GRAPH + "." + BackendConstants.EDGES, null, true);
         visualization.setRendererFactory(getRendererFactory());
-        visualization.putAction(BackendConstants.LAYOUT, getLayoutAction());
+
+        //add the actions
+        //laout
+        visualization.putAction(BackendConstants.LAYOUT, getLayoutActions());
         this.visualizationActions.add(BackendConstants.LAYOUT);
+        //color
+        visualization.putAction(BackendConstants.COLOR, getColorActions());
+        this.visualizationActions.add(BackendConstants.COLOR);
+        //font
+        visualization.putAction(BackendConstants.FONT, getFontActions());
+        this.visualizationActions.add(BackendConstants.FONT);
+
         return visualization;
     }
 
@@ -110,13 +133,57 @@ public class GraphDisplayBuilder {
         return new DefaultRendererFactory(labelRenderer, new EdgeRenderer(Constants.EDGE_TYPE_CURVE));
     }
 
-    private ActionList getLayoutAction() {
+    private ActionList getLayoutActions() {
         ActionList layout = new ActionList(layoutEngineRunTime);
         ForceDirectedLayout l = new ForceDirectedLayout(BackendConstants.GRAPH);
         ForceSimulator sim = l.getForceSimulator();
         layout.add(l);
         layout.add(new RepaintAction());
         return layout;
+    }
+
+    private ActionList getColorActions() {
+
+        // colors for coloring nodes, white background for regular nodes, red background for solution
+        // evals based off of isSolution, which is either "false" or "true", since "true" is alphabetically
+        // after "false", red is used for it
+        NodeFillColorAction fill = new NodeFillColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.FILLCOLOR);
+
+        // Black outlines for nodes
+        NodeStrokeColorAction stroke = new NodeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
+
+        // use black for node text
+        ColorAction text = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.TEXTCOLOR, ColorLib.gray(0));
+
+        // use light grey for edges
+        EdgeStrokeColorAction edges = new EdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
+        ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
+
+        // Add the colors
+        ActionList colorActions = new ActionList();
+        colorActions.add(fill);
+        colorActions.add(stroke);
+        colorActions.add(text);
+        colorActions.add(edges);
+        colorActions.add(hl); //cant figure out how to get this to work, just causes warnings to print out
+
+        return colorActions;
+    }
+
+    private ActionList getFontActions() {
+        ActionList fontActions = new ActionList();
+        FontAction action = new FontAction(BackendConstants.GRAPH, BackendConstants.NODE_LABEL_FONT);
+        fontActions.add(action);
+        return fontActions;
+    }
+
+    private void addControls(GraphDisplay display) {
+        display.addControlListener(new GraphControl());
+        display.addControlListener(new DragControl());
+        display.addControlListener(new PanControl());
+        display.addControlListener(new ZoomControl());
+//        display.addControlListener(new NeighborHighlightControl(BackendConstants.COLOR)); //cant figure out how to get this to work, it just causes warnings to print out
+        display.addControlListener(new WheelZoomControl());
     }
 
 

@@ -149,7 +149,7 @@ public class GraphDisplayOld {
 
         // Set visibility of nodes
         predicate = PrefuseGraphBuilder.getBuilder().getPredicate();
-        control = new GraphControl(parent);
+//        control = new GraphControl(parent);
         // Add the controls to this page and the listeners
         display = new Display(visualization, predicate);
 
