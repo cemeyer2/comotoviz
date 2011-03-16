@@ -47,6 +47,9 @@ import prefuse.visual.NodeItem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 
 /**
@@ -167,6 +170,18 @@ public class GraphPanel extends JPanel {
 
     public static GraphPanel getGraphPanel() {
         return pseudoSingleton;
+    }
+
+    /**
+     * writes out the current visible portion of the viz in the display to file as a png
+     *
+     * @param outFile
+     * @throws IOException
+     */
+    public void writeToImage(File outFile) throws IOException {
+        FileOutputStream os = new FileOutputStream(outFile);
+        this.currentDisplay.saveImage(os, "PNG", 1);
+        os.close();
     }
 
 

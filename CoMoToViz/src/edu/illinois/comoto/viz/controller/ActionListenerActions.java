@@ -38,7 +38,6 @@
 package edu.illinois.comoto.viz.controller;
 
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.DataExport;
 import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
 import edu.illinois.comoto.viz.view.*;
@@ -49,6 +48,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * User: Jon
@@ -162,10 +162,10 @@ public enum ActionListenerActions {
                         // Try to dump this graph to the file as an image
                         File file = chooser.getSelectedFile();
                         try {
-                            throw new CoMoToVizException("need to implement write to file after prefuse refactoring");
-                            //mainWindow.getGraphDisplayContainer().getGraphDisplay().writeToImage(file);
-                        } catch (Exception exception) {
-                            logger.fatal("Incomplete implementation", exception);
+                            mainWindow.getGraphPanel().writeToImage(file);
+                        } catch (IOException ioe) {
+                            logger.fatal("Error writing graph to image file", ioe);
+                            JOptionPane.showMessageDialog(null, "Error writing image to file. Please try again.", "IO Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }
