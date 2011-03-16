@@ -115,7 +115,7 @@
         <copy todir="build.viz">
             <fileset dir="${basedir}/../src/edu/illinois/comoto/viz/resources/"/>
         </copy>
-        <jar destfile="jar/CoMoToViz-orig.jar">
+        <jar destfile="jar/CoMoToViz.jar">
             <fileset dir="build.viz/"/>
 
             <manifest>
@@ -128,11 +128,13 @@
         <copy todir="jar/lib">
             <fileset dir="${basedir}/../lib/"/>
         </copy>
+    </target>
 
+    <!--
+    <target name="viz.yguard" depends="viz.jar">
         <taskdef name="yguard"
-                 classname="com.yworks.yguard.YGuardTask"
-                 classpath="lib/yguard.jar"/>
-        <!--
+            classname="com.yworks.yguard.YGuardTask"
+            classpath="lib/yguard.jar"/>
         <yguard>
             <inoutpair in="jar/CoMoToViz-orig.jar" out="jar/CoMoToViz.jar"/>
 
@@ -156,8 +158,8 @@
 
         </yguard>
         <delete file="jar/CoMoToViz-orig.jar"/>
-        -->
     </target>
+    -->
 
     <target name="viz.sign" depends="viz.jar">
         <signjar
