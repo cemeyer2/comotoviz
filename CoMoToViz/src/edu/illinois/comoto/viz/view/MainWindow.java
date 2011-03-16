@@ -45,7 +45,6 @@ import edu.illinois.comoto.viz.controller.WindowListenerFactory;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
-import prefuse.data.Graph;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
@@ -59,19 +58,11 @@ import java.util.Iterator;
 
 public class MainWindow extends JFrame {
 
-    //Preferred Window Sizes
-    final static int windowWidth = 1024;
-    final static int windowHeight = 768;
-
     // GUI elements
-    private Graph graph;
     private GraphPanel graphPanel;
     private ControlsPanel rightControls;
     private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
-
-    // The credentials of the user
-    private Pair<String, String> activeDirectoryCredentials;
 
     private static Logger logger = Logger.getLogger(MainWindow.class);
 
@@ -98,7 +89,7 @@ public class MainWindow extends JFrame {
         rightControls = new ControlsPanel();
         rightControls.initialize(graphPanel);
         leftControls = new AssignmentChooserPanel(this, graphPanel, activeDirectoryCredentials);
-        leftControls.setPreferredSize(new Dimension(200, windowHeight));
+        leftControls.setPreferredSize(new Dimension(200, 768));
         graphPanel.setAssignmentChooserPanel(leftControls);
         visualMoss.add(graphPanel, BorderLayout.CENTER);
         visualMoss.add(leftControls, BorderLayout.WEST);

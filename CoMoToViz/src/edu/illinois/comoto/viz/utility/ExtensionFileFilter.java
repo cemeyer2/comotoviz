@@ -47,8 +47,8 @@ import java.util.List;
 /* ImageFilter.java is used by FileChooserDemo2.java. */
 public class ExtensionFileFilter extends FileFilter {
 
-    List<String> extensions;
-    String description;
+    private List<String> extensions;
+    private String description;
 
     public ExtensionFileFilter(String description) {
         extensions = new ArrayList<String>();

@@ -39,7 +39,6 @@ package edu.illinois.comoto.viz.utility;
 
 import edu.illinois.comoto.api.object.Assignment;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.MainWindow;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
@@ -51,19 +50,17 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
     private Assignment assignment;
     private GraphPanel graphPanel;
     private MainWindow frame;
-    private AssignmentChooserPanel assignmentChooserPanel;
     private static final Logger logger = Logger.getLogger(AssignmentLoadingWorker.class);
 
-    public AssignmentLoadingWorker(Assignment assignment, GraphPanel graphPanel, MainWindow frame, AssignmentChooserPanel assignmentChooserPanel) {
+    public AssignmentLoadingWorker(Assignment assignment, GraphPanel graphPanel, MainWindow frame) {
         this.assignment = assignment;
         this.graphPanel = graphPanel;
         this.frame = frame;
-        this.assignmentChooserPanel = assignmentChooserPanel;
     }
 
     @Override
     protected Void doInBackground() {
-
+        logger.info("SwingWorker running...");
         PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
         graphPanel.reloadGraph();
         frame.updateTitle(assignment);

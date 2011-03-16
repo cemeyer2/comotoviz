@@ -60,7 +60,6 @@ public class LoginDialog extends JDialog {
     // The GUI components
     private JTextField netIdField;
     private JPasswordField passwordField;
-    private JButton loginButton;
 
     // The credentials
     private String netId;
@@ -107,7 +106,7 @@ public class LoginDialog extends JDialog {
         passwordField.setBorder(b2);
 
         // Add the login button and its key listener
-        loginButton = new JButton(FrontendConstants.LOGIN);
+        JButton loginButton = new JButton(FrontendConstants.LOGIN);
         loginButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
 
         // Add these components to the window

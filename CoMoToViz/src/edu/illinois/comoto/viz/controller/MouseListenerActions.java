@@ -59,7 +59,7 @@ public enum MouseListenerActions {
             return new MouseListener() {
 
                 // The assignment chooser object
-                AssignmentChooserPanel thisAssignmentChooser = (AssignmentChooserPanel) parameters[0];
+                private AssignmentChooserPanel thisAssignmentChooser = (AssignmentChooserPanel) parameters[0];
 
                 /**
                  * Change the assignment
@@ -75,10 +75,17 @@ public enum MouseListenerActions {
                 }
 
                 // Other required user input events
-                public void mousePressed(MouseEvent e) {}
-                public void mouseReleased(MouseEvent e) {}
-                public void mouseEntered(MouseEvent e) {}
-                public void mouseExited(MouseEvent e) {}
+                public void mousePressed(MouseEvent e) {
+                }
+
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                public void mouseEntered(MouseEvent e) {
+                }
+
+                public void mouseExited(MouseEvent e) {
+                }
             };
         }
     };

@@ -38,7 +38,6 @@
 package edu.illinois.comoto.viz.view.graph;
 
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.graph.actions.EdgeStrokeColorAction;
@@ -62,7 +61,6 @@ import prefuse.render.EdgeRenderer;
 import prefuse.render.LabelRenderer;
 import prefuse.render.RendererFactory;
 import prefuse.util.ColorLib;
-import prefuse.util.force.ForceSimulator;
 import prefuse.visual.VisualItem;
 
 import java.util.LinkedList;
@@ -101,7 +99,6 @@ public class GraphDisplayBuilder {
     public GraphDisplay buildDisplay() {
         this.visualizationActions.clear();
         Graph graph = PrefuseGraphBuilder.getBuilder().buildPrefuseGraph();
-        VisibilityPredicate predicate = PrefuseGraphBuilder.getBuilder().getPredicate();
         Visualization visualization = buildVisualization(graph);
         GraphDisplay display = new GraphDisplay(visualization, this.visualizationActions);
         display.setHighQuality(true);
@@ -141,7 +138,7 @@ public class GraphDisplayBuilder {
     private ActionList getLayoutActions() {
         ActionList layout = new ActionList(layoutEngineRunTime);
         ForceDirectedLayout l = new ForceDirectedLayout(BackendConstants.GRAPH);
-        ForceSimulator sim = l.getForceSimulator();
+//        ForceSimulator sim = l.getForceSimulator();
         layout.add(l);
         layout.add(new RepaintAction());
         return layout;

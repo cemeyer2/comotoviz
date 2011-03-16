@@ -55,7 +55,7 @@ import java.net.URI;
 
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    Logger logger = Logger.getLogger(ControlsPanel.class);
+    private static final Logger logger = Logger.getLogger(ControlsPanel.class);
 
     public void initialize(final GraphPanel graphPanel) {
         this.setLayout(new GridBagLayout());
@@ -123,8 +123,8 @@ public class ControlsPanel extends JPanel {
         zoomSlider.setPaintTicks(true);
         zoomSlider.setPaintLabels(true);
         zoomSlider.addChangeListener(new ChangeListener() {
-            double oldVal = 50;
-            double newVal;
+            private double oldVal = 50;
+            private double newVal;
 
             public void stateChanged(ChangeEvent e) {
                 TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");

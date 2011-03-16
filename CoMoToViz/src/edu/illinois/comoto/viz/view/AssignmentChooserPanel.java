@@ -69,7 +69,6 @@ public class AssignmentChooserPanel extends JPanel {
 
     // GUI components
     private JTree tree;
-    private DataImport importer;
     private MainWindow frame;
     private List<DefaultMutableTreeNode> assignmentNodes;
     private GraphPanel graphPanel;
@@ -95,7 +94,7 @@ public class AssignmentChooserPanel extends JPanel {
     public AssignmentChooserPanel(MainWindow parentFrame, GraphPanel graphPanel, Pair<String, String> activeDirectoryCredentials) {
         super();
         initializeLoadingProgressDialog();
-        this.importer = new DataImport(activeDirectoryCredentials);
+        DataImport importer = new DataImport(activeDirectoryCredentials);
         this.courses = importer.getCourses();
         this.frame = parentFrame;
         this.assignmentNodes = new ArrayList<DefaultMutableTreeNode>();
@@ -242,7 +241,7 @@ public class AssignmentChooserPanel extends JPanel {
             }
             currentAssignmentTreeNode = node;
             Assignment selectedAssignment = (Assignment) object;
-            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, graphPanel, frame, this);
+            AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, graphPanel, frame);
             //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
             //worker.runSynchronous();

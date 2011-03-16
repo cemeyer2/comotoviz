@@ -37,8 +37,8 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import edu.illinois.comoto.viz.view.MainWindow;
 import edu.illinois.comoto.viz.view.LoginDialog;
+import edu.illinois.comoto.viz.view.MainWindow;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -58,7 +58,7 @@ public enum KeyListenerActions {
             return new KeyListener() {
 
                 // Get a handle on the login dialog
-                final LoginDialog loginDialog = (LoginDialog) parameters[0];
+                private final LoginDialog loginDialog = (LoginDialog) parameters[0];
 
                 // If the enter key was hit, login
                 public void keyTyped(KeyEvent keyEvent) {
@@ -68,8 +68,11 @@ public enum KeyListenerActions {
                 }
 
                 // Ignore other key actions
-                public void keyPressed(KeyEvent e) {}
-                public void keyReleased(KeyEvent e) {}
+                public void keyPressed(KeyEvent e) {
+                }
+
+                public void keyReleased(KeyEvent e) {
+                }
             };
         }
     },
@@ -86,8 +89,11 @@ public enum KeyListenerActions {
                 }
 
                 // Not used here
-                public void keyPressed(KeyEvent e) {}
-                public void keyReleased(KeyEvent e) {}
+                public void keyPressed(KeyEvent e) {
+                }
+
+                public void keyReleased(KeyEvent e) {
+                }
             };
         }
     };

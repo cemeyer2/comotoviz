@@ -41,12 +41,13 @@ import org.lobobrowser.request.AuthenticatorImpl;
 
 import java.net.PasswordAuthentication;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class CoMoToiVizAuthenticator extends AuthenticatorImpl {
 
     private static final String DEFAULT = "*";
 
-    private Hashtable<String, PasswordAuthentication> myAuthentications;
+    private Map<String, PasswordAuthentication> myAuthentications;
 
     public CoMoToiVizAuthenticator() {
         myAuthentications = new Hashtable<String, PasswordAuthentication>();
