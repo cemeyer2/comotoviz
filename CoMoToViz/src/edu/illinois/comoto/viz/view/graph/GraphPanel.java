@@ -59,6 +59,7 @@ public class GraphPanel extends JPanel {
 
     private GraphDisplay currentDisplay;
     private AssignmentChooserPanel assignmentChooserPanel;
+    private JLabel messageLabel;
     private static final Logger logger = Logger.getLogger(GraphPanel.class);
 
     public GraphPanel(int width, int height) {
@@ -67,6 +68,8 @@ public class GraphPanel extends JPanel {
         setPreferredSize(size);
         setSize(size);
         currentDisplay = null;
+        messageLabel = new JLabel();
+        add(messageLabel, BorderLayout.SOUTH);
     }
 
     public void reloadGraph() {
@@ -135,6 +138,18 @@ public class GraphPanel extends JPanel {
         double x = node.getX();
         double y = node.getY();
         currentDisplay.animatePanToAbs(new Point2D.Double(x, y), lengthMS);
+    }
+
+    public void setMessage(String message) {
+        messageLabel.setText(message);
+    }
+
+    public void clearMessage() {
+        setMessage("");
+    }
+
+    public GraphDisplay getCurrentGraphDisplay() {
+        return this.currentDisplay;
     }
 
 
