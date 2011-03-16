@@ -366,6 +366,7 @@ public class PrefuseGraphBuilder {
     }
 
     public List<Student> getStudents() {
+        Collections.sort(students);
         return students;
     }
 

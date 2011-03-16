@@ -41,6 +41,7 @@ import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import org.apache.log4j.Logger;
+import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
@@ -60,6 +61,9 @@ public class GraphPanel extends JPanel {
     private GraphDisplay currentDisplay;
     private AssignmentChooserPanel assignmentChooserPanel;
     private JLabel messageLabel;
+    // For keeping track of data in this window
+    private NodeItem lastNode;
+    private int lastFillColor;
     private static final Logger logger = Logger.getLogger(GraphPanel.class);
 
     public GraphPanel(int width, int height) {
@@ -135,6 +139,13 @@ public class GraphPanel extends JPanel {
         if (node == null) {
             return;
         }
+        // Handle coloring the node
+        if (lastNode != null) {
+            lastNode.setFillColor(lastFillColor);
+        }
+        lastNode = node;
+        lastFillColor = node.getFillColor();
+        node.setFillColor(ColorLib.rgb(0, 255, 0));
         double x = node.getX();
         double y = node.getY();
         currentDisplay.animatePanToAbs(new Point2D.Double(x, y), lengthMS);

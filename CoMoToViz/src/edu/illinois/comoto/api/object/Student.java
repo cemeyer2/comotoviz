@@ -55,7 +55,7 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.MATCHES;
  * <p/>
  * <p> <p> Holds the data for a student
  */
-public class Student implements Refreshable, Cacheable {
+public class Student implements Refreshable, Cacheable, Comparable<Student> {
 
     /**
      * The name to display for this student
@@ -300,5 +300,9 @@ public class Student implements Refreshable, Cacheable {
 
     public String toString() {
         return this.getNetid();
+    }
+
+    public int compareTo(Student student) {
+        return getNetid().compareTo(student.getNetid());
     }
 }

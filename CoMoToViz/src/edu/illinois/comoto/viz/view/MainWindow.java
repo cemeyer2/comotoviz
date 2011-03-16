@@ -46,7 +46,6 @@ import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 import prefuse.data.Graph;
-import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
 import javax.swing.*;
@@ -70,11 +69,6 @@ public class MainWindow extends JFrame {
     private ControlsPanel rightControls;
     private AssignmentChooserPanel leftControls;
     private JTextField searchBox;
-
-    // For keeping track of data in this window
-    private NodeItem lastNode;
-    private boolean lastNodeWasVisible;
-    private int lastFillColor;
 
     // The credentials of the user
     private Pair<String, String> activeDirectoryCredentials;
@@ -189,14 +183,6 @@ public class MainWindow extends JFrame {
                 graphPanel.panToNode(netid, 500);
                 searchBox.setBackground(Color.green);
                 graphPanel.setMessage("Centered on node \"" + netid + "\".");
-
-                // Handle coloring the node
-                if (lastNode != null) {
-                    lastNode.setFillColor(lastFillColor);
-                }
-                lastNode = node;
-                lastFillColor = node.getFillColor();
-                node.setFillColor(ColorLib.rgb(0, 255, 0));
 
                 // We found it
                 return true;
