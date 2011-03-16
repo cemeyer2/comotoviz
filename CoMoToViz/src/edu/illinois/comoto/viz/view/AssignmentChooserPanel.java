@@ -43,7 +43,6 @@ import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
-import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
@@ -235,21 +234,21 @@ public class AssignmentChooserPanel extends JPanel {
      * @param node The node on which the user clicked
      */
     public void changeAssignment(DefaultMutableTreeNode node) {
-        currentAssignmentTreeNode = node;
+
         Object object = node.getUserObject();
         if (object instanceof Assignment) {
-//            for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
-//                assignmentNode.removeAllChildren();
-//            }
+            for (DefaultMutableTreeNode assignmentNode : assignmentNodes) {
+                assignmentNode.removeAllChildren();
+            }
+            currentAssignmentTreeNode = node;
             Assignment selectedAssignment = (Assignment) object;
             AssignmentLoadingWorker worker = new AssignmentLoadingWorker(selectedAssignment, graphPanel, frame, this);
             //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
             //worker.runSynchronous();
         } else if (object instanceof Student) {
-            throw new CoMoToVizException("Need to implement pan to node after prefuse refactoring");
-//            Student student = (Student) object;
-//            display.getGraphDisplay().panToNode(student.getNetid(), 5000);
+            Student student = (Student) object;
+            graphPanel.panToNode(student.getNetid(), 5000);
         }
     }
 

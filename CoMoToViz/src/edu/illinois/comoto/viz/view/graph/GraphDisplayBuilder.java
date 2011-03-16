@@ -169,7 +169,7 @@ public class GraphDisplayBuilder {
         colorActions.add(stroke);
         colorActions.add(text);
         colorActions.add(edges);
-        colorActions.add(hl); //cant figure out how to get this to work, just causes warnings to print out
+//        colorActions.add(hl); //cant figure out how to get this to work, just causes warnings to print out
 
         return colorActions;
     }

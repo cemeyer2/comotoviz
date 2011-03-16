@@ -39,11 +39,14 @@ package edu.illinois.comoto.viz.view.graph;
 
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import org.apache.log4j.Logger;
+import prefuse.visual.NodeItem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.Iterator;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -108,5 +111,31 @@ public class GraphPanel extends JPanel {
     public double getZoom() {
         return this.currentDisplay.getScale();
     }
+
+    /**
+     * animates a pan to a node with the netid supplied, if it exists in the viz. the speed of the
+     * animation is given by the number of milliseconds the pan should take
+     *
+     * @param netid    The netid of the node to which to pan
+     * @param lengthMS The number of milliseconds to take to pan
+     */
+    public void panToNode(String netid, int lengthMS) {
+        Iterator<NodeItem> iter = currentDisplay.getVisualization().items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
+        NodeItem node = null;
+        while (iter.hasNext()) {
+            NodeItem temp = iter.next();
+            if (temp.getString(BackendConstants.NETID).equals(netid)) {
+                node = temp;
+                break;
+            }
+        }
+        if (node == null) {
+            return;
+        }
+        double x = node.getX();
+        double y = node.getY();
+        currentDisplay.animatePanToAbs(new Point2D.Double(x, y), lengthMS);
+    }
+
 
 }
