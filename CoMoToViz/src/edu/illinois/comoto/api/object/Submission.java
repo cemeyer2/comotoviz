@@ -42,7 +42,10 @@ import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static edu.illinois.comoto.api.CoMoToAPIConstants.STUDENT;
 
@@ -141,8 +144,6 @@ public class Submission implements Refreshable, Cacheable {
         //Save the connection
         this.connection = connection;
 
-        this.partnerIds = new LinkedList<Integer>();
-
         //Explicitly add the student object if it exists
         Map studentMap = (Map) abstractSubmission.get(STUDENT);
         if (studentMap != null) {
@@ -161,7 +162,10 @@ public class Submission implements Refreshable, Cacheable {
      * {@inheritDoc}
      */
     public void refresh() {
+
+        // Clear this item from the cache
         Cache.remove(this);
+
         //First, grab the new submission from the api
         Submission newSubmission;
         if (fullStudentData) {
@@ -227,7 +231,7 @@ public class Submission implements Refreshable, Cacheable {
     public Student getStudent() {
 
         //Only call the API if it's not cached
-        if (student == null && type != Type.solutionsubmission) {
+        if (student == null && type == Type.studentsubmission) {
             student = CoMoToAPI.getStudent(connection, studentId, true);
         }
         return student;
