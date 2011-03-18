@@ -1222,6 +1222,7 @@
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/logkit-1.0.1.jar!/" />
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/Pack200Task.jar!/" />
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/prefuse-doc.zip!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/log4j-1.2.16.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
