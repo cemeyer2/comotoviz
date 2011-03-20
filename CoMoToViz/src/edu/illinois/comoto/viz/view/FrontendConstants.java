@@ -47,7 +47,6 @@ package edu.illinois.comoto.viz.view;
  */
 public class FrontendConstants {
 
-
     private FrontendConstants() {
     }
 
@@ -55,6 +54,7 @@ public class FrontendConstants {
     public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
     public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
     public static final String STUDENT_INFO_DIALOG_TITLE = "Directory Info for ";
+    public static final String LOGGING_DIALOG_TITLE = "Logging";
 
     // Labels
     public static final String SOLUTION = "Solution";
@@ -87,6 +87,7 @@ public class FrontendConstants {
     public static final String ADD_DATA_SET = "Add Data Set";
     public static final String TOOLS = "Tools";
     public static final String EDIT_FORCE_SIM = "Edit Force Simulator";
+    public static final String SHOW_LOGGING = "Show Logging";
 
 
     //Help & About Dialog Content
@@ -140,4 +141,6 @@ public class FrontendConstants {
     public static final int LOGIN_DIALOG_HEIGHT = 200;
     public static final int STUDENT_INFO_DIALOG_WIDTH = 350;
     public static final int STUDENT_INFO_DIALOG_HEIGHT = 700;
+    public static final int LOGGING_DIALOG_WIDTH = 800;
+    public static final int LOGGING_DIALOG_HEIGHT = 300;
 }

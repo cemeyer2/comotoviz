@@ -53,6 +53,8 @@ import java.net.URL;
 public class BackendConstants {
 
 
+
+
     private BackendConstants() {
     }
 
@@ -145,6 +147,7 @@ public class BackendConstants {
     public static final String GTK = "GTK";
     public static final String PSEUDONYM = "pseudonym";
     public static final String SIM = "sim";
+    public static final String LOGGING = "logging";
 
     public static final String EDGES = "edges";
     public static final String COLOR = "color";

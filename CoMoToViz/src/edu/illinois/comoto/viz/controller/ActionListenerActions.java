@@ -150,6 +150,18 @@ public enum ActionListenerActions {
         }
     },
 
+    logging {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+            return new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    LoggingDialog.getInstance().showDialog();
+                }
+            };
+        }
+    },
+
     // Export the image of this graph
     exportImage {
         @Override

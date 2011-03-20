@@ -204,6 +204,7 @@ public class MainWindow extends JFrame {
         JMenuItem help = new JMenuItem(FrontendConstants.HELP);
         JMenuItem about = new JMenuItem(FrontendConstants.ABOUT);
         JMenuItem sim = new JMenuItem(FrontendConstants.EDIT_FORCE_SIM);
+        JMenuItem logging = new JMenuItem(FrontendConstants.SHOW_LOGGING);
 
         exportGraph.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         exportImage.setFont(BackendConstants.COMPONENT_LABEL_FONT);
@@ -220,6 +221,7 @@ public class MainWindow extends JFrame {
 
         menu.add(toolsMenu);
         toolsMenu.add(sim);
+        toolsMenu.add(logging);
 
         //Help Menu
         menu.add(helpMenu);
@@ -234,6 +236,7 @@ public class MainWindow extends JFrame {
         about.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.ABOUT));
         help.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.HELP));
         sim.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.SIM));
+        logging.addActionListener((ActionListener) actionListenerFactory.getEventListener(BackendConstants.LOGGING));
 
         this.setJMenuBar(menu);
     }
