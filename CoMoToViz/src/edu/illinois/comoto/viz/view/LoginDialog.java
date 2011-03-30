@@ -70,8 +70,9 @@ public class LoginDialog extends JDialog {
      *
      * @param owner The parent frame
      */
-    public LoginDialog(JFrame owner) {
+    public LoginDialog(JFrame owner, String netid) {
         super(owner, true); //make this modal
+        this.netId = netid;
         initialize();
     }
 
@@ -97,6 +98,7 @@ public class LoginDialog extends JDialog {
         // Add the netid and password fields
         netIdField = new JTextField();
         netIdField.setFont(BackendConstants.COMPONENT_LABEL_FONT);
+        netIdField.setText(netId);
         TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.NETID);
         b1.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         netIdField.setBorder(b1);
@@ -140,6 +142,10 @@ public class LoginDialog extends JDialog {
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        //if a netid was given as an argument, put the cursor in the password field
+        if (netId.length() > 0) {
+            passwordField.requestFocusInWindow();
+        }
     }
 
     public String getNetId() {
@@ -163,7 +169,7 @@ public class LoginDialog extends JDialog {
         // unless many unsuccessful tries are made
         boolean auth = LDAPAuth.authenticate(netId, password);
 
-        if (auth) {
+        if (auth && password.length() > 0) {
             CoMoToiVizAuthenticator authenticator = new CoMoToiVizAuthenticator();
             authenticator.setDefaultAuthentication(netId, password);
             Authenticator.setDefault(authenticator);

@@ -53,8 +53,6 @@ import java.net.URL;
 public class BackendConstants {
 
 
-
-
     private BackendConstants() {
     }
 
@@ -122,7 +120,7 @@ public class BackendConstants {
     public static final String FONT_NAME = "Verdana";
     public static final Font COMPONENT_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
     public static final Font NODE_LABEL_FONT = FontLib.getFont(FONT_NAME, 12);
-    public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 18);
+    public static final Font STATUS_LABEL_FONT = FontLib.getFont(FONT_NAME, 24);
     public static final Font HELP_TITLE_FONT = FontLib.getFont(FONT_NAME, Font.BOLD, 18);
 
     // GUI component & action identifiers

@@ -266,16 +266,26 @@ public class PrefuseGraphBuilder {
     //step 4: remove edges from the backing data that do not pass the predicate
     private void filterTuples(Graph graph) {
         LOGGER.debug("Filtering tuples");
-        Iterator iter = graph.tuples();
+        List<Tuple> tuplesToRemove = new LinkedList<Tuple>();
+        Iterator iter = graph.edges();
         while (iter.hasNext()) {
             Tuple t = (Tuple) iter.next();
             LOGGER.debug("Inspecting tuple: " + t);
             if (!this.predicate.getBoolean(t)) {
-                boolean removed = graph.removeTuple(t);
-                LOGGER.debug("Removing: " + removed);
-            } else {
-                LOGGER.debug("Keeping");
+                tuplesToRemove.add(t);
             }
+        }
+        iter = graph.nodes();
+        while (iter.hasNext()) {
+            Tuple t = (Tuple) iter.next();
+            LOGGER.debug("Inspecting tuple: " + t);
+            if (!this.predicate.getBoolean(t)) {
+                tuplesToRemove.add(t);
+            }
+        }
+        for (Tuple t : tuplesToRemove) {
+            boolean removed = graph.removeTuple(t);
+            LOGGER.debug("Removing: " + removed);
         }
     }
 
@@ -313,8 +323,9 @@ public class PrefuseGraphBuilder {
         //Copy all of the graph edges
         Iterator<Edge> edgeIterator = graph.edges();
         while (edgeIterator.hasNext()) {
+
             Edge oldEdge = edgeIterator.next();
-            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getString(BackendConstants.NETID), graph2), getNode(oldEdge.getTargetNode().getString(BackendConstants.NETID), graph2));
+            Edge newEdge = graph2.addEdge(getNode(oldEdge.getSourceNode().getInt(BackendConstants.SUBMISSION_ID), graph2), getNode(oldEdge.getTargetNode().getInt(BackendConstants.SUBMISSION_ID), graph2));
             newEdge.setDouble(BackendConstants.SCORE1, oldEdge.getDouble(BackendConstants.SCORE1));
             newEdge.setDouble(BackendConstants.SCORE2, oldEdge.getDouble(BackendConstants.SCORE2));
             newEdge.setDouble(BackendConstants.WEIGHT, oldEdge.getDouble(BackendConstants.WEIGHT));
@@ -328,16 +339,15 @@ public class PrefuseGraphBuilder {
     /**
      * Finds a node by the netId associated with it
      *
-     * @param netId The netId identifying the node to get
      * @param graph The graph in which to find the node
      * @return The node corresponding to the given netId
      */
-    private Node getNode(String netId, prefuse.data.Graph graph) {
+    private Node getNode(int submissionId, prefuse.data.Graph graph) {
 
         Iterator<Node> nodeIterator = graph.nodes();
         while (nodeIterator.hasNext()) {
             Node node = nodeIterator.next();
-            if (node.getString(BackendConstants.NETID).equals(netId)) {
+            if (node.getInt(BackendConstants.SUBMISSION_ID) == submissionId) {
                 return node;
             }
         }

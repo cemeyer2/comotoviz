@@ -71,8 +71,8 @@ public class NodeStrokeColorAction extends ColorAction {
         double normalized = maxEdgeWeight * 2.55;
 
         int r = (int) Math.round(normalized);
-        int g = (int) (255 - Math.round(normalized));
-        int b = 0;
+        int g = 0;
+        int b = (int) (255 - Math.round(normalized));
 
         return ColorLib.rgb(r, g, b);
     }

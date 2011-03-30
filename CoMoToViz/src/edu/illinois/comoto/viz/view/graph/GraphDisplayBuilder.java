@@ -44,6 +44,7 @@ import edu.illinois.comoto.viz.view.graph.actions.EdgeStrokeColorAction;
 import edu.illinois.comoto.viz.view.graph.actions.NodeFillColorAction;
 import edu.illinois.comoto.viz.view.graph.actions.NodeStrokeColorAction;
 import edu.illinois.comoto.viz.view.graph.control.GraphControl;
+import org.apache.log4j.Logger;
 import prefuse.Constants;
 import prefuse.Visualization;
 import prefuse.action.ActionList;
@@ -80,6 +81,7 @@ public class GraphDisplayBuilder {
     private long layoutEngineRunTime = FrontendConstants.DEFAULT_LAYOUT_ENGINE_RUN_TIME;
     private boolean isAnonymous = FrontendConstants.DEFAULT_ANONYMOUS;
     private ForceSimulator forceSimulator;
+    private static final Logger LOGGER = Logger.getLogger(GraphDisplayBuilder.class);
 
     public static GraphDisplayBuilder getBuilder() {
         if (builder == null) {
@@ -140,11 +142,7 @@ public class GraphDisplayBuilder {
     private ActionList getLayoutActions() {
         ActionList layout = new ActionList(layoutEngineRunTime);
         ForceDirectedLayout l;
-        if (this.getForceSimulator() != null) {
-            l = new ForceDirectedLayout(BackendConstants.GRAPH, forceSimulator, false, true);
-        } else {
-            l = new ForceDirectedLayout(BackendConstants.GRAPH);
-        }
+        l = new ForceDirectedLayout(BackendConstants.GRAPH);
         forceSimulator = l.getForceSimulator();
         layout.add(l);
         layout.add(new RepaintAction());

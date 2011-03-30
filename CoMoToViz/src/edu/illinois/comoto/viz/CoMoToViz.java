@@ -94,9 +94,12 @@ public class CoMoToViz {
             } catch (IllegalAccessException e) {
             }
         }
-
+        String argNetid = "";
+        if (args.length > 0) {
+            argNetid = args[0];
+        }
         // Show the login dialog and get the credentials
-        LoginDialog loginDialog = new LoginDialog(null);
+        LoginDialog loginDialog = new LoginDialog(null, argNetid);
         String netId = loginDialog.getNetId();
         String password = loginDialog.getPassword();
         Pair<String, String> activeDirectoryCredentials = new Pair<String, String>(netId, password);
@@ -108,9 +111,9 @@ public class CoMoToViz {
         window.setExtendedState(window.getExtendedState() | Frame.MAXIMIZED_BOTH);
 
         // Handle command-line arguments
-        if (args.length == 1) {
+        if (args.length == 2) {
             try {
-                int assignmentId = Integer.parseInt(args[0]);
+                int assignmentId = Integer.parseInt(args[1]);
                 window.changeAssignment(assignmentId);
             } catch (NumberFormatException nfe) {
             }

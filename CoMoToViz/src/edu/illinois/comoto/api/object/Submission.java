@@ -247,7 +247,9 @@ public class Submission implements Refreshable, Cacheable {
      * @return The list of students representing the partners for this submission
      */
     public List<Student> getPartners() {
-
+        if (partnerIds == null) {
+            partnerIds = new ArrayList<Integer>();
+        }
         //Only call the API if it's not cached
         if (partners == null) {
             partners = new ArrayList<Student>();
@@ -264,6 +266,9 @@ public class Submission implements Refreshable, Cacheable {
      * @return The list of submission files
      */
     public List<SubmissionFile> getSubmissionFiles() {
+        if (submissionFileIds == null) {
+            submissionFileIds = new ArrayList<Integer>();
+        }
 
         //Only call the API if it's not cached
         if (submissionFiles == null) {

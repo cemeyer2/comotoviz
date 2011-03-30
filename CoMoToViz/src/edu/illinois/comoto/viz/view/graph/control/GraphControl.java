@@ -90,6 +90,14 @@ public class GraphControl implements Control {
             } else if (item instanceof NodeItem) {
                 logger.info("Item is a node");
                 if (e.getButton() != MouseEvent.BUTTON1) {
+
+                    NodeItem node = (NodeItem) item;
+                    logger.info("node: " + node);
+                    logger.info("degree: " + node.getDegree());
+                    Iterator<EdgeItem> iter = node.edges();
+                    while (iter.hasNext()) {
+                        logger.info("edge: " + iter.next());
+                    }
                     logger.info("launching dialog");
                     Student student = CoMoToAPI.getStudent(null, item.getInt(BackendConstants.STUDENT_ID));
                     new StudentInfoDialog(student);

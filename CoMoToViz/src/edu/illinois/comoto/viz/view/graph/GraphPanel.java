@@ -78,6 +78,7 @@ public class GraphPanel extends JPanel {
         setSize(size);
         currentDisplay = null;
         messageLabel = new JLabel();
+        messageLabel.setFont(BackendConstants.STATUS_LABEL_FONT);
         add(messageLabel, BorderLayout.SOUTH);
     }
 

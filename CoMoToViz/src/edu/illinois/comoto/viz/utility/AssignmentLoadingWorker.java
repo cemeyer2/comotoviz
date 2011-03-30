@@ -60,13 +60,16 @@ public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 
     @Override
     protected Void doInBackground() {
-        LOGGER.info("SwingWorker running...");
-        PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
-        graphPanel.reloadGraph();
-        frame.updateTitle(assignment);
+        try {
+            LOGGER.info("SwingWorker running...");
+            PrefuseGraphBuilder.getBuilder().setAssignment(assignment);
+            graphPanel.reloadGraph();
+            frame.updateTitle(assignment);
 
-        frame.searchStudents();
-
+            frame.searchStudents();
+        } catch (Exception e) {
+            LOGGER.fatal("Exception taken in SwingWorker", e);
+        }
         return null;
     }
 

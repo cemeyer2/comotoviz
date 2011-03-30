@@ -45,6 +45,7 @@ import prefuse.data.Tuple;
 import prefuse.data.event.ExpressionListener;
 import prefuse.data.expression.ExpressionVisitor;
 import prefuse.data.expression.Predicate;
+import prefuse.data.tuple.TableEdge;
 
 import java.util.Iterator;
 
@@ -133,43 +134,54 @@ public class VisibilityPredicate implements Predicate {
     }
 
     private boolean handleNode(Node node) {
+        LOGGER.debug("starting filter for " + node);
         //check showSolution
         boolean isSolution = sol.getBoolean(node);
         if (isSolution && !showSolution) {
+            LOGGER.debug("returning false due to isSolution and dont want to show it");
             return false;
         }
 
         if (!includePast && !cursem.getBoolean(node) && !isSolution) {
+            LOGGER.debug("returning false because we dont want to show past students");
             return false;
         }
-
+        LOGGER.debug("checking if its a singleton");
         //check to see if it is a singleton
         if (!showSingletons) {
             if (node.getDegree() == 0) {
+                LOGGER.debug("returning false because degree was zero");
                 return false;
             }
+            LOGGER.debug("iterating through edges");
             Iterator<Edge> iter = node.edges();
             boolean anyEdgeVisible = false;
             while (iter.hasNext()) {
                 Edge edge = iter.next();
 
                 boolean isVisible = handleEdge(edge);
+                LOGGER.debug("handleEdge(): " + isVisible + ": " + edge);
+                LOGGER.debug("adj node: " + ((TableEdge) edge).getAdjacentNode(node));
                 anyEdgeVisible = anyEdgeVisible || isVisible;
+                LOGGER.debug("anyVisibleEdge: " + anyEdgeVisible);
 
                 if (isLinkedToSolution(node) && !showSolution && node.getDegree() == 1) {
+                    LOGGER.debug("returning true because isLinkedToSolution, and not showing solution, and degree is one");
                     return true;
                 }
 
             }
-            if (!anyEdgeVisible)
+            if (!anyEdgeVisible) {
+                LOGGER.debug("returning false because no visible edges");
                 return false;
+            }
         }
-
+        LOGGER.debug("returning true");
         return true;
     }
 
     private boolean handleEdge(Edge edge) {
-        LOGGER.debug("Handling edge");
+        LOGGER.debug("Handling edge: " + edge);
         LOGGER.debug("Checking solution condition");
         if (!showSolution && (sol.getBoolean(edge.getTargetNode()) ||
                 sol.getBoolean(edge.getSourceNode()))) {
@@ -186,11 +198,11 @@ public class VisibilityPredicate implements Predicate {
             Node source = edge.getSourceNode();
             Node target = edge.getTargetNode();
             if (!cursem.getBoolean(source) && !sol.getBoolean(source)) {
-                LOGGER.debug("Hiding because edge connects to past semester");
+                LOGGER.debug("Hiding because edge connects to past semester check 1");
                 return false;
             }
             if (!cursem.getBoolean(target) && !sol.getBoolean(target)) {
-                LOGGER.debug("Hiding because edge connects to past semester");
+                LOGGER.debug("Hiding because edge connects to past semester check 2");
                 return false;
             }
         }
