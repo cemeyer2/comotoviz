@@ -38,42 +38,44 @@
 package edu.illinois.comoto.viz.view.graph.actions;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
-import prefuse.action.assignment.ColorAction;
-import prefuse.util.ColorLib;
+import edu.illinois.comoto.viz.view.FrontendConstants;
+import prefuse.action.assignment.StrokeAction;
 import prefuse.visual.EdgeItem;
-import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
 
-import java.util.Iterator;
+import java.awt.*;
 
-public class NodeStrokeColorAction extends ColorAction {
+/**
+ * Author:  Charlie Meyer <cemeyer2@illinois.edu>
+ * Date:    3/30/11
+ * Time:    2:22 PM
+ * Package: edu.illinois.comoto.viz.view.graph.actions
+ * Created by IntelliJ IDEA.
+ */
+public class EdgeStrokeAction extends StrokeAction {
 
-    public NodeStrokeColorAction(String group, String field) {
-        super(group, field);
-        // TODO Auto-generated constructor stub
+    public EdgeStrokeAction() {
+        super();
     }
 
-    @Override
-    public int getColor(VisualItem item) {
-        double maxEdgeWeight = 0;
-        NodeItem node = (NodeItem) item;
+    public EdgeStrokeAction(String group) {
+        super(group);
+    }
 
-        Iterator<EdgeItem> edgeIter = node.edges();
+    public EdgeStrokeAction(String group, BasicStroke defaultStroke) {
+        super(group, defaultStroke);
+    }
 
-        while (edgeIter.hasNext()) {
-            EdgeItem edge = edgeIter.next();
-            double weight = edge.getDouble(BackendConstants.WEIGHT);
-            if (weight > maxEdgeWeight && !edge.getBoolean(BackendConstants.IS_PARTNER)) {
-                maxEdgeWeight = weight;
-            }
+    public BasicStroke getStroke(VisualItem item) {
+        if (!(item instanceof EdgeItem)) {
+            return new BasicStroke(FrontendConstants.DEFAULT_STROKE_WDITH);
         }
+        EdgeItem edge = (EdgeItem) item;
+        int weight = edge.getInt(BackendConstants.WEIGHT);
 
-        double normalized = maxEdgeWeight * 2.55;
+        double pct = weight / 100d;
 
-        int r = (int) Math.round(normalized);
-        int g = 0;
-        int b = (int) (255 - Math.round(normalized));
-
-        return ColorLib.rgb(r, g, b);
+        int width = (int) (((FrontendConstants.MAXIMUM_EDGE_WIDTH - FrontendConstants.MINIMUM_EDGE_WIDTH) * pct) + FrontendConstants.MINIMUM_EDGE_WIDTH);
+        return new BasicStroke(width);
     }
 }

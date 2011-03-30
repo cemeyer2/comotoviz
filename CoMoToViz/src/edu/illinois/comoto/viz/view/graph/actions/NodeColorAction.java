@@ -37,38 +37,55 @@
 
 package edu.illinois.comoto.viz.view.graph.actions;
 
-import edu.illinois.comoto.viz.model.predicates.NodeFillConnectedToPastPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
+import edu.illinois.comoto.viz.view.BackendConstants;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
+import prefuse.visual.EdgeItem;
+import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
 
-import java.awt.*;
+import java.util.Iterator;
 
-public class NodeFillColorAction extends ColorAction {
+public class NodeColorAction extends ColorAction {
 
-    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
-    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
-    private NodeFillConnectedToPastPredicate past = new NodeFillConnectedToPastPredicate();
-
-    public NodeFillColorAction(String group, String field) {
+    public NodeColorAction(String group, String field) {
         super(group, field);
         // TODO Auto-generated constructor stub
     }
 
+
+    /**
+     * sets the color for node borders in the graph. The algorithm works as follows:<br/>
+     * <ul>
+     * <li>the border of the node is colored on a gradient scale based on the edge that
+     * node has that is of maximum weight. It is colored between pure green for a max weight edge with 0 weight
+     * and pure red for a max weight edge with a weight of 100</li>
+     * </ul>
+     *
+     * @param item the node that we are assigning a color to
+     * @return a color packed in a 32 bit integer, as RGBA (8 bits each)
+     */
     @Override
     public int getColor(VisualItem item) {
-        if (past.getBoolean(item)) {
-            return ColorLib.rgb(255, 153, 0); //orange
-        } else if (cursem.getBoolean(item)) {
-            return ColorLib.color(Color.WHITE);
-        } else if (sol.getBoolean(item)) {
-            return ColorLib.color(Color.RED);
-        } else {
-            return ColorLib.gray(200);
+        double maxEdgeWeight = 0;
+        NodeItem node = (NodeItem) item;
+
+        Iterator<EdgeItem> edgeIter = node.edges();
+
+        while (edgeIter.hasNext()) {
+            EdgeItem edge = edgeIter.next();
+            double weight = edge.getDouble(BackendConstants.WEIGHT);
+            if (weight > maxEdgeWeight && !edge.getBoolean(BackendConstants.IS_PARTNER)) {
+                maxEdgeWeight = weight;
+            }
         }
 
-    }
+        double normalized = maxEdgeWeight * 2.55;
 
+        int r = (int) Math.round(normalized);
+        int g = (int) (255 - Math.round(normalized));
+        int b = 0;
+
+        return ColorLib.rgb(r, g, b);
+    }
 }

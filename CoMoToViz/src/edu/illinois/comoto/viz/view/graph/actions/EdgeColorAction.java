@@ -45,26 +45,38 @@ import prefuse.visual.VisualItem;
 
 import java.awt.*;
 
-public class EdgeStrokeColorAction extends ColorAction {
+public class EdgeColorAction extends ColorAction {
 
     private EdgeIsPartnerPredicate isPartner = new EdgeIsPartnerPredicate();
 
-    public EdgeStrokeColorAction(String group, String field) {
+    public EdgeColorAction(String group, String field) {
         super(group, field);
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * sets the color for edges in the graph. The algorithm works as follows:<br/>
+     * <ul>
+     * <li>if the edge represents a link between partners, it is colored blue</li>
+     * <li>if the edge is not between partners it is colored on a gradient scale
+     * between pure green for edges with 0 weight and pure red for edges with a weight
+     * of 100</li>
+     * </ul>
+     *
+     * @param item the edge that we are assigning a color to
+     * @return a color packed in a 32 bit integer, as RGBA (8 bits each)
+     */
     @Override
     public int getColor(VisualItem item) {
         if (isPartner.getBoolean(item)) {
-            return ColorLib.color(Color.GREEN);
+            return ColorLib.color(Color.BLUE);
         }
         int weight = item.getInt(BackendConstants.WEIGHT);
         double normalized = weight * 2.55;
 
         int r = (int) Math.round(normalized);
-        int g = 0;
-        int b = (int) (255 - Math.round(normalized));
+        int g = (int) (255 - Math.round(normalized));
+        int b = 0;
 
         return ColorLib.rgb(r, g, b);
     }

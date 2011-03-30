@@ -40,9 +40,7 @@ package edu.illinois.comoto.viz.view.graph;
 import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
-import edu.illinois.comoto.viz.view.graph.actions.EdgeStrokeColorAction;
-import edu.illinois.comoto.viz.view.graph.actions.NodeFillColorAction;
-import edu.illinois.comoto.viz.view.graph.actions.NodeStrokeColorAction;
+import edu.illinois.comoto.viz.view.graph.actions.*;
 import edu.illinois.comoto.viz.view.graph.control.GraphControl;
 import org.apache.log4j.Logger;
 import prefuse.Constants;
@@ -127,6 +125,12 @@ public class GraphDisplayBuilder {
         visualization.putAction(BackendConstants.FONT, getFontActions());
         this.visualizationActions.add(BackendConstants.FONT);
 
+        visualization.putAction(BackendConstants.STROKE, getStrokeActions());
+        this.visualizationActions.add(BackendConstants.STROKE);
+
+        visualization.putAction(BackendConstants.SIZE, getSizeActions());
+        this.visualizationActions.add(BackendConstants.SIZE);
+
         return visualization;
     }
 
@@ -157,13 +161,13 @@ public class GraphDisplayBuilder {
         NodeFillColorAction fill = new NodeFillColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.FILLCOLOR);
 
         // Black outlines for nodes
-        NodeStrokeColorAction stroke = new NodeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
+        NodeColorAction stroke = new NodeColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.STROKECOLOR);
 
         // use black for node text
         ColorAction text = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.TEXTCOLOR, ColorLib.gray(0));
 
         // use light grey for edges
-        EdgeStrokeColorAction edges = new EdgeStrokeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
+        EdgeColorAction edges = new EdgeColorAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES, VisualItem.STROKECOLOR);
 //        ColorAction hl = new ColorAction(BackendConstants.GRAPH + "." + BackendConstants.NODES, VisualItem.HIGHLIGHT, ColorLib.rgb(255, 200, 125));
 
         // Add the colors
@@ -182,6 +186,20 @@ public class GraphDisplayBuilder {
         FontAction action = new FontAction(BackendConstants.GRAPH, BackendConstants.NODE_LABEL_FONT);
         fontActions.add(action);
         return fontActions;
+    }
+
+    private ActionList getStrokeActions() {
+        ActionList strokeActions = new ActionList();
+        EdgeStrokeAction edgeStrokeAction = new EdgeStrokeAction(BackendConstants.GRAPH + "." + BackendConstants.EDGES);
+        strokeActions.add(edgeStrokeAction);
+        return strokeActions;
+    }
+
+    private ActionList getSizeActions() {
+        ActionList sizeActions = new ActionList();
+        NodeSizeAction nodeSizeAction = new NodeSizeAction(BackendConstants.GRAPH + "." + BackendConstants.NODES);
+        sizeActions.add(nodeSizeAction);
+        return sizeActions;
     }
 
     private void addControls(GraphDisplay display) {

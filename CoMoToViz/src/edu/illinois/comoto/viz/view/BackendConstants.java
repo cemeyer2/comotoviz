@@ -130,6 +130,8 @@ public class BackendConstants {
     public static final String LAYOUT = "layout";
     public static final String NODES = "nodes";
     public static final String FONT = "font";
+    public static final String STROKE = "stroke";
+    public static final String SIZE = "size";
     public static final String PNG = "png";
     public static final String XML = "xml";
     public static final String ASSIGNMENT_CHOOSER = "assignmentChooser";

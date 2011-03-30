@@ -37,38 +37,55 @@
 
 package edu.illinois.comoto.viz.view.graph.actions;
 
-import edu.illinois.comoto.viz.model.predicates.NodeFillConnectedToPastPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
-import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
-import prefuse.action.assignment.ColorAction;
-import prefuse.util.ColorLib;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
+import prefuse.action.assignment.SizeAction;
+import prefuse.visual.EdgeItem;
+import prefuse.visual.NodeItem;
 import prefuse.visual.VisualItem;
 
-import java.awt.*;
+import java.util.Iterator;
 
-public class NodeFillColorAction extends ColorAction {
+/**
+ * Author:  Charlie Meyer <cemeyer2@illinois.edu>
+ * Date:    3/30/11
+ * Time:    2:38 PM
+ * Package: edu.illinois.comoto.viz.view.graph.actions
+ * Created by IntelliJ IDEA.
+ */
+public class NodeSizeAction extends SizeAction {
 
-    private NodeFillCurrentSemesterPredicate cursem = new NodeFillCurrentSemesterPredicate();
-    private NodeFillSolutionPredicate sol = new NodeFillSolutionPredicate();
-    private NodeFillConnectedToPastPredicate past = new NodeFillConnectedToPastPredicate();
-
-    public NodeFillColorAction(String group, String field) {
-        super(group, field);
-        // TODO Auto-generated constructor stub
+    public NodeSizeAction() {
+        super();
     }
 
-    @Override
-    public int getColor(VisualItem item) {
-        if (past.getBoolean(item)) {
-            return ColorLib.rgb(255, 153, 0); //orange
-        } else if (cursem.getBoolean(item)) {
-            return ColorLib.color(Color.WHITE);
-        } else if (sol.getBoolean(item)) {
-            return ColorLib.color(Color.RED);
-        } else {
-            return ColorLib.gray(200);
+    public NodeSizeAction(String group) {
+        super(group);
+    }
+
+    public NodeSizeAction(String group, double defaultSize) {
+        super(group, defaultSize);
+    }
+
+    public double getSize(VisualItem item) {
+        if (!(item instanceof NodeItem)) {
+            return FrontendConstants.DEFAULT_SIZE;
         }
+        NodeItem node = (NodeItem) item;
+        double maxEdgeWeight = 0;
 
+        Iterator<EdgeItem> edgeIter = node.edges();
+
+        while (edgeIter.hasNext()) {
+            EdgeItem edge = edgeIter.next();
+            double weight = edge.getDouble(BackendConstants.WEIGHT);
+            if (weight > maxEdgeWeight && !edge.getBoolean(BackendConstants.IS_PARTNER)) {
+                maxEdgeWeight = weight;
+            }
+        }
+        double pct = maxEdgeWeight / 100d;
+
+        double size = ((FrontendConstants.MAXIMUM_NODE_SIZE - FrontendConstants.MINIMUM_NODE_SIZE) * pct) + FrontendConstants.MINIMUM_NODE_SIZE;
+        return size;
     }
-
 }

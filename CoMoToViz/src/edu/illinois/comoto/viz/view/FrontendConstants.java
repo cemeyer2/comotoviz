@@ -143,4 +143,14 @@ public class FrontendConstants {
     public static final int STUDENT_INFO_DIALOG_HEIGHT = 700;
     public static final int LOGGING_DIALOG_WIDTH = 800;
     public static final int LOGGING_DIALOG_HEIGHT = 300;
+
+    //stroke constants
+    public static final int MINIMUM_EDGE_WIDTH = 1;
+    public static final int MAXIMUM_EDGE_WIDTH = 10;
+    public static final int DEFAULT_STROKE_WDITH = 1;
+
+    //size constants
+    public static final double MINIMUM_NODE_SIZE = 1.0;
+    public static final double MAXIMUM_NODE_SIZE = 3.0;
+    public static final double DEFAULT_SIZE = 1.0;
 }

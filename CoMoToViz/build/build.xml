@@ -219,6 +219,7 @@
                 <include name="lib/ext/*.jar"/>
             </lib>
             <jw:application mainclass="edu.illinois.comoto.viz.CoMoToViz" jar="jar/CoMoToViz.jar"/>
+            <jw:shortcut desktop="true"/>
         </jw:jnlpwar>
     </target>
 
