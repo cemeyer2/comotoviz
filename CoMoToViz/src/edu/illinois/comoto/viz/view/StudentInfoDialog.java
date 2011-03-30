@@ -39,10 +39,16 @@ package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.api.object.Student;
 
-import javax.swing.*;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;

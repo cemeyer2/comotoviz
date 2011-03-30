@@ -38,8 +38,11 @@
 package edu.illinois.comoto.viz.view;
 
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 /**
  * The help dialog

@@ -39,8 +39,11 @@ package edu.illinois.comoto.viz.view;
 
 import prefuse.util.FontLib;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.net.URL;
 
 /**
@@ -132,6 +135,7 @@ public class BackendConstants {
     public static final String FONT = "font";
     public static final String STROKE = "stroke";
     public static final String SIZE = "size";
+    public static final String DISTORTION = "distortion";
     public static final String PNG = "png";
     public static final String XML = "xml";
     public static final String ASSIGNMENT_CHOOSER = "assignmentChooser";

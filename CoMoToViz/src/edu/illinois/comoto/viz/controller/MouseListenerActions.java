@@ -39,7 +39,7 @@ package edu.illinois.comoto.viz.controller;
 
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 
-import javax.swing.*;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

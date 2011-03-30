@@ -39,7 +39,7 @@ package edu.illinois.comoto.viz.controller;
 
 import edu.illinois.comoto.viz.view.FrontendConstants;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -65,12 +65,23 @@ public enum WindowListenerActions {
                 }
 
                 // Default, empty actions for everything else
-                public void windowClosed(WindowEvent e) {}
-                public void windowOpened(WindowEvent e) {}
-                public void windowIconified(WindowEvent e) {}
-                public void windowDeiconified(WindowEvent e) {}
-                public void windowActivated(WindowEvent e) {}
-                public void windowDeactivated(WindowEvent e) {}
+                public void windowClosed(WindowEvent e) {
+                }
+
+                public void windowOpened(WindowEvent e) {
+                }
+
+                public void windowIconified(WindowEvent e) {
+                }
+
+                public void windowDeiconified(WindowEvent e) {
+                }
+
+                public void windowActivated(WindowEvent e) {
+                }
+
+                public void windowDeactivated(WindowEvent e) {
+                }
             };
         }
     },
@@ -89,12 +100,23 @@ public enum WindowListenerActions {
                 }
 
                 // Default, empty actions for everything else
-                public void windowClosed(WindowEvent e) {}
-                public void windowOpened(WindowEvent e) {}
-                public void windowIconified(WindowEvent e) {}
-                public void windowDeiconified(WindowEvent e) {}
-                public void windowActivated(WindowEvent e) {}
-                public void windowDeactivated(WindowEvent e) {}
+                public void windowClosed(WindowEvent e) {
+                }
+
+                public void windowOpened(WindowEvent e) {
+                }
+
+                public void windowIconified(WindowEvent e) {
+                }
+
+                public void windowDeiconified(WindowEvent e) {
+                }
+
+                public void windowActivated(WindowEvent e) {
+                }
+
+                public void windowDeactivated(WindowEvent e) {
+                }
             };
         }
     };

@@ -43,7 +43,7 @@ import prefuse.action.assignment.StrokeAction;
 import prefuse.visual.EdgeItem;
 import prefuse.visual.VisualItem;
 
-import java.awt.*;
+import java.awt.BasicStroke;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>

@@ -43,7 +43,7 @@ import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class EdgeColorAction extends ColorAction {
 

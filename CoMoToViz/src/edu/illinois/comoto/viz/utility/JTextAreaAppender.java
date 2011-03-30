@@ -41,50 +41,54 @@ package edu.illinois.comoto.viz.utility;
 import org.apache.log4j.WriterAppender;
 import org.apache.log4j.spi.LoggingEvent;
 
-import javax.swing.*;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 //from http://textareaappender.zcage.com/
 public class JTextAreaAppender extends WriterAppender {
 
-	private static JTextArea jTextArea = null;
+    private static JTextArea jTextArea = null;
     private static JTextAreaAppender pseudoSingleton;
-	protected String name = "JTextAreaAppender";
+    protected String name = "JTextAreaAppender";
 
-	
-	/** Set the target JTextArea for the logging information to appear. */
-	public JTextAreaAppender() {
-        if(jTextArea == null){
+
+    /**
+     * Set the target JTextArea for the logging information to appear.
+     */
+    public JTextAreaAppender() {
+        if (jTextArea == null) {
             jTextArea = new JTextArea();
             pseudoSingleton = this;
         }
-	}
+    }
 
-    public static JTextAreaAppender getPseudoSingleton(){
+    public static JTextAreaAppender getPseudoSingleton() {
         return pseudoSingleton;
     }
 
-    public static JTextArea getJTextArea(){
+    public static JTextArea getJTextArea() {
         return jTextArea;
     }
 
-    public static void setJTextArea(JTextArea jta){
+    public static void setJTextArea(JTextArea jta) {
         jTextArea = jta;
     }
-	/**
-	 * Format and then append the loggingEvent to the stored
-	 * JTextArea.
-	 */
-	public void append(LoggingEvent loggingEvent) {
-		final String message = this.layout.format(loggingEvent);
 
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-                if(jTextArea != null){
+    /**
+     * Format and then append the loggingEvent to the stored
+     * JTextArea.
+     */
+    public void append(LoggingEvent loggingEvent) {
+        final String message = this.layout.format(loggingEvent);
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                if (jTextArea != null) {
                     jTextArea.append(message);
-                    jTextArea.setCaretPosition( jTextArea.getDocument().getLength() ); //scroll it down
+                    jTextArea.setCaretPosition(jTextArea.getDocument().getLength()); //scroll it down
                 }
-			}
-		});
-	}
-	
+            }
+        });
+    }
+
 }

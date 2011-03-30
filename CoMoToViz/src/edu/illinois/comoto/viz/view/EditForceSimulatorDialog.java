@@ -41,8 +41,9 @@ import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
 import prefuse.util.force.ForceSimulator;
 import prefuse.util.ui.JForcePanel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import java.awt.Dimension;
 
 /**
  * 'About' dialog window

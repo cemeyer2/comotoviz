@@ -40,8 +40,9 @@ package edu.illinois.comoto.viz.view;
 import org.lobobrowser.gui.BrowserPanel;
 import org.lobobrowser.gui.FramePanel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import java.awt.Frame;
 import java.net.MalformedURLException;
 
 public class WebPageDialog extends JDialog {

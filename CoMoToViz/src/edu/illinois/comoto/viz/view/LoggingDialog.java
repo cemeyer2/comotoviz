@@ -39,8 +39,12 @@ package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.viz.utility.JTextAreaAppender;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>
@@ -53,7 +57,7 @@ public class LoggingDialog extends JDialog {
 
     private static final LoggingDialog singleton = new LoggingDialog();
 
-    public static LoggingDialog getInstance(){
+    public static LoggingDialog getInstance() {
         return singleton;
     }
 
@@ -68,7 +72,7 @@ public class LoggingDialog extends JDialog {
         panel.setLayout(new BorderLayout());
         panel.setPreferredSize(new Dimension(FrontendConstants.LOGGING_DIALOG_WIDTH, FrontendConstants.LOGGING_DIALOG_HEIGHT));
         JTextArea area = JTextAreaAppender.getJTextArea();
-        panel.add(new JScrollPane(area),BorderLayout.CENTER);
+        panel.add(new JScrollPane(area), BorderLayout.CENTER);
         setContentPane(panel);
         // Change the program icon
         setIconImage(BackendConstants.PROGRAM_IMAGE);
@@ -79,7 +83,7 @@ public class LoggingDialog extends JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    public void showDialog(){
+    public void showDialog() {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }

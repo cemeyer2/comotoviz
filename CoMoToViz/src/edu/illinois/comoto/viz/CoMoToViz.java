@@ -46,8 +46,10 @@ import edu.illinois.comoto.viz.view.MainWindow;
 import org.lobobrowser.main.ExtensionManager;
 import org.lobobrowser.main.PlatformInit;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import java.awt.Frame;
 import java.util.Enumeration;
 
 public class CoMoToViz {

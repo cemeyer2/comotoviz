@@ -38,9 +38,14 @@
 package edu.illinois.comoto.viz.view;
 
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 /**
  * The loading progress dialog for loading an assignment

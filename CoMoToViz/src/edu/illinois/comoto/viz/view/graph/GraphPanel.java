@@ -44,8 +44,10 @@ import org.apache.log4j.Logger;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileOutputStream;

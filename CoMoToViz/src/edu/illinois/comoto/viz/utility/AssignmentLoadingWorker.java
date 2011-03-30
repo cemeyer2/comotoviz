@@ -43,7 +43,7 @@ import edu.illinois.comoto.viz.view.MainWindow;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 
-import javax.swing.*;
+import javax.swing.SwingWorker;
 
 public class AssignmentLoadingWorker extends SwingWorker<Void, Void> {
 

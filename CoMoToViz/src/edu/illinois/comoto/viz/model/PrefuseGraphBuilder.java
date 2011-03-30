@@ -38,7 +38,12 @@
 package edu.illinois.comoto.viz.model;
 
 import edu.illinois.comoto.api.CoMoToAPI;
-import edu.illinois.comoto.api.object.*;
+import edu.illinois.comoto.api.object.Assignment;
+import edu.illinois.comoto.api.object.FileSet;
+import edu.illinois.comoto.api.object.MossMatch;
+import edu.illinois.comoto.api.object.Offering;
+import edu.illinois.comoto.api.object.Student;
+import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.viz.model.predicates.VisibilityPredicate;
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.BackendConstants;
@@ -50,7 +55,12 @@ import prefuse.data.Graph;
 import prefuse.data.Node;
 import prefuse.data.Tuple;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author:  Charlie Meyer <cemeyer2@illinois.edu>

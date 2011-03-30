@@ -37,7 +37,12 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.api.object.*;
+import edu.illinois.comoto.api.object.Assignment;
+import edu.illinois.comoto.api.object.Course;
+import edu.illinois.comoto.api.object.Offering;
+import edu.illinois.comoto.api.object.Season;
+import edu.illinois.comoto.api.object.Semester;
+import edu.illinois.comoto.api.object.Student;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
@@ -46,12 +51,14 @@ import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
