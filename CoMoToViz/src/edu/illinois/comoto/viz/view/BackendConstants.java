@@ -118,6 +118,7 @@ public class BackendConstants {
     public static final String STUDENT_ID = "student_id";
     public static final String MOSSMATCH_ID = "mossmatch_id";
     public static final String CONNECTED_TO_PAST = "connectedToPast";
+    public static final String MAX_DEGREE = "max_degree";
 
     //Font constants
     public static final String FONT_NAME = "Verdana";
@@ -173,4 +174,10 @@ public class BackendConstants {
     public static final boolean DEFAULT_INCLUDE_PAST_STUDENTS = FrontendConstants.DEFAULT_INCLUDE_PAST_STUDENTS;
     public static final boolean DEFAULT_INCLUDE_PARTNERS = FrontendConstants.DEFAULT_INCLUDE_PARTNERS;
     public static final boolean DEFAULT_SHOW_BUILD_PROGRESS = true;
+
+    //forces
+    public static final float DEFAULT_MAX_SPRING_COEFF = 1E-3f;
+    public static final float DEFAULT_MIN_SPRING_COEFF = 1E-7f;
+    public static final float DEFAULT_MIN_SPRING_LENGTH = 0;
+    public static final float DEFAULT_MAX_SPRING_LENGTH = 200;
 }

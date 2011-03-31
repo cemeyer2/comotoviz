@@ -208,7 +208,9 @@ public class PrefuseGraphBuilder {
         LOGGER.debug("Nodes remaining: " + graph.getNodeCount());
         LOGGER.debug("Edges remaining: " + graph.getEdgeCount());
         this.setShowBuildProgress(!BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS);
-        return copyGraph(graph);
+        Graph copy = copyGraph(graph);
+        computeDegrees(copy);
+        return copy;
     }
 
     //step 1: initialize the backing prefuse tables
@@ -225,6 +227,7 @@ public class PrefuseGraphBuilder {
         graph.getNodeTable().addColumn(BackendConstants.STUDENT_ID, int.class);
         graph.getNodeTable().addColumn(BackendConstants.CONNECTED_TO_PAST, boolean.class, false);
 
+
         //Declare all the properties of an analysis
         graph.getEdgeTable().addColumn(BackendConstants.WEIGHT, double.class);   //Weight = max(score1,score2)
         graph.getEdgeTable().addColumn(BackendConstants.SCORE1, double.class);
@@ -232,6 +235,7 @@ public class PrefuseGraphBuilder {
         graph.getEdgeTable().addColumn(BackendConstants.LINK, String.class);
         graph.getEdgeTable().addColumn(BackendConstants.IS_PARTNER, boolean.class);
         graph.getEdgeTable().addColumn(BackendConstants.MOSSMATCH_ID, int.class);
+        graph.getEdgeTable().addColumn(BackendConstants.MAX_DEGREE, int.class, 1);
 
     }
 
@@ -273,7 +277,27 @@ public class PrefuseGraphBuilder {
         }
     }
 
-    //step 4: remove edges from the backing data that do not pass the predicate
+    //step 4: compute degrees
+    public void computeDegrees(Graph graph) {
+        LOGGER.debug("computing degrees");
+        Iterator<Edge> edgeIterator = graph.edges();
+        while (edgeIterator.hasNext()) {
+            Edge edge = edgeIterator.next();
+            Node source = edge.getSourceNode();
+            Node target = edge.getTargetNode();
+            int degree = source.getDegree();
+            if (target.getDegree() > degree) {
+                degree = target.getDegree();
+            }
+            if (degree > edge.getInt(BackendConstants.MAX_DEGREE)) {
+                edge.setInt(BackendConstants.MAX_DEGREE, degree);
+            }
+        }
+
+    }
+
+
+    //step 5: remove edges from the backing data that do not pass the predicate
     private void filterTuples(Graph graph) {
         LOGGER.debug("Filtering tuples");
         List<Tuple> tuplesToRemove = new LinkedList<Tuple>();
@@ -342,6 +366,7 @@ public class PrefuseGraphBuilder {
             newEdge.setString(BackendConstants.LINK, oldEdge.getString(BackendConstants.LINK));
             newEdge.setBoolean(BackendConstants.IS_PARTNER, oldEdge.getBoolean(BackendConstants.IS_PARTNER));
             newEdge.setInt(BackendConstants.MOSSMATCH_ID, oldEdge.getInt(BackendConstants.MOSSMATCH_ID));
+            newEdge.setInt(BackendConstants.MAX_DEGREE, oldEdge.getInt(BackendConstants.MAX_DEGREE));
         }
         return graph2;
     }

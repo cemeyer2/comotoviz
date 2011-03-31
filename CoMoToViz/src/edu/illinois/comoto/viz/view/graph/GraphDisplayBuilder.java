@@ -46,6 +46,7 @@ import edu.illinois.comoto.viz.view.graph.actions.NodeColorAction;
 import edu.illinois.comoto.viz.view.graph.actions.NodeFillColorAction;
 import edu.illinois.comoto.viz.view.graph.actions.NodeSizeAction;
 import edu.illinois.comoto.viz.view.graph.control.GraphControl;
+import edu.illinois.comoto.viz.view.graph.layout.CoMoToVizForceDirectedLayout;
 import org.apache.log4j.Logger;
 import prefuse.Constants;
 import prefuse.Visualization;
@@ -120,7 +121,7 @@ public class GraphDisplayBuilder {
 
         //add the actions
         //laout
-        visualization.putAction(BackendConstants.LAYOUT, getLayoutActions());
+        visualization.putAction(BackendConstants.LAYOUT, getLayoutActions(graph));
         this.visualizationActions.add(BackendConstants.LAYOUT);
         //color
         visualization.putAction(BackendConstants.COLOR, getColorActions());
@@ -147,10 +148,10 @@ public class GraphDisplayBuilder {
         return new DefaultRendererFactory(labelRenderer, new EdgeRenderer(Constants.EDGE_TYPE_CURVE));
     }
 
-    private ActionList getLayoutActions() {
+    private ActionList getLayoutActions(Graph graph) {
         ActionList layout = new ActionList(layoutEngineRunTime);
         ForceDirectedLayout l;
-        l = new ForceDirectedLayout(BackendConstants.GRAPH);
+        l = new CoMoToVizForceDirectedLayout(graph, BackendConstants.GRAPH);
         forceSimulator = l.getForceSimulator();
         layout.add(l);
         layout.add(new RepaintAction());
