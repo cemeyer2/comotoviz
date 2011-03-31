@@ -41,17 +41,21 @@ import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.utility.DataExport;
 import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
 import edu.illinois.comoto.viz.view.AboutDialog;
-import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
-import edu.illinois.comoto.viz.view.graph.GraphPanel;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.EditForceSimulatorDialog;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.LoggingDialog;
 import edu.illinois.comoto.viz.view.LoginDialog;
 import edu.illinois.comoto.viz.view.MainWindow;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 import prefuse.data.io.DataIOException;
 
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -218,11 +222,11 @@ public enum ActionListenerActions {
             final GraphPanel graphPanel = (GraphPanel) parameters[1];
 
             return new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GraphDisplayBuilder.getBuilder().setAnonymous(anonymousButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        };
+                public void actionPerformed(ActionEvent e) {
+                    GraphDisplayBuilder.getBuilder().setAnonymous(anonymousButton.isSelected());
+                    graphPanel.reloadGraph();
+                }
+            };
         }
     },
 

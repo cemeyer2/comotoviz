@@ -43,6 +43,8 @@ import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
+import javax.swing.BorderFactory;
+import javax.swing.JSlider;
 import javax.swing.JTree;
 import javax.swing.border.TitledBorder;
 import javax.swing.tree.DefaultMutableTreeNode;

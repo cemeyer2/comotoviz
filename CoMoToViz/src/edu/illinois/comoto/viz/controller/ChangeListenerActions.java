@@ -41,7 +41,9 @@ import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
-import javax.swing.JTree;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -49,7 +51,7 @@ import javax.swing.event.ChangeListener;
 /**
  * User: Jon
  * Date: 3/30/11
- *
+ * <p/>
  * <p/>
  * Stores all change listeners
  */
@@ -60,7 +62,7 @@ public enum ChangeListenerActions {
         @Override
         ChangeListener getChangeListenerAction(final Object... parameters) {
 
-           // Pull some of the GUI components from the parameters
+            // Pull some of the GUI components from the parameters
             final JSlider zoomSlider = (JSlider) parameters[0];
             final GraphPanel graphPanel = (GraphPanel) parameters[1];
             final JPanel controlsPanel = (JPanel) parameters[2];
@@ -86,9 +88,9 @@ public enum ChangeListenerActions {
     // When the edge threshold is changed
     threshold {
         @Override
-         ChangeListener getChangeListenerAction(final Object... parameters) {
+        ChangeListener getChangeListenerAction(final Object... parameters) {
 
-           // Pull some of the GUI components from the parameters
+            // Pull some of the GUI components from the parameters
             final JSlider threshholdSlider = (JSlider) parameters[0];
             final GraphPanel graphPanel = (GraphPanel) parameters[1];
 
@@ -99,7 +101,7 @@ public enum ChangeListenerActions {
                     threshholdSlider.setBorder(bb);
                 }
             };
-         }
+        }
     };
 
     abstract ChangeListener getChangeListenerAction(Object... parameters);
