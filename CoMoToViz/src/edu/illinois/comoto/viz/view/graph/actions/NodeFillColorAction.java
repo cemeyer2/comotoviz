@@ -40,11 +40,9 @@ package edu.illinois.comoto.viz.view.graph.actions;
 import edu.illinois.comoto.viz.model.predicates.NodeFillConnectedToPastPredicate;
 import edu.illinois.comoto.viz.model.predicates.NodeFillCurrentSemesterPredicate;
 import edu.illinois.comoto.viz.model.predicates.NodeFillSolutionPredicate;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.action.assignment.ColorAction;
-import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
-
-import java.awt.Color;
 
 public class NodeFillColorAction extends ColorAction {
 
@@ -60,13 +58,13 @@ public class NodeFillColorAction extends ColorAction {
     @Override
     public int getColor(VisualItem item) {
         if (past.getBoolean(item)) {
-            return ColorLib.rgb(255, 153, 0); //orange
+            return FrontendConstants.CONNECTED_TO_PAST_NODE_FILL_COLOR_INT;
         } else if (cursem.getBoolean(item)) {
-            return ColorLib.color(Color.WHITE);
+            return FrontendConstants.CURRENT_SEMESTER_NODE_FILL_COLOR_INT;
         } else if (sol.getBoolean(item)) {
-            return ColorLib.color(Color.RED);
+            return FrontendConstants.SOLUTION_NODE_FILL_COLOR_INT;
         } else {
-            return ColorLib.gray(200);
+            return FrontendConstants.PAST_SEMESTER_NODE_FILL_COLOR_INT;
         }
 
     }

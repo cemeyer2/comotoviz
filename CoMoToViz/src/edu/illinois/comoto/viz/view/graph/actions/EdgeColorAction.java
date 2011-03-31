@@ -39,11 +39,10 @@ package edu.illinois.comoto.viz.view.graph.actions;
 
 import edu.illinois.comoto.viz.model.predicates.EdgeIsPartnerPredicate;
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.VisualItem;
-
-import java.awt.Color;
 
 public class EdgeColorAction extends ColorAction {
 
@@ -69,16 +68,13 @@ public class EdgeColorAction extends ColorAction {
     @Override
     public int getColor(VisualItem item) {
         if (isPartner.getBoolean(item)) {
-            return ColorLib.color(Color.BLUE);
+            return FrontendConstants.PARTNER_EDGE_STROKE_COLOR_INT;
         }
         int weight = item.getInt(BackendConstants.WEIGHT);
-        double normalized = weight * 2.55;
 
-        int r = (int) Math.round(normalized);
-        int g = (int) (255 - Math.round(normalized));
-        int b = 0;
+        double pct = weight / 100d;
 
-        return ColorLib.rgb(r, g, b);
+        return ColorLib.interp(FrontendConstants.MIN_WEIGHT_STROKE_COLOR_INT, FrontendConstants.MAX_WEIGHT_STROKE_COLOR_INT, pct);
     }
 
 }

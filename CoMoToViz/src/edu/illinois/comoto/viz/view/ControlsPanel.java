@@ -66,6 +66,8 @@ public class ControlsPanel extends JPanel {
 
     public void initialize(final GraphPanel graphPanel) {
         this.setLayout(new GridBagLayout());
+        this.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
+        this.setBorder(BorderFactory.createRaisedBevelBorder());
         GridBagConstraints c = new GridBagConstraints();
         final JCheckBox pastStudentButton, singletonsButton, partnersButton, solutionButton, anonymousButton;
         final JSlider threshholdSlider, zoomSlider;
@@ -73,6 +75,7 @@ public class ControlsPanel extends JPanel {
 
         //Threshold Slider
         threshholdSlider = new JSlider();
+        threshholdSlider.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         threshholdSlider.setValue(FrontendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT);//show all edges by default on load
         threshholdSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         final TitledBorder b0 = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": "
@@ -120,6 +123,7 @@ public class ControlsPanel extends JPanel {
 
         //Zoom Slider
         zoomSlider = new JSlider(0, 100);
+        zoomSlider.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         zoomSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         final TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": "
                 + zoomSlider.getValue() + "%");
@@ -148,6 +152,7 @@ public class ControlsPanel extends JPanel {
         this.add(zoomSlider, c);
 
         pastStudentButton = new JCheckBox(FrontendConstants.INCLUDE_PAST_STUDENTS);
+        pastStudentButton.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         pastStudentButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         pastStudentButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PAST_STUDENTS);
         pastStudentButton.addActionListener(new ActionListener() {
@@ -161,6 +166,7 @@ public class ControlsPanel extends JPanel {
         this.add(pastStudentButton, c);
 
         singletonsButton = new JCheckBox(FrontendConstants.INCLUDE_SINGLETONS);
+        singletonsButton.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         singletonsButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         singletonsButton.setSelected(FrontendConstants.DEFAULT_SHOW_SINGLETONS);
         singletonsButton.addActionListener(new ActionListener() {
@@ -173,6 +179,7 @@ public class ControlsPanel extends JPanel {
         this.add(singletonsButton, c);
 
         partnersButton = new JCheckBox(FrontendConstants.INCLUDE_PARTNER_EDGES);
+        partnersButton.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         partnersButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         partnersButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PARTNERS);
         partnersButton.addActionListener(new ActionListener() {
@@ -186,6 +193,7 @@ public class ControlsPanel extends JPanel {
         this.add(partnersButton, c);
 
         solutionButton = new JCheckBox(FrontendConstants.INCLUDE_SOLUTION);
+        solutionButton.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         solutionButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         solutionButton.setSelected(FrontendConstants.DEFAULT_SHOW_SOLUTION);
         solutionButton.addActionListener(new ActionListener() {
@@ -198,6 +206,7 @@ public class ControlsPanel extends JPanel {
         this.add(solutionButton, c);
 
         anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
+        anonymousButton.setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         anonymousButton.setSelected(FrontendConstants.DEFAULT_ANONYMOUS);
         anonymousButton.addActionListener(new ActionListener() {

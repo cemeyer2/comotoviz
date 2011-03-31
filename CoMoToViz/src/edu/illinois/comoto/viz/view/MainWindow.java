@@ -157,6 +157,11 @@ public class MainWindow extends JFrame {
      */
     public boolean searchStudents() {
 
+        if (GraphPanel.getGraphPanel().getCurrentGraphDisplay() == null) {
+            graphPanel.setMessage("No graph loaded");
+            return false;
+        }
+
         // Get the text that's now in the box
         graphPanel.clearMessage();
         String searchText = searchBox.getText();

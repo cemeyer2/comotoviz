@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.view.graph.actions;
 
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import prefuse.action.assignment.ColorAction;
 import prefuse.util.ColorLib;
 import prefuse.visual.EdgeItem;
@@ -80,12 +81,7 @@ public class NodeColorAction extends ColorAction {
             }
         }
 
-        double normalized = maxEdgeWeight * 2.55;
-
-        int r = (int) Math.round(normalized);
-        int g = (int) (255 - Math.round(normalized));
-        int b = 0;
-
-        return ColorLib.rgb(r, g, b);
+        double pct = maxEdgeWeight / 100d;
+        return ColorLib.interp(FrontendConstants.MIN_WEIGHT_STROKE_COLOR_INT, FrontendConstants.MAX_WEIGHT_STROKE_COLOR_INT, pct);
     }
 }

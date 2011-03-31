@@ -40,6 +40,7 @@ package edu.illinois.comoto.viz.view.graph;
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
 import org.apache.log4j.Logger;
 import prefuse.util.ColorLib;
 import prefuse.visual.NodeItem;
@@ -75,6 +76,7 @@ public class GraphPanel extends JPanel {
     public GraphPanel(int width, int height) {
         pseudoSingleton = this;
         setLayout(new BorderLayout());
+        setBackground(FrontendConstants.DEFAULT_COMPONENT_BACKGROUND_COLOR);
         Dimension size = new Dimension(width, height);
         setPreferredSize(size);
         setSize(size);

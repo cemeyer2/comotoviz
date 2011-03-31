@@ -48,7 +48,6 @@ import org.lobobrowser.main.PlatformInit;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Frame;
 import java.util.Enumeration;
 
@@ -67,6 +66,7 @@ public class CoMoToViz {
     public static void main(String[] args) {
 
         setDefaultFont();
+        System.setProperty("apple.laf.useScreenMenuBar", "true"); //move the menubar to native location on OS X
 
         // Enable object caching
         Cache.setEnabled(true);
@@ -83,19 +83,21 @@ public class CoMoToViz {
             JOptionPane.showMessageDialog(null, "Error initializing lobo browser component.", "Initialization Error", JOptionPane.ERROR_MESSAGE);
             throw new CoMoToVizException("Lobo did not initialize properly.", ex);
         }
-
+        //until the issues with the windows look and feel can be resolved,
+        //especially on the student info dialog, the default swing look and feel
+        //will be used
         // If the system is not linux, use the system look and feel
-        String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
-        if (!System.getProperty(BackendConstants.OS_PROPERTY).contains(BackendConstants.LINUX)) {
-            try {
-                // Set System look and feel
-                UIManager.setLookAndFeel(systemLookAndFeel);
-            } catch (UnsupportedLookAndFeelException e) {
-            } catch (ClassNotFoundException e) {
-            } catch (InstantiationException e) {
-            } catch (IllegalAccessException e) {
-            }
-        }
+//        String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
+//        if (!System.getProperty(BackendConstants.OS_PROPERTY).contains(BackendConstants.LINUX)) {
+//            try {
+//                // Set System look and feel
+//                UIManager.setLookAndFeel(systemLookAndFeel);
+//            } catch (UnsupportedLookAndFeelException e) {
+//            } catch (ClassNotFoundException e) {
+//            } catch (InstantiationException e) {
+//            } catch (IllegalAccessException e) {
+//            }
+//        }
         String argNetid = "";
         if (args.length > 0) {
             argNetid = args[0];

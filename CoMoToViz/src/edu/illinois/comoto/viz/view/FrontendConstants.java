@@ -37,6 +37,10 @@
 
 package edu.illinois.comoto.viz.view;
 
+import prefuse.util.ColorLib;
+
+import java.awt.Color;
+
 /**
  * User: Jon
  * Date: 3/6/11
@@ -52,7 +56,7 @@ public class FrontendConstants {
 
     //Window Titles
     public static final String WEBPAGE_DIALOG_TITLE = "Code Comparison";
-    public static final String PROGRAM_TITLE = "CoMoTo Dynamic Visualization Tool";
+    public static final String PROGRAM_TITLE = "CoMoToViz";
     public static final String STUDENT_INFO_DIALOG_TITLE = "Directory Info for ";
     public static final String LOGGING_DIALOG_TITLE = "Logging";
 
@@ -91,7 +95,7 @@ public class FrontendConstants {
 
 
     //Help & About Dialog Content
-    public static final String ABOUT_TITLE = "<html><center><br/>CoMoTo Dynamic Visualization Tool</center><br/></html>";
+    public static final String ABOUT_TITLE = "<html><center><br/>CoMoToViz</center><br/></html>";
     public static final String ABOUT_AUTHORS = "<html>Charlie Meyer<br/>Jon Tedesco<br/>Cinda Heeren<br/>Eric Shaffer<br/><br/></center></html>";
     public static final String ABOUT_COPYRIGHT = "<html><center>© 2011 The Board of Trustees at the University of Illinois<br/>" +
             "University of Illinois at Urbana-Champaign - College of Engineering<br/>" +
@@ -153,4 +157,22 @@ public class FrontendConstants {
     public static final double MINIMUM_NODE_SIZE = 1.0;
     public static final double MAXIMUM_NODE_SIZE = 3.0;
     public static final double DEFAULT_SIZE = 1.0;
+
+    //colors
+    public static final Color DEFAULT_COMPONENT_BACKGROUND_COLOR = Color.WHITE;
+    public static final int CONNECTED_TO_PAST_NODE_FILL_COLOR_INT = ColorLib.rgb(255, 153, 0); //orange
+    public static final Color CONNECTED_TO_PAST_NODE_FILL_COLOR = ColorLib.getColor(CONNECTED_TO_PAST_NODE_FILL_COLOR_INT);
+    public static final Color CURRENT_SEMESTER_NODE_FILL_COLOR = Color.WHITE;
+    public static final int CURRENT_SEMESTER_NODE_FILL_COLOR_INT = ColorLib.color(CURRENT_SEMESTER_NODE_FILL_COLOR);
+    public static final Color SOLUTION_NODE_FILL_COLOR = Color.RED;
+    public static final int SOLUTION_NODE_FILL_COLOR_INT = ColorLib.color(SOLUTION_NODE_FILL_COLOR);
+    public static final Color PAST_SEMESTER_NODE_FILL_COLOR = ColorLib.getGrayscale(200);
+    public static final int PAST_SEMESTER_NODE_FILL_COLOR_INT = ColorLib.color(PAST_SEMESTER_NODE_FILL_COLOR);
+    public static final Color MIN_WEIGHT_STROKE_COLOR = Color.GREEN;
+    public static final Color MAX_WEIGHT_STROKE_COLOR = Color.RED;
+    public static final int MIN_WEIGHT_STROKE_COLOR_INT = ColorLib.color(MIN_WEIGHT_STROKE_COLOR);
+    public static final int MAX_WEIGHT_STROKE_COLOR_INT = ColorLib.color(MAX_WEIGHT_STROKE_COLOR);
+    public static final Color PARTNER_EDGE_STROKE_COLOR = Color.BLUE;
+    public static final int PARTNER_EDGE_STROKE_COLOR_INT = ColorLib.color(PARTNER_EDGE_STROKE_COLOR);
+
 }
