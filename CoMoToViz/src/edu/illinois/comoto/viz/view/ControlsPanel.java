@@ -148,7 +148,7 @@ public class ControlsPanel extends JPanel {
         anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         anonymousButton.setSelected(FrontendConstants.DEFAULT_ANONYMOUS);
-        solutionButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+        anonymousButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
                 BackendConstants.ANONYMOUS_GRAPH, anonymousButton, graphPanel));
 
         // Initialize the 'launch text report' button
@@ -160,7 +160,7 @@ public class ControlsPanel extends JPanel {
         c.weighty = 0.1;
         c.ipady = 32;
         c.gridy = 7;
-        solutionButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+        textReportButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
                 BackendConstants.LAUNCH_TEXT_REPORT));
         this.add(textReportButton, c);
     }

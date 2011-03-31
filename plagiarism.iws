@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.ipr" afterPath="$PROJECT_DIR$/plagiarism.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <ignored path="plagiarism.iws" />
@@ -168,7 +164,7 @@
       <file leaf-file-name="ControlsPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="30" selection-start="5430" selection-end="5430" vertical-scroll-proportion="0.43380615">
+            <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -849,7 +845,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored ActionListeners and MouseListeners out of controls panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -874,6 +870,7 @@
     <MESSAGE value="Fixed API errors" />
     <MESSAGE value="Removed VisualMoss directory" />
     <MESSAGE value="Refactored ActionListeners and MouseListeners out of controls panel" />
+    <MESSAGE value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -992,7 +989,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="30" selection-start="5430" selection-end="5430" vertical-scroll-proportion="0.43380615">
+        <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
