@@ -87,6 +87,7 @@ public class PrefuseGraphBuilder {
     private Map<Integer, Edge> edges;
     private Map<Integer, Node> nodes;
     private List<Student> students;
+    private int maxNodeCount, currentNodeCount;
 
     private PrefuseGraphBuilder() {
         this.predicate = new VisibilityPredicate(BackendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT,
@@ -198,6 +199,7 @@ public class PrefuseGraphBuilder {
         initializeGraph(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.BUILDING_STUDENT_DATA_MESSAGE);
         addNodes(graph);
+        this.maxNodeCount = graph.getNodeCount();
         this.setLoadingProgressDialogMessage(FrontendConstants.BUILDING_MATCH_DATA_MESSAGE);
         addEdges(graph);
         this.setLoadingProgressDialogMessage(FrontendConstants.FILTERING_DATA_MESSAGE);
@@ -368,6 +370,7 @@ public class PrefuseGraphBuilder {
             newEdge.setInt(BackendConstants.MOSSMATCH_ID, oldEdge.getInt(BackendConstants.MOSSMATCH_ID));
             newEdge.setInt(BackendConstants.MAX_DEGREE, oldEdge.getInt(BackendConstants.MAX_DEGREE));
         }
+        this.currentNodeCount = graph2.getNodeCount();
         return graph2;
     }
 
@@ -413,6 +416,24 @@ public class PrefuseGraphBuilder {
     public List<Student> getStudents() {
         Collections.sort(students);
         return students;
+    }
+
+    /**
+     * Gets the number of nodes in the graph before it was filtered according to the predicate settings
+     *
+     * @return the number of nodes in unfiltered backing data
+     */
+    public int getMaxNodeCount() {
+        return this.maxNodeCount;
+    }
+
+    /**
+     * Gets the number of nodes in the graph after it was filtered according to the predicate settings
+     *
+     * @return the number of nodes in the constructed graph
+     */
+    public int getCurrentNodeCount() {
+        return this.currentNodeCount;
     }
 
 }

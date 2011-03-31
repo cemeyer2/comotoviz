@@ -175,9 +175,39 @@ public class BackendConstants {
     public static final boolean DEFAULT_INCLUDE_PARTNERS = FrontendConstants.DEFAULT_INCLUDE_PARTNERS;
     public static final boolean DEFAULT_SHOW_BUILD_PROGRESS = true;
 
-    //forces
-    public static final float DEFAULT_MAX_SPRING_COEFF = 1E-3f;
-    public static final float DEFAULT_MIN_SPRING_COEFF = 1E-7f;
-    public static final float DEFAULT_MIN_SPRING_LENGTH = 0;
-    public static final float DEFAULT_MAX_SPRING_LENGTH = 200;
+    //forces, taken from prefuse source
+    //we will modify these to suit our needs, for most of them, i think some kind of interpolation
+    //based on attributes of the graph should give a nice value
+
+    //the coeff for a given spring in the graph is calculated by determining the maximum between
+    //the degree of the source node and target node that are attached to the spring, then determining
+    //the proportion that that number is compared to the node in the graph with maximum degree, then interpolating
+    //1-that percentage between the max and min constants defined below
+    public static final float MAX_SPRING_COEFF = 1E-4f;
+    public static final float MIN_SPRING_COEFF = 1E-7f;
+    public static final int SPRING_COEFF_PARAM_INDEX = 0;
+    //spring length is similarly calculated to spring coeff, except higher edges connecting to higher degree
+    //nodes have a longer spring length (inverse of how coeff is calculated)
+    public static final float MIN_SPRING_LENGTH = 50;
+    public static final float MAX_SPRING_LENGTH = 250;
+    public static final float DEFAULT_SPRING_LENGTH = 50;
+    public static final int SPRING_LENGTH_PARAM_INDEX = 1;
+    //the drag coeff is calculated by determining the percentage of nodes are in the displayed graph against
+    //the number of nodes in the graph before it was filtered by the predicate, then taking 1-that percentage
+    //and interpolating it between the max and min values defined below
+    public static final int DRAG_FORCE_COEFF_PARAM_INDEX = 0;
+    public static final float MIN_DRAG_COEFF = 0.005f;
+    public static final float MAX_DRAG_COEFF = 0.01f;
+    public static final float MIN_GRAV_CONSTANT = -10f;
+    public static final float MAX_GRAV_CONSTANT = 10f;
+    public static final float MIN_DISTANCE = -1f;
+    public static final float MAX_DISTANCE = 500f;
+    public static final float MIN_THETA = 0.0f;
+    public static final float MAX_THETA = 1.0f;
+    public static final int NBODY_FORCE_GRAV_CONSTANT_PARAM_INDEX = 0;
+    public static final int NBODY_FORCE_MIN_DISTANCE_PARAM_INDEX = 1;
+    public static final int NBODY_FORCE_BARNES_HUT_THETA_PARAM_INDEX = 2;
+    public static final float DEFAULT_THETA = 0.9f;
+    public static final float DEFAULT_GRAV_CONSTANT = -1.0f;
+    public static final float DEFAULT_DISTANCE = -1f;
 }
