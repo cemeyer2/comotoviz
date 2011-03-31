@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="" />
+    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
+    </list>
     <ignored path="plagiarism.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -161,8 +164,10 @@
       <file leaf-file-name="ControlsPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="42" selection-start="8341" selection-end="8341" vertical-scroll-proportion="0.5425532">
-              <folding />
+            <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,8 +175,10 @@
       <file leaf-file-name="ChangeListenerActions.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="26" selection-start="3124" selection-end="3124" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -318,8 +325,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,9 +358,132 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utility" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,15 +498,15 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="plagiarism" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
@@ -413,13 +542,31 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CHANGED_ON_SERVER" />
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeColorAction.java</PATH>
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\LoggingDialog.java</PATH>
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeColorAction.java</PATH>
           <FILE-GROUP>
             <option name="myUpdateName" value="Updated" />
             <option name="myStatusName" value="Changed" />
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\plagiarism.iws</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\api\object\Submission.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\model\predicates\VisibilityPredicate.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\FrontendConstants.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\control\GraphControl.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\build\build.xml</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\CoMoToViz.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeFillColorAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\BackendConstants.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\MainWindow.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\model\PrefuseGraphBuilder.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\log4j.properties</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\GraphPanel.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\controller\ActionListenerActions.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\LoginDialog.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\GraphDisplayBuilder.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\utility\AssignmentLoadingWorker.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -427,6 +574,9 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeSizeAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\utility\JTextAreaAppender.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeStrokeAction.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -434,6 +584,8 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeStrokeColorAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeStrokeColorAction.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -651,6 +803,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2498469" sideWeight="0.33104238" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39977092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34478807" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -659,7 +812,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329455" sideWeight="0.6552119" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329455" sideWeight="0.6735395" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32646048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IntelliGuard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -671,16 +824,15 @@
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -693,7 +845,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="All done merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -719,7 +871,6 @@
     <MESSAGE value="Removed VisualMoss directory" />
     <MESSAGE value="Refactored ActionListeners and MouseListeners out of controls panel" />
     <MESSAGE value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
-    <MESSAGE value="All done merging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -759,65 +910,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/EditForceSimulatorDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="13" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.33211678" />
+        <state line="49" column="13" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.33211678">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoadingProgressDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="13" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.33211678" />
+        <state line="47" column="13" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.33211678">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoggingDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="35" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.6969697" />
+        <state line="63" column="35" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.6969697">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/javax/swing/event/ChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="17" selection-start="354" selection-end="354" vertical-scroll-proportion="0.3617021" />
+        <state line="18" column="17" selection-start="354" selection-end="354" vertical-scroll-proportion="0.3617021">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="122" selection-start="5654" selection-end="5743" vertical-scroll-proportion="0.6794718" />
+        <state line="135" column="122" selection-start="5654" selection-end="5743" vertical-scroll-proportion="0.6794718">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="36" selection-start="8963" selection-end="8963" vertical-scroll-proportion="0.7815126" />
+        <state line="239" column="36" selection-start="8963" selection-end="8963" vertical-scroll-proportion="0.7815126">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="68" selection-start="2357" selection-end="2357" vertical-scroll-proportion="1.0650119" />
+        <state line="53" column="68" selection-start="2357" selection-end="2357" vertical-scroll-proportion="1.0650119">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="3895" selection-end="4101" vertical-scroll-proportion="0.5102041" />
+        <state line="105" column="0" selection-start="3895" selection-end="4101" vertical-scroll-proportion="0.5102041">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="43" selection-start="7036" selection-end="7040" vertical-scroll-proportion="0.6583924" />
+        <state line="154" column="43" selection-start="7036" selection-end="7040" vertical-scroll-proportion="0.6583924">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="26" selection-start="3124" selection-end="3124" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="42" selection-start="8341" selection-end="8341" vertical-scroll-proportion="0.5425532">
-          <folding />
+        <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
