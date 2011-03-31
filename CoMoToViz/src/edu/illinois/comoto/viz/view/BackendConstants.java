@@ -152,6 +152,7 @@ public class BackendConstants {
     public static final String ANONYMOUS_GRAPH = "anonymousGraph";
     public static final String LAUNCH_TEXT_REPORT = "launchTextReport";
     public static final String THRESHOLD = "threshold";
+    public static final String ZOOM = "zoom";
     public static final String SINGLETONS = "singletons";
     public static final String SIM = "sim";
     public static final String LOGGING = "logging";

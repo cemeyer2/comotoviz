@@ -38,6 +38,7 @@
 package edu.illinois.comoto.viz.view;
 
 import edu.illinois.comoto.viz.controller.ActionListenerFactory;
+import edu.illinois.comoto.viz.controller.ChangeListenerFactory;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
@@ -45,10 +46,10 @@ import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -63,9 +64,10 @@ public class ControlsPanel extends JPanel {
         final JSlider threshholdSlider, zoomSlider;
         final JButton textReportButton;
 
-        // Get EventListener factories
+        // Get event listener factories
         EventListenerFactory actionListenerFactory = new ActionListenerFactory();
-        MouseListenerFactory mouseListenerFactory = new MouseListenerFactory();
+        EventListenerFactory mouseListenerFactory = new MouseListenerFactory();
+        EventListenerFactory changeListenerFactory = new ChangeListenerFactory();
 
         // Initialize the threshold Slider
         threshholdSlider = new JSlider();
@@ -79,14 +81,10 @@ public class ControlsPanel extends JPanel {
         threshholdSlider.setMinorTickSpacing(10);
         threshholdSlider.setPaintTicks(true);
         threshholdSlider.setPaintLabels(true);
-        threshholdSlider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
-                bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
-                threshholdSlider.setBorder(bb);
-            }
-        });
-        threshholdSlider.addMouseListener(mouseListenerFactory.getEventListener(BackendConstants.THRESHOLD, threshholdSlider, graphPanel));
+        threshholdSlider.addChangeListener((ChangeListener) changeListenerFactory.getEventListener(
+                BackendConstants.THRESHOLD, threshholdSlider, graphPanel));
+        threshholdSlider.addMouseListener((MouseListener) mouseListenerFactory.getEventListener(
+                BackendConstants.THRESHOLD, threshholdSlider, graphPanel));
         c.weightx = 0.0;
         c.weighty = 0.0;
         c.gridx = 0;
@@ -97,29 +95,15 @@ public class ControlsPanel extends JPanel {
         //Zoom Slider
         zoomSlider = new JSlider(0, 100);
         zoomSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
-        final TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": "
-                + zoomSlider.getValue() + "%");
+        final TitledBorder b1 = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");
         b1.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
         zoomSlider.setBorder(b1);
         zoomSlider.setMajorTickSpacing(25);
         zoomSlider.setMinorTickSpacing(5);
         zoomSlider.setPaintTicks(true);
         zoomSlider.setPaintLabels(true);
-        zoomSlider.addChangeListener(new ChangeListener() {
-            private double oldVal = 50;
-            private double newVal;
-
-            public void stateChanged(ChangeEvent e) {
-                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");
-                bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
-                zoomSlider.setBorder(bb);
-                if ((newVal = zoomSlider.getValue()) == 0.0) {
-                    newVal = 0.001;
-                }
-                graphPanel.setZoom(newVal / oldVal);
-                oldVal = newVal;
-            }
-        });
+        zoomSlider.addChangeListener((ChangeListener) changeListenerFactory.getEventListener(
+                BackendConstants.ZOOM, zoomSlider, graphPanel, this));
 
         // Initialize the past students checkbox
         c.gridy = 1;

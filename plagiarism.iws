@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.ipr" afterPath="$PROJECT_DIR$/plagiarism.ipr" />
@@ -168,7 +168,7 @@
       <file leaf-file-name="ControlsPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="27" selection-start="3781" selection-end="3781" vertical-scroll-proportion="0.3469388">
+            <state line="112" column="30" selection-start="5430" selection-end="5430" vertical-scroll-proportion="0.43380615">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,11 +176,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseListenerActions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java">
+      <file leaf-file-name="ChangeListenerActions.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="18" selection-start="4161" selection-end="4161" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -243,8 +245,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphControl.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/actions/NodeStrokeColorAction.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/NodeFillCurrentSemesterPredicate.java" />
@@ -256,8 +256,10 @@
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/CoMoToViz.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
       </list>
     </option>
@@ -500,6 +502,7 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="plagiarism" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -846,7 +849,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed VisualMoss directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored ActionListeners and MouseListeners out of controls panel" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -870,6 +873,7 @@
     <MESSAGE value="Fixing backend comments" />
     <MESSAGE value="Fixed API errors" />
     <MESSAGE value="Removed VisualMoss directory" />
+    <MESSAGE value="Refactored ActionListeners and MouseListeners out of controls panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -887,16 +891,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="0" selection-start="4719" selection-end="4820" vertical-scroll-proportion="0.33199194" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="81" selection-start="4498" selection-end="4498" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="233" column="61" selection-start="6799" selection-end="6816" vertical-scroll-proportion="0.35472372" />
@@ -966,23 +960,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="68" selection-start="2357" selection-end="2357" vertical-scroll-proportion="1.0650119">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="18" selection-start="4161" selection-end="4161" vertical-scroll-proportion="0.0">
+        <state line="105" column="0" selection-start="3895" selection-end="4101" vertical-scroll-proportion="0.5102041">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="53" selection-start="6985" selection-end="6994" vertical-scroll-proportion="0.63829786">
+        <state line="154" column="43" selection-start="7036" selection-end="7040" vertical-scroll-proportion="0.6583924">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="27" selection-start="3781" selection-end="3781" vertical-scroll-proportion="0.3469388">
+        <state line="112" column="30" selection-start="5430" selection-end="5430" vertical-scroll-proportion="0.43380615">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
