@@ -42,7 +42,7 @@ import edu.illinois.comoto.api.object.Course;
 import edu.illinois.comoto.api.object.Offering;
 import edu.illinois.comoto.api.object.Season;
 import edu.illinois.comoto.api.object.Semester;
-import edu.illinois.comoto.api.object.Student;
+import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
@@ -247,9 +247,9 @@ public class AssignmentChooserPanel extends JPanel {
             //swap the comment between these two lines to debug exceptions thrown in the worker thread
             worker.execute();
             //worker.runSynchronous();
-        } else if (object instanceof Student) {
-            Student student = (Student) object;
-            graphPanel.panToNode(student.getNetid(), 2500);
+        } else if (object instanceof Submission) {
+            Submission submission = (Submission) object;
+            graphPanel.panToSubmission(submission, 2500);
         }
     }
 
@@ -267,9 +267,8 @@ public class AssignmentChooserPanel extends JPanel {
             if (currentAssignmentTreeNode.getChildCount() > 0) {
                 currentAssignmentTreeNode.removeAllChildren();
             }
-            //add students as children
-            for (Student student : PrefuseGraphBuilder.getBuilder().getStudents()) {
-                currentAssignmentTreeNode.add(new DefaultMutableTreeNode(student));
+            for (Submission submission : PrefuseGraphBuilder.getBuilder().getSubmissions()) {
+                currentAssignmentTreeNode.add(new DefaultMutableTreeNode(submission));
             }
             ((DefaultTreeModel) getTree().getModel()).reload();
             getTree().scrollPathToVisible(new TreePath(currentAssignmentTreeNode.getPath()));

@@ -56,7 +56,7 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.SEMESTER;
  * <p/>
  * <p> <p> Holds the data of an offering
  */
-public class Offering implements Refreshable, Cacheable {
+public class Offering implements Refreshable, Cacheable, Comparable<Offering> {
 
     /**
      * The unique id for this offering
@@ -270,5 +270,15 @@ public class Offering implements Refreshable, Cacheable {
 
     public void setOfferingInfo(List<OfferingInfo> offeringInfo) {
         this.offeringInfo = offeringInfo;
+    }
+
+    @Override
+    public int compareTo(Offering offering) {
+        int semesterComparison = getSemester().compareTo(offering.getSemester());
+        if (semesterComparison == 0) {
+            return getCourse().compareTo(offering.getCourse());
+        } else {
+            return semesterComparison;
+        }
     }
 }

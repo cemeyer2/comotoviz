@@ -186,7 +186,7 @@ public class MainWindow extends JFrame {
             if (netid.startsWith(searchText)) {
 
                 // Pan to this node if we found it
-                graphPanel.panToNode(netid, 500);
+                graphPanel.panToNetid(netid, 500);
                 searchBox.setBackground(Color.green);
                 graphPanel.setMessage("Centered on node \"" + netid + "\".");
 

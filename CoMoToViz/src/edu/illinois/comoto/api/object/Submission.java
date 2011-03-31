@@ -56,7 +56,7 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.STUDENT;
  * <p/>
  * <p> <p> Holds the data for a submission
  */
-public class Submission implements Refreshable, Cacheable {
+public class Submission implements Refreshable, Cacheable, Comparable<Submission> {
 
     /**
      * The pseudonym ids for this submission
@@ -347,5 +347,31 @@ public class Submission implements Refreshable, Cacheable {
 
     public void setSubmissionFileIds(List<Integer> submissionFileIds) {
         this.submissionFileIds = submissionFileIds;
+    }
+
+    @Override
+    public int compareTo(Submission submission) {
+        int offeringComparison = getOffering().compareTo(submission.getOffering());
+        if (getType() == Type.studentsubmission) {
+            int studentComparison = getStudent().compareTo(submission.getStudent());
+            if (studentComparison == 0) {
+                return offeringComparison;
+            } else {
+                return studentComparison;
+            }
+        } else {
+            return offeringComparison;
+        }
+    }
+
+    public String toString() {
+        if (getType() == Type.studentsubmission) {
+            return getStudent().getNetid() + " " + getOffering().getSemester().getSeason().toString() + " " + getOffering().getSemester().getYear();
+        } else if (getType() == Type.basesubmission) {
+            return "Base Submission: " + getFileSet().getName();
+        } else if (getType() == Type.solutionsubmission) {
+            return "Solution Submission: " + getFileSet().getName();
+        }
+        return null;
     }
 }

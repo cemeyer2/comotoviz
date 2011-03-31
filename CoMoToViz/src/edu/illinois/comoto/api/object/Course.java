@@ -54,7 +54,7 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.OFFERINGS;
  * <p/>
  * <p> <p> Holds the data of a particular course
  */
-public class Course implements Refreshable, Cacheable {
+public class Course implements Refreshable, Cacheable, Comparable<Course> {
 
     /**
      * The list of associated assignment ids
@@ -248,4 +248,8 @@ public class Course implements Refreshable, Cacheable {
     }
 
 
+    @Override
+    public int compareTo(Course course) {
+        return getName().compareTo(course.getName());
+    }
 }

@@ -37,6 +37,7 @@
 
 package edu.illinois.comoto.viz.view.graph;
 
+import edu.illinois.comoto.api.object.Submission;
 import edu.illinois.comoto.viz.utility.CoMoToVizException;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.BackendConstants;
@@ -129,14 +130,7 @@ public class GraphPanel extends JPanel {
         return this.currentDisplay.getScale();
     }
 
-    /**
-     * animates a pan to a node with the netid supplied, if it exists in the viz. the speed of the
-     * animation is given by the number of milliseconds the pan should take
-     *
-     * @param netid    The netid of the node to which to pan
-     * @param lengthMS The number of milliseconds to take to pan
-     */
-    public void panToNode(String netid, int lengthMS) {
+    public void panToNetid(String netid, int lengthMS) {
         Iterator<NodeItem> iter = currentDisplay.getVisualization().items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
         NodeItem node = null;
         while (iter.hasNext()) {
@@ -146,6 +140,30 @@ public class GraphPanel extends JPanel {
                 break;
             }
         }
+        panToNode(node, lengthMS);
+    }
+
+    public void panToSubmission(Submission submission, int lengthMS) {
+        Iterator<NodeItem> iter = currentDisplay.getVisualization().items(BackendConstants.GRAPH + "." + BackendConstants.NODES);
+        NodeItem node = null;
+        while (iter.hasNext()) {
+            NodeItem temp = iter.next();
+            if (temp.getInt(BackendConstants.SUBMISSION_ID) == submission.getId()) {
+                node = temp;
+                break;
+            }
+        }
+        panToNode(node, lengthMS);
+    }
+
+    /**
+     * animates a pan to a node if it exists in the viz. the speed of the
+     * animation is given by the number of milliseconds the pan should take
+     *
+     * @param netid    The netid of the node to which to pan
+     * @param lengthMS The number of milliseconds to take to pan
+     */
+    private void panToNode(NodeItem node, int lengthMS) {
         if (node == null) {
             return;
         }

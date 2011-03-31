@@ -44,8 +44,8 @@ package edu.illinois.comoto.api.object;
  * <p> <p> Holds the data of different seasons
  */
 public enum Season {
-    Fall,
-    Winter,
     Spring,
-    Summer
+    Summer,
+    Fall,
+    Winter
 }

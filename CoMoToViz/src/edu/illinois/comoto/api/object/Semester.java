@@ -51,7 +51,7 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a semester
  */
-public class Semester implements Refreshable, Cacheable {
+public class Semester implements Refreshable, Cacheable, Comparable<Semester> {
 
     /**
      * The season
@@ -148,6 +148,17 @@ public class Semester implements Refreshable, Cacheable {
             return season.name() + " " + year;
         } else {
             return "Semester.toString: not initialized yet";
+        }
+    }
+
+    @Override
+    public int compareTo(Semester semester) {
+        if (getYear() < semester.getYear()) {
+            return -1;
+        } else if (getYear() > semester.getYear()) {
+            return 1;
+        } else {
+            return getSeason().compareTo(semester.getSeason());
         }
     }
 }

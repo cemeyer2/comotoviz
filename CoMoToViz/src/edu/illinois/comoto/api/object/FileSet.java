@@ -43,7 +43,11 @@ import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static edu.illinois.comoto.api.CoMoToAPIConstants.OFFERING;
 import static edu.illinois.comoto.api.CoMoToAPIConstants.SUBMISSIONS;
@@ -120,6 +124,11 @@ public class FileSet implements Refreshable, Cacheable {
      * Records whether this object pulls all the submisison info eagerly from the API
      */
     private boolean fullSubmissionInfo = false;
+
+    /**
+     * the name of the fileset
+     */
+    private String name;
 
     /**
      * Constructs this file set
@@ -313,5 +322,13 @@ public class FileSet implements Refreshable, Cacheable {
 
     public void setComplete(boolean complete) {
         isComplete = complete;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

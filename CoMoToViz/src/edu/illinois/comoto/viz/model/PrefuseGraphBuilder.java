@@ -86,7 +86,7 @@ public class PrefuseGraphBuilder {
     private LoadingProgressDialog dialog;
     private Map<Integer, Edge> edges;
     private Map<Integer, Node> nodes;
-    private List<Student> students;
+    private List<Submission> submissions;
     private int maxNodeCount, currentNodeCount;
 
     private PrefuseGraphBuilder() {
@@ -98,7 +98,7 @@ public class PrefuseGraphBuilder {
         showBuildProgress = BackendConstants.DEFAULT_SHOW_BUILD_PROGRESS;
         nodes = new HashMap<Integer, Node>();
         edges = new HashMap<Integer, Edge>();
-        students = new LinkedList<Student>();
+        submissions = new LinkedList<Submission>();
     }
 
     public PrefuseGraphBuilder setAssignment(Assignment assignment) {
@@ -192,7 +192,7 @@ public class PrefuseGraphBuilder {
 
         nodes.clear();
         edges.clear();
-        students.clear();
+        submissions.clear();
 
         this.initializeLoadingProgressDialog();
         Graph graph = new Graph();
@@ -241,7 +241,7 @@ public class PrefuseGraphBuilder {
 
     }
 
-    //step 2: add the nodes from the students
+    //step 2: add the nodes from the submissions
     private void addNodes(Graph graph) {
         LOGGER.debug("Adding nodes");
         Offering prunedOffering = assignment.getMossAnalysisPrunedOffering();
@@ -249,7 +249,7 @@ public class PrefuseGraphBuilder {
         List<FileSet> fileSets = assignment.getFilesets(true);
         for (FileSet fileSet : fileSets) {
             Offering offering = fileSet.getOffering();
-            boolean isCurrentSemester = true; //default to having all students appear in the graph if the analysis is not pruned
+            boolean isCurrentSemester = true; //default to having all submissions appear in the graph if the analysis is not pruned
             if (prunedOffering != null) {
                 isCurrentSemester = (offering.getId() == prunedOffering.getId());
             }
@@ -350,8 +350,8 @@ public class PrefuseGraphBuilder {
                 int studentId = oldNode.getInt(BackendConstants.STUDENT_ID);
                 newNode.setInt(BackendConstants.STUDENT_ID, studentId);
                 if (studentId >= 0) {
-                    Student student = CoMoToAPI.getStudent(DataImport.getConnection(), studentId, true);
-                    students.add(student);
+                    Submission student = CoMoToAPI.getSubmission(DataImport.getConnection(), newNode.getInt(BackendConstants.SUBMISSION_ID), true);
+                    submissions.add(student);
                 }
             }
         }
@@ -413,9 +413,9 @@ public class PrefuseGraphBuilder {
         }
     }
 
-    public List<Student> getStudents() {
-        Collections.sort(students);
-        return students;
+    public List<Submission> getSubmissions() {
+        Collections.sort(submissions);
+        return submissions;
     }
 
     /**
