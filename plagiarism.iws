@@ -1,128 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="Fixing backend comments">
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\AboutDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossAnalysis.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-core-1.8.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jlfgr-1_0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\Pack200Task.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-lang-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphMatch.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafx-swing.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war-0.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\AssignmentLoadingWorker.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\AssignmentChooser.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Analysis.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\primary.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\ListConverter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\package-layout.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\FrontendConstants.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Assignment.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\gray_node.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxrt.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossMatch.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\ExtensionFileFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Type.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3-javadoc.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo-pub.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\VisualMossControls.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-bean-collections-1.8.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\mysql-connector-java-5.1.10-bin.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Report.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\WebpageDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jweb-ext.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossControl.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lucene-1.4.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Connection.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jmc.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Semester.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo-network-ext-load.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\DateFormatConverter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\FileSet.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Submission.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\VisualMossAuthenticator.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\Scenario.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\logkit-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Language.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Cacheable.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\DataImport.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\blue_node.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\VisualMoss.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\VisualMoss.eml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\VisualMossMain.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Offering.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Course.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPIConstants.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\Pair.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\prefuse.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Student.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\build\keystore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\VisualMossException.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Reflector.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\swing-worker-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\LDAPAuth.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPI.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\prefuse-doc.zip" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\uiuc.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossReport.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-client-3.1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\graph.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war_deps-0.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagReport.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagAnalysis.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-collections.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\websvc.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossEdgeStrokeColorAction.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\CoMoToViz.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossNodeFillCurrentSemesterPredicate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war_deps.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagMatch.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\VisualMossLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossNodeFillSolutionPredicate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\velocity-1.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\HighlightedSubmissionFile.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ws-commons-util-1.0.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\cobra-no-commons.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\AccessTemplate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\AnalysisPseudonym.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-logging-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\small_gray_node.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant.readme" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphStudent.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Refreshable.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Season.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\BackendConstants.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\DataExport.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\LoginDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxc.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\ParallelConnectionUtility.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphDisplay.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\cobra-no-commons.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraph.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphDisplayContainer.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-common-3.1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\build\build.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\EnumConverter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\LoadingProgressDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPIException.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossNodeStrokeColorAction.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\js.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossEdgeIsPartnerPredicate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Accelerator.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Cache.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxgui.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\TrustAllSSLSocketFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossVisibilityPredicate.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\OfferingInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\HelpDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\SubmissionFile.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossNodeFillColorAction.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.ipr" afterPath="$PROJECT_DIR$/plagiarism.ipr" />
+    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <ignored path="plagiarism.iws" />
@@ -281,20 +161,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Submission.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java">
+      <file leaf-file-name="ControlsPanel.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="235" column="14" selection-start="6902" selection-end="6902" vertical-scroll-proportion="0.41532975">
-              <folding />
+            <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoMoToAPIConstants.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
+      <file leaf-file-name="ChangeListenerActions.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="49" selection-start="4526" selection-end="4533" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -357,11 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/KeyListenerFactory.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerFactory.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/VisualMossControl.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphControl.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/TrustAllSSLSocketFactory.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/actions/NodeStrokeColorAction.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/predicates/NodeFillCurrentSemesterPredicate.java" />
@@ -370,9 +249,14 @@
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/GraphDisplayContainer.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/graph/control/GraphControl.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/DataImport.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/CoMoToViz.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java" />
       </list>
     </option>
   </component>
@@ -441,8 +325,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
@@ -493,26 +375,8 @@
               <option name="myItemId" value="comoto" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plagiarism" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CoMoToViz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="comoto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="viz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -534,7 +398,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comoto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -560,11 +450,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="viz" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="object" />
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -589,27 +479,33 @@
               <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="converter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="plagiarism" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
@@ -618,6 +514,7 @@
       <recent name="edu.illinois.comoto.viz.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\controller" />
       <recent name="D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view" />
     </key>
     <key name="IntroduceConstantDialog.RECENTS_KEY">
@@ -645,14 +542,31 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CHANGED_ON_SERVER" />
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeColorAction.java</PATH>
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\LoggingDialog.java</PATH>
+          <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeColorAction.java</PATH>
           <FILE-GROUP>
             <option name="myUpdateName" value="Updated" />
             <option name="myStatusName" value="Changed" />
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\plagiarism.iws</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\plagiarism.ipr</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\api\object\Submission.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\model\predicates\VisibilityPredicate.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\FrontendConstants.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\control\GraphControl.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\build\build.xml</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\CoMoToViz.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeFillColorAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\BackendConstants.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\MainWindow.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\model\PrefuseGraphBuilder.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\log4j.properties</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\GraphPanel.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\controller\ActionListenerActions.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\LoginDialog.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\GraphDisplayBuilder.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\utility\AssignmentLoadingWorker.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -660,6 +574,9 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeSizeAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\utility\JTextAreaAppender.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeStrokeAction.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -667,126 +584,8 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPI.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\Pack200Task.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\websvc.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\Scenario.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\build\build.xml</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\DateFormatConverter.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-logging-1.1.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\small_gray_node.png</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossReport.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\VisualMossLayout.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossNodeStrokeColorAction.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\WebpageDialog.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossVisibilityPredicate.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\DataImport.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\ParallelConnectionUtility.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Season.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\cobra-no-commons.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo-network-ext-load.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\VisualMossException.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\blue_node.png</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\logkit-1.0.1.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagReport.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\Pair.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphStudent.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossMatch.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPIConstants.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\AssignmentLoadingWorker.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\primary.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\velocity-1.4.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\AboutDialog.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Type.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-common-3.1.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphDisplay.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\LoginDialog.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\FileSet.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jlfgr-1_0.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Offering.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\build\keystore</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphMatch.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossNodeFillColorAction.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\cobra-no-commons.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraph.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\AccessTemplate.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Reflector.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Cacheable.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossEdgeStrokeColorAction.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\VisualMossMain.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Assignment.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\ExtensionFileFilter.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\js.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\EnumConverter.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\mysql-connector-java-5.1.10-bin.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\converter\ListConverter.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\LoadingProgressDialog.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Submission.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Course.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jmc.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\VisualMoss.eml</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\CoMoToAPIException.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagMatch.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossNodeFillSolutionPredicate.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\swing-worker-1.2.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-bean-collections-1.8.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lobo-pub.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\OfferingInfo.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\graph.xml</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\package-layout.txt</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Student.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\gray_node.png</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\DataExport.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Connection.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-lang-2.5.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\VisualMossAuthenticator.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\lucene-1.4.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\AssignmentChooser.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\jweb-ext.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3-javadoc.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Refreshable.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\prefuse.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Accelerator.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossNodeFillCurrentSemesterPredicate.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\resources\uiuc.png</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war_deps.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Language.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossControl.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\MossAnalysis.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\CoMoToViz.iml</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Analysis.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant.readme</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war-0.9.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\TrustAllSSLSocketFactory.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\commons-collections.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxgui.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ant-jnlp-war_deps-0.9.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\JplagAnalysis.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\xmlrpc-client-3.1.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\FrontendConstants.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\AnalysisPseudonym.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\VisualMossGraphDisplayContainer.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\utility\Cache.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\HighlightedSubmissionFile.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-core-1.8.3.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\prefuse-doc.zip</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Semester.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxrt.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\VisualMossControls.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\BackendConstants.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\Report.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\view\HelpDialog.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\VisualMoss.iml</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\api\object\SubmissionFile.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\model\predicates\VisualMossEdgeIsPartnerPredicate.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafx-swing.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\commons-beanutils-1.8.3-sources.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\src\edu\illinois\comoto\viz\utility\LDAPAuth.java</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ext\javafxc.jar</PATH>
-            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\VisualMoss\lib\ws-commons-util-1.0.2.jar</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\EdgeStrokeColorAction.java</PATH>
+            <PATH vcs="hg4idea" revision="">D:\Documents\CoMoTo Development\workspace\visualization workspace\plagiarism\CoMoToViz\src\edu\illinois\comoto\viz\view\graph\actions\NodeStrokeColorAction.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -1004,17 +803,18 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2498469" sideWeight="0.33104238" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39977092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34478807" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6689576" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23208818" sideWeight="0.6735395" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329455" sideWeight="0.6735395" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32646048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32646048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IntelliGuard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Tools" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1024,9 +824,8 @@
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1046,7 +845,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed API errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1069,6 +868,9 @@
     <MESSAGE value="Adding lib and ext directories" />
     <MESSAGE value="Fixing backend comments" />
     <MESSAGE value="Fixed API errors" />
+    <MESSAGE value="Removed VisualMoss directory" />
+    <MESSAGE value="Refactored ActionListeners and MouseListeners out of controls panel" />
+    <MESSAGE value="Refactored out ChangeListeners &amp; created a ChangeListenerFactory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1076,120 +878,128 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/CoMoToViz/build/build.xml">
+      <antCommandLine value="" />
+      <runInBackground value="true" />
+      <targetFilters />
+      <treeView value="true" />
+      <verbose value="true" />
+      <viewClosedWhenNoErrors value="false" />
+    </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/java/util/concurrent/FutureTask.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="0" selection-start="4789" selection-end="4789" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="885" column="0" selection-start="36279" selection-end="36279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/javax/swing/SwingWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="315" column="0" selection-start="9735" selection-end="9735" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/graph/GraphPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3386" selection-end="3386" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/utility/AssignmentLoadingWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2726" selection-end="2726" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="18" selection-start="2040" selection-end="2054" vertical-scroll-proportion="0.5741127">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/model/PrefuseGraphBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="0" selection-start="6753" selection-end="6753" vertical-scroll-proportion="0.32024795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/graph/GraphDisplayBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="37" selection-start="4495" selection-end="4495" vertical-scroll-proportion="0.4607438">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="661" column="0" selection-start="24792" selection-end="24792" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="28" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="43" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="287" column="0" selection-start="10891" selection-end="10891" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/FileSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="0" selection-start="4719" selection-end="4820" vertical-scroll-proportion="0.33199194">
-          <folding />
-        </state>
+        <state line="233" column="61" selection-start="6799" selection-end="6816" vertical-scroll-proportion="0.35472372" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="49" selection-start="4526" selection-end="4533" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="91" column="49" selection-start="4526" selection-end="4533" vertical-scroll-proportion="0.6060606" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/ParallelConnectionUtility.java">
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/build/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="81" selection-start="4498" selection-end="4498" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="220" column="47" selection-start="8695" selection-end="8695" vertical-scroll-proportion="0.37706855" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java">
+    <entry file="file://$PROJECT_DIR$/plagiarism.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="14" selection-start="6902" selection-end="6902" vertical-scroll-proportion="0.41532975">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/EditForceSimulatorDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="13" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.33211678">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoadingProgressDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="13" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.33211678">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/LoggingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="35" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.6969697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.6.0_23/src.zip!/javax/swing/event/ChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="17" selection-start="354" selection-end="354" vertical-scroll-proportion="0.3617021">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="122" selection-start="5654" selection-end="5743" vertical-scroll-proportion="0.6794718">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ActionListenerActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="239" column="36" selection-start="8963" selection-end="8963" vertical-scroll-proportion="0.7815126">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="68" selection-start="2357" selection-end="2357" vertical-scroll-proportion="1.0650119">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/MouseListenerActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="3895" selection-end="4101" vertical-scroll-proportion="0.5102041">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/BackendConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="43" selection-start="7036" selection-end="7040" vertical-scroll-proportion="0.6583924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/controller/ChangeListenerActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="26" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/ControlsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="39" selection-start="6855" selection-end="6855" vertical-scroll-proportion="0.25650117">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="hg4idea.settings">
+    <option name="myCheckIncoming" value="false" />
+    <option name="myCheckOutgoing" value="false" />
   </component>
   <component name="ideajad">
     <property name="annotate" value="false" />

@@ -41,8 +41,8 @@ import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.utility.DataExport;
 import edu.illinois.comoto.viz.utility.ExtensionFileFilter;
 import edu.illinois.comoto.viz.view.AboutDialog;
-import edu.illinois.comoto.viz.view.BackendConstants;
-import edu.illinois.comoto.viz.view.EditForceSimulatorDialog;
+import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.LoggingDialog;
 import edu.illinois.comoto.viz.view.LoginDialog;
@@ -51,11 +51,12 @@ import org.apache.log4j.Logger;
 import prefuse.data.io.DataIOException;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 /**
  * User: Jon
@@ -149,9 +150,119 @@ public enum ActionListenerActions {
         @Override
         ActionListener getActionListenerAction(Object... parameters) {
             return new ActionListener() {
-
                 public void actionPerformed(ActionEvent actionEvent) {
                     new EditForceSimulatorDialog();
+                }
+            };
+        }
+    },
+
+    pastStudents {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+
+            // Get a handle on some elements from the GUI
+            final JCheckBox pastStudentButton = (JCheckBox) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    PrefuseGraphBuilder.getBuilder().setIncludePastStudents(pastStudentButton.isSelected());
+                    graphPanel.reloadGraph();
+                }
+            };
+        }
+    },
+
+    partnerEdges {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+
+            // Get a handle on some elements from the GUI
+            final JCheckBox partnersButton = (JCheckBox) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    PrefuseGraphBuilder.getBuilder().setIncludePartners(partnersButton.isSelected());
+                    graphPanel.reloadGraph();
+                }
+            };
+        }
+    },
+
+    showSolution {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+
+            // Get a handle on some elements from the GUI
+            final JCheckBox solutionButton = (JCheckBox) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    PrefuseGraphBuilder.getBuilder().setShowSolution(solutionButton.isSelected());
+                    graphPanel.reloadGraph();
+                }
+            };
+        }
+    },
+
+    anonymousGraph {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+
+            // Get a handle on some elements from the GUI
+            final JCheckBox anonymousButton = (JCheckBox) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                GraphDisplayBuilder.getBuilder().setAnonymous(anonymousButton.isSelected());
+                graphPanel.reloadGraph();
+            }
+        };
+        }
+    },
+
+    launchTextReport {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+            return new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Desktop desktop = Desktop.getDesktop();
+                        if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                            if (PrefuseGraphBuilder.getBuilder().getAssignment() != null) {
+                                String url = "https://comoto.cs.illinois.edu/comoto/view_analysis/view/" +
+                                        Integer.toString(PrefuseGraphBuilder.getBuilder().getAssignment().getId());
+                                desktop.browse(new URI(url));
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception e1) {
+                        LOGGER.error("Error launching browser", e1);
+                    }
+                }
+            };
+        }
+    },
+
+    singletons {
+        @Override
+        ActionListener getActionListenerAction(Object... parameters) {
+
+            // Get a handle on some elements from the GUI
+            final JCheckBox singletonsButton = (JCheckBox) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    PrefuseGraphBuilder.getBuilder().setShowSingletons(singletonsButton.isSelected());
+                    graphPanel.reloadGraph();
                 }
             };
         }
@@ -161,7 +272,6 @@ public enum ActionListenerActions {
         @Override
         ActionListener getActionListenerAction(Object... parameters) {
             return new ActionListener() {
-                @Override
                 public void actionPerformed(ActionEvent actionEvent) {
                     LoggingDialog.getInstance().showDialog();
                 }

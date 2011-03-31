@@ -37,59 +37,47 @@
 
 package edu.illinois.comoto.viz.controller;
 
-import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
 import edu.illinois.comoto.viz.view.BackendConstants;
 import edu.illinois.comoto.viz.view.FrontendConstants;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
 import javax.swing.JTree;
 import javax.swing.border.TitledBorder;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * User: Jon
- * Date: 3/6/11
+ * Date: 3/30/11
+ *
  * <p/>
- * Stores all mouse listeners,
+ * Stores all change listeners
  */
-public enum MouseListenerActions {
+public enum ChangeListenerActions {
 
-    // When the assignment chooser is clicked
-    assignmentChooser {
+    // When the zoom level is changed
+    zoom {
         @Override
-        MouseListener getMouseListenerAction(final Object... parameters) {
-            return new MouseListener() {
+        ChangeListener getChangeListenerAction(final Object... parameters) {
 
-                // The assignment chooser object
-                private AssignmentChooserPanel thisAssignmentChooser = (AssignmentChooserPanel) parameters[0];
+           // Pull some of the GUI components from the parameters
+            final JSlider zoomSlider = (JSlider) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+            final JPanel controlsPanel = (JPanel) parameters[2];
 
-                /**
-                 * Change the assignment
-                 *
-                 * @param event All data passed from the mouse event
-                 */
-                public void mouseClicked(MouseEvent event) {
-                    if (event.getClickCount() > 1) {
-                        JTree tree = thisAssignmentChooser.getTree();
-                        DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
-                        thisAssignmentChooser.changeAssignment(node);
+            return new ChangeListener() {
+                private double oldVal = 50;
+                private double newVal;
+
+                public void stateChanged(ChangeEvent e) {
+                    TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.ZOOM + ": " + zoomSlider.getValue() + "%");
+                    bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
+                    zoomSlider.setBorder(bb);
+                    if ((this.newVal = zoomSlider.getValue()) == 0.0) {
+                        this.newVal = 0.001;
                     }
-                }
-
-                // Other required user input events
-                public void mousePressed(MouseEvent e) {
-                }
-
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                public void mouseEntered(MouseEvent e) {
-                }
-
-                public void mouseExited(MouseEvent e) {
+                    graphPanel.setZoom(this.newVal / this.oldVal);
+                    this.oldVal = this.newVal;
                 }
             };
         }
@@ -98,35 +86,21 @@ public enum MouseListenerActions {
     // When the edge threshold is changed
     threshold {
         @Override
-        MouseListener getMouseListenerAction(final Object... parameters) {
+         ChangeListener getChangeListenerAction(final Object... parameters) {
 
-            // Pull some of the GUI components from the parameters
+           // Pull some of the GUI components from the parameters
             final JSlider threshholdSlider = (JSlider) parameters[0];
             final GraphPanel graphPanel = (GraphPanel) parameters[1];
 
-            return new MouseListener() {
-                public void mouseClicked(MouseEvent mouseEvent) {
-                }
-
-                public void mousePressed(MouseEvent mouseEvent) {
-                }
-
-                public void mouseReleased(MouseEvent mouseEvent) {
+            return new ChangeListener() {
+                public void stateChanged(ChangeEvent e) {
                     TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
                     bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
                     threshholdSlider.setBorder(bb);
-                    PrefuseGraphBuilder.getBuilder().setMinimumEdgeWeight(threshholdSlider.getValue());
-                    graphPanel.reloadGraph();
-                }
-
-                public void mouseEntered(MouseEvent mouseEvent) {
-                }
-
-                public void mouseExited(MouseEvent mouseEvent) {
                 }
             };
-        }
+         }
     };
 
-    abstract MouseListener getMouseListenerAction(Object... parameters);
+    abstract ChangeListener getChangeListenerAction(Object... parameters);
 }
