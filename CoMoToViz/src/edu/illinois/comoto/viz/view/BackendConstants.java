@@ -146,6 +146,13 @@ public class BackendConstants {
     public static final String LOGIN = "login";
     public static final String GTK = "GTK";
     public static final String PSEUDONYM = "pseudonym";
+    public static final String PAST_STUDENTS = "pastStudents";
+    public static final String PARTNER_EDGES = "partnerEdges";
+    public static final String SHOW_SOLUTION = "showSolution";
+    public static final String ANONYMOUS_GRAPH = "anonymousGraph";
+    public static final String LAUNCH_TEXT_REPORT = "launchTextReport";
+    public static final String THRESHOLD = "threshold";
+    public static final String SINGLETONS = "singletons";
     public static final String SIM = "sim";
     public static final String LOGGING = "logging";
 

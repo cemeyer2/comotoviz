@@ -37,9 +37,14 @@
 
 package edu.illinois.comoto.viz.controller;
 
+import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
 import edu.illinois.comoto.viz.view.AssignmentChooserPanel;
+import edu.illinois.comoto.viz.view.BackendConstants;
+import edu.illinois.comoto.viz.view.FrontendConstants;
+import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -85,6 +90,39 @@ public enum MouseListenerActions {
                 }
 
                 public void mouseExited(MouseEvent e) {
+                }
+            };
+        }
+    },
+
+    // When the edge threshold is changed
+    threshold {
+        @Override
+        MouseListener getMouseListenerAction(final Object... parameters) {
+
+            // Pull some of the GUI components from the parameters
+            final JSlider threshholdSlider = (JSlider) parameters[0];
+            final GraphPanel graphPanel = (GraphPanel) parameters[1];
+
+            return new MouseListener() {
+                public void mouseClicked(MouseEvent mouseEvent) {
+                }
+
+                public void mousePressed(MouseEvent mouseEvent) {
+                }
+
+                public void mouseReleased(MouseEvent mouseEvent) {
+                    TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
+                    bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
+                    threshholdSlider.setBorder(bb);
+                    PrefuseGraphBuilder.getBuilder().setMinimumEdgeWeight(threshholdSlider.getValue());
+                    graphPanel.reloadGraph();
+                }
+
+                public void mouseEntered(MouseEvent mouseEvent) {
+                }
+
+                public void mouseExited(MouseEvent mouseEvent) {
                 }
             };
         }

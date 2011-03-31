@@ -37,8 +37,9 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.viz.model.PrefuseGraphBuilder;
-import edu.illinois.comoto.viz.view.graph.GraphDisplayBuilder;
+import edu.illinois.comoto.viz.controller.ActionListenerFactory;
+import edu.illinois.comoto.viz.controller.EventListenerFactory;
+import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 import org.apache.log4j.Logger;
 
@@ -47,24 +48,26 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.net.URI;
 
 public class ControlsPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = Logger.getLogger(ControlsPanel.class);
 
     public void initialize(final GraphPanel graphPanel) {
+
+        // Initialize the layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         final JCheckBox pastStudentButton, singletonsButton, partnersButton, solutionButton, anonymousButton;
         final JSlider threshholdSlider, zoomSlider;
         final JButton textReportButton;
 
-        //Threshold Slider
+        // Get EventListener factories
+        EventListenerFactory actionListenerFactory = new ActionListenerFactory();
+        MouseListenerFactory mouseListenerFactory = new MouseListenerFactory();
+
+        // Initialize the threshold Slider
         threshholdSlider = new JSlider();
         threshholdSlider.setValue(FrontendConstants.DEFAULT_MINIMUM_EDGE_WEIGHT);//show all edges by default on load
         threshholdSlider.setFont(BackendConstants.COMPONENT_LABEL_FONT);
@@ -83,27 +86,7 @@ public class ControlsPanel extends JPanel {
                 threshholdSlider.setBorder(bb);
             }
         });
-        threshholdSlider.addMouseListener(new MouseListener() {
-            public void mouseClicked(MouseEvent mouseEvent) {
-            }
-
-            public void mousePressed(MouseEvent mouseEvent) {
-            }
-
-            public void mouseReleased(MouseEvent mouseEvent) {
-                TitledBorder bb = BorderFactory.createTitledBorder(FrontendConstants.MINIMUM_EDGE_WEIGHT + ": " + threshholdSlider.getValue());
-                bb.setTitleFont(BackendConstants.COMPONENT_LABEL_FONT);
-                threshholdSlider.setBorder(bb);
-                PrefuseGraphBuilder.getBuilder().setMinimumEdgeWeight(threshholdSlider.getValue());
-                graphPanel.reloadGraph();
-            }
-
-            public void mouseEntered(MouseEvent mouseEvent) {
-            }
-
-            public void mouseExited(MouseEvent mouseEvent) {
-            }
-        });
+        threshholdSlider.addMouseListener(mouseListenerFactory.getEventListener(BackendConstants.THRESHOLD, threshholdSlider, graphPanel));
         c.weightx = 0.0;
         c.weighty = 0.0;
         c.gridx = 0;
@@ -137,95 +120,64 @@ public class ControlsPanel extends JPanel {
                 oldVal = newVal;
             }
         });
+
+        // Initialize the past students checkbox
         c.gridy = 1;
         this.add(zoomSlider, c);
-
         pastStudentButton = new JCheckBox(FrontendConstants.INCLUDE_PAST_STUDENTS);
         pastStudentButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         pastStudentButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PAST_STUDENTS);
-        pastStudentButton.addActionListener(new ActionListener() {
+        pastStudentButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.PAST_STUDENTS, pastStudentButton, graphPanel));
 
-            public void actionPerformed(ActionEvent e) {
-                PrefuseGraphBuilder.getBuilder().setIncludePastStudents(pastStudentButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        });
+        // Initialize the singletons checkbox
         c.gridy = 2;
         this.add(pastStudentButton, c);
-
         singletonsButton = new JCheckBox(FrontendConstants.INCLUDE_SINGLETONS);
         singletonsButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         singletonsButton.setSelected(FrontendConstants.DEFAULT_SHOW_SINGLETONS);
-        singletonsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                PrefuseGraphBuilder.getBuilder().setShowSingletons(singletonsButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        });
+        singletonsButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.SINGLETONS, singletonsButton, graphPanel));
+
+        // Initialize the show partner edges checkbox
         c.gridy = 3;
         this.add(singletonsButton, c);
-
         partnersButton = new JCheckBox(FrontendConstants.INCLUDE_PARTNER_EDGES);
         partnersButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         partnersButton.setSelected(FrontendConstants.DEFAULT_INCLUDE_PARTNERS);
-        partnersButton.addActionListener(new ActionListener() {
+        partnersButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.PARTNER_EDGES, partnersButton, graphPanel));
 
-            public void actionPerformed(ActionEvent e) {
-                PrefuseGraphBuilder.getBuilder().setIncludePartners(partnersButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        });
+        // Initialize the show solution checkbox
         c.gridy = 4;
         this.add(partnersButton, c);
-
         solutionButton = new JCheckBox(FrontendConstants.INCLUDE_SOLUTION);
         solutionButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         solutionButton.setSelected(FrontendConstants.DEFAULT_SHOW_SOLUTION);
-        solutionButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                PrefuseGraphBuilder.getBuilder().setShowSolution(solutionButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        });
+        solutionButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.SHOW_SOLUTION, solutionButton, graphPanel));
+
+
+        // Initialize the anonymous graph checkbox
         c.gridy = 5;
         this.add(solutionButton, c);
-
         anonymousButton = new JCheckBox(FrontendConstants.ANONYMOUS_GRAPH);
         anonymousButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         anonymousButton.setSelected(FrontendConstants.DEFAULT_ANONYMOUS);
-        anonymousButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GraphDisplayBuilder.getBuilder().setAnonymous(anonymousButton.isSelected());
-                graphPanel.reloadGraph();
-            }
-        });
+        solutionButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.ANONYMOUS_GRAPH, anonymousButton, graphPanel));
+
+        // Initialize the 'launch text report' button
         c.gridy = 6;
         this.add(anonymousButton, c);
-
         textReportButton = new JButton(FrontendConstants.LAUNCH_TEXT_REPORT);
         textReportButton.setFont(BackendConstants.COMPONENT_LABEL_FONT);
         c.weightx = 0.1;
         c.weighty = 0.1;
         c.ipady = 32;
         c.gridy = 7;
-        textReportButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Desktop desktop = Desktop.getDesktop();
-                    if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                        if (PrefuseGraphBuilder.getBuilder().getAssignment() != null) {
-                            String url = "https://comoto.cs.illinois.edu/comoto/view_analysis/view/" + Integer.toString(PrefuseGraphBuilder.getBuilder().getAssignment().getId());
-                            desktop.browse(new URI(url));
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Could not launch browser", "Could not launch browser", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (Exception e1) {
-                    LOGGER.error("Error launching browser", e1);
-                }
-            }
-        });
+        solutionButton.addActionListener((ActionListener) actionListenerFactory.getEventListener(
+                BackendConstants.LAUNCH_TEXT_REPORT));
         this.add(textReportButton, c);
     }
 }
