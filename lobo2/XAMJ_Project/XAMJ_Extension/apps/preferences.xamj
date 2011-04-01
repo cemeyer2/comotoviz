@@ -1,0 +1,162 @@
+<xamj>
+	<head>
+		<title>Preferences</title>
+		<document-disposition>window</document-disposition>
+		<document-icon>res:/images/warrior32.gif</document-icon>
+		<document-width>480</document-width>
+		<document-height>380</document-height>
+		<import>net.sourceforge.xamj.settings.*</import>
+		<import>java.io.*</import>
+		<import>java.net.*</import>
+	</head>
+	<vbox>
+		<menu-bar>
+			<menu text="File">
+				<menu-item text="Exit">
+					<on-click><![CDATA[
+						context.closeWindow();
+						//]]>	
+					</on-click>
+				</menu-item>
+			</menu>
+		</menu-bar>
+		
+		<tabbed-box>
+		   <tab text="Connection" style.orientation="vertical">
+		      <box style.height="20"/>
+		      <button-group id="proxyTypeGroup"/>
+		      <radio-button id="noProxyRadioButton" text="No Proxy" state="true" group="proxyTypeGroup" style.halign="0">
+		      	<on-property-change property="state">
+		      	  <do-set element="proxySettingsBox" property="enabled" value="(%: noProxyRadioButton %)" invert="true"/>
+		      	</on-property-change>
+		      </radio-button>
+		      <radio-button id="httpProxyRadioButton" text="HTTP Proxy" group="proxyTypeGroup"  style.halign="0"/>
+		      <radio-button id="socksProxyRadioButton" text="SOCKS Proxy" group="proxyTypeGroup" style.halign="0"/>
+		      <vbox id="proxySettingsBox" style.halign="0.1" enabled="false">
+		        <hbox style.halign="left">
+		          <label text="Host:" style.width="50"/>
+		          <text-field id="hostTextField" style.width="150"/>
+		        </hbox>
+		        <hbox style.halign="left">
+		          <label text="Port:" style.width="50"/>
+		          <text-field id="portTextField" style.width="150"/>
+		        </hbox>
+  		        <check-box id="authenticationCheckBox" text="Proxy requires authentication" style.halign="0">
+		      	  <on-property-change property="state">
+		      	    <do-set element="authenticationBox" property="enabled" value="(%: authenticationCheckBox %)"/>
+		      	  </on-property-change>
+		        </check-box>
+  		        <vbox id="authenticationBox" style.halign="0.1" enabled="false">
+		          <hbox style.halign="left">
+		            <label text="Username:" style.width="80"/>
+		            <text-field id="userNameTextField" style.width="150"/>
+		          </hbox>
+		          <hbox style.halign="left">
+		            <label text="Password:" style.width="80"/>
+		            <password-field id="passwordField" style.width="150"/>
+		          </hbox>
+		        </vbox>
+		      </vbox>
+		   </tab>   
+		</tabbed-box>
+
+		<box style.height="2"/>
+
+		<hbox>
+			<box style.fill="horizontal"/>
+			<button text="Save">
+				<on-click><![CDATA[
+					save(context);
+					]]>
+				</on-click>
+			</button>
+			<box style.width="10"/>
+			<button text="Apply">
+				<on-click><![CDATA[
+					apply();
+					]]>
+				</on-click>
+			</button>
+			<box style.width="10"/>
+			<button text="Cancel">
+				<on-click><![CDATA[
+					context.closeWindow();
+					]]>
+				</on-click>
+			</button>
+			
+			<box style.fill="horizontal"/>
+		</hbox>
+	</vbox>
+	
+	<decl><![CDATA[
+		public void apply() throws Exception {
+			ConnectionSettings connectionSettings = ConnectionSettings.getInstance();
+			
+			Proxy.Type proxyType;
+			if(noProxyRadioButton.getState()) {
+				proxyType = Proxy.Type.DIRECT;
+			}
+			else if(httpProxyRadioButton.getState()) {
+				proxyType = Proxy.Type.HTTP;
+			}
+			else {
+				proxyType = Proxy.Type.SOCKS;
+			}
+			connectionSettings.setProxyType(proxyType);
+
+			int port = 80;
+			try {
+				String portText = portTextField.getText();
+				if(!"".equals(portText)) {
+					port = Integer.parseInt(portText);
+				}
+			} catch(NumberFormatException err) {
+				//ignore
+			}
+			InetSocketAddress addr = new InetSocketAddress(hostTextField.getText(), port);
+			connectionSettings.setInetSocketAddress(addr);
+									
+			connectionSettings.setAuthenticated(authenticationCheckBox.getState());
+			connectionSettings.setUserName(userNameTextField.getText());
+			connectionSettings.setPassword(passwordField.getText());
+			
+			connectionSettings.save();
+		}
+		
+		public void save(ClientletContext context) throws Exception {
+			apply();
+			context.closeWindow();
+		}
+		//]]>
+	</decl>
+
+	<code><![CDATA[
+		ConnectionSettings connectionSettings = ConnectionSettings.getInstance();
+		Proxy.Type proxyType = connectionSettings.getProxyType();
+		if(proxyType == Proxy.Type.DIRECT) {
+		 	noProxyRadioButton.setState(true);
+   	    }
+   	    else if(proxyType == Proxy.Type.HTTP) {
+	 	 	httpProxyRadioButton.setState(true);
+	 	}
+		else if(proxyType == Proxy.Type.SOCKS) {
+		 	socksProxyRadioButton.setState(true);
+		}
+		
+		InetSocketAddress saddr = connectionSettings.getInetSocketAddress();
+		String hostName = saddr == null ? "" : saddr.getHostName();
+		String port = saddr == null ? "" : String.valueOf(saddr.getPort());
+		hostTextField.setText(hostName);
+		portTextField.setText(port);
+		
+		boolean isAuthenticated = connectionSettings.isAuthenticated();
+		authenticationCheckBox.setState(isAuthenticated);
+		String userName = connectionSettings.getUserName();
+		String password = connectionSettings.getPassword();
+		userNameTextField.setText(userName);
+		passwordField.setText(password);
+		//]]>
+	</code>
+</xamj>
+	

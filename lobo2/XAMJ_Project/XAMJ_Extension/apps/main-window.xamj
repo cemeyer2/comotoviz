@@ -1,0 +1,294 @@
+<!-- LEGACY. NO LONGER USED -->
+<xamj>
+	<decl><![CDATA[
+		private static double round1(double value) {
+			return Math.round(value * 10.0) / 10.0;
+		}
+		
+		private static String getSizeText(int numBytes) {
+			if(numBytes < 1024) {
+				return "";
+			}
+			else {
+				double numK = numBytes / 1024.0;
+				if(numK < 1024) {
+					return round1(numK) + " Kb";
+				}
+				else {
+					double numM = numK / 1024.0;
+					if(numM < 1024) {
+						return round1(numM) + " Mb";
+					}
+					else {
+						double numG = numM / 1024.0;
+						return round1(numG) + " Gb";
+					}
+				}
+			}	
+		}		
+
+		private AsyncResult visit(String absUrl) throws java.net.MalformedURLException {
+			this.urlComboBox.setText(absUrl);
+			return this.browserFrame.navigate(absUrl);
+		}
+		
+		private boolean comboInvalid = true;
+		private boolean comboHasHeadMatches = false;
+		private boolean populatingMatches = false;
+		
+		private void populateCombo(String comboBoxText) {
+			this.populatingMatches = true;
+			try {
+				urlComboBox.removeAllItems();
+				Collection recentUrls = browserFrame.getRecentLocations(30);
+				Iterator i = recentUrls.iterator();
+				while(i.hasNext()) {
+					String matchUrl = (String) i.next();
+					urlComboBox.addItem(matchUrl);
+				}						
+				urlComboBox.setText(comboBoxText);
+				this.comboHasHeadMatches = false;
+				this.comboInvalid = false;
+			} finally {
+				this.populatingMatches = false;
+			}
+		}
+		
+		private boolean validPopupChar(char ch) {
+			return Character.isLetterOrDigit(ch) || ch == '.' || ch == '/';
+		}
+		//]]>
+	</decl>
+	<code><![CDATA[
+		final UserAgent userAgent = context.getUserAgent();
+		final String windowTitle = userAgent.getName() + " " + userAgent.getVersion();
+		//]]>
+	</code>
+	<head>
+		<document-disposition>window</document-disposition>
+		
+		<title>(%= windowTitle %)</title>
+		<description>Main browser window</description>
+		<document-icon>res:/images/warrior32.gif</document-icon>
+		<import>javax.swing.*</import>
+		<import>java.util.*</import>
+		<min-xamj-version>0.90</min-xamj-version>
+		<min-java-version>1.5.0</min-java-version>
+		<style-sheet>
+			<widget-style id="tbb"
+				   		  width="40"
+				   		  height="26"
+				   		  />
+		</style-sheet>
+	</head>
+	<box id="windowPanel" style.orientation="vertical">
+		<menu-bar style.fill="horizontal" style.height="26">
+			<menu text="File" mnemonic="F">
+				<menu-item text="Open File..." mnemonic="O">
+					<on-click><![CDATA[
+						JFileChooser chooser = new JFileChooser();
+						int retVal = chooser.showOpenDialog(null);
+						if(retVal == JFileChooser.APPROVE_OPTION) {
+							String fileName = chooser.getSelectedFile().getPath();
+							String fileURL = ("file:" + fileName);
+							visit(fileURL);
+							comboInvalid = true;
+						}					
+						//]]>
+					</on-click>
+				</menu-item>
+				<menu-item text="Exit" mnemonic="x">
+					<on-click><![CDATA[
+						context.closeWindow();
+						//]]>
+					</on-click>
+				</menu-item>
+			</menu>
+			<menu text="View" mnemonic="V">
+				<menu-item text="Original Source" mnemonic="S">
+					<on-click><![CDATA[
+						context.openTextViewer(browserFrame.getSource());
+						//]]>
+					</on-click>
+				</menu-item>
+				<menu-item text="Console" mnemonic="C">
+					<on-click><![CDATA[
+						context.open("res:/apps/console.xamj");
+						//]]>
+					</on-click>
+				</menu-item>
+			</menu>
+			<!--
+			<menu text="Bookmarks" mnemonic="B">
+				<menu-item text="Add Bookmark" enabled="false" toolTip="Not implemented" mnemonic="A"/>
+				<menu-item text="Organize" enabled="false" toolTip="Not implemented" mnemonic="O"/>
+				<separator/>
+				<menu text="Examples" mnemonic="E">
+					<menu-item text="(Submit Mine...)" toolTip="Request addition to shipped bookmarks">
+						<on-click><![CDATA[
+							visit("http://xamjwg.org/ext/addMyPage.xamj");
+							//]]>
+						</on-click>
+					</menu-item>
+					<separator/>
+					<menu-item text="Simple Calculator" href="http://xamjwg.org/tutorial/samples/calculator.xamj"/>
+					<menu-item text="Paint Demo" href="http://xamjwg.org/tutorial/samples/paint1.xamj"/>
+				</menu>
+				<separator/>
+			</menu>
+			-->
+			<menu text="Tools" mnemonic="T">
+				<menu-item text="Preferences" toolTip="Not implemented" href="res:/apps/preferences.xamj"/>
+			</menu>
+			<menu text="Help" mnemonic="H">
+				<menu-item text="About" mnemonic="A">
+					<on-click><![CDATA[
+						context.alert(" This is " + windowTitle);
+						//]]>
+					</on-click>
+				</menu-item>
+			</menu>
+		</menu-bar>
+		
+		<box id="toolbarPanel" style.fill="horizontal" style.height="40">
+			<button id="backButton" icon="res:/images/back.gif" toolTip="Go To Previous Page" style.basedOn="tbb">
+				<on-click><![CDATA[
+					browserFrame.back();
+					//]]>
+				</on-click>
+			</button>
+					
+			<button id="forwardButton" icon="res:/images/forward.gif" toolTip="Go To Next Page" style.basedOn="tbb">
+				<on-click><![CDATA[
+					browserFrame.forward();
+					//]]>
+				</on-click>
+			</button>
+
+			<button id="stopButton" icon="res:/images/stop.gif" toolTip="Cancel Loading Page" style.basedOn="tbb">
+				<on-click><![CDATA[
+					browserFrame.stop();
+					//]]>
+				</on-click>
+			</button>
+
+			<!-- Note: refreshButton cannot have toolTip due to Swing bug, hides About dialog -->
+			<button id="refreshButton" icon="res:/images/refresh.gif" style.basedOn="tbb">
+				<on-click><![CDATA[
+					browserFrame.refresh();
+					//]]>
+				</on-click>
+			</button>
+			<box style.width="2"/>
+			<combo-box id="urlComboBox" editable="true" style.height="26" style.fill="horizontal">
+				<on-edited><![CDATA[
+					if(!populatingMatches) {
+						goButton.doClick();
+					}
+					//]]>
+				</on-edited>
+				<on-key-released><![CDATA[
+					char releasedChar = event.getKeyChar();
+					if(validPopupChar(releasedChar)) {
+						String urlText = urlComboBox.getText();
+						Collection headMatches = browserFrame.getPotentialMatches(urlText, 30);
+						if(headMatches.size() == 0) {
+							if(urlComboBox.isPopupVisible()) {
+								urlComboBox.hidePopup();
+							}
+						}
+						else {
+							populatingMatches = true;
+							try {
+								urlComboBox.removeAllItems();
+								Iterator i = headMatches.iterator();
+								while(i.hasNext()) {
+									String matchUrl = (String) i.next();
+									urlComboBox.addItem(matchUrl);
+								}
+								comboHasHeadMatches = true;
+								if(!urlComboBox.isPopupVisible()) {
+									urlComboBox.showPopup();
+								}
+								urlComboBox.setSelectedItem(null);
+								urlComboBox.setText(urlText, false);					
+							} finally {
+								populatingMatches = false;
+							}
+						}
+					}
+					//]]>
+				</on-key-released>		
+				<on-before-popup-visible><![CDATA[
+					if((comboInvalid || comboHasHeadMatches) && !populatingMatches) {
+						populateCombo(urlComboBox.getText());
+					}
+					//]]>
+				</on-before-popup-visible>
+			</combo-box>
+			<box style.width="2"/>
+			<button id="goButton" icon="res:/images/go.gif" toolTip="Navigate to URL" style.basedOn="tbb">
+				<on-click><![CDATA[
+				    try {
+				    	comboInvalid = true;
+						browserFrame.navigate(urlComboBox.getText());
+					} catch(java.net.MalformedURLException mfu) {
+						browserFrame.navigate("res:/net/sourceforge/xamj/browser/malformed-url-error.xamj");
+					}
+					//]]>
+				</on-click>
+			</button>
+		</box>
+		
+		<frame id="browserFrame" style.fill="both">
+			<on-property-change><![CDATA[
+				String propertyName = event.getPropertyName();
+				if("href".equals(propertyName)) {
+				    // Note: force select in combo-box to avoid action event on focus lost
+					urlComboBox.setText(String.valueOf(event.getNewValue()), true);
+				}
+				//]]>
+			</on-property-change>
+			<on-first-shown><![CDATA[
+				String url = (String) context.getItem("home.url");
+				if(url == null) {
+					url = "http://xamjwg.org/index.xamj";
+				}
+				AsyncResult ar = visit(url);
+				AsyncResultWrapper arw = (AsyncResultWrapper) context.getItem("async.result.wrapper");
+				if(arw != null) {
+					arw.setAsyncResult(ar);
+				}
+				//]]>
+			</on-first-shown>
+			<on-progress><![CDATA[ 
+				statusLabel.setText(event.getProgressMessage());
+				int value = event.getProgressValue();
+				int max = event.getProgressMax();
+				if(max == -1) {
+					statusProgressBar.setIndeterminate(true);
+					statusProgressBar.setValue(value);
+					statusProgressBar.setText(getSizeText(value));
+				}
+				else {
+					statusProgressBar.setIndeterminate(false);
+					statusProgressBar.setValue(value);
+					statusProgressBar.setMaximum(max);
+					if(value == 0 || max == 0) {
+						statusProgressBar.setText("");
+					}
+					else {
+						int percent = (value * 100) / max;
+						statusProgressBar.setText(String.valueOf(percent) + "%");
+					}
+				}
+				//]]>
+			</on-progress>			
+		</frame>				
+		
+		<box id="statusBar" style.fill="horizontal" style.height="18">
+			<label id="statusLabel" style.fill="horizontal"/>
+			<progress-bar id="statusProgressBar" style.width="100"/>
+		</box>
+	</box>
+</xamj>

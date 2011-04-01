@@ -1,0 +1,53 @@
+This document is for developers just joining
+the Lobo project.
+
+Welcome. For the benefit of those who come after
+you, please modify this document if you find
+inaccuracies or if you feel that clarification
+is needed.
+
+PROJECT STRUCTURE
+-----------------
+
+IzPack_RegistryPanel: Subproject containing an
+IzPack panel extension that registers .xamj and
+.htln file associations in Windows. (Depends on
+the IzPack externals.)
+
+XAMJ_Build: Subproject containing the Ant build
+script that builds the Warrior installer. (Depends
+on all other subprojects.)
+
+Platform_Core: The browser core. This contains
+the request engine, FramePanel, the browser
+window infrastructure and other core features.
+
+Primary_Extension: The primary browser extension.
+This contains most of the browser GUI, in addition
+to a Cobra implementation.
+
+HTML_Renderer: This is the Cobra project.
+
+FINDING YOUR WAY AROUND
+-----------------------
+
+The Platform_Core project contains the following
+points of interest:
+
+- org/lobobrowser/main/EntryPoint.java
+  Entry point of the Lobo browser. If started
+  via this class, a program may simply find an existing
+  Lobo instance.
+
+The HTML_Renderer project is essentially the same
+as Cobra. Some points of interest there are:
+
+- org/lobobrowser/html/renderer/RBlockViewport.java
+  This is basically in charge of laying out HTML
+  blocks.
+
+SETTING UP ECLIPSE
+------------------
+
+See http://lobobrowser.org/sourcecode.jsp
+

@@ -37,7 +37,7 @@ import prefuse.visual.VisualItem;
 public class PrefuseDemo {
 	public static void main(String[] args) throws DataIOException, IOException
 	{
-		Graph graph = new GraphMLReader().readGraph("graph.xml");
+		Graph graph = new GraphMLReader().readGraph("/home/chuck/graph.xml");
 		/*Graph graph = new Graph();
 		graph.getNodeTable().addColumn("netid", String.class);
 		graph.getNodeTable().addColumn("pseudonym", String.class);

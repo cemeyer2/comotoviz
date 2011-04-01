@@ -1,0 +1,200 @@
+<xamj>
+	<head>
+		<title>Download</title>
+		<document-disposition>window</document-disposition>
+		<document-icon>res:/images/warrior32.gif</document-icon>
+		<document-width>480</document-width>
+		<document-height>200</document-height>
+		<import>java.io.*</import>
+		<import>java.net.*</import>
+		<import>javax.swing.*</import>
+	</head>
+	<decl><![CDATA[
+		private volatile DownloadThread downloadThread;
+		
+		private void startDownload(ClientletContext context, URL url, File destFile) {
+			DownloadThread t = new DownloadThread(context, url, destFile);
+			this.downloadThread = t;
+			t.setDaemon(true);
+			t.start();	
+		}
+		
+		private void cancelDownload() {
+			DownloadThread t = this.downloadThread;
+			if(t != null) {
+				t.cancel();
+			}
+		}
+
+		private static double round1(double value) {
+			return Math.round(value * 10.0) / 10.0;
+		}
+		
+		private static String getSizeText(int numBytes) {
+			if(numBytes < 1024) {
+				return "";
+			}
+			else {
+				double numK = numBytes / 1024.0;
+				if(numK < 1024) {
+					return round1(numK) + " Kb";
+				}
+				else {
+					double numM = numK / 1024.0;
+					if(numM < 1024) {
+						return round1(numM) + " Mb";
+					}
+					else {
+						double numG = numM / 1024.0;
+						return round1(numG) + " Gb";
+					}
+				}
+			}	
+		}		
+
+		private void updateProgressBar(long totalRead, long contentLength) {
+			if(contentLength == -1) {
+				progressBar.setIndeterminate(true);
+				String sizeText = getSizeText((int) totalRead);
+				progressBar.setText(sizeText);
+			}
+			else {
+				progressBar.setIndeterminate(false);
+				progressBar.setMinimum(0);
+				progressBar.setMaximum((int) contentLength);
+				progressBar.setValue((int) totalRead);
+				String sizeText = getSizeText((int) contentLength);
+				int percent = (int) ((totalRead * 100) / contentLength);
+				progressBar.setText(percent + "% of " + sizeText);
+			}
+		}
+				
+		private class DownloadThread extends Thread {
+			private final File destFile;
+			private final URL url;
+			private final ClientletContext context;
+			private volatile InputStream inputStream;
+			private boolean canceled = false;
+			
+			public DownloadThread(ClientletContext context, URL url, File destFile) {
+				super("DownloadThread");
+				this.destFile = destFile;
+				this.url = url;
+				this.context = context;
+			}
+			
+			public void cancel() {
+				InputStream in;
+				synchronized(this) {
+					in = this.inputStream;
+					this.canceled = true;
+				}
+				if(in != null) {
+					try {
+						in.close();
+					} catch(IOException ioe) {
+						// ignore
+					}
+				}
+			}
+			
+			public void run() {
+				try {
+					URLConnection connection = this.url.openConnection();
+					InputStream in = connection.getInputStream();
+					try {
+						synchronized(this) {
+							this.inputStream = in;
+						}
+						final long contentLength = connection.getContentLength();
+						OutputStream out = new FileOutputStream(this.destFile);
+						try {
+							byte[] buffer = new byte[8192];
+							int numRead;
+							long total = 0;
+							while((numRead = in.read(buffer)) != -1) {
+								out.write(buffer, 0, numRead);
+								total += numRead;
+								final long totalNow = total;
+								this.context.invokeLater(new Runnable() {
+									public void run() {
+										updateProgressBar(totalNow, contentLength);
+									}						
+								});
+							}
+						} finally  {
+							out.close();
+						}
+					} finally {
+						try {
+							in.close();
+						} catch(IOException ioe) {
+							//ignore
+						}
+						synchronized(this) {
+							this.inputStream = null;
+						}
+						this.context.invokeLater(new Runnable() {
+							public void run() {
+								closeButton.setText("Done");
+							}
+						});
+					}						
+				} catch(Exception err) {
+					synchronized(this) {
+						if(this.canceled) {
+							return;
+						}
+					}		
+					this.context.alert("Unable to complete download:\r\n" + err.getMessage());
+				}
+			}
+		}
+		
+		//]]>
+	</decl>
+	<box style.orientation="vertical">
+		<code><![CDATA[
+			final URL url = (URL) context.getItem("warrior.url");
+			if(url == null) {
+				throw new IllegalArgumentException("Missing item: warrior.url");
+			}
+			//]]>
+		</code>
+		<box style.fill="both" style.orientation="vertical">
+			<box style.height="60"/>
+			<label id="urlLabel" text="(%= String.valueOf(url) %)"/>
+			<box style.height="8"/>
+			<progress-bar id="progressBar"/>
+			<box style.height="60"/>
+		</box>
+		<box style.orientation="horizontal" style.height="30" style.fill="horizontal">
+			<box style.fill="horizontal"/>
+			<button id="downloadButton" text="Download">
+				<on-click><![CDATA[
+					String urlPath = url.getPath();
+					int lastSlashIdx = urlPath.lastIndexOf('/');
+					String prefFileName = lastSlashIdx == -1 ? "filename" : urlPath.substring(lastSlashIdx+1);
+					JFileChooser chooser = new JFileChooser();
+					chooser.setSelectedFile(new File(prefFileName));
+					int retVal = chooser.showSaveDialog(null);
+					if(retVal == JFileChooser.APPROVE_OPTION) {
+						File file = chooser.getSelectedFile();
+						downloadButton.setEnabled(false);
+						startDownload(context, url, file);
+					}					
+					//]]>
+				</on-click>
+			</button>
+			<button id="closeButton" text="Cancel">
+				<on-click><![CDATA[
+					cancelDownload();
+					context.closeWindow();
+					//]]>
+				</on-click>
+			</button>
+			<box style.width="8"/>
+		</box>
+	</box>
+</xamj>
+			

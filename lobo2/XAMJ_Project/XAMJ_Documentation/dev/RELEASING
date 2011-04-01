@@ -1,0 +1,32 @@
+- Ensure version numbers are correct in UserAgentImpl.java, 
+  build.xml and install.xml.
+
+- Update the CHANGELOG, ACKNOWLEGMENTS and CONTRIBUTORS files.
+
+- Build the release.
+
+- Install the release locally.
+
+- Test installed release: 
+  * Regression tests.
+  * Google search.
+  * API docs, navigation across frames.
+  * Contact form.
+  * Websites page.
+  * Opening windows with Javascript.
+  
+- If it all checks out, commit everything to CVS.
+
+- Tag CVS repository according to version.
+
+- Put .jar file in the website. Remove .jar files 2 versions old.
+
+- Make sure new API documentation is in the website as well. Committed separately.
+
+- Change download pages accordingly.
+
+- Upload .jar and .zip files to Sourceforge.
+
+- Release website changes, and release files at SourceForge.
+
+- Announce.

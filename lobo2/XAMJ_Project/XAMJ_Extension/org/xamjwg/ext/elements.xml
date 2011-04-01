@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<!-- Mappings of XAMJ elements to classes -->
+<elements>
+	<!-- Special elements -->
+	<element name="xamj" interface="XElement" class="net.sourceforge.xamj.domimpl.RootElement"/>
+	<element name="head" interface="XHeadElement" class="net.sourceforge.xamj.domimpl.HeadElement"/>
+	<element name="code" interface="XCodeElement" class="net.sourceforge.xamj.domimpl.CodeElement"/>
+	<element name="decl" interface="XDeclElement" class="net.sourceforge.xamj.domimpl.DeclElement"/>
+	<element name="min-xamj-version" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.MinXamjVersionElement"/>
+	<element name="preferred-xamj-version" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.PreferredXamjVersionElement"/>
+	<element name="min-java-version" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.MinJavaVersionElement"/>
+	<element name="preferred-java-version" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.PreferredJavaVersionElement"/>
+	<element name="import" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.ImportElement"/>
+	<element name="extends" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.ExtendsElement"/>
+	<element name="implements" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.ImplementsElement"/>
+	<element name="archive" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.GenericMetaElement"/>
+	<element name="title" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.TitleElement"/>
+	<element name="description" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.DescriptionElement"/>
+	<element name="document-icon" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.DocumentIconElement"/>
+	<element name="document-disposition" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.GenericMetaElement"/>
+	<element name="document-width" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.GenericMetaElement"/>
+	<element name="document-height" interface="XMetaElement" class="net.sourceforge.xamj.domimpl.GenericMetaElement"/>
+	<element name="model" interface="XModelElement" class="net.sourceforge.xamj.domimpl.ModelElement"/>
+	<element name="button-group" interface="XButtonGroupElement" class="net.sourceforge.xamj.domimpl.ButtonGroupElement"/>
+	<element name="param" interface="XParamElement" class="net.sourceforge.xamj.domimpl.ParamElement"/>
+	
+	<!-- Widgets -->
+	<element name="button" interface="XButtonElement" class="net.sourceforge.xamj.domimpl.gui.ButtonElement"/>
+	<element name="toggle-button" interface="XToggleButtonElement" class="net.sourceforge.xamj.domimpl.gui.ToggleButtonElement"/>
+	<element name="radio-button" interface="XRadioButtonElement" class="net.sourceforge.xamj.domimpl.gui.RadioButtonElement"/>
+	<element name="check-box" interface="XCheckBoxElement" class="net.sourceforge.xamj.domimpl.gui.CheckBoxElement"/>
+	<element name="label" interface="XLabelElement" class="net.sourceforge.xamj.domimpl.gui.LabelElement"/>
+	<element name="box" interface="XBoxElement" class="net.sourceforge.xamj.domimpl.gui.BoxElement"/>
+	<element name="hbox" interface="XBoxElement" class="net.sourceforge.xamj.domimpl.gui.HboxElement"/>
+	<element name="vbox" interface="XBoxElement" class="net.sourceforge.xamj.domimpl.gui.VboxElement"/>
+	<element name="combo-box" interface="XComboBoxElement" class="net.sourceforge.xamj.domimpl.gui.ComboBoxElement"/>
+	<element name="text-box" interface="XTextBoxElement" class="net.sourceforge.xamj.domimpl.gui.TextBoxElement"/>
+	<element name="text-field" interface="XTextFieldElement" class="net.sourceforge.xamj.domimpl.gui.TextFieldElement"/>
+	<element name="password-field" interface="XPasswordFieldElement" class="net.sourceforge.xamj.domimpl.gui.PasswordFieldElement"/>
+	<element name="frame" interface="XFrameElement" class="net.sourceforge.xamj.domimpl.gui.FrameElement"/>
+	<element name="menu-bar" interface="XMenuBarElement" class="net.sourceforge.xamj.domimpl.gui.MenuBarElement"/>
+	<element name="menu-item" interface="XMenuItemElement" class="net.sourceforge.xamj.domimpl.gui.MenuItemElement"/>
+	<element name="check-box-menu-item" interface="XCheckBoxMenuItemElement" class="net.sourceforge.xamj.domimpl.gui.CheckBoxMenuItemElement"/>
+	<element name="radio-button-menu-item" interface="XRadioButtonMenuItemElement" class="net.sourceforge.xamj.domimpl.gui.RadioButtonMenuItemElement"/>
+	<element name="menu" interface="XMenuElement" class="net.sourceforge.xamj.domimpl.gui.MenuElement"/>
+	<element name="separator" interface="XSeparatorElement" class="net.sourceforge.xamj.domimpl.gui.SeparatorElement"/>
+	<element name="tabbed-box" interface="XTabbedBoxElement" class="net.sourceforge.xamj.domimpl.gui.TabbedBoxElement"/>
+	<element name="tab" interface="XTabElement" class="net.sourceforge.xamj.domimpl.gui.TabElement"/>
+	<element name="tree" interface="XTreeBoxElement" class="net.sourceforge.xamj.domimpl.gui.TreeBoxElement"/>
+	<element name="tree-node" interface="XTreeNodeElement" class="net.sourceforge.xamj.domimpl.gui.TreeNodeElement"/>
+	<element name="body" interface="XBodyElement" class="net.sourceforge.xamj.domimpl.gui.BodyElement"/>
+	<element name="progress-bar" interface="XProgressBarElement" class="net.sourceforge.xamj.domimpl.gui.ProgressBarElement"/>
+	<element name="split-box" interface="XSplitBoxElement" class="net.sourceforge.xamj.domimpl.gui.SplitBoxElement"/>
+	<element name="check-box" interface="XCheckBoxElement" class="net.sourceforge.xamj.domimpl.gui.CheckBoxElement"/>
+	<element name="radio-button" interface="XRadioButtonElement" class="net.sourceforge.xamj.domimpl.gui.RadioButtonElement"/>
+	<element name="toggle-button" interface="XToggleButtonElement" class="net.sourceforge.xamj.domimpl.gui.ToggleButtonElement"/>
+	<element name="console" interface="XConsoleElement" class="net.sourceforge.xamj.domimpl.gui.ConsoleElement"/>
+	<element name="grid" interface="XGridElement" class="net.sourceforge.xamj.domimpl.gui.GridElement"/>
+	<element name="column" interface="XColumnElement" class="net.sourceforge.xamj.domimpl.gui.ColumnElement"/>
+	<element name="row" interface="XRowElement" class="net.sourceforge.xamj.domimpl.gui.RowElement"/>
+	<element name="grid-item" interface="XGridItemElement" class="net.sourceforge.xamj.domimpl.gui.GridItemElement"/>
+	
+	<!-- Markup Elements -->
+	<element name="span" interface="XSpanElement" class="net.sourceforge.xamj.domimpl.markup.SpanElement"/>
+	<element name="p" interface="XMarkupElement" class="net.sourceforge.xamj.domimpl.markup.PElement"/>
+	<element name="br" interface="XMarkupElement" class="net.sourceforge.xamj.domimpl.markup.BrElement"/>
+	<element name="a" interface="XAnchorElement" class="net.sourceforge.xamj.domimpl.markup.AnchorElement"/>
+	<element name="anchor" interface="XAnchorElement" class="net.sourceforge.xamj.domimpl.markup.AnchorElement"/>
+	<element name="h" interface="XMarkupElement" class="net.sourceforge.xamj.domimpl.markup.HElement"/>
+	<element name="b" interface="XMarkupElement" class="net.sourceforge.xamj.domimpl.markup.BElement"/>
+	<element name="i" interface="XMarkupElement" class="net.sourceforge.xamj.domimpl.markup.IElement"/>
+		
+	<!-- Events -->
+	<element name="on-click" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-change" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-text-change" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-before-popup-visible" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-before-popup-invisible" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>	
+	<element name="on-popup-canceled" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>	
+	<element name="on-edited" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-key-pressed" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjKeyEvent"/>
+	<element name="on-key-released" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjKeyEvent"/>
+	<element name="on-key-typed" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjKeyEvent"/>
+	<element name="on-property-change" interface="XOnPropertyChangeElement" class="net.sourceforge.xamj.domimpl.OnPropertyChangeElement" eventType="XamjPropertyChangeEvent"/>
+	<element name="on-first-shown" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"/>
+	<element name="on-progress" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjProgressEvent"/>
+	<element name="on-selection-change" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjTreeNodeEvent"/>
+	<element name="on-collapsed" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement"  eventType="XamjTreeNodeEvent"/>
+	<element name="on-expanded" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjTreeNodeEvent"/>
+	<element name="on-paint" interface="XEventElement" class="net.sourceforge.xamj.domimpl.GenericEventElement" eventType="XamjPaintEvent"/>
+	
+	<!-- Actions -->
+	<element name="do-navigate" interface="XDoNavigateElement" class="net.sourceforge.xamj.domimpl.DoNavigateElement"/>
+	<element name="do-open" interface="XDoOpenElement" class="net.sourceforge.xamj.domimpl.DoOpenElement"/>
+	<element name="do-set" interface="XDoSetElement" class="net.sourceforge.xamj.domimpl.DoSetElement"/>
+	
+	<!-- Styles -->
+	<element name="widget-style" interface="XWidgetStyleElement" class="net.sourceforge.xamj.domimpl.gui.WidgetStyleElement"/>
+	<element name="style-sheet" interface="XStyleSheetElement" class="net.sourceforge.xamj.domimpl.StyleSheetElement"/>
+	
+	<!-- Deprecated -->
+	<element name="tree-box" interface="XTreeBoxElement" class="net.sourceforge.xamj.domimpl.gui.TreeBoxElement"/>
+	
+	<!-- Removed -->
+	<!--
+	<element name="macros" interface="XMacrosElement" class="net.sourceforge.xamj.domimpl.MacrosElement"/>
+	<element name="macro" interface="XMacroElement" class="net.sourceforge.xamj.domimpl.MacroElement"/>
+	-->
+	
+</elements>

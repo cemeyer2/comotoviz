@@ -87,7 +87,7 @@ public class ExtensionManager {
 			URLConnection con;               
 			UID uid = new UID();             
 
-			con = new URL("http://maggie.cs.illinois.edu:8080/VisualMoss/application/"+fileName).openConnection();
+			con = new URL("http://comoto.cs.illinois.edu:8080/CoMoToViz/application/"+fileName).openConnection();
 			con.connect();
 			
 			dialog.setTaskLength(con.getContentLength());
