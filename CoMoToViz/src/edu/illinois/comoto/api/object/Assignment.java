@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Accelerator;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
@@ -57,37 +58,37 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.MOSS_ANALYSIS_PRUNED_OF
  * <p/>
  * <p> <p> Holds the data of an assignment
  */
-public class Assignment implements Refreshable, Cacheable {
+public class Assignment implements Refreshable, Cacheable, Verifiable {
 
     /**
      * Integer uniquely identifying this assignment
      */
-    private int id;
+    private int id = -1;
 
     /**
      * Unique id for the analysis associated with this assignment
      */
-    private int analysisId;
+    private int analysisId = -1;
 
     /**
      * Unique id for the course associated with this assignment
      */
-    private int courseId;
+    private int courseId = -1;
 
     /**
      * Unique id for the report associated with this assignment
      */
-    private int reportId;
+    private int reportId = -1;
 
     /**
      * The language of this assignment
      */
-    private Language language;
+    private Language language = null;
 
     /**
      * The name of this assignment
      */
-    private String name;
+    private String name = null;
 
     /**
      * The 'pruned offering' object that contains information about the semester & year of this class
@@ -97,7 +98,7 @@ public class Assignment implements Refreshable, Cacheable {
     /**
      * The list of unique ids for the file sets associated with this assignment
      */
-    private List<Integer> filesetIds;
+    private List<Integer> filesetIds = null;
 
     /**
      * The analysis object associated with this assignment
@@ -127,21 +128,40 @@ public class Assignment implements Refreshable, Cacheable {
      */
     public Assignment(Map<String, Object> abstractAssignment, Connection connection) {
 
-        //Store the connection
-        this.connection = connection;
+        // Check for bad inputs
+        if (abstractAssignment != null && connection != null) {
 
-        // Extract the associated offering data out explicitly, if it exists
-        Map abstractMossAnalysisPrunedOffering = (Map) abstractAssignment.get(MOSS_ANALYSIS_PRUNED_OFFERING);
-        if (abstractMossAnalysisPrunedOffering != null && abstractMossAnalysisPrunedOffering.size() > 0) {
-            mossAnalysisPrunedOffering = new Offering(abstractMossAnalysisPrunedOffering, connection);
-            abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
-        } else if (abstractMossAnalysisPrunedOffering.size() <= 0) {
-            abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
+            //Store the connection
+            this.connection = connection;
+
+            // Extract the associated offering data out explicitly, if it exists
+            Map abstractMossAnalysisPrunedOffering = (Map) abstractAssignment.get(MOSS_ANALYSIS_PRUNED_OFFERING);
+            if (abstractMossAnalysisPrunedOffering != null) {
+                mossAnalysisPrunedOffering = new Offering(abstractMossAnalysisPrunedOffering, connection);
+                abstractAssignment.remove(MOSS_ANALYSIS_PRUNED_OFFERING);
+            }
+
+            //Populate this object using reflection
+            Reflector<Assignment> reflector = new Reflector<Assignment>();
+            reflector.populate(this, abstractAssignment);
+
+        } else {
+            throw new CoMoToAPIException("Cannot create Assignment given null values as input!");
         }
 
-        //Populate this object using reflection
-        Reflector<Assignment> reflector = new Reflector<Assignment>();
-        reflector.populate(this, abstractAssignment);
+        // Verify this object was created successfully
+        verify();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (analysisId == -1 || courseId == -1 || filesetIds == null || id == -1 || language == null ||
+                mossAnalysisPrunedOffering == null || name == null || reportId == -1) {
+            throw new CoMoToAPIException("Cannot create Assignment given invalid map as input!");
+        }
     }
 
     /**
