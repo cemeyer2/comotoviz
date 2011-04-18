@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="Fixing backend comments">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java" />
+    <list default="true" id="327596cb-50e6-4600-8820-f341baab7d85" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/test/TestUtilities.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AssignmentTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" afterPath="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java" afterPath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java" afterPath="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plagiarism.iws" afterPath="$PROJECT_DIR$/plagiarism.iws" />
     </list>
     <ignored path="plagiarism.iws" />
@@ -88,13 +92,22 @@
     <favorites_list name="plagiarism" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44653034">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="AnalysisTest.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java">
+          <file leaf-file-name="AssignmentTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AssignmentTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="198" column="28" selection-start="7009" selection-end="7009" vertical-scroll-proportion="0.0">
+                <state line="79" column="0" selection-start="2789" selection-end="2789" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TestUtilities.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/CoMoToViz/test/TestUtilities.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="123" column="52" selection-start="4671" selection-end="4671" vertical-scroll-proportion="0.75421685">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -102,19 +115,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AccessTemplate.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/AccessTemplate.java">
+          <file leaf-file-name="CoMoToAPIConstants.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="42" column="21" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0">
+                <state line="83" column="0" selection-start="3941" selection-end="3941" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AnalysisPseudonymTest.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="AnalysisPseudonymTest.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="140" column="58" selection-start="5184" selection-end="5184" vertical-scroll-proportion="0.3120482">
+                <state line="77" column="13" selection-start="2903" selection-end="2903" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -126,46 +139,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Analysis.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java">
+          <file leaf-file-name="Assignment.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="147" column="106" selection-start="5695" selection-end="5760" vertical-scroll-proportion="0.0">
+                <state line="119" column="95" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.34819278">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CoMoToAPI.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPI.java">
+          <file leaf-file-name="Offering.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Offering.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="84" column="79" selection-start="3123" selection-end="3123" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CoMoToAPIConstants.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="75" column="57" selection-start="3466" selection-end="3466" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Connection.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Connection.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="130" column="75" selection-start="4619" selection-end="4619" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AnalysisPseudonym.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="113" column="17" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.51686746">
+                <state line="92" column="7" selection-start="3101" selection-end="3101" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -235,22 +221,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/AssignmentChooserPanel.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/MainWindow.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Submission.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/AccessTemplate.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/EnumConverter.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/converter/EnumConverterTest.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/Util.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPI.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/ConsistentObject.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Verified.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Verifiable.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/Utility.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java" />
         <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java" />
-        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/TestUtilities.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java" />
+        <option value="$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AssignmentTest.java" />
       </list>
     </option>
   </component>
@@ -340,6 +326,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plagiarism" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoMoToViz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -566,6 +566,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.illinois.comoto.api.object" />
       <recent name="edu.illinois.comoto.viz.view" />
       <recent name="edu.illinois.comoto.viz.controller" />
     </key>
@@ -593,14 +594,14 @@
       <extension name="coverage" enabled="false" merge="false" />
       <module name="CoMoToViz" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="PACKAGE_NAME" value="edu.illinois.comoto.api.object" />
       <option name="MAIN_CLASS_NAME" value="edu.illinois.comoto.api.object.AnalysisTest" />
       <option name="METHOD_NAME" value="testPartiallyInvalidMap" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -622,14 +623,14 @@
       <extension name="coverage" enabled="false" merge="false" />
       <module name="CoMoToViz" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="PACKAGE_NAME" value="edu.illinois.comoto.api.object" />
       <option name="MAIN_CLASS_NAME" value="edu.illinois.comoto.api.object.AnalysisPseudonymTest" />
-      <option name="METHOD_NAME" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -786,12 +787,36 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="5">
+    <configuration default="false" name="Run All Tests" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" />
+      <module name="CoMoToViz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.AnalysisTest.testPartiallyInvalidMap" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.AnalysisPseudonymTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.AnalysisPseudonymTest.testConstructFromValidMap" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.AnalysisPseudonymTest.testConstructFromNullInputs" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.AnalysisPseudonymTest.testPartiallyInvalidMap" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.Run All Tests" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -879,7 +904,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added analysis test, created verifiable interface, and fixed problems in analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AnalysisPseudonymTest &amp;&amp; made all tests pass" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -913,6 +938,7 @@
     <MESSAGE value="reimplemented panning to nodes. now submissions are listed on the left side in place of students, allowing for users to pan to a node even if there are several with the same netid. The type to pan feature still is semi-broken" />
     <MESSAGE value="Added mockito to path" />
     <MESSAGE value="Added analysis test, created verifiable interface, and fixed problems in analysis" />
+    <MESSAGE value="Added AnalysisPseudonymTest &amp;&amp; made all tests pass" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -930,109 +956,118 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/viz/view/WebPageDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="13" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Accelerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="114" selection-start="3408" selection-end="3408" vertical-scroll-proportion="0.055555556">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/EnumConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="3" selection-start="2264" selection-end="2264" vertical-scroll-proportion="0.29669032">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/converter/ListConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="13" selection-start="2214" selection-end="2214" vertical-scroll-proportion="0.2612293">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/AccessTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="21" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0">
+        <state line="54" column="28" selection-start="2170" selection-end="2170" vertical-scroll-proportion="0.24096386">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="75" selection-start="4619" selection-end="4619" vertical-scroll-proportion="0.0">
+        <state line="130" column="75" selection-start="4619" selection-end="4619" vertical-scroll-proportion="0.89759034">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="57" selection-start="3466" selection-end="3466" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Cacheable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="17" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.7746988">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Verifiable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="39" selection-start="2281" selection-end="2281" vertical-scroll-proportion="0.79518074">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/utility/Reflector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2634" selection-end="2634" vertical-scroll-proportion="0.3325301">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="28" selection-start="7009" selection-end="7009" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="79" selection-start="3123" selection-end="3123" vertical-scroll-proportion="0.0">
+        <state line="84" column="79" selection-start="3123" selection-end="3123" vertical-scroll-proportion="-0.015662652">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Analysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="106" selection-start="5695" selection-end="5760" vertical-scroll-proportion="0.0">
+        <state line="147" column="106" selection-start="5695" selection-end="5760" vertical-scroll-proportion="0.46144578">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/AnalysisPseudonym.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="17" selection-start="4160" selection-end="4160" vertical-scroll-proportion="0.51686746">
+        <state line="83" column="73" selection-start="3004" selection-end="3004" vertical-scroll-proportion="0.3325301">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="13" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Language.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="10" selection-start="2140" selection-end="2146" vertical-scroll-proportion="0.6807229">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Offering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="7" selection-start="3101" selection-end="3101" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Semester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="13" selection-start="2182" selection-end="2182" vertical-scroll-proportion="0.3325301">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="45" selection-start="3268" selection-end="3268" vertical-scroll-proportion="-0.43373495">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisPseudonymTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="58" selection-start="5184" selection-end="5184" vertical-scroll-proportion="0.3120482">
+        <state line="77" column="13" selection-start="2903" selection-end="2903" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="12" selection-start="1978" selection-end="1986" vertical-scroll-proportion="0.67228913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/CoMoToAPIConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="3941" selection-end="3941" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AssignmentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2789" selection-end="2789" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/src/edu/illinois/comoto/api/object/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="95" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.34819278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoMoToViz/test/TestUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="52" selection-start="4671" selection-end="4671" vertical-scroll-proportion="0.75421685">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

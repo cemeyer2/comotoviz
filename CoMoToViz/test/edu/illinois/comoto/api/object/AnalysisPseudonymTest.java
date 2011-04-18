@@ -48,7 +48,7 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
-import static edu.illinois.comoto.api.CoMoToAPIConstants.*;
+import static edu.illinois.comoto.api.CoMoToAPIConstants.COMPLETE;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
@@ -73,11 +73,7 @@ public class AnalysisPseudonymTest extends TestCase {
     public void setUp() {
 
         // Create a valid 'analysis pseudonym' map, we'll add to and remove from this for error cases
-        analysisPseudonymMap = new HashMap<String, Object>();
-        analysisPseudonymMap.put(ID, 1);
-        analysisPseudonymMap.put(ANALYSIS_ID, 2);
-        analysisPseudonymMap.put(PSEUDONYM, "A");
-        analysisPseudonymMap.put(SUBMISSION_ID, 3);
+        analysisPseudonymMap = TestUtilities.getValidAnalysisPseudonymMap();
     }
 
     /**

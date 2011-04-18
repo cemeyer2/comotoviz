@@ -45,11 +45,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static edu.illinois.comoto.api.CoMoToAPIConstants.*;
+import static edu.illinois.comoto.api.CoMoToAPIConstants.COMPLETE;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
@@ -63,20 +62,9 @@ import static org.mockito.Mockito.*;
 public class AnalysisTest extends TestCase {
 
     /**
-     * Test maps for an analysis pseudonym
-     */
-    private Map<String, Object> analysisPseudonymMap1;
-    private Map<String, Object> analysisPseudonymMap2;
-
-    /**
      * A valid map of an analysis for testing
      */
     private Map<String, Object> analysisMap;
-
-    /**
-     * A dummy date
-     */
-    private Date someDate;
 
     /**
      * Setup sample map & date test data before any test is called (only called once).
@@ -84,30 +72,8 @@ public class AnalysisTest extends TestCase {
     @Before
     public void setUp() {
 
-        someDate = new Date();
-
-        // Create some valid analysis pseudonym maps
-        analysisPseudonymMap1 = new HashMap<String, Object>();
-        analysisPseudonymMap1.put(ID, 10);
-        analysisPseudonymMap1.put(ANALYSIS_ID, 11);
-        analysisPseudonymMap1.put(PSEUDONYM, "pseudonymA");
-        analysisPseudonymMap1.put(SUBMISSION_ID, 12);
-
-        analysisPseudonymMap2 = new HashMap<String, Object>();
-        analysisPseudonymMap2.put(ID, 20);
-        analysisPseudonymMap2.put(ANALYSIS_ID, 21);
-        analysisPseudonymMap2.put(PSEUDONYM, "pseudonymB");
-        analysisPseudonymMap2.put(SUBMISSION_ID, 22);
-
         // Create a valid 'analysis' map, we'll add to and remove from this for error cases
-        analysisMap = new HashMap<String, Object>();
-        analysisMap.put(ID, 1);
-        analysisMap.put(TIMESTAMP, someDate);
-        analysisMap.put(COMPLETE, true);
-        analysisMap.put(ASSIGNMENT_ID, 2);
-        analysisMap.put(MOSS_ANALYSIS_ID, 3);
-        analysisMap.put(JPLAG_ANALYSIS_ID, 4);
-        analysisMap.put(ANALYSIS_PSEUDONYMS, new Object[]{analysisPseudonymMap1, analysisPseudonymMap2});
+        analysisMap = TestUtilities.getValidAssignmentMap();
     }
 
     /**
@@ -124,7 +90,7 @@ public class AnalysisTest extends TestCase {
 
         // Verify
         assertEquals(analysis.getId(), 1);
-        assertEquals(analysis.getTimestamp(), someDate);
+        assertNotNull(analysis.getTimestamp());
         assertTrue(analysis.isComplete());
         assertEquals(analysis.getAssignmentId(), 2);
         assertEquals(analysis.getMossAnalysisId(), 3);
