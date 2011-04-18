@@ -73,7 +73,7 @@ public class AnalysisTest extends TestCase {
     public void setUp() {
 
         // Create a valid 'analysis' map, we'll add to and remove from this for error cases
-        analysisMap = TestUtilities.getValidAssignmentMap();
+        analysisMap = TestMapUtilities.getValidAnalysisMap();
     }
 
     /**

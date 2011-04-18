@@ -48,32 +48,37 @@ import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
-import static edu.illinois.comoto.api.CoMoToAPIConstants.COMPLETE;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 /**
  * User: Jon
  * Date: 4/17/11
- * Time: 9:56 PM
+ * Time: 9:33 PM
  * <p/>
- * Tests the analysis pseudonym construction & refresh functionality
+ * Tests creation and refreshing an <code>Analysis</code> object.
  */
-public class AnalysisPseudonymTest extends TestCase {
+public class AssignmentTest extends TestCase {
 
     /**
-     * A valid map of an analysis pseudonym for testing
+     * A valid map of an assignment for testing
      */
-    private Map<String, Object> analysisPseudonymMap;
+    private Map<String, Object> assignmentMap;
 
     /**
-     * Setup sample map & date test data before any test is called (only called once).
+     * A valid map of an offering for testing
+     */
+    private Map<String, Object> offeringMap;
+
+    /**
+     * Setup sample map data before any test is called (only called once).
      */
     @Before
     public void setUp() {
 
-        // Create a valid 'analysis pseudonym' map, we'll add to and remove from this for error cases
-        analysisPseudonymMap = TestMapUtilities.getValidAnalysisPseudonymMap();
+        // Create a valid map, we'll add to and remove from this for error cases
+        assignmentMap = TestMapUtilities.getValidAssignmentMap();
+
     }
 
     /**
@@ -86,17 +91,22 @@ public class AnalysisPseudonymTest extends TestCase {
         Connection connection = new Connection(null, null);
 
         // Test
-        AnalysisPseudonym analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, connection);
+        Assignment assignment = new Assignment(assignmentMap, connection);
 
         // Verify
-        assertEquals(analysisPseudonym.getId(), 1);
-        assertEquals(analysisPseudonym.getAnalysisId(), 2);
-        assertEquals(analysisPseudonym.getPseudonym(), "A");
-        assertEquals(analysisPseudonym.getSubmissionId(), 3);
+        assertEquals(assignment.getId(), 1);
+        assertEquals(assignment.getAnalysisId(), 2);
+        assertEquals(assignment.getCourseId(), 3);
+        assertEquals(assignment.getReportId(), 4);
+        assertEquals(assignment.getLanguage(), Language.valueOf("python"));
+        assertEquals(assignment.getName(), "A");
+        assertNotNull(assignment.getMossAnalysisPrunedOffering());
+        assertNotNull(assignment.getFilesetIds());
+        assertEquals(assignment.getFilesetIds().size(), 1);
     }
 
     /**
-     * Tests that constructing an analysis from null inputs yields <code>CoMoToAPIException<code>s.
+     * Tests that constructing an Assignment from null inputs yields <code>CoMoToAPIException<code>s.
      */
     @Test
     public void testConstructFromNullInputs() {
@@ -106,41 +116,39 @@ public class AnalysisPseudonymTest extends TestCase {
 
         // Test & verify
         try {
-            AnalysisPseudonym analysisPseudonym = new AnalysisPseudonym(null, connection);
-            fail("Analysis pseudonym constructor should not have accepted NULL map as input!");
+            Assignment assignment = new Assignment(null, connection);
+            fail("Assignment constructor should not have accepted NULL map as input!");
         } catch (CoMoToAPIException e) {
         }
         try {
-            AnalysisPseudonym analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, null);
-            fail("Analysis pseudonym constructor should not have accepted NULL connection as input!");
+            Assignment assignment = new Assignment(assignmentMap, null);
+            fail("Assignment constructor should not have accepted NULL connection as input!");
         } catch (CoMoToAPIException e) {
         }
     }
 
     /**
-     * Tests that constructing an analysis missing some critical data does not succeeed.
+     * Tests that constructing an Assignment missing some critical data does not succeeed.
      */
     @Test
     public void testPartiallyInvalidMap() {
 
-        // Test this for removing every key in the analysis map
-        analysisPseudonymMap.remove(COMPLETE);
-        for (String key : analysisPseudonymMap.keySet()) {
+        // Test this for removing every key in the Assignment map
+        for (String key : assignmentMap.keySet()) {
 
             // Setup
             Connection connection = new Connection(null, null);
-            Map<String, Object> badAnalysisPseudonymMap = new HashMap<String, Object>();
-            badAnalysisPseudonymMap.putAll(analysisPseudonymMap);
-            badAnalysisPseudonymMap.remove(key);
+            Map<String, Object> badAssignmentMap = new HashMap<String, Object>();
+            badAssignmentMap.putAll(assignmentMap);
+            badAssignmentMap.remove(key);
 
             // Test & verify that this invalid map fails
             try {
-                AnalysisPseudonym analysisPseudonym = new AnalysisPseudonym(badAnalysisPseudonymMap, connection);
-                fail("Analysis pseudonym should not have accepted incomplete map as input!");
+                Assignment assignment = new Assignment(badAssignmentMap, connection);
+                fail("Assignment should not have accepted incomplete map as input!");
             } catch (CoMoToAPIException e) {
             }
         }
-
     }
 
     /**
@@ -153,7 +161,7 @@ public class AnalysisPseudonymTest extends TestCase {
         Connection mockConnection = mock(Connection.class);
 
         // Test
-        AnalysisPseudonym analysisPseudonym = new AnalysisPseudonym(analysisPseudonymMap, mockConnection);
+        Assignment assignment = new Assignment(assignmentMap, mockConnection);
 
         // Verify that the connection has not been touched yet
         try {
@@ -163,7 +171,7 @@ public class AnalysisPseudonymTest extends TestCase {
 
         // Test
         try {
-            analysisPseudonym.refresh();
+            assignment.refresh();
         } catch (CoMoToAPIException e) {
             // Ignore errors building this new object, it's given bad data
         }
