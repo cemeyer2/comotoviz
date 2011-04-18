@@ -1317,13 +1317,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CoMoToViz/CoMoToViz.iml" filepath="$PROJECT_DIR$/CoMoToViz/CoMoToViz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" filepath="$PROJECT_DIR$/prefuse-demo/Prefuse-demo.iml" />
     </modules>
   </component>
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Java 1.6 (x64)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/CoMoToViz/bin" />
   </component>
   <component name="SuppressionsComponent">
@@ -1364,6 +1363,7 @@
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/jlfgr-1_0.jar!/" />
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3-sources.jar!/" />
         <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/commons-beanutils-1.8.3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/CoMoToViz/lib/ext/mockito-all-1.8.5.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
