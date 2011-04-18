@@ -57,9 +57,6 @@ public class CoMoToAPI {
 
     private static Connection cachedConnection;
 
-    private CoMoToAPI() {
-    }
-
     /**
      * Gets an analysis by its id
      *

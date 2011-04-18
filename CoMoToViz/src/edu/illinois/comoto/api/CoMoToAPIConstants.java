@@ -63,8 +63,10 @@ public class CoMoToAPIConstants {
         return CONSTRUCTOR_INVALID_MAP_MESSAGE.replace("@@", className);
     }
 
+
     // API URL
     public static final String DEFAULT_HOST = "https://comoto.cs.illinois.edu/comoto/api";
+
 
     // API methods
     public static final String GET_ANALYSIS = "getAnalysis";
@@ -86,6 +88,7 @@ public class CoMoToAPIConstants {
     public static final String GET_STUDENT_BY_NETID = "getStudentByNetid";
     public static final String GET_SUBMISSION = "getSubmission";
     public static final String GET_SUBMISSION_FILE = "getSubmissionFile";
+
 
     // API objects
     public static final String ANALYSIS_ID = "analysis_id";

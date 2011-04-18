@@ -38,6 +38,8 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
@@ -51,27 +53,27 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data of a semester
  */
-public class Semester implements Refreshable, Cacheable, Comparable<Semester> {
+public class Semester implements Refreshable, Cacheable, Comparable<Semester>, Verifiable {
 
     /**
      * The season
      */
-    private Season season;
+    private Season season = null;
 
     /**
      * The 'type' for this semester
      */
-    private Type type;
+    private Type type = null;
 
     /**
      * The unique id for this semester
      */
-    private int id;
+    private int id = -1;
 
     /**
      * The year
      */
-    private int year;
+    private int year = -1;
 
     /**
      * A connection to the API for lazily loading and refreshing data
@@ -84,19 +86,41 @@ public class Semester implements Refreshable, Cacheable, Comparable<Semester> {
 
     public Semester(Map abstractSemester, Connection connection) {
 
-        //Save the connection
-        this.connection = connection;
+        // Check for null inputs
+        if (abstractSemester != null && connection != null) {
 
-        //Use reflection to populate this object
-        Reflector<Semester> reflector = new Reflector<Semester>();
-        reflector.populate(this, abstractSemester);
+            //Save the connection
+            this.connection = connection;
+
+            //Use reflection to populate this object
+            Reflector<Semester> reflector = new Reflector<Semester>();
+            reflector.populate(this, abstractSemester);
+
+        } else {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("Semester"));
+        }
+
+        // Verify that this object was built successfully
+        verify();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (id == -1 || year == -1 || season == null || type == null) {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Semester"));
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     public void refresh() {
+
         Cache.remove(this);
+
         //First, grab the new object from the API
         Semester newSemester = CoMoToAPI.getSemester(connection, id);
 
