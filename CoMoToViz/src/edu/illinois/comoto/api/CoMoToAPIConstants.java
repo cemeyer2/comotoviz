@@ -49,10 +49,16 @@ public class CoMoToAPIConstants {
     public static final String CONSTRUCTOR_NULL_PARAMS_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
     public static final String CONSTRUCTOR_INVALID_MAP_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
 
+    /**
+     * Builds a custom message for null parameters for building this object
+     */
     public static String getNullParamsMessage(String className) {
         return CONSTRUCTOR_NULL_PARAMS_MESSAGE.replace("@@", className);
     }
 
+    /**
+     * Builds a custom message for invalid parameters for building this object
+     */
     public static String getInvalidParamsMessage(String className) {
         return CONSTRUCTOR_INVALID_MAP_MESSAGE.replace("@@", className);
     }

@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
 import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
@@ -145,7 +146,7 @@ public class Analysis implements Refreshable, Cacheable, Verifiable {
             reflector.populate(this, abstractAnalysis);
 
         } else {
-            throw new CoMoToAPIException("Cannot create Analysis object given NULL inputs to constructor!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("Analysis"));
         }
 
         // Verify that all necessary fields have been assigned
@@ -162,7 +163,7 @@ public class Analysis implements Refreshable, Cacheable, Verifiable {
     public void verify() throws CoMoToAPIException {
         if (analysisPseudonyms == null || assignmentId == -1 || id == -1 || timestamp == null ||
                 mossAnalysisId == -1 || jplagAnalysisId == -1) {
-            throw new CoMoToAPIException("Cannot create Analysis object given incomplete Map!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Analysis"));
         }
     }
 

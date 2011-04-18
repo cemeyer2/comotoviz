@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
 import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Accelerator;
 import edu.illinois.comoto.api.utility.Cache;
@@ -146,7 +147,7 @@ public class Assignment implements Refreshable, Cacheable, Verifiable {
             reflector.populate(this, abstractAssignment);
 
         } else {
-            throw new CoMoToAPIException("Cannot create Assignment given null values as input!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("Assignment"));
         }
 
         // Verify this object was created successfully
@@ -160,7 +161,7 @@ public class Assignment implements Refreshable, Cacheable, Verifiable {
     public void verify() throws CoMoToAPIException {
         if (analysisId == -1 || courseId == -1 || filesetIds == null || id == -1 || language == null ||
                 mossAnalysisPrunedOffering == null || name == null || reportId == -1) {
-            throw new CoMoToAPIException("Cannot create Assignment given invalid map as input!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Assignment"));
         }
     }
 

@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
 import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
@@ -107,7 +108,7 @@ public class AnalysisPseudonym implements Refreshable, Cacheable, Verifiable {
             Reflector<AnalysisPseudonym> reflector = new Reflector<AnalysisPseudonym>();
             reflector.populate(this, abstractAnalysisPseudonym);
         } else {
-            throw new CoMoToAPIException("Cannot create AnalysisPseudonym object given NULL inputs to constructor!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("AnalysisPseudonym"));
         }
 
         // Verify that all fields were initialized
@@ -123,7 +124,7 @@ public class AnalysisPseudonym implements Refreshable, Cacheable, Verifiable {
     @Override
     public void verify() throws CoMoToAPIException {
         if (id == -1 || analysisId == -1 || submissionId == -1 || pseudonym == null) {
-            throw new CoMoToAPIException("Cannot create AnalysisPseudonym object given incomplete Map!");
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("AnalysisPseudonym"));
         }
     }
 
