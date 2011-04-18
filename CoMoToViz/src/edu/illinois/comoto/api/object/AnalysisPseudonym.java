@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
@@ -51,27 +52,27 @@ import java.util.Map;
  * <p/>
  * <p> <p> Holds the data for an analysis pseudonym
  */
-public class AnalysisPseudonym implements Refreshable, Cacheable {
+public class AnalysisPseudonym implements Refreshable, Cacheable, Verifiable {
 
     /**
      * The id that uniquely identifies this analysis pseudonym
      */
-    private int id;
+    private int id = -1;
 
     /**
      * The id of the analysis associated with this pseudonym
      */
-    private int analysisId;
+    private int analysisId = -1;
 
     /**
      * The numerical pseudonym
      */
-    private String pseudonym;
+    private String pseudonym = null;
 
     /**
      * The unique id of the associated submission
      */
-    private int submissionId;
+    private int submissionId = -1;
 
     /**
      * The analysis associated with this pseudonym, either initialized with this object or lazily loaded
@@ -96,12 +97,34 @@ public class AnalysisPseudonym implements Refreshable, Cacheable {
      */
     public AnalysisPseudonym(Map<String, Object> abstractAnalysisPseudonym, Connection connection) {
 
-        //Grab the connection
-        this.connection = connection;
+        // Check for generic bad inputs into the constructor
+        if (abstractAnalysisPseudonym != null && connection != null) {
 
-        //Use reflection to fill the rest
-        Reflector<AnalysisPseudonym> reflector = new Reflector<AnalysisPseudonym>();
-        reflector.populate(this, abstractAnalysisPseudonym);
+            //Grab the connection
+            this.connection = connection;
+
+            //Use reflection to fill the rest
+            Reflector<AnalysisPseudonym> reflector = new Reflector<AnalysisPseudonym>();
+            reflector.populate(this, abstractAnalysisPseudonym);
+        } else {
+            throw new CoMoToAPIException("Cannot create AnalysisPseudonym object given NULL inputs to constructor!");
+        }
+
+        // Verify that all fields were initialized
+        verify();
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * This implementation verifies that no fields, other than <code>submission</code> and <code>analysis</code> are
+     * uninitialized after we try to build this object.
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (id == -1 || analysisId == -1 || submissionId == -1 || pseudonym == null) {
+            throw new CoMoToAPIException("Cannot create AnalysisPseudonym object given incomplete Map!");
+        }
     }
 
     /**
