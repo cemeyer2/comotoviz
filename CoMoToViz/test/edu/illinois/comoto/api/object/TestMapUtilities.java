@@ -130,4 +130,21 @@ public class TestMapUtilities {
         semesterMap.put(YEAR, 2000000);
         return semesterMap;
     }
+
+    /**
+     * Builds a valid Course map
+     *
+     * @return a valid Course map
+     */
+    static public Map<String, Object> getValidCourseMap() {
+        Map<String, Object> courseMap = new HashMap<String, Object>();
+        courseMap.put(ASSIGNMENT_IDS, new Object[]{1, 6, 3, 7});
+        courseMap.put(FILESET_IDS, new Object[]{1, 2});
+        courseMap.put(ID, 1);
+        courseMap.put(LDAP_DN, "A");
+        courseMap.put(NAME, "A");
+        courseMap.put(OFFERINGS, new Object[]{getValidOfferingMap()});
+        courseMap.put(USER_IDS, new Object[]{0, 1, 2});
+        return courseMap;
+    }
 }

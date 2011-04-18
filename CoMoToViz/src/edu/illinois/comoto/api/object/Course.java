@@ -38,6 +38,8 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
@@ -54,42 +56,42 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.OFFERINGS;
  * <p/>
  * <p> <p> Holds the data of a particular course
  */
-public class Course implements Refreshable, Cacheable, Comparable<Course> {
+public class Course implements Refreshable, Cacheable, Comparable<Course>, Verifiable {
 
     /**
      * The list of associated assignment ids
      */
-    private List<Integer> assignmentIds;
+    private List<Integer> assignmentIds = null;
 
     /**
      * The list of associated file sets
      */
-    private List<Integer> filesetIds;
+    private List<Integer> filesetIds = null;
 
     /**
      * The unique id for this course
      */
-    private int id;
+    private int id = -1;
 
     /**
      * LDAP information for the course
      */
-    private String ldapDn;
+    private String ldapDn = null;
 
     /**
      * The name of this course
      */
-    private String name;
+    private String name = null;
 
     /**
      * The list of offerings associated with this course
      */
-    private List<Offering> offerings;
+    private List<Offering> offerings = null;
 
     /**
      * The list of ids for the associated users
      */
-    private List<Integer> userIds;
+    private List<Integer> userIds = null;
 
     /**
      * The list of associated assignments
@@ -114,24 +116,44 @@ public class Course implements Refreshable, Cacheable, Comparable<Course> {
      */
     public Course(Map<String, Object> abstractCourse, Connection connection) {
 
-        //Store the connection
-        this.connection = connection;
+        if (abstractCourse != null && connection != null) {
 
-        //Populate the list of offerings explicitly
-        Object[] abstractOfferings = (Object[]) abstractCourse.get(OFFERINGS);
-        if (abstractOfferings != null) {
-            offerings = new ArrayList<Offering>();
-            for (Object abstractOffering : abstractOfferings) {
-                Offering o = new Offering((Map<String, Object>) abstractOffering, connection);
-                Cache.put(o);
-                offerings.add(o);
+            //Store the connection
+            this.connection = connection;
+
+            //Populate the list of offerings explicitly
+            Object[] abstractOfferings = (Object[]) abstractCourse.get(OFFERINGS);
+            if (abstractOfferings != null) {
+                offerings = new ArrayList<Offering>();
+                for (Object abstractOffering : abstractOfferings) {
+                    Offering o = new Offering((Map<String, Object>) abstractOffering, connection);
+                    Cache.put(o);
+                    offerings.add(o);
+                }
+                abstractCourse.remove(OFFERINGS);
             }
-            abstractCourse.remove(OFFERINGS);
+
+            //Populate this object using reflection
+            Reflector<Course> reflector = new Reflector<Course>();
+            reflector.populate(this, abstractCourse);
+
+        } else {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("Course"));
         }
 
-        //Populate this object using reflection
-        Reflector<Course> reflector = new Reflector<Course>();
-        reflector.populate(this, abstractCourse);
+        // Test this object for validity
+        verify();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (id == -1 || ldapDn == null || name == null || offerings == null || filesetIds == null || userIds == null ||
+                assignmentIds == null) {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Course"));
+        }
     }
 
     /**

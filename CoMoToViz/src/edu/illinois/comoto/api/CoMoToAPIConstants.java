@@ -95,6 +95,7 @@ public class CoMoToAPIConstants {
     public static final String ANALYSIS_PSEUDONYM = "analysis_pseudonym";
     public static final String ANALYSIS_PSEUDONYMS = "analysis_pseudonyms";
     public static final String ASSIGNMENT_ID = "assignment_id";
+    public static final String ASSIGNMENT_IDS = "assignment_ids";
     public static final String COMPLETE = "complete";
     public static final String COURSE_ID = "course_id";
     public static final String CROSS_SEMESTER_MATCHES = "cross_semester_matches";
@@ -104,6 +105,7 @@ public class CoMoToAPIConstants {
     public static final String JPLAG_ANALYSIS_ID = "jplag_analysis_id";
     public static final String JPLAG_REPORT = "jplag_report";
     public static final String LANGUAGE = "language";
+    public static final String LDAP_DN = "ldap_dn";
     public static final String LDAP_DNS = "ldap_dns";
     public static final String MATCHES = "matches";
     public static final String MOSS_ANALYSIS_ID = "moss_analysis_id";
@@ -129,5 +131,6 @@ public class CoMoToAPIConstants {
     public static final String SUBMISSION_IDS = "submission_ids";
     public static final String TIMESTAMP = "timestamp";
     public static final String TYPE = "type";
+    public static final String USER_IDS = "user_ids";
     public static final String YEAR = "year";
 }
