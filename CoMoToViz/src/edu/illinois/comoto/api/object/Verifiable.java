@@ -35,45 +35,25 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
  */
 
-package edu.illinois.comoto.api.converter;
+package edu.illinois.comoto.api.object;
 
-import org.apache.commons.beanutils.Converter;
-import org.apache.commons.beanutils.converters.StringConverter;
+import edu.illinois.comoto.api.CoMoToAPIException;
 
 /**
- * <p> Created By: Jon Tedesco
- * <p> Date: Dec 8, 2010
+ * User: Jon
+ * Date: 4/17/11
+ * Time: 11:11 PM
  * <p/>
- * <p> <p> This class takes care of converting String objects into enums in the apache reflection library. Note that this
- * class must be registered as the String converter, and will default to the standard string converter if the
- * parameter is not an enum.
+ * This interface represents API objects that verify themselves to be correct before building. For instance, any object
+ * that implements this interface will ensure that all necessary fields have been populated before successfully being
+ * constructed.
  */
-public class EnumConverter implements Converter {
+public interface Verifiable {
 
     /**
-     * Converts a generic object into an enum
+     * Verify that this object was fully constructed.
      *
-     * @param destinationClass The class to which to convert
-     * @param abstractObject   The object to convert
-     * @return An enum, or String if the object is not an enum, null if it is an enum, but is invalid
+     * @throws CoMoToAPIException If this object was not fully constructed
      */
-    public Object convert(Class destinationClass, Object abstractObject) {
-
-        if (destinationClass.isEnum()) {
-            try {
-
-                //Try to parse this object into a Language enumerated type
-                return Enum.valueOf(destinationClass, (String) abstractObject);
-
-            } catch (ClassCastException e) {
-                return null;
-            } catch (EnumConstantNotPresentException e) {
-                return null;
-            }
-        } else {
-
-            StringConverter stringConverter = new StringConverter();
-            return stringConverter.convert(destinationClass, abstractObject);
-        }
-    }
+    public void verify() throws CoMoToAPIException;
 }

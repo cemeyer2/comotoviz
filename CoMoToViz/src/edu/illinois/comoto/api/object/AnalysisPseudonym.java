@@ -86,7 +86,7 @@ public class AnalysisPseudonym implements Refreshable, Cacheable {
     /**
      * A connection to the CoMoTo API for use when lazily loading attributes
      */
-    private Connection connection = null;
+    private Connection connection;
 
     /**
      * Constructor for the AnalysisPseudonym class

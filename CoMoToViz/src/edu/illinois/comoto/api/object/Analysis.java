@@ -38,6 +38,7 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
@@ -52,17 +53,17 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.ANALYSIS_PSEUDONYMS;
  * <p/>
  * <p> <p> Holds the data of an analysis
  */
-public class Analysis implements Refreshable, Cacheable {
+public class Analysis implements Refreshable, Cacheable, Verifiable {
 
     /**
      * The unique id that identifies this analysis in the API
      */
-    private int id;
+    private int id = -1;
 
     /**
      * The timestamp of this analysis
      */
-    private Date timestamp;
+    private Date timestamp = null;
 
     /**
      * Whether this analysis is complete
@@ -72,22 +73,22 @@ public class Analysis implements Refreshable, Cacheable {
     /**
      * The id to uniquely identify the associated moss analysis
      */
-    private int assignmentId;
+    private int assignmentId = -1;
 
     /**
      * The id to uniquely identify the associated moss analysis with this aggregate analysis
      */
-    private int mossAnalysisId;
+    private int mossAnalysisId = -1;
 
     /**
      * The id to uniquely identify the associated jplag analysis with this aggregate analysis
      */
-    private int jplagAnalysisId;
+    private int jplagAnalysisId = -1;
 
     /**
      * The pseudonyms for the this analysis
      */
-    private List<AnalysisPseudonym> analysisPseudonyms;
+    private List<AnalysisPseudonym> analysisPseudonyms = null;
 
     /**
      * The actual moss analysis object associated with this analysis, loaded lazily
@@ -116,35 +117,62 @@ public class Analysis implements Refreshable, Cacheable {
      *
      * @param abstractAnalysis A map of attribute names and data to which to initialize this object
      * @param connection       A connection to the API, to be used for lazy loading
+     * @throws CoMoToAPIException If invalid inputs to the constructor prevent successfully creating the object
      */
-    public Analysis(Map<String, Object> abstractAnalysis, Connection connection) {
+    public Analysis(Map<String, Object> abstractAnalysis, Connection connection) throws CoMoToAPIException {
 
-        //Grab the connection to the API so we can load attributes lazily
-        this.connection = connection;
+        // Check for null inputs, and just fail in this case (neither may be null!)
+        if (connection != null && abstractAnalysis != null) {
 
-        //Add analysis pseudonyms explicitly
-        Object[] abstractAnalysisPseudonymsArray = (Object[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
-        if (abstractAnalysisPseudonymsArray != null) {
-            analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
-            for (Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray) {
-                Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
-                AnalysisPseudonym ap = new AnalysisPseudonym(analysisPseudonymMap, connection);
-                Cache.put(ap);
-                analysisPseudonyms.add(ap);
+            //Grab the connection to the API so we can load attributes lazily
+            this.connection = connection;
+
+            //Add analysis pseudonyms explicitly
+            Object[] abstractAnalysisPseudonymsArray = (Object[]) abstractAnalysis.get(ANALYSIS_PSEUDONYMS);
+            if (abstractAnalysisPseudonymsArray != null) {
+                analysisPseudonyms = new ArrayList<AnalysisPseudonym>();
+                for (Object abstractAnalysisPseudonym : abstractAnalysisPseudonymsArray) {
+                    Map analysisPseudonymMap = (Map) abstractAnalysisPseudonym;
+                    AnalysisPseudonym ap = new AnalysisPseudonym(analysisPseudonymMap, connection);
+                    Cache.put(ap);
+                    analysisPseudonyms.add(ap);
+                }
+                abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
             }
-            abstractAnalysis.remove(ANALYSIS_PSEUDONYMS);
+
+            // Populate the rest of this object using reflection
+            Reflector<Analysis> reflector = new Reflector<Analysis>();
+            reflector.populate(this, abstractAnalysis);
+
+        } else {
+            throw new CoMoToAPIException("Cannot create Analysis object given NULL inputs to constructor!");
         }
 
-        // Populate the rest of this object using reflection
-        Reflector<Analysis> reflector = new Reflector<Analysis>();
-        reflector.populate(this, abstractAnalysis);
+        // Verify that all necessary fields have been assigned
+        verify();
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * This object fails if any fields other than <code>assignment</code>, <code>jplagAnalysis</code>, and
+     * <code>mossAnalysis</code> were not initialized.
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (analysisPseudonyms == null || assignmentId == -1 || id == -1 || timestamp == null ||
+                mossAnalysisId == -1 || jplagAnalysisId == -1) {
+            throw new CoMoToAPIException("Cannot create Analysis object given incomplete Map!");
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     public void refresh() {
+
         Cache.remove(this);
+
         //Grab this object again from the API
         Analysis newAnalysis = CoMoToAPI.getAnalysis(connection, id);
 

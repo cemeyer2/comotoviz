@@ -116,7 +116,7 @@
           <file leaf-file-name="AnalysisTest.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="156" column="42" selection-start="5677" selection-end="5677" vertical-scroll-proportion="0.5493976">
+                <state line="155" column="34" selection-start="5676" selection-end="5676" vertical-scroll-proportion="0.52891564">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -908,7 +908,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="reimplemented panning to nodes. now submissions are listed on the left side in place of students, allowing for users to pan to a node even if there are several with the same netid. The type to pan feature still is semi-broken" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mockito to path" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -940,6 +940,7 @@
     <MESSAGE value="some work on trying to tune the layout engine more to our liking" />
     <MESSAGE value="more work on layout engine tuning. the layout the custom engine produces is better than the one we were using imho, but it still needs a lot of tuning" />
     <MESSAGE value="reimplemented panning to nodes. now submissions are listed on the left side in place of students, allowing for users to pan to a node even if there are several with the same netid. The type to pan feature still is semi-broken" />
+    <MESSAGE value="Added mockito to path" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1057,7 +1058,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CoMoToViz/test/edu/illinois/comoto/api/object/AnalysisTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="42" selection-start="5677" selection-end="5677" vertical-scroll-proportion="0.5493976">
+        <state line="155" column="34" selection-start="5676" selection-end="5676" vertical-scroll-proportion="0.52891564">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -84,5 +84,4 @@ public class AccessTemplate {
             throw new CoMoToAPIException("Error getting the list from the requested method:\t" + e.getMessage(), e);
         }
     }
-
 }
