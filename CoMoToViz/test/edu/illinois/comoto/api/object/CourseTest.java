@@ -114,12 +114,12 @@ public class CourseTest extends TestCase {
 
         // Test & verify
         try {
-            Offering offering = new Offering(null, connection);
+            Course course = new Course(null, connection);
             fail("Offering constructor should not have accepted NULL map as input!");
         } catch (CoMoToAPIException e) {
         }
         try {
-            Offering offering = new Offering(this.courseMap, null);
+            Course course = new Course(this.courseMap, null);
             fail("Offering constructor should not have accepted NULL connection as input!");
         } catch (CoMoToAPIException e) {
         }
