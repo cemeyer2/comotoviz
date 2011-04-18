@@ -38,6 +38,8 @@
 package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPI;
+import edu.illinois.comoto.api.CoMoToAPIConstants;
+import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
@@ -56,27 +58,27 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.SEMESTER;
  * <p/>
  * <p> <p> Holds the data of an offering
  */
-public class Offering implements Refreshable, Cacheable, Comparable<Offering> {
+public class Offering implements Refreshable, Cacheable, Comparable<Offering>, Verifiable {
 
     /**
      * The unique id for this offering
      */
-    private int id;
+    private int id = -1;
 
     /**
      * The unique id of the associated course
      */
-    private int courseId;
+    private int courseId = -1;
 
     /**
      * The list of ids for the associated file sets
      */
-    private List<Integer> filesetIds;
+    private List<Integer> filesetIds = null;
 
     /**
      * The student id's for the students enlisted in this offering
      */
-    private List<Integer> rosterStudentIds;
+    private List<Integer> rosterStudentIds = null;
 
     /**
      * The extra offering info for this offering
@@ -86,12 +88,12 @@ public class Offering implements Refreshable, Cacheable, Comparable<Offering> {
     /**
      * The LDAP dns for this offering
      */
-    private List<String> ldapDns;
+    private List<String> ldapDns = null;
 
     /**
      * The semester of this offering
      */
-    private Semester semester;
+    private Semester semester = null;
 
     /**
      * The list of the associated file sets
@@ -121,34 +123,51 @@ public class Offering implements Refreshable, Cacheable, Comparable<Offering> {
      */
     public Offering(Map abstractOffering, Connection connection) {
 
-        //Save the connections
-        this.connection = connection;
+        if (abstractOffering != null && connection != null) {
+            //Save the connections
+            this.connection = connection;
 
-        //Explicitly add semester object if it exists
-        Map semesterMap = (Map) abstractOffering.get(SEMESTER);
-        if (semesterMap != null) {
-            semester = new Semester(semesterMap, connection);
-            Cache.put(semester);
-            //Remove these from the map
-            abstractOffering.remove(SEMESTER);
-        }
-
-        //Explicitly add extra offering info if it existed
-        Object[] offeringInfoMapList = (Object[]) abstractOffering.get(OFFERING_INFO);
-        if (offeringInfoMapList != null) {
-            extraOfferingInfo = true;
-            offeringInfo = new ArrayList<OfferingInfo>();
-            for (Object abstractOfferingInfo : offeringInfoMapList) {
-                offeringInfo.add(new OfferingInfo((Map) abstractOfferingInfo, connection));
+            //Explicitly add semester object if it exists
+            Map semesterMap = (Map) abstractOffering.get(SEMESTER);
+            if (semesterMap != null) {
+                semester = new Semester(semesterMap, connection);
+                Cache.put(semester);
+                //Remove these from the map
+                abstractOffering.remove(SEMESTER);
             }
 
-            //Remove these from the map
-            abstractOffering.remove(OFFERING_INFO);
+            //Explicitly add extra offering info if it existed
+            Object[] offeringInfoMapList = (Object[]) abstractOffering.get(OFFERING_INFO);
+            if (offeringInfoMapList != null) {
+                extraOfferingInfo = true;
+                offeringInfo = new ArrayList<OfferingInfo>();
+                for (Object abstractOfferingInfo : offeringInfoMapList) {
+                    offeringInfo.add(new OfferingInfo((Map) abstractOfferingInfo, connection));
+                }
+
+                //Remove these from the map
+                abstractOffering.remove(OFFERING_INFO);
+            }
+
+
+            Reflector<Offering> reflector = new Reflector<Offering>();
+            reflector.populate(this, abstractOffering);
+        } else {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getNullParamsMessage("Offering"));
         }
 
+        // Verify that this object was created correctly
+        verify();
+    }
 
-        Reflector<Offering> reflector = new Reflector<Offering>();
-        reflector.populate(this, abstractOffering);
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void verify() throws CoMoToAPIException {
+        if (id == -1 || courseId == -1 || filesetIds == null || rosterStudentIds == null || ldapDns == null || semester == null) {
+            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Offering"));
+        }
     }
 
     /**
@@ -156,6 +175,7 @@ public class Offering implements Refreshable, Cacheable, Comparable<Offering> {
      */
     public void refresh() {
         Cache.remove(this);
+
         //First, grab the new offering object from the api
         Offering newOffering;
         if (extraOfferingInfo) {

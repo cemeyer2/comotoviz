@@ -45,7 +45,16 @@ package edu.illinois.comoto.api;
  */
 public class CoMoToAPIConstants {
 
-    private CoMoToAPIConstants() {
+    // Messages
+    public static final String CONSTRUCTOR_NULL_PARAMS_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
+    public static final String CONSTRUCTOR_INVALID_MAP_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
+
+    public static String getNullParamsMessage(String className) {
+        return CONSTRUCTOR_NULL_PARAMS_MESSAGE.replace("@@", className);
+    }
+
+    public static String getInvalidParamsMessage(String className) {
+        return CONSTRUCTOR_INVALID_MAP_MESSAGE.replace("@@", className);
     }
 
     // API URL
