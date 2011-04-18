@@ -96,7 +96,7 @@ public class AnalysisPseudonymTest extends TestCase {
     }
 
     /**
-     * Tests that constructing an analysis from null inputs yields <code>CoMoToAPIException<code>s.
+     * Tests that constructing an analysis pseudonym from null inputs yields <code>CoMoToAPIException<code>s.
      */
     @Test
     public void testConstructFromNullInputs() {
@@ -118,7 +118,7 @@ public class AnalysisPseudonymTest extends TestCase {
     }
 
     /**
-     * Tests that constructing an analysis missing some critical data does not succeeed.
+     * Tests that constructing an analysis pseudonym missing some critical data does not succeeed.
      */
     @Test
     public void testPartiallyInvalidMap() {

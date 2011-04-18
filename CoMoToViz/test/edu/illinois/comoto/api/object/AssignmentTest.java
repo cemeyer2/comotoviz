@@ -66,11 +66,6 @@ public class AssignmentTest extends TestCase {
     private Map<String, Object> assignmentMap;
 
     /**
-     * A valid map of an offering for testing
-     */
-    private Map<String, Object> offeringMap;
-
-    /**
      * Setup sample map data before any test is called (only called once).
      */
     @Before
@@ -78,7 +73,6 @@ public class AssignmentTest extends TestCase {
 
         // Create a valid map, we'll add to and remove from this for error cases
         assignmentMap = TestMapUtilities.getValidAssignmentMap();
-
     }
 
     /**
