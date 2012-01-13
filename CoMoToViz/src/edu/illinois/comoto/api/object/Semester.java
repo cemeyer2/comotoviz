@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -43,6 +43,7 @@ import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +55,8 @@ import java.util.Map;
  * <p> <p> Holds the data of a semester
  */
 public class Semester implements Refreshable, Cacheable, Comparable<Semester>, Verifiable {
+
+    Logger logger = Logger.getLogger(Semester.class);
 
     /**
      * The season
@@ -101,7 +104,8 @@ public class Semester implements Refreshable, Cacheable, Comparable<Semester>, V
         }
 
         // Verify that this object was built successfully
-        verify();
+        // CM: this needs to be updated for special semesters
+        //verify();
     }
 
     /**

@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -43,6 +43,7 @@ import edu.illinois.comoto.api.CoMoToAPIException;
 import edu.illinois.comoto.api.utility.Cache;
 import edu.illinois.comoto.api.utility.Connection;
 import edu.illinois.comoto.api.utility.Reflector;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +60,8 @@ import static edu.illinois.comoto.api.CoMoToAPIConstants.SEMESTER;
  * <p> <p> Holds the data of an offering
  */
 public class Offering implements Refreshable, Cacheable, Comparable<Offering>, Verifiable {
+
+    Logger logger = Logger.getLogger(Offering.class);
 
     /**
      * The unique id for this offering
@@ -157,7 +160,8 @@ public class Offering implements Refreshable, Cacheable, Comparable<Offering>, V
         }
 
         // Verify that this object was created correctly
-        verify();
+        //CM: this method needs to be fixed for special offerings like solution and base
+        //verify();
     }
 
     /**

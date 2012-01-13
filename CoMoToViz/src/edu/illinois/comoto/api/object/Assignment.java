@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -151,7 +151,8 @@ public class Assignment implements Refreshable, Cacheable, Verifiable {
         }
 
         // Verify this object was created successfully
-        verify();
+        //CM: fix this like other verify methods
+        //verify();
     }
 
     /**
