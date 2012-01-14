@@ -192,11 +192,13 @@ public class Course implements Refreshable, Cacheable, Comparable<Course>, Verif
         if (assignments == null) {
             assignments = CoMoToAPI.getAssignments(connection, id);
         }
+        List<Assignment> newAssignments = new ArrayList<Assignment>(assignments);
         for (Assignment assignment : assignments) {
             if (assignment.getAnalysisId() < 0) {
-                assignments.remove(assignment);
+                newAssignments.remove(assignment);
             }
         }
+        assignments = newAssignments;
         return assignments;
     }
 
