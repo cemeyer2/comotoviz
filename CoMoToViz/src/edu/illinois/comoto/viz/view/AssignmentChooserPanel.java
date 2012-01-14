@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -37,12 +37,7 @@
 
 package edu.illinois.comoto.viz.view;
 
-import edu.illinois.comoto.api.object.Assignment;
-import edu.illinois.comoto.api.object.Course;
-import edu.illinois.comoto.api.object.Offering;
-import edu.illinois.comoto.api.object.Season;
-import edu.illinois.comoto.api.object.Semester;
-import edu.illinois.comoto.api.object.Submission;
+import edu.illinois.comoto.api.object.*;
 import edu.illinois.comoto.viz.controller.EventListenerFactory;
 import edu.illinois.comoto.viz.controller.MouseListenerFactory;
 import edu.illinois.comoto.viz.model.DataImport;
@@ -51,14 +46,12 @@ import edu.illinois.comoto.viz.utility.AssignmentLoadingWorker;
 import edu.illinois.comoto.viz.utility.Pair;
 import edu.illinois.comoto.viz.view.graph.GraphPanel;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -126,51 +119,56 @@ public class AssignmentChooserPanel extends JPanel {
                 for (Assignment assignment : course.getAssignments()) {
                     Offering assignmentOffering = assignment.getMossAnalysisPrunedOffering();
 
-                    DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
-                    Season assignmentSeason = null;
-                    int assignmentYear = -1;
-                    if (assignmentOffering != null) {
+                    try {
 
-                        // Get the data about this assignment
-                        assignmentSeason = assignmentOffering.getSemester().getSeason();
-                        assignmentYear = assignmentOffering.getSemester().getYear();
+                        DefaultMutableTreeNode assignmentNode = new DefaultMutableTreeNode(assignment);
+                        Season assignmentSeason = null;
+                        int assignmentYear = -1;
+                        if (assignmentOffering != null) {
 
-                    } else {
-                        assignmentYear = -1;
-                    }
+                            // Get the data about this assignment
+                            assignmentSeason = assignmentOffering.getSemester().getSeason();
+                            assignmentYear = assignmentOffering.getSemester().getYear();
 
-                    // Check flag, parse from timestamp if this fails
-                    if (assignmentYear > 0) {
-
-                        // Find where it goes
-                        if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
-                            semesterNode.add(assignmentNode);
-                            assignmentNodes.add(assignmentNode);
-                        }
-
-                    } else {
-
-                        // Get the timestamp and parse that
-                        Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
-                        assignmentYear = assignmentTimestamp.getYear() + 1900;
-                        int month = assignmentTimestamp.getMonth() + 1;
-
-                        // If this is the spring
-                        if (month <= 5) {
-                            assignmentSeason = Season.Spring;
-                            // Summer
-                        } else if (month <= 8) {
-                            assignmentSeason = Season.Summer;
-                            // Fall
                         } else {
-                            assignmentSeason = Season.Fall;
+                            assignmentYear = -1;
                         }
 
-                        // Find where it goes
-                        if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
-                            semesterNode.add(assignmentNode);
-                            assignmentNodes.add(assignmentNode);
+                        // Check flag, parse from timestamp if this fails
+                        if (assignmentYear > 0) {
+
+                            // Find where it goes
+                            if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                                semesterNode.add(assignmentNode);
+                                assignmentNodes.add(assignmentNode);
+                            }
+
+                        } else {
+
+                            // Get the timestamp and parse that
+                            Date assignmentTimestamp = assignment.getAnalysis().getTimestamp();
+                            assignmentYear = assignmentTimestamp.getYear() + 1900;
+                            int month = assignmentTimestamp.getMonth() + 1;
+
+                            // If this is the spring
+                            if (month <= 5) {
+                                assignmentSeason = Season.Spring;
+                                // Summer
+                            } else if (month <= 8) {
+                                assignmentSeason = Season.Summer;
+                                // Fall
+                            } else {
+                                assignmentSeason = Season.Fall;
+                            }
+
+                            // Find where it goes
+                            if (assignmentYear == semester.getYear() && assignmentSeason == semester.getSeason()) {
+                                semesterNode.add(assignmentNode);
+                                assignmentNodes.add(assignmentNode);
+                            }
                         }
+                    } catch (NullPointerException exception) {
+                        System.err.println("Error creating course list, encountered NullPointerException: '" + exception.getLocalizedMessage() + "'");
                     }
                 }
 
