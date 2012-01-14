@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -140,6 +140,7 @@ public class CoMoToAPI {
         List<Assignment> assignments = new ArrayList<Assignment>();
         for (Object abstractAssignment : abstractAssignments) {
 
+            // Try to construct the assignment
             Assignment assignment = new Assignment((Map) abstractAssignment, connection);
             assignments.add(assignment);
             Cache.put(assignment);

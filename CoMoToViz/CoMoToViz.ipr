@@ -24,6 +24,7 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="IdProvider" IDEtalkID="3E9A7457FDCC5E17A27D75F368787C21" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
     <option name="OPTION_SCOPE" value="protected" />
@@ -169,6 +170,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="" />
   </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">

@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -150,7 +150,7 @@ public class Analysis implements Refreshable, Cacheable, Verifiable {
         }
 
         // Verify that all necessary fields have been assigned
-        verify();
+        verify(abstractAnalysis);
     }
 
     /**
@@ -160,10 +160,14 @@ public class Analysis implements Refreshable, Cacheable, Verifiable {
      * <code>mossAnalysis</code> were not initialized.
      */
     @Override
-    public void verify() throws CoMoToAPIException {
+    public void verify(Map<String, Object> objectMap) throws CoMoToAPIException {
         if (analysisPseudonyms == null || assignmentId == -1 || id == -1 || timestamp == null ||
                 mossAnalysisId == -1 || jplagAnalysisId == -1) {
-            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Analysis"));
+
+            System.err.println("Invalid Analysis:");
+            for (String key : objectMap.keySet()) {
+                System.err.println("\t" + key + " : " + objectMap.get(key));
+            }
         }
     }
 

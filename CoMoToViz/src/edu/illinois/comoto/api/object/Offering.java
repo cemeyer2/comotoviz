@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -157,16 +157,26 @@ public class Offering implements Refreshable, Cacheable, Comparable<Offering>, V
         }
 
         // Verify that this object was created correctly
-        verify();
+        verify(abstractOffering);
     }
 
     /**
      * {@inheritDoc}
+     *
+     * @param objectMap
      */
     @Override
-    public void verify() throws CoMoToAPIException {
-        if (id == -1 || courseId == -1 || filesetIds == null || rosterStudentIds == null || ldapDns == null || semester == null) {
-            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Offering"));
+    public void verify(Map<String, Object> objectMap) throws CoMoToAPIException {
+        if (id != 1 && (id == -1 || courseId == -1 || filesetIds == null || rosterStudentIds == null || ldapDns == null || semester == null)) {
+
+            System.err.println("Invalid Offering:");
+            if (objectMap.keySet().size() > 0) {
+                for (String key : objectMap.keySet()) {
+                    System.err.println("\t" + key + " : " + objectMap.get(key));
+                }
+            } else {
+                System.err.println("\t <EMPTY>");
+            }
         }
     }
 

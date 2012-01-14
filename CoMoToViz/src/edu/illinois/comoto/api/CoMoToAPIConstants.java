@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -47,7 +47,7 @@ public class CoMoToAPIConstants {
 
     // Messages
     public static final String CONSTRUCTOR_NULL_PARAMS_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
-    public static final String CONSTRUCTOR_INVALID_MAP_MESSAGE = "Cannot create @@ object given NULL inputs to constructor!";
+    public static final String CONSTRUCTOR_INVALID_MAP_MESSAGE = "Cannot create @@ object given invalid map to constructor!";
 
     /**
      * Builds a custom message for null parameters for building this object

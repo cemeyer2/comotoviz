@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -46,9 +46,8 @@ import edu.illinois.comoto.viz.view.MainWindow;
 import org.lobobrowser.main.ExtensionManager;
 import org.lobobrowser.main.PlatformInit;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import java.awt.Frame;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Enumeration;
 
 public class CoMoToViz {
@@ -83,21 +82,7 @@ public class CoMoToViz {
             JOptionPane.showMessageDialog(null, "Error initializing lobo browser component.", "Initialization Error", JOptionPane.ERROR_MESSAGE);
             throw new CoMoToVizException("Lobo did not initialize properly.", ex);
         }
-        //until the issues with the windows look and feel can be resolved,
-        //especially on the student info dialog, the default swing look and feel
-        //will be used
-        // If the system is not linux, use the system look and feel
-//        String systemLookAndFeel = UIManager.getSystemLookAndFeelClassName();
-//        if (!System.getProperty(BackendConstants.OS_PROPERTY).contains(BackendConstants.LINUX)) {
-//            try {
-//                // Set System look and feel
-//                UIManager.setLookAndFeel(systemLookAndFeel);
-//            } catch (UnsupportedLookAndFeelException e) {
-//            } catch (ClassNotFoundException e) {
-//            } catch (InstantiationException e) {
-//            } catch (IllegalAccessException e) {
-//            }
-//        }
+
         String argNetid = "";
         if (args.length > 0) {
             argNetid = args[0];

@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -39,6 +39,8 @@ package edu.illinois.comoto.api.object;
 
 import edu.illinois.comoto.api.CoMoToAPIException;
 
+import java.util.Map;
+
 /**
  * User: Jon
  * Date: 4/17/11
@@ -53,7 +55,8 @@ public interface Verifiable {
     /**
      * Verify that this object was fully constructed.
      *
+     * @param objectMap The map used to populate the API object
      * @throws CoMoToAPIException If this object was not fully constructed
      */
-    public void verify() throws CoMoToAPIException;
+    public void verify(Map<String, Object> objectMap) throws CoMoToAPIException;
 }

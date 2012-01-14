@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -101,16 +101,22 @@ public class Semester implements Refreshable, Cacheable, Comparable<Semester>, V
         }
 
         // Verify that this object was built successfully
-        verify();
+        verify(abstractSemester);
     }
 
     /**
      * {@inheritDoc}
+     *
+     * @param objectMap
      */
     @Override
-    public void verify() throws CoMoToAPIException {
+    public void verify(Map<String, Object> objectMap) throws CoMoToAPIException {
         if (id == -1 || year == -1 || season == null || type == null) {
-            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Semester"));
+
+            System.err.println("Invalid Semester:");
+            for (String key : objectMap.keySet()) {
+                System.err.println("\t" + key + " : " + objectMap.get(key));
+            }
         }
     }
 

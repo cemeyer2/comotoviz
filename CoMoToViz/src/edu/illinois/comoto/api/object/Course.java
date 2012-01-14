@@ -2,7 +2,7 @@
  * University of Illinois/NCSA
  * Open Source License
  *
- * Copyright (c) 2011 University of Illinois at Urbana-Champaign.
+ * Copyright (c) 2012 University of Illinois at Urbana-Champaign.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -142,17 +142,21 @@ public class Course implements Refreshable, Cacheable, Comparable<Course>, Verif
         }
 
         // Test this object for validity
-        verify();
+        verify(abstractCourse);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void verify() throws CoMoToAPIException {
+    public void verify(Map<String, Object> objectMap) throws CoMoToAPIException {
         if (id == -1 || ldapDn == null || name == null || offerings == null || filesetIds == null || userIds == null ||
                 assignmentIds == null) {
-            throw new CoMoToAPIException(CoMoToAPIConstants.getInvalidParamsMessage("Course"));
+
+            System.err.println("Invalid Course:");
+            for (String key : objectMap.keySet()) {
+                System.err.println("\t" + key + " : " + objectMap.get(key));
+            }
         }
     }
 
